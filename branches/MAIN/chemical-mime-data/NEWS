@@ -1,0 +1,12 @@
+# Document  $Id$
+# Summary   News for every release.
+
+Version 0.1.0
+	Moved from chemicalMIME to chemical-mime-data.
+	Moved whole package to GNU Lesser General Public License v2.1.
+	Added support for theme and non-theme icons.
+	Fixed a lot of build issues (completely rewritten configure- and
+	build-process).
+	Fixed chemical/x-pdb detection.
+
+# UTF-8
