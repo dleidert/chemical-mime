@@ -12,10 +12,10 @@ dnl --------------------------------------------------------------------------
 
 AC_PROG_INTLTOOL
 ALL_LINGUAS="de fr nl"
-AC_SUBST(ALL_LINGUAS)
+AC_SUBST([ALL_LINGUAS])
 AM_GLIB_GNU_GETTEXT
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
-AC_SUBST(GETTEXT_PACKAGE)
+AC_SUBST([GETTEXT_PACKAGE])
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",[Package name for internationalization])
 
 dnl --------------------------------------------------------------------------
@@ -24,10 +24,18 @@ dnl --------------------------------------------------------------------------
 
 AC_PROG_INSTALL
 PKG_PROG_PKG_CONFIG
+AC_ARG_VAR(
+	[RSVG],
+	[The rsvg binary with path. Use it to define or override the location of rsvg.]
+)
 AC_PATH_PROG(RSVG, rsvg, "no")
-AC_SUBST(RSVG)
+AC_SUBST([RSVG])
+AC_ARG_VAR(
+	[CONVERT],
+	[The convert binary with path. Use it to define or override the location of convert.]
+)
 AC_PATH_PROG(CONVERT, convert, "no")
-AC_SUBST(CONVERT)
+AC_SUBST([CONVERT])
 if test "x$RSVG" = "xno" -a "x$CONVERT" = "xno" ; then
 	AC_MSG_ERROR([Cannot find rsvg (librsvg binary) or convert (imagemagick). Please install one of them.])
 fi
@@ -98,7 +106,7 @@ AC_ARG_WITH(
 	[DIR_FDMIME=$withval],
 	[DIR_FDMIME=${datadir}/mime]
 )
-AC_SUBST(DIR_FDMIME)
+AC_SUBST([DIR_FDMIME])
 
 AC_ARG_WITH(
 	[gnome2_4-mime],
@@ -110,7 +118,7 @@ AC_ARG_WITH(
 	[DIR_GNOMEMIME=$withval],
 	[DIR_GNOMEMIME=${datadir}/mime-info]
 )
-AC_SUBST(DIR_GNOMEMIME)
+AC_SUBST([DIR_GNOMEMIME])
 
 AC_ARG_WITH(
 	[pixmaps],
@@ -124,7 +132,7 @@ AC_ARG_WITH(
 	[DIR_PIXMAPS=$withval],
 	[DIR_PIXMAPS=${datadir}/pixmaps]
 )
-AC_SUBST(DIR_PIXMAPS)
+AC_SUBST([DIR_PIXMAPS])
 
 AC_ARG_WITH(
 	[gnome-theme],
@@ -136,7 +144,7 @@ AC_ARG_WITH(
 	[DIR_GNOMETHEME=$withval],
 	[DIR_GNOMETHEME=${datadir}/icons/hicolor]
 )
-AC_SUBST(DIR_GNOMETHEME)
+AC_SUBST([DIR_GNOMETHEME])
 
 AC_ARG_WITH(
 	[kde-mime],
@@ -148,7 +156,7 @@ AC_ARG_WITH(
 	[DIR_KDEMIME=$withval],
 	[DIR_KDEMIME=${datadir}/mimelnk]
 )
-AC_SUBST(DIR_KDEMIME)
+AC_SUBST([DIR_KDEMIME])
 
 AC_ARG_WITH(
 	[kde-theme],
@@ -160,7 +168,7 @@ AC_ARG_WITH(
 	[DIR_KDETHEME=$withval],
 	[DIR_KDETHEME=${datadir}/icons/crystalsvg]
 )
-AC_SUBST(DIR_KDETHEME)
+AC_SUBST([DIR_KDETHEME])
 
 dnl --------------------------------------------------------------------------
 dnl necessary checks
@@ -179,7 +187,7 @@ if test "$DIR_FDMIME" != "no" ; then
 		]
 	)
 	AC_PATH_PROG(UPDATE_MIME_DATABASE, update-mime-database, "no")
-	AC_SUBST(UPDATE_MIME_DATABASE)
+	AC_SUBST([UPDATE_MIME_DATABASE])
 fi
 
 dnl necessary checks and additions for old gnome 2.4 mime support
@@ -196,16 +204,8 @@ if test "$DIR_GNOMEMIME" != "no" ; then
 	)
 fi
 
-AC_SUBST(CHEMICAL_MIME_DEPS)
+AC_SUBST([CHEMICAL_MIME_DEPS])
 
-#if $PKG_CONFIG --atleast-pkgconfig-version 0.18; then
-#	PKGCONFIG_REQUIRES="Requires.private"
-#else
-#	PKGCONFIG_REQUIRES="Requires"
-#fi
-#
-#AC_SUBST(PKGCONFIG_REQUIRES)
-	
 dnl --------------------------------------------------------------------------
 dnl conditions
 dnl --------------------------------------------------------------------------
