@@ -1,0 +1,60 @@
+# Document  $Id$
+# Summary   File-changelog for the internationalization data files of the
+#           chemical-mime-data project.
+
+2006-01-27 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* chemical-mime-data.pot: Update after fixing bugs in kde/*.desktop
+	files.
+
+	* de.po: Ditto.
+
+	* fr.po: Ditto.
+
+	* nl.po: Ditto.
+
+2006-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* ChangeLog: Changed used CVS keyword to a local one. More useful
+	summary.
+	
+	* de.po: Fixed headers of the file. Fixed copyright info.
+
+	* fr.po: Ditto.
+
+	* nl.po: Ditto.
+
+2005-09-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* fr.po: Added French translation. Thanks to Jean Bréfort.
+
+2005-06-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* ChangeLog: Fixed syntax. Added a bit more info.
+
+2005-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
+	
+	* POTFILES.in: Added missing files.
+	
+2005-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+	
+	* chemicalMIME.pot: Removed (obsolete).
+
+2005-03-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+	
+	* POTFILES.in: Fixed (file remove in ../kde).
+	
+2005-03-11 Daniel Leidert <daniel.leidert.spam@gmx.net>
+	
+	* ChangeLog: Added for 'dist'-target.
+
+2005-03-10 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* Makefile.in.in: Removed (added by intltoolize during autogen.sh
+	run).
+
+2005-03-04 Egon Willighagen
+
+	* nl.po: Added Dutch translation.
+
+# UTF-8
