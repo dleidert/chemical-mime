@@ -3,6 +3,12 @@
 
 2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* configure.ac: Fix all AC_SUBST() macro calls.
+	(RSVG, CONVERT): Add possibility for custom definition where to find
+	the rsvg or convert utility (may help if they are not in PATH).
+
+2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* Move all files back to sourceforge.net. Fixed all CVS headers,
 	because sf.net does not know LocalKeyword nor tag. Removed docs/ and
 	examples/, because they should not be part of the source. See the
