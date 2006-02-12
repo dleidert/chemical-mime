@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: @PACKAGE@
+Description: Chemical MIME-types support for KDE, GNOME and ROX desktops.
+Version: @VERSION@
+Requires: @CHEMICAL_MIME_DEPS@
+Libs:
+Cflags:
