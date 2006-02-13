@@ -3,6 +3,16 @@
 
 2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* configure.ac (CONVERT, RSVG): Move the stuff related to rsvg and
+	convert detection to a better place.
+
+	* icons/crystalsvg/Makefile.am (all-icons): Adjust the test for RSVG
+	after changing configure.ac.
+
+	* icons/hicolor/Makefile.am (all-icons): Ditto.
+
+2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* configure.ac: Fix all AC_SUBST() macro calls.
 	(RSVG, CONVERT): Add possibility for custom definition where to find
 	the rsvg or convert utility (may help if they are not in PATH).
