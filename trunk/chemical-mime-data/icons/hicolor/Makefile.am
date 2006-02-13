@@ -14,7 +14,7 @@ if BOOL_GNOME_THEME
 %.svgz : %.svg
 	gzip $< -c > $@
 	for size in $(SIZES) ; do \
-		if test "$(RSVG)" != "no" ; then \
+		if test "x$(RSVG)" != "x" ; then \
 			$(RSVG) -w "$$size" -h "$$size" -f png $(top_srcdir)/icons/hicolor/$*.svg $*_"$$size".png ; \
 		else \
 			$(CONVERT) $(top_srcdir)/icons/hicolor/$*.svg -resize "$$size"x"$$size" $*_"$$size".png ; \

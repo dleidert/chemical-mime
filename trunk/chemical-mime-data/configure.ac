@@ -24,21 +24,6 @@ dnl --------------------------------------------------------------------------
 
 AC_PROG_INSTALL
 PKG_PROG_PKG_CONFIG
-AC_ARG_VAR(
-	[RSVG],
-	[The rsvg binary with path. Use it to define or override the location of rsvg.]
-)
-AC_PATH_PROG(RSVG, rsvg, "no")
-AC_SUBST([RSVG])
-AC_ARG_VAR(
-	[CONVERT],
-	[The convert binary with path. Use it to define or override the location of convert.]
-)
-AC_PATH_PROG(CONVERT, convert, "no")
-AC_SUBST([CONVERT])
-if test "x$RSVG" = "xno" -a "x$CONVERT" = "xno" ; then
-	AC_MSG_ERROR([Cannot find rsvg (librsvg binary) or convert (imagemagick). Please install one of them.])
-fi
 
 dnl --------------------------------------------------------------------------
 dnl environment settings
@@ -89,8 +74,24 @@ dnl --------------------------------------------------------------------------
 dnl rsvg or convert (imagemagick)
 dnl --------------------------------------------------------------------------
 
-if test "x$ENABLE_CONVERT" = "xyes" -a "x$CONVERT" != "xno" ; then
-	RSVG = no
+AC_ARG_VAR(
+	[CONVERT],
+	[The convert binary with path. Use it to define or override the location of convert.]
+)
+AC_PATH_PROG([CONVERT], [convert])
+AC_SUBST([CONVERT])
+
+if test "x$ENABLE_CONVERT" != "xyes" -a "x$CONVERT" = "x" ; then
+AC_ARG_VAR(
+	[RSVG],
+	[The rsvg binary with path. Use it to define or override the location of rsvg.]
+)
+AC_PATH_PROG([RSVG], [rsvg])
+AC_SUBST([RSVG])
+fi
+
+if test "x$RSVG" = "x" -a "x$CONVERT" = "x" ; then
+	AC_MSG_ERROR([Cannot find rsvg (librsvg binary) or convert (imagemagick). Please install one of them.])
 fi
 
 dnl --------------------------------------------------------------------------
