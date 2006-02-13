@@ -3,6 +3,10 @@
 
 2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* po/POTFILES.in: Fixed a minor bug.
+
+2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* configure.ac (CONVERT, RSVG): Move the stuff related to rsvg and
 	convert detection to a better place.
 
