@@ -12,7 +12,6 @@ CLEANFILES = *.png *.svgz
 
 MAINTAINERCLEANFILES = Makefile.in
 
-
 icon_sources = gnome-mime-chemical.svg
 icon_sizes   = 16 22 24 32 36 48 64 72 96 128 192
 

@@ -3,6 +3,21 @@
 
 2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* freedesktop.org/Makefile.am: Fixed missing file after 'make dist'
+	issue caused by condition construct.
+
+	* gnome/Makefile.am: Ditto.
+
+	* icons/pixmaps/Makefile.am: Ditto.
+
+	* kde/Makefile.am: Ditto.
+
+	* icons/crystalsvg/Makefile.am: Cleaned.
+
+	* icons/hicolor/Makefile.am: Ditto.
+
+2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* icons/crystalsvg/Makefile.am (EXTRA_DIST, ICONS, SIZES)
 	(icon_sources, icon_sizes, all-local, all-icons)
 	(install-data-local, uninstall-hook): Make it much more deterministic

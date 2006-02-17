@@ -6,13 +6,13 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-EXTRA_DIST = $(MIMETYPES)
+EXTRA_DIST = $(kdemime_in_files)
 
 CLEANFILES = $(kdemime_DATA)
 
 MAINTAINERCLEANFILES = Makefile.in
 
-MIMETYPES= \
+kdemime_in_files = \
 	seq-aa-fasta.desktop.in \
 	seq-aa-genpept.desktop.in \
 	seq-na-fasta.desktop.in \
@@ -78,7 +78,6 @@ MIMETYPES= \
 
 
 if BOOL_KDE_MIME
-kdemime_in_files = $(MIMETYPES)
 @INTLTOOL_DESKTOP_RULE@
 kdemimedir = $(DIR_KDEMIME)/chemical
 kdemime_DATA = $(kdemime_in_files:.desktop.in=.desktop)
