@@ -24,6 +24,8 @@ DISTCLEANFILES = \
 MAINTAINERCLEANFILES = \
 	aclocal.m4 \
 	configure \
+	config.guess \
+	config.sub \
 	install-sh \
 	intltool-extract.in \
 	intltool-merge.in \

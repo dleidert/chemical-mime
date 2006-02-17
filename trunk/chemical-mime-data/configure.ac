@@ -11,7 +11,7 @@ dnl --------------------------------------------------------------------------
 dnl initialization
 dnl --------------------------------------------------------------------------
 
-AC_INIT([chemical-mime-data],[0.1.0],[http://sourceforge.net/projects/cdk/])
+AC_INIT([chemical-mime-data],[0.1.0],[http://sourceforge.net/projects/chemical-mime/])
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_REVISION($Revision$)
 
@@ -19,12 +19,15 @@ dnl --------------------------------------------------------------------------
 dnl intltool/gettext
 dnl --------------------------------------------------------------------------
 
-AC_PROG_INTLTOOL
 ALL_LINGUAS="de fr nl"
 AC_SUBST([ALL_LINGUAS])
-AM_GLIB_GNU_GETTEXT
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST([GETTEXT_PACKAGE])
+AM_GLIB_GNU_GETTEXT
+# dirty hack to avoid installation of useless catalogs
+CATALOGS=
+AC_SUBST([CATALOGS])
+IT_PROG_INTLTOOL
 
 dnl --------------------------------------------------------------------------
 dnl necessary applications
