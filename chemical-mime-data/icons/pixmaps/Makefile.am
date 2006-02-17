@@ -6,15 +6,15 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-EXTRA_DIST = $(PIXMAPS)
+EXTRA_DIST = $(pixmaps_list)
 
 MAINTAINERCLEANFILES = Makefile.in
 
-PIXMAPS = gnome-mime-chemical.png
+pixmaps_list = gnome-mime-chemical.png
 
 
 if BOOL_GNOME_ICONS
 icondir = $(DIR_PIXMAPS)
-icon_DATA = $(PIXMAPS)
+icon_DATA = $(pixmaps_list)
 endif #BOOL_GNOME_ICONS
 
