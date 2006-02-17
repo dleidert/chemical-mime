@@ -3,6 +3,17 @@
 
 2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* icons/crystalsvg/Makefile.am (EXTRA_DIST, ICONS, SIZES)
+	(icon_sources, icon_sizes, all-local, all-icons)
+	(install-data-local, uninstall-hook): Make it much more deterministic
+	and simple.
+
+	* icons/hicolor/Makefile.am (EXTRA_DIST, ICONS, SIZES)
+	(icon_sources, icon_sizes, all-local, all-icons)
+	(install-data-local, uninstall-hook): Ditto.
+
+2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* AUTHORS: Updated project authors information.
 
 	* COPYING: Updated FSF address.
