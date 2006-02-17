@@ -1,3 +1,16 @@
+# Document  $Id$
+# Summary   Makefile for the chemical-mime-data project.
+#
+# Copyright (C) 2004-2006 by Daniel Leidert.
+#
+# This file is free software. The copyright owner gives unlimited
+# permission to copy, distribute and modify it.
+
+EXTRA_DIST = $(MIMETYPES)
+
+CLEANFILES = $(kdemime_DATA)
+
+MAINTAINERCLEANFILES = Makefile.in
 
 MIMETYPES= \
 	seq-aa-fasta.desktop.in \
@@ -63,16 +76,11 @@ MIMETYPES= \
 	x-xtel.desktop.in \
 	x-xyz.desktop.in
 
-EXTRA_DIST = $(MIMETYPES)
 
 if BOOL_KDE_MIME
-kdemimedir = $(DIR_KDEMIME)/chemical
 kdemime_in_files = $(MIMETYPES)
-kdemime_DATA = $(kdemime_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
-endif
-
-CLEANFILES = $(kdemime_DATA)
-
-MAINTAINERCLEANFILES = Makefile.in
+kdemimedir = $(DIR_KDEMIME)/chemical
+kdemime_DATA = $(kdemime_in_files:.desktop.in=.desktop)
+endif #BOOL_KDE_MIME
 

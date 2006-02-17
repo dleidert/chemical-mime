@@ -2,6 +2,11 @@
 #
 # Document  $Id$
 # Summary   Auto-generate the package source.
+#
+# Copyright (C) 2004-2006 by Egon Willighagen and Daniel Leidert.
+#
+# This file is free software. The copyright owner gives unlimited
+# permission to copy, distribute and modify it.
 
 ## find where automake is installed and get the version
 AMPATH=`which automake|sed 's/\/bin\/automake//'`
