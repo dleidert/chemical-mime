@@ -1,6 +1,54 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* AUTHORS: Updated project authors information.
+
+	* COPYING: Updated FSF address.
+
+	* README: Ditto. Updated license and copyright information.
+
+	* autogen.sh: Added license and file information.
+
+	* Makefile.am: Added license and file information.
+	(EXTRA_DIST): Remove automatically included files.
+	(pkgconfig_DATA): Install pkgconfig file in every case.
+
+	* chemical-mime-data.pc.in (Description, URL): Added project URL.
+	Fixed description.
+
+	* configure.ac: Added license and file information. Removed
+	everything, which is put to config.h (we do not need it). Fixed option
+	descriptions. Fixed result output. Fixed markup issues.
+	(UPDATE_MIME_DATABASE): Added possibility for custom definition.
+
+	* freedesktop.org/Makefile.am: Added license and file information.
+	Reordered. Added information to if-endif constructs.
+
+	* gnome/Makefile.am: Ditto.
+
+	* icons/Makefile.am: Ditto.
+
+	* icons/crystalsvg/Makefile.am: Ditto.
+
+	* icons/hicolor/Makefile.am: Ditto.
+
+	* icons/pixmaps/Makefile.am: Ditto.
+
+	* kde/Makefile.am: Ditto.
+
+	* freedesktop.org/chemical-mime-data.xml.in: Updated FSF address.
+	(chemical/x-cerius, chemical/x-chemdraw, chemical/x-daylight-smiles)
+	(chemical/x-genbank, chemical/x-mif): Commented out all MIME types
+	which cause a conflict with well known MIME types.
+
+	* gnome/chemical-mime-data.keys.in: Updated FSF address.
+
+	* gnome/chemical-mime-data.mime: Updated FSF address.
+
+	* po/POTFILES.in: Fixed alphabetical order.
+
 2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* po/POTFILES.in: Fixed a minor bug.

@@ -1,13 +1,22 @@
-
-CONVERT = @CONVERT@
-RSVG = @RSVG@
+# Document  $Id$
+# Summary   Makefile for the chemical-mime-data project.
+#
+# Copyright (C) 2004-2006 by Daniel Leidert.
+#
+# This file is free software. The copyright owner gives unlimited
+# permission to copy, distribute and modify it.
 
 EXTRA_DIST = gnome-mime-chemical.svg
 
-ICONS = \
-	gnome-mime-chemical
+CLEANFILES = *.png *.svgz
+
+MAINTAINERCLEANFILES = Makefile.in
+
+
+ICONS = gnome-mime-chemical
 
 SIZES = 16 22 24 32 36 48 64 72 96 128 192
+
 
 if BOOL_GNOME_THEME
 
@@ -47,11 +56,5 @@ uninstall-hook:
 		done \
 	done
 
-endif
-
-CLEANFILES = \
-	*.png \
-	*.svgz
-
-MAINTAINERCLEANFILES = Makefile.in
+endif #BOOL_GNOME_THEME
 

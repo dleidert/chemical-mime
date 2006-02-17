@@ -1,22 +1,16 @@
-
-AUTOMAKE_OPTIONS = dist-bzip2
+# Document  $Id$
+# Summary   Makefile for the chemical-mime-data project.
+#
+# Copyright (C) 2004-2006 by Daniel Leidert.
+#
+# This file is free software. The copyright owner gives unlimited
+# permission to copy, distribute and modify it.
 
 SUBDIRS = po kde icons freedesktop.org gnome
 
-if BOOL_FREEDESKTOP_MIME
-pkgconfigdir = $(datadir)/pkgconfig
-pkgconfig_DATA = chemical-mime-data.pc
-endif
+AUTOMAKE_OPTIONS = dist-bzip2
 
 EXTRA_DIST = \
-	ChangeLog \
-	AUTHORS \
-	COPYING \
-	INSTALL \
-	NEWS \
-	README \
-	TODO \
-	chemical-mime-data.pc.in \
 	intltool-extract.in \
 	intltool-update.in \
 	intltool-merge.in
@@ -34,13 +28,13 @@ MAINTAINERCLEANFILES = \
 	intltool-extract.in \
 	intltool-merge.in \
 	intltool-update.in \
-	Makefile.in \
 	missing \
-	mkinstalldirs
+	mkinstalldirs \
+	Makefile.in
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-database
 
-# disable check because of update-mime-database issue
-#distuninstallcheck:
-#	@:
+
+pkgconfigdir = $(datadir)/pkgconfig
+pkgconfig_DATA = chemical-mime-data.pc
 

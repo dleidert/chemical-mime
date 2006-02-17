@@ -1,6 +1,8 @@
 [encoding: UTF-8]
-gnome/chemical-mime-data.keys.in
+# List of source files containing translatable strings.
+# Please keep this list in alphabetical order.
 freedesktop.org/chemical-mime-data.xml.in
+gnome/chemical-mime-data.keys.in
 kde/seq-aa-fasta.desktop.in
 kde/seq-aa-genpept.desktop.in
 kde/seq-na-fasta.desktop.in
