@@ -3,6 +3,16 @@
 
 2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* Makefile.am (MAINTAINERCLEANFILES): Added config.{sub,guess} which
+	may be linked/copied by automake.
+
+	* configure.ac (PACKAGE_BUGREPORT): Fixed project and bug-tracker URL.
+	(AC_PROG_INTLTOOL, IT_PROG_INTLTOOL): AC_PROG_INTLTOOL is obsolete.
+	(CATALOGS): Fixed value to avoid installation of cataloges, which are
+	useless for us.
+
+2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* freedesktop.org/Makefile.am: Fixed missing file after 'make dist'
 	issue caused by condition construct.
 
