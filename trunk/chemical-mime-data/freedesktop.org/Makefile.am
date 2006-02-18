@@ -17,6 +17,7 @@ fdomime_in_files = chemical-mime-data.xml.in
 
 if BOOL_FREEDESKTOP_MIME
 @INTLTOOL_XML_RULE@
+
 fdomimedir = $(DIR_FDMIME)/packages
 fdomime_DATA = $(fdomime_in_files:.xml.in=.xml)
 endif #BOOL_FREEDESKTOP_MIME

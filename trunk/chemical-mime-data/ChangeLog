@@ -1,6 +1,21 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-02-18 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* configure.ac (IT_PROG_INTLTOOL): Call the AM_GNU_GETTEXT macro from
+	the gettext suite instead of calling GTK's AM_GLIB_GNU_GETTEXT. Turn
+	USE_NLS to 'no' to avoid installation of catalog files.
+
+	* ABOUT-NLS: Added for AM_GNU_GETTEXT to be satisfied.
+
+	* freedesktop.org/Makefile.am (BOOL_FREEDESKTOP_MIME_TRUE): Minor
+	cleanup.
+
+	* gnome/Makefile.am (BOOL_GNOME_MIME_TRUE): Ditto.
+
+	* kde/Makefile.am (BOOL_KDE_MIME_TRUE): Ditto.
+
 2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* Makefile.am (MAINTAINERCLEANFILES): Added config.{sub,guess} which
