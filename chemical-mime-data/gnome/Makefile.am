@@ -17,6 +17,7 @@ keys_in_files = chemical-mime-data.keys.in
 
 if BOOL_GNOME_MIME
 @INTLTOOL_KEYS_RULE@
+
 keysdir = $(DIR_GNOMEMIME)
 keys_DATA = $(keys_in_files:.keys.in=.keys) chemical-mime-data.mime
 endif #BOOL_GNOME_MIME

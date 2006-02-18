@@ -79,6 +79,7 @@ kdemime_in_files = \
 
 if BOOL_KDE_MIME
 @INTLTOOL_DESKTOP_RULE@
+
 kdemimedir = $(DIR_KDEMIME)/chemical
 kdemime_DATA = $(kdemime_in_files:.desktop.in=.desktop)
 endif #BOOL_KDE_MIME

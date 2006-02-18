@@ -20,13 +20,11 @@ dnl intltool/gettext
 dnl --------------------------------------------------------------------------
 
 ALL_LINGUAS="de fr nl"
-AC_SUBST([ALL_LINGUAS])
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST([GETTEXT_PACKAGE])
-AM_GLIB_GNU_GETTEXT
-# dirty hack to avoid installation of useless catalogs
-CATALOGS=
-AC_SUBST([CATALOGS])
+AM_GNU_GETTEXT(external)
+USE_NLS=no
+AC_SUBST([USE_NLS])
 IT_PROG_INTLTOOL
 
 dnl --------------------------------------------------------------------------
