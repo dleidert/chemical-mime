@@ -6,21 +6,23 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-EXTRA_DIST = $(fdomime_in_files)
-
 CLEANFILES = $(fdomime_DATA)
 
 MAINTAINERCLEANFILES = Makefile.in
 
-fdomime_in_files = chemical-mime-data.xml.in
+vpath cmd_%.xsl $(top_srcdir)/xsl
+vpath chemical-mime-database.xml $(top_srcdir)/src
 
 
 if BOOL_FREEDESKTOP_MIME
-@INTLTOOL_XML_RULE@
-
-fdomimedir = $(DIR_FDMIME)/packages
-fdomime_DATA = $(fdomime_in_files:.xml.in=.xml)
+fdomimedir   = $(DIR_FDMIME)/packages
+fdomime_DATA = chemical-mime-data.xml
 endif #BOOL_FREEDESKTOP_MIME
+
+
+chemical-mime-data.xml : cmd_freedesktop_org.xsl chemical-mime-database.xml
+	$(XSLTPROC) $^
+
 
 install-data-hook:
 if BOOL_UPDATE_DATABASE

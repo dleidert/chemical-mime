@@ -1,6 +1,48 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* src/chemical-mime-database.xml.in: Added new flat database.
+
+	* Makefile.am (SUBDIRS): Added new directories.
+
+	* TODO: Moved information to the new flat database. Added a few points
+	which are related to our latest change to a flat database file.
+
+	* acinclude.m4: Added to provide a macro to get the location of
+	xsltproc (and possible options to use).
+
+	* configure.ac: Added new template to get xsltproc.
+	(ALL_LINGUAS): Removed nl and fr for the moment (changes are too
+	heavy, so the files need a complete update).
+	(AC_CONFIG_FILES): Added new directories and Makefiles.
+
+	* freedesktop.org/Makefile.am: Fixed to fit new flat database.
+
+	* gnome/Makefile.am: Ditto.
+
+	* kde/Makefile.am: Ditto.
+
+	* freedesktop.org/chemical-mime-data.xml.in: Removed (replaced by new
+	flat database).
+
+	* gnome/chemical-mime-data.keys.in: Ditto.
+
+	* gnome/chemical-mime-data.mime: Ditto.
+
+	* src/Makefile.am: Added.
+
+	* xsl/Makefile.am: Ditto.
+
+	* xsl/cmd_common.xsl: Ditto.
+
+	* xsl/cmd_freedesktop_org.xsl: Ditto.
+
+	* xsl/cmd_gnome-keys.xsl: Ditto.
+
+	* xsl/cmd_gnome-mime.xsl: Ditto.
+
 2006-02-18 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* configure.ac (IT_PROG_INTLTOOL): Call the AM_GNU_GETTEXT macro from
