@@ -2,6 +2,17 @@
 # Summary   File-changelog for the internationalization data files of the
 #           chemical-mime-data project.
 
+2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* POTFILES.in: Changed to src/chemical-mime-data.xml.in. Removed all
+	other files. We will just need the new database.
+
+	* de.po: Updated to fit latest changes.
+
+	* fr.po: Removed, because outdated.
+
+	* nl.po: Ditto.
+
 2006-01-27 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* chemical-mime-data.pot: Update after fixing bugs in kde/*.desktop
