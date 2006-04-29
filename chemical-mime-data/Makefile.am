@@ -6,11 +6,12 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-SUBDIRS = po kde icons freedesktop.org gnome
+SUBDIRS = src freedesktop.org gnome icons po xsl
 
 AUTOMAKE_OPTIONS = dist-bzip2
 
 EXTRA_DIST = \
+	$(pkgconfig_DATA) \
 	intltool-extract.in \
 	intltool-update.in \
 	intltool-merge.in

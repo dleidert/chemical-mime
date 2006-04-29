@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chemical-mime [
+	<!ELEMENT chemical-mime (chemical-mime-type+)>
+	<!ATTLIST chemical-mime id CDATA #REQUIRED>
+
+	<!-- Root database element. -->	
+	<!ELEMENT chemical-mime-type (comment+,
+	                              (acronym, expanded-acronym)?,
+	                              glob+,
+	                              root-XML?,
+	                              sub-class-of*,
+	                              alias*,
+	                              conflicts*,
+	                              magic?,
+	                              icon,
+	                              supported-by?,
+	                              specification)>
+	<!ATTLIST chemical-mime-type
+	          type CDATA #REQUIRED
+	          support (yes|no) "no"
+	          added CDATA #IMPLIED>
+
+	<!-- Comment describing a document with the respective MIME type. -->	
+	<!ELEMENT comment (#PCDATA)>
+	<!ATTLIST comment
+	          xml:lang CDATA #IMPLIED>
+
+	<!-- Comment describing the respective unexpanded MIME type acronym. -->	
+	<!ELEMENT acronym (#PCDATA)>
+	<!ATTLIST acronym
+	          xml:lang CDATA #IMPLIED>
+
+	<!-- Comment describing the respective unexpanded MIME type acronym. -->	
+	<!ELEMENT expanded-acronym (#PCDATA)>
+	<!ATTLIST expanded-acronym
+	          xml:lang CDATA #IMPLIED>
+
+	<!-- File pattern of the MIME type. -->	
+	<!ELEMENT glob EMPTY>
+  <!ATTLIST glob
+            pattern CDATA #REQUIRED>
+	
+	<!--  -->	
+	<!ELEMENT root-XML EMPTY>
+	<!ATTLIST root-XML
+	          namespaceURI CDATA #REQUIRED
+	          localName CDATA #REQUIRED>
+	
+	<!--  -->	
+	<!ELEMENT sub-class-of EMPTY>
+	<!ATTLIST sub-class-of
+	          type CDATA #REQUIRED>
+
+	<!--  -->	
+	<!ELEMENT alias EMPTY>
+	<!ATTLIST alias
+	          type CDATA #REQUIRED>
+
+	<!-- Conflicting MIME-types. -->	
+	<!ELEMENT conflicts EMPTY>
+	<!ATTLIST conflicts
+	          type CDATA #REQUIRED
+	          gnome (yes|no) "yes"
+	          kde (yes|no) "yes">
+
+	<!--  -->	
+  <!ELEMENT magic (match)+>
+  <!ATTLIST magic
+            priority CDATA #IMPLIED>
+
+	<!--  -->	
+  <!ELEMENT match (match)*>
+  <!ATTLIST match
+            offset CDATA #REQUIRED
+            type (string|big16|big32|little16|little32|host16|host32|byte) #REQUIRED
+            value CDATA #REQUIRED
+            mask CDATA #IMPLIED>
+
+	<!-- Icon for GNOME 2.4 and/or KDE 3.x system. -->	
+	<!ELEMENT icon EMPTY>
+	<!ATTLIST icon
+	          gnome CDATA #IMPLIED
+	          kde CDATA #IMPLIED>
+	
+	<!-- List of applications supporting the respective MIME type. -->	
+	<!ELEMENT supported-by (application+)>
+	<!ELEMENT application (#PCDATA)>
+	
+	<!-- URL where to find the MIME/file type specification. -->	
+	<!ELEMENT specification EMPTY>
+	<!ATTLIST specification
+	          url CDATA #REQUIRED>
+]>
+
+<chemical-mime id="$Id$">
+
+	<!--
+		chemical/x-cml
+	-->
+	<chemical-mime-type type="chemical/x-cml" support="yes" added="0.2.0">
+		<_comment>Chemical Markup Language</_comment>
+		<_acronym>CML</_acronym>
+		<_expanded-acronym>Chemical Markup Language</_expanded-acronym>
+		<glob pattern="*.cml"/>
+		<sub-class-of type="text/xml"/>
+		<alias type="chemical/cml"/>
+		<root-XML namespaceURI="http://www.xml-cml.org/schema/cml2/core" localName="cml"/>
+		<icon/>
+		<supported-by>
+			<application>gchempaint</application>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.xml-cml.org/"/>
+	</chemical-mime-type>
+
+	<!--
+		chemical/x-pdb
+	-->
+	<chemical-mime-type type="chemical/x-pdb" support="yes" added="0.2.0">
+		<_comment>Brookhaven Protein DataBase file format</_comment>
+		<glob pattern="*.pdb"/>
+		<sub-class-of type="text/plain"/>
+		<alias type="chemical/pdb"/>
+		<conflicts type="application/vnd.palm" gnome="yes" kde="no"/>
+		<!-- 1st line offset  0:80  -->
+		<!-- 2nd line offest 81:161 -->
+		<!-- 3nd line offest ... -->
+		<!-- but we have malformed examples in Jmol samples dir -->
+		<magic priority="85">
+			<match type="string" value="MODEL  " offset="0" />
+			<match type="string" value="HEADER " offset="0" />
+			<match type="string" value="TITLE  " offset="0" />
+			<match type="string" value="COMPND " offset="0" />
+			<match type="string" value="SOURCE " offset="0" />
+			<match type="string" value="KEYWDS " offset="0" />
+			<match type="string" value="EXPDTA " offset="0" />
+			<match type="string" value="AUTHOR " offset="0" />
+			<match type="string" value="REVDAT " offset="0" />
+			<match type="string" value="JRNL   " offset="0" />
+			<match type="string" value="REMARK " offset="0" />
+			<match type="string" value="DBREF  " offset="0" />
+			<match type="string" value="SEQRES " offset="0" />
+			<match type="string" value="SEQDAV " offset="0" />
+			<match type="string" value="HETNAM " offset="0" />
+			<match type="string" value="HETSYN " offset="0" />
+			<match type="string" value="FORMUL " offset="0" />
+			<match type="string" value="HELIX  " offset="0" />
+			<match type="string" value="SHEET  " offset="0" />
+			<match type="string" value="TURN   " offset="0" />
+			<match type="string" value="CISPEP " offset="0" />
+			<match type="string" value="LINK   " offset="0" />
+			<match type="string" value="CRYST1 " offset="0" />
+			<match type="string" value="ORIGX1 " offset="0" />
+			<match type="string" value="SCALE1 " offset="0" />
+			<match type="string" value="MTRIX1 " offset="0" />
+			<match type="string" value="ATOM   " offset="0">
+				<match type="string" value=" " offset="11" />
+			</match>
+			<match type="string" value="HETATM " offset="0">
+				<match type="string" value=" " offset="11" />
+			</match>
+			<match type="string" value="TER    " offset="0">
+				<match type="string" value=" " offset="11" />
+			</match>
+		</magic>
+		<icon/>
+		<supported-by>
+			<application>Jmol</application>
+			<application>gchempaint</application>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.mdli.com/"/>
+	</chemical-mime-type>
+
+	<!--
+		chemical/x-xyz
+	-->
+	<chemical-mime-type type="chemical/x-xyz" support="yes" added="0.2.0">
+		<_comment>XYZ Co-ordinate Animation Format</_comment>
+		<glob pattern="*.xyz"/>
+		<sub-class-of type="text/plain"/>
+		<alias type="chemical/xyz"/>
+		<icon/>
+		<supported-by>
+			<application>gchempaint</application>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.mdli.com/"/>
+	</chemical-mime-type>
+
+</chemical-mime>
+

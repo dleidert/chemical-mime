@@ -19,7 +19,7 @@ dnl --------------------------------------------------------------------------
 dnl intltool/gettext
 dnl --------------------------------------------------------------------------
 
-ALL_LINGUAS="de fr nl"
+ALL_LINGUAS="de"
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST([GETTEXT_PACKAGE])
 AM_GNU_GETTEXT(external)
@@ -33,6 +33,7 @@ dnl --------------------------------------------------------------------------
 
 AC_PROG_INSTALL
 PKG_PROG_PKG_CONFIG
+MP_PROG_XSLTPROC
 
 dnl --------------------------------------------------------------------------
 dnl configure options
@@ -292,5 +293,7 @@ AC_CONFIG_FILES([
 	kde/Makefile
 	gnome/Makefile
 	po/Makefile.in
+	src/Makefile
+	xsl/Makefile
 ])
 AC_OUTPUT

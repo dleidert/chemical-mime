@@ -7,6 +7,14 @@ TODO
 Before next release 0.1
 -----------------------
 
+* Extend flat database.
+
+* Fix kde/* directory to fit new flat database.
+
+* Create XSL stylesheet for KDE files and the website.
+
+* Add information about changed requirements to README/INSTALL (xsltproc).
+
 * Only support often used MIME types for the moment (some conflicts seem hard
   to solve) and add related magic stuff to chemical-mime-data.xml.in.
 
@@ -36,13 +44,6 @@ Contributiors TODO
 Future Releases
 ---------------
 
-* Solve conflicts:
-  - chemical/x-cerius
-  - chemical/x-chemdraw
-  - chemical/x-daylight-smiles
-  - chemical/x-genbank
-  - chemical/x-mif
-
 * Add language support for different languages
   currently maintained: de nl fr
 
@@ -56,19 +57,27 @@ Future Releases
 
 * Test for XFCE4.2 support
 
-* Look further for these mime types (not yet included):
-  - x-cdx (*.cdx)
-  - x-mdl-isis (*.skc)
-  - x-smd (*.smd)
-  - x-synopsys-accord (*.acc)
-  - x-msi-molfile (*.msm)
-  - x-ct (*.ct)
-  - x-mopac-den (??)
-  - x-mopac-esp (*.esp, *.ESP)
-  - x-questel-f1 (*.f1d)
-  - x-questel-f1-query (*.f1q)
-  - x-eye2eye
-  - x-pdb-ribbon
-  - x-ppd
+* Look further for these mime types (not yet included, in alphabetical order):
+
+  x-cdx              *.cdx
+  x-ct               *.ct
+  x-eye2eye          
+  x-msi-molfile      *.msm
+  x-mdl-isis         *.skc
+  x-mopac-den        
+  x-mopac-esp        *.esp, *.ESP
+  x-pdb-ribbon       
+  x-ppd              
+  x-questel-f1       *.f1d
+  x-questel-f1-query *.f1q
+  x-smd              *.smd
+  x-synopsys-accord  *.acc
+
+* Solve conflicts:
+  - chemical/x-cerius
+  - chemical/x-chemdraw
+  - chemical/x-daylight-smiles
+  - chemical/x-genbank
+  - chemical/x-mif
 
 # UTF-8
