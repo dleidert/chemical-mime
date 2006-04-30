@@ -37,7 +37,7 @@
 
 	<!-- File pattern of the MIME type. -->	
 	<!ELEMENT glob EMPTY>
-  <!ATTLIST glob
+	<!ATTLIST glob
             pattern CDATA #REQUIRED>
 	
 	<!--  -->	
@@ -64,17 +64,17 @@
 	          kde (yes|no) "yes">
 
 	<!--  -->	
-  <!ELEMENT magic (match)+>
-  <!ATTLIST magic
-            priority CDATA #IMPLIED>
+	<!ELEMENT magic (match)+>
+	<!ATTLIST magic
+	          priority CDATA #IMPLIED>
 
 	<!--  -->	
-  <!ELEMENT match (match)*>
-  <!ATTLIST match
-            offset CDATA #REQUIRED
-            type (string|big16|big32|little16|little32|host16|host32|byte) #REQUIRED
-            value CDATA #REQUIRED
-            mask CDATA #IMPLIED>
+	<!ELEMENT match (match)*>
+	<!ATTLIST match
+	          offset CDATA #REQUIRED
+	          type (string|big16|big32|little16|little32|host16|host32|byte) #REQUIRED
+	          value CDATA #REQUIRED
+	          mask CDATA #IMPLIED>
 
 	<!-- Icon for GNOME 2.4 and/or KDE 3.x system. -->	
 	<!ELEMENT icon EMPTY>
