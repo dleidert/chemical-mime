@@ -11,7 +11,7 @@ dnl --------------------------------------------------------------------------
 dnl initialization
 dnl --------------------------------------------------------------------------
 
-AC_INIT([chemical-mime-data],[0.1.0],[http://sourceforge.net/projects/chemical-mime/])
+AC_INIT([chemical-mime-data],[0.1.90],[http://sourceforge.net/projects/chemical-mime/])
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_REVISION($Revision$)
 

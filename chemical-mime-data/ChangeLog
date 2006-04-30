@@ -3,6 +3,14 @@
 
 2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* configure.ac (AC_PACKAGE_VERSION): Bump version to 0.1.99 to show,
+	where we want to go.
+
+	* src/chemical-mime-database.xml.in: Fixed just a few formatting
+	issues.
+
+2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* src/chemical-mime-database.xml.in: Added new flat database.
 
 	* Makefile.am (SUBDIRS): Added new directories.
