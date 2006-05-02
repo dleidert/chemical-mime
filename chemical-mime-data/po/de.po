@@ -10,7 +10,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: chemical-mime-data\n"
+"Project-Id-Version: chemical-mime-data 0.1.91\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-02 19:21+0200\n"
 "PO-Revision-Date: 2006-05-02 19:20+0200\n"
