@@ -3,6 +3,18 @@
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* freedesktop.org/Makefile.am: Fixed vpath directive to get the right
+	location for chemical-mime-database.xml. Fixes 'make distcheck' error.
+
+	* gnome/Makefile.am: Ditto.
+
+	* kde/Makefile.am: Ditto.
+
+	* xsl/Makefile.am (EXTRA_DIST): Added missing cmd_kde.xsl stylesheet.
+	Fixes 'make distcheck' error.
+
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* Makefile.am (SUBDIRS): Re-added kde directory.
 
 	* README: Adjusted info-set.

@@ -11,7 +11,7 @@ CLEANFILES = $(gnomemime_DATA)
 MAINTAINERCLEANFILES = Makefile.in
 
 vpath cmd_%.xsl $(top_srcdir)/xsl
-vpath chemical-mime-database.xml $(top_srcdir)/src
+vpath chemical-mime-database.xml $(top_builddir)/src
 
 
 if BOOL_GNOME_MIME
