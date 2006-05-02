@@ -2,8 +2,8 @@
 
 <!--
   Document  $Id$
-  Summary   XSLT stylesheet to convert XML database into GNOME
-            .keys file.
+  Summary   XSLT stylesheet to convert XML database into KDE
+            .desktop files.
   
   Copyright (C) 2006 Daniel Leidert <daniel.leidert@wgdd.de>.
 
