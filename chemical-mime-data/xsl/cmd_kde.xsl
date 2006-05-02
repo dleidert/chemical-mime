@@ -45,7 +45,7 @@
 			Output content to fielname=@type.
 		-->
 		<xsl:call-template name="write.chunk">
-			<xsl:with-param name="filename" select="concat(substring-after(@type,'chemical/'),'.desktop')"/>
+			<xsl:with-param name="filename" select="concat(substring-after(@type,'/'),'.desktop')"/>
 			<xsl:with-param name="method" select="'text'"/>
 			<xsl:with-param name="indent" select="'yes'"/>
 			<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
@@ -103,7 +103,7 @@
 	<xsl:text>Icon=</xsl:text>
 	<xsl:choose>
 		<xsl:when test="@kde != ''">
-			<xsl:apply-templates/>
+			<xsl:value-of select="@kde"/>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:text>chemistry</xsl:text>

@@ -69,7 +69,7 @@
 -->
 <xsl:template match="glob">
 	<xsl:text> </xsl:text>
-	<xsl:value-of select="substring-after(@pattern,'*.')"/>
+	<xsl:value-of select="substring-after(@pattern,'.')"/>
 </xsl:template>
 
 <!--
