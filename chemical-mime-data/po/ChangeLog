@@ -4,6 +4,13 @@
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* chemical-mime-data.pot: The first update after our change to the new
+	database format. Translator, please update your translations.
+
+	* de.po: Updated.
+
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* de.po: Updated. Added a more information to the header.
 
 2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
