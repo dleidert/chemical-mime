@@ -3,6 +3,10 @@
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* xsl/cmd_kde.xsl: Fixed header.
+
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* NEWS: Fixed typo. Added a new entry for the next release.
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
