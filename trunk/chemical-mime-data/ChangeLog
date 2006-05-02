@@ -3,6 +3,10 @@
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* NEWS: Fixed typo. Added a new entry for the next release.
+
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* configure.ac (AC_PACKAGE_VERSION): Post-release version bump to
 	0.1.93.
 
