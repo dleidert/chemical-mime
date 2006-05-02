@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chemical-mime [
-	<!ELEMENT chemical-mime (chemical-mime-type+)>
-	<!ATTLIST chemical-mime id CDATA #REQUIRED>
-
 	<!-- Root database element. -->	
-	<!ELEMENT chemical-mime-type (comment+,
+	<!ELEMENT chemical-mime (mime-type+)>
+	<!ATTLIST chemical-mime
+	          id CDATA #REQUIRED>
+
+	<!-- The MIME type (only chemical/*). -->	
+	<!ELEMENT mime-type (comment+,
 	                              (acronym, expanded-acronym)?,
 	                              glob+,
 	                              root-XML?,
@@ -15,7 +17,7 @@
 	                              icon,
 	                              supported-by?,
 	                              specification)>
-	<!ATTLIST chemical-mime-type
+	<!ATTLIST mime-type
 	          type CDATA #REQUIRED
 	          support (yes|no) "no"
 	          added CDATA #IMPLIED>
@@ -97,7 +99,7 @@
 	<!--
 		chemical/x-cml
 	-->
-	<chemical-mime-type type="chemical/x-cml" support="yes" added="0.2.0">
+	<mime-type type="chemical/x-cml" support="yes" added="0.2.0">
 		<_comment>Chemical Markup Language</_comment>
 		<_acronym>CML</_acronym>
 		<_expanded-acronym>Chemical Markup Language</_expanded-acronym>
@@ -111,12 +113,25 @@
 			<application>xdrawchem</application>
 		</supported-by>
 		<specification url="http://www.xml-cml.org/"/>
-	</chemical-mime-type>
+	</mime-type>
+
+	<!--
+		chemical/x-gamess-input
+	-->
+	<mime-type type="chemical/x-gamess-input" support="no" added="0.2.0">
+		<_comment>GAMESS Input format</_comment>
+		<glob pattern="*.inp"/>
+		<glob pattern="*.gam"/>
+		<glob pattern="*.gamin"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<specification url="http://www.msg.ameslab.gov/GAMESS/Graphics/MacMolPlt.shtml"/>
+	</mime-type>
 
 	<!--
 		chemical/x-pdb
 	-->
-	<chemical-mime-type type="chemical/x-pdb" support="yes" added="0.2.0">
+	<mime-type type="chemical/x-pdb" support="yes" added="0.2.0">
 		<_comment>Brookhaven Protein DataBase file format</_comment>
 		<glob pattern="*.pdb"/>
 		<sub-class-of type="text/plain"/>
@@ -170,12 +185,12 @@
 			<application>xdrawchem</application>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
-	</chemical-mime-type>
+	</mime-type>
 
 	<!--
 		chemical/x-xyz
 	-->
-	<chemical-mime-type type="chemical/x-xyz" support="yes" added="0.2.0">
+	<mime-type type="chemical/x-xyz" support="yes" added="0.2.0">
 		<_comment>XYZ Co-ordinate Animation Format</_comment>
 		<glob pattern="*.xyz"/>
 		<sub-class-of type="text/plain"/>
@@ -186,7 +201,7 @@
 			<application>xdrawchem</application>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
-	</chemical-mime-type>
+	</mime-type>
 
 </chemical-mime>
 

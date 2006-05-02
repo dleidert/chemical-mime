@@ -6,7 +6,7 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-SUBDIRS = src freedesktop.org gnome icons po xsl
+SUBDIRS = src xsl freedesktop.org gnome kde icons po
 
 AUTOMAKE_OPTIONS = dist-bzip2
 

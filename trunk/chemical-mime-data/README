@@ -50,7 +50,8 @@ Copyright (C) 2004-2006 Daniel Leidert <daniel.leidert@wgdd.de>.
 Please see the file COPYING or visit http://www.gnu.org to obtain a copy of
 the GNU Lesser General Public License.
 
-See the file AUTHORS for a list of who has contributed to this project.
+See the files AUTHORS and THANKS for a list of who has contributed to this
+project.
 
 
 
@@ -110,7 +111,7 @@ find the following status notes about the shared MIME info database:
 
 To build and install chemical-mime-data from CVS:
 
-    1) install intltool/gettext, autoconf, automake
+    1) install autoconf, automake, intltool/gettext, xsltproc
     2) get the CVS sources
     3) run autogen.sh (./autogen.sh)
     4) see next part ...
@@ -120,6 +121,7 @@ To build and install chemical-mime-data from release tarballs:
     1) Get the required applications:
        - intltool/gettext, pkg-config
        - RSVG2 or imagemagick
+       - xsltproc
        - gnome-mime-data, shared-mime-info
     
     2) Configure and compile:

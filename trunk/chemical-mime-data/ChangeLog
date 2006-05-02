@@ -1,6 +1,40 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* Makefile.am (SUBDIRS): Re-added kde directory.
+
+	* README: Adjusted info-set.
+
+	* THANKS: Added.
+
+	* src/chemical-mime-database.xml.in: Fixed formatting issues and
+	changed element name for chemical-mime-type to mime-type as used by
+	fd.o. Added chemical/x-gamess-input for testing.
+
+	* xsl/cmd_common.xsl: Fixed header.
+	(write.chunk): Removed standalone and added media-type parameter.
+	(header.desktop): Added template to generate the header part of
+	KDE's .desktop files.
+	(header.xml): Fixed. Use xsl:comment instead of xsl:text.
+
+	* xsl/cmd_freedesktop_org.xsl: Fixed header and several parameters.
+	(chemical-mime-type, mime-type): Fixed template to fit changes in
+	src/chemical-mime-database.xml.in.
+	(acronym|alias|comment|expanded-acronym|glob|magic|match|root-XML)
+	(sub-class-of): Small changes.
+
+	* xsl/cmd_gnome-keys.xsl: Ditto.
+	(chemical-mime-type, mime-type): Ditto.
+
+	* xsl/cmd_gnome-mime.xsl: Ditto.
+	(chemical-mime-type, mime-type): Ditto.
+
+	* xsl/cmd_kde.xsl: Added stylesheet for KDE's .desktop files.
+
+	* kde/*.desktop.in: Removed (replaced by new flat database).
+
 2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* configure.ac (AC_PACKAGE_VERSION): Bump version to 0.1.99 to show,
