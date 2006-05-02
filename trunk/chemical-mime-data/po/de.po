@@ -1,4 +1,6 @@
-# German translation of chemical-mime-data.
+# Document  $Id$
+# Summary   German translation of chemical-mime-data.
+#
 # Copyright (C) 2004-2006 Daniel Leidert <daniel.leidert@wgdd.de>
 # Copyright (C) 2004-2006 Egon Willighagen <e.willighagen@science.ru.nl>
 # Copyright (C) 2004, The Free Software Foundation
@@ -8,23 +10,27 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: chemical-mime-data\n"
-"Report-Msgid-Bugs-To: <daniel.leidert@wgdd.de>\n"
-"POT-Creation-Date: 2006-04-29 22:23+0200\n"
-"PO-Revision-Date: 2006-04-29 22:23+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-05-02 13:32+0200\n"
+"PO-Revision-Date: 2006-05-02 13:32+0200\n"
 "Last-Translator: Daniel Leidert <daniel.leidert@wgdd.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/chemical-mime-data.xml.in.h:1
+#: ../src/chemical-mime-database.xml.in.h:1
 msgid "Brookhaven Protein DataBase file format"
 msgstr "Dateiformat der Brookhaven Proteindatenbank"
 
-#: ../src/chemical-mime-data.xml.in.h:2
-msgid "Chemical Markup Language"
-msgstr "Chemische Auszeichnungssprache (CML)"
+#: ../src/chemical-mime-database.xml.in.h:2
+msgid "CML"
+msgstr "CML"
 
-#: ../src/chemical-mime-data.xml.in.h:3
+#: ../src/chemical-mime-database.xml.in.h:3
+msgid "Chemical Markup Language"
+msgstr "Chemische Auszeichnungssprache"
+
+#: ../src/chemical-mime-database.xml.in.h:4
 msgid "XYZ Co-ordinate Animation Format"
-msgstr "XYZ-Koordinatendatei"
+msgstr "XYZ-Koordinatendatei im Animationsformat"
