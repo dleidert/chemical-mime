@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  Document  $WgDD$
+  Document  $Id$
   Summary   XSLT stylesheet that contains commonly used templates.
   
   Copyright (C) 2006 Daniel Leidert <daniel.leidert@wgdd.de>.
@@ -26,9 +26,9 @@
   <xsl:param name="method" select="''"/>
 	<xsl:param name="indent" select="''"/>
 	<xsl:param name="omit-xml-declaration" select="''"/>
+	<xsl:param name="media-type" select="''"/>
 	<xsl:param name="doctype-public" select="''"/>
 	<xsl:param name="doctype-system" select="''"/>
-	<xsl:param name="standalone" select="''"/>
   <xsl:param name="content"/>
 
 	<!--
@@ -44,9 +44,9 @@
 					               encoding="UTF-8"
 					               indent="{$indent}"
 					               omit-xml-declaration="{$omit-xml-declaration}"
+					               media-type="{$media-type}"
 					               doctype-public="{$doctype-public}"
-					               doctype-system="{$doctype-system}"
-					               standalone="{$standalone}">
+					               doctype-system="{$doctype-system}">
 						<xsl:copy-of select="$content"/>
 					</exsl:document>
 				</xsl:when>
@@ -55,8 +55,8 @@
 					               method="{$method}"
 					               encoding="UTF-8"
 					               indent="{$indent}"
-					               omit-xml-declaration="yes"
-					               standalone="{$standalone}">
+					               omit-xml-declaration="{$omit-xml-declaration}"
+					               media-type="{$media-type}">
 						<xsl:copy-of select="$content"/>
 					</exsl:document>
 				</xsl:otherwise>
@@ -72,9 +72,9 @@
 					              encoding="UTF-8"
 					              indent="{$indent}"
 					              omit-xml-declaration="{$omit-xml-declaration}"
+					              media-type="{$media-type}"
 					              doctype-public="{$doctype-public}"
-					              doctype-system="{$doctype-system}"
-					              standalone="{$standalone}">
+					              doctype-system="{$doctype-system}">
 						<xsl:copy-of select="$content"/>
 					</saxon:output>
 				</xsl:when>
@@ -84,8 +84,8 @@
 					              method="{$method}"
 					              encoding="UTF-8"
 					              indent="{$indent}"
-					              omit-xml-declaration="yes"
-					              standalone="{$standalone}">
+					              omit-xml-declaration="{$omit-xml-declaration}"
+					              media-type="{$media-type}">
 						<xsl:copy-of select="$content"/>
 					</saxon:output>
 				</xsl:otherwise>
@@ -118,6 +118,15 @@
 </xsl:template>
 
 <!--
+	The created text-files all contain the same header.
+-->
+<xsl:template name="header.desktop">
+	<xsl:text>[Desktop Entry]
+Encoding=UTF-8
+Type=MimeType&#10;</xsl:text>
+</xsl:template>
+
+<!--
 	Even the created text-files shall contain a short summary with license
 	and database version information.
 -->
@@ -133,12 +142,16 @@
 	and database version information.
 -->
 <xsl:template name="header.xml">
-	<xsl:text disable-output-escaping="yes">&lt;!--
+	<xsl:comment>
+		<xsl:text>
   This file is part of the chemical-mime-data package.
   It is distributed under the GNU Lesser General Public License version 2.1.
 
-  Database: </xsl:text><xsl:value-of select="chemical-mime/@id"/><xsl:text>&#10;</xsl:text>
-	<xsl:text disable-output-escaping="yes">--&gt;&#10;&#10;&#10;</xsl:text>
+  Database: </xsl:text>
+  	<xsl:value-of select="chemical-mime/@id"/>
+  	<xsl:text>&#10;</xsl:text>
+  </xsl:comment>
+	<xsl:text>&#10;&#10;</xsl:text>
 </xsl:template>
 
 

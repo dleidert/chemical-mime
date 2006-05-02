@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  Document  $WgDD$
+  Document  $Id$
   Summary   XSLT stylesheet to convert XML database into freedesktop.org
             database file.
   
@@ -19,7 +19,8 @@
 <xsl:output method="xml"
             encoding="UTF-8"
             indent="yes"
-            omit-xml-declaration="yes"/>
+            media-type="text/xml"
+            omit-xml-declaration="no"/>
 
 <xsl:strip-space elements="*"/>
 
@@ -29,10 +30,10 @@
 		<xsl:with-param name="filename" select="'chemical-mime-data.xml'"/>
 		<xsl:with-param name="method" select="'xml'"/>
 		<xsl:with-param name="indent" select="'yes'"/>
-		<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
+		<xsl:with-param name="omit-xml-declaration" select="'no'"/>
+		<xsl:with-param name="media-type" select="'text/xml'"/>
 		<xsl:with-param name="doctype-public" select="''"/>
 		<xsl:with-param name="doctype-system" select="''"/>
-		<xsl:with-param name="standalone" select="'yes'"/>
 		<!-- Process the whole file -->
 		<xsl:with-param name="content">
 			<xsl:call-template name="header.xml"/>
@@ -43,20 +44,25 @@
 	</xsl:call-template>
 </xsl:template>
 
-<xsl:template match="chemical-mime-type">
+<xsl:template match="mime-type">
 	<xsl:if test="@support='yes'">
-		<mime-type>
+		<xsl:comment>
+			<xsl:text>&#10;	MIME-Type </xsl:text>
+			<xsl:value-of select="@type"/>
+			<xsl:text> &#10;</xsl:text>
+		</xsl:comment>
+		<xsl:element name="{local-name(.)}" xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 			<xsl:copy-of select="@type"/>
 			<xsl:apply-templates/>
-		</mime-type>
+		</xsl:element>
 	</xsl:if>
 </xsl:template>
 
 <xsl:template match="acronym|alias|comment|expanded-acronym|glob|magic|match|root-XML|sub-class-of">
-	<xsl:copy>
+	<xsl:element name="{local-name(.)}" xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 		<xsl:copy-of select="@*"/>
-		<xsl:copy-of select="node()"/>
-  </xsl:copy>
+		<xsl:apply-templates/>
+	</xsl:element>
 </xsl:template>
 
 <!--

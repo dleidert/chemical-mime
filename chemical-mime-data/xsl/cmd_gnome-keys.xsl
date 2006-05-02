@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  Document  $WgDD$
+  Document  $Id$
   Summary   XSLT stylesheet to convert XML database into GNOME
             .keys file.
   
@@ -28,9 +28,9 @@
 		<xsl:with-param name="method" select="'text'"/>
 		<xsl:with-param name="indent" select="'yes'"/>
 		<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
+		<xsl:with-param name="media-type" select="'text/plain'"/>
 		<xsl:with-param name="doctype-public" select="''"/>
 		<xsl:with-param name="doctype-system" select="''"/>
-		<xsl:with-param name="standalone" select="'yes'"/>
 		<!-- Process the whole file -->
 		<xsl:with-param name="content">
 			<xsl:call-template name="header.text"/>
@@ -39,7 +39,7 @@
 	</xsl:call-template>
 </xsl:template>
 
-<xsl:template match="chemical-mime-type">
+<xsl:template match="mime-type">
 	<!--
 		If our MIME type conflicts with another MIME-type, we must suppress support for GNOME 2.4
 	-->
