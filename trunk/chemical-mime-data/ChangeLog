@@ -3,6 +3,16 @@
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* acinclude.m4: Added MP_PROG_XMLLINT macro to make xmllint available
+	for 'check' target.
+
+	* configure.ac: Ditto.
+
+	* src/Makefile.am: Added check target to make sure, that the resulting
+	database follows our own document declaration.
+
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* xsl/cmd_kde.xsl: Fixed header.
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
