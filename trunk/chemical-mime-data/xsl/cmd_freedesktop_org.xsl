@@ -37,9 +37,9 @@
 		<!-- Process the whole file -->
 		<xsl:with-param name="content">
 			<xsl:call-template name="header.xml"/>
-			<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+			<xsl:element name="mime-info" xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 				<xsl:apply-templates/>
-			</mime-info>
+			</xsl:element>
 		</xsl:with-param>
 	</xsl:call-template>
 </xsl:template>

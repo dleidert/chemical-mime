@@ -87,6 +87,8 @@
 	<!-- List of applications supporting the respective MIME type. -->	
 	<!ELEMENT supported-by (application+)>
 	<!ELEMENT application (#PCDATA)>
+	<!ATTLIST application
+	          package CDATA #IMPLIED>
 	
 	<!-- URL where to find the MIME/file type specification. -->	
 	<!ELEMENT specification EMPTY>
@@ -201,7 +203,7 @@
 		</supported-by>
 	</mime-type>
 
-	<mime-type type="chemical/x-gamess-input" support="no">
+	<mime-type type="chemical/x-gamess-input" support="yes" added="0.1.93">
 		<_comment>GAMESS Input format</_comment>
 		<_acronym>GAMESS</_acronym>
 		<_expanded-acronym>General Atomic and Molecular Electronic Structure System</_expanded-acronym>
@@ -210,6 +212,9 @@
 		<glob pattern="*.gamin"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
 		<specification url="http://www.msg.ameslab.gov/GAMESS/Graphics/MacMolPlt.shtml"/>
 	</mime-type>
 
@@ -222,6 +227,7 @@
 		<icon/>
 		<supported-by>
 			<application>jmol</application>
+			<application>xdrawchem</application>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
@@ -273,6 +279,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
+			<application package="gnome-chemistry-utils">gchem3d-viewer</application>
 			<application>gchempaint</application>
 			<application>jmol</application>
 			<application>xdrawchem</application>
@@ -347,6 +354,8 @@
 
 	<mime-type type="chemical/x-mopac-graph" support="yes" added="0.1.91">
 		<_comment>MOPAC Graphical Format</_comment>
+		<_acronym>MOPAC</_acronym>
+		<_expanded-acronym>Molecular Orbital PACkage</_expanded-acronym>
 		<glob pattern="*.gpt"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/x-mopac"/>
@@ -360,6 +369,8 @@
 
 	<mime-type type="chemical/x-mopac-input" support="yes" added="0.1.91">
 		<_comment>MOPAC Input Format</_comment>
+		<_acronym>MOPAC</_acronym>
+		<_expanded-acronym>Molecular Orbital PACkage</_expanded-acronym>
 		<glob pattern="*.dat"/> <!-- possible clash with video/mpeg -->
 		<glob pattern="*.mop"/>
 		<glob pattern="*.mopcrt"/>
@@ -371,6 +382,18 @@
 			<application>xdrawchem</application>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mopac-out" support="yes" added="0.1.93">
+		<_comment>MOPAC Output Format</_comment>
+		<_acronym>MOPAC</_acronym>
+		<_expanded-acronym>Molecular Orbital PACkage</_expanded-acronym>
+		<glob pattern="*.moo"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>molden</application>
+		</supported-by>
 	</mime-type>
 
 	<mime-type type="chemical/x-msi-car" support="yes" added="0.1.91">
@@ -464,8 +487,10 @@
 		</magic>
 		<icon/>
 		<supported-by>
+			<application package="gnome-chemistry-utils">gchem3d-viewer</application>
 			<application>gchempaint</application>
 			<application>jmol</application>
+			<application>molden</application>
 			<application>pymol</application>
 			<application>rasmol</application>
 			<application>viewmol</application>
@@ -481,8 +506,10 @@
 		<alias type="chemical/xyz"/>
 		<icon/>
 		<supported-by>
+			<application package="gnome-chemistry-utils">gchem3d-viewer</application>
 			<application>jmol</application>
 			<application>molden</application>
+			<application>xdrawchem</application>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
