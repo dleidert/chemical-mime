@@ -3,6 +3,14 @@
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* configure.ac (AC_PACKAGE_VERSION): Post-release version bump to
+	0.1.93.
+
+	* Makefile.am (EXTRA_DIST): Fixed a bug. The resulting .pc file should
+	not be shipped with the 'dist' target.
+
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* configure.ac: Bump to version 0.1.92.
 
 	* NEWS: Ditto.
