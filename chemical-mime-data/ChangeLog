@@ -1,6 +1,19 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* NEWS: Added items for next version 0.1.93.
+
+	* src/chemical-mime-database.xml.in: Small DTD change to support a
+	package attribute for the application element. Added support for
+	chemical/x-gamess-input and chemical/x-mopac-out. Added application
+	elements for xdrawchem and molden, where I missed them before, and
+	initially added the application elements for gchem3d-viewer.
+
+	* xsl/cmd_freedesktop_org.xsl: Better use the <xsl:element> element
+	instead of the element to print.
+
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* acinclude.m4: Added MP_PROG_XMLLINT macro to make xmllint available
