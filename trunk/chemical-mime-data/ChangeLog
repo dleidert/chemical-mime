@@ -3,6 +3,12 @@
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* configure.ac: Bump to version 0.1.92.
+
+	* NEWS: Ditto.
+
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* NEWS: Added information about latest release.
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>

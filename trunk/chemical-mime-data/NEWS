@@ -1,7 +1,7 @@
 # Document  $Id$
 # Summary   News for every release.
 
-Version 0.1.91 2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+Version 0.1.92 2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Now the whole package is based on a flat XML datbase and XSL
 	stylesheets create all necessary files, which are then installed.
