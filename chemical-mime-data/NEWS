@@ -1,13 +1,17 @@
 # Document  $Id$
 # Summary   News for every release.
 
+Version 0.1.93 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Fixed a build issue.
+
 Version 0.1.92 2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Now the whole package is based on a flat XML datbase and XSL
 	stylesheets create all necessary files, which are then installed.
 
 	* This release ships support for several MIME types used by gchempaint,
-	jmol, pymol, rasmol and xdrawchem. A complete list my follow before we
+	jmol, pymol, rasmol and xdrawchem. A complete list may follow before we
 	make the official 0.2.0 release.
 
 Version 0.1.0
