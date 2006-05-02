@@ -143,9 +143,9 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-cif" support="yes" added="0.1.91">
-		<_comment>Crystallographic Interchange Format</_comment>
+		<_comment>Crystallographic Information File Format</_comment>
 		<_acronym>CIF</_acronym>
-		<_expanded-acronym>Crystallographic Interchange Format</_expanded-acronym>
+		<_expanded-acronym>Crystallographic Information File</_expanded-acronym>
 		<glob pattern="*.cif"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="50">
@@ -274,6 +274,8 @@
 
 	<mime-type type="chemical/x-mdl-molfile" support="yes" added="0.1.91">
 		<_comment>MDL Molfile Format</_comment>
+		<_acronym>MDL</_acronym>
+		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
 		<glob pattern="*.mdl"/>
 		<glob pattern="*.mol"/>
 		<sub-class-of type="text/plain"/>
@@ -289,6 +291,8 @@
 
 	<mime-type type="chemical/x-mdl-rdfile" support="yes" added="0.1.91">
 		<_comment>MDL Reaction Format</_comment>
+		<_acronym>MDL</_acronym>
+		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
 		<glob pattern="*.rd"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -297,6 +301,8 @@
 
 	<mime-type type="chemical/x-mdl-rxnfile" support="yes" added="0.1.91">
 		<_comment>MDL 2D Reaction-Data Representation Format</_comment>
+		<_acronym>MDL</_acronym>
+		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
 		<glob pattern="*.rxn"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -308,6 +314,8 @@
 
 	<mime-type type="chemical/x-mdl-sdfile" support="yes" added="0.1.91">
 		<_comment>MDL Structure Data Format</_comment>
+		<_acronym>MDL</_acronym>
+		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
 		<glob pattern="*.sd"/>
 		<glob pattern="*.sdf"/>
 		<sub-class-of type="text/plain"/>
@@ -321,6 +329,8 @@
 
 	<mime-type type="chemical/x-mdl-tgf" support="yes" added="0.1.91">
 		<_comment>MDL Transportable Graphics Format</_comment>
+		<_acronym>MDL</_acronym>
+		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
 		<glob pattern="*.tgf"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -328,9 +338,9 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-mmcif" support="yes" added="0.1.91">
-		<_comment>MacroMolecular CIF</_comment>
+		<_comment>MacroMolecular Crystallographic Information File Format</_comment>
 		<_acronym>CIF</_acronym>
-		<_expanded-acronym>Crystallographic Interchange Format</_expanded-acronym>
+		<_expanded-acronym>Crystallographic Information File</_expanded-acronym>
 		<glob pattern="*.mcif"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>

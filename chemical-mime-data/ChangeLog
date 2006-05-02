@@ -3,6 +3,15 @@
 
 2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* src/chemical-mime-database.xml.in (chemical/x-cif)
+	(chemical/x-mmcif): Fixed acronym explanation for 'CIF'. Changed
+	Comment.
+	(chemical/x-mdl-molfile, chemical/x-mdl-rdfile, chemical/x-mdl-rxnfile)
+	(chemical/x-mdl-sdfile, chemical/x-mdl-tgf): Added acronym and
+	explanation for 'MDL'.
+
+2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* NEWS: Added items for next version 0.1.93.
 
 	* src/chemical-mime-database.xml.in: Small DTD change to support a
