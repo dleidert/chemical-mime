@@ -4,56 +4,30 @@
 TODO 
 ====
 
-Before next release 0.1
------------------------
+* !!! Fix README and INSTALL (see other project) !!! before we do the official
+  0.2.0 release.
 
-* Extend flat database.
+* Add more MIME-types to our database.
 
-* Fix kde/* directory to fit new flat database.
+* Add more "magic" to our database and solve conflicts for:
+  - chemical/x-cerius
+  - chemical/x-chemdraw
+  - chemical/x-daylight-smiles
+  - chemical/x-genbank
+  - chemical/x-mif
 
-* Create XSL stylesheet for KDE files and the website.
+* Add stylesheet templates to build the related extension for GNOME and KDE
+  magic files.
 
-* Add information about changed requirements to README/INSTALL (xsltproc).
-
-* Only support often used MIME types for the moment (some conflicts seem hard
-  to solve) and add related magic stuff to chemical-mime-data.xml.in.
-
-  -> add/change to descriptive comments/names
-     (Fix everything in kde/ and gnome/ after coming to a solution for the
-      freedesktop.org stuff.)
-
-* Fix GNOME 2.12+ support: see
-  http://mail.gnome.org/archives/gnome-vfs-list/2006-January/msg00007.html.
+* Add a website stylesheet (first idea exists).
 
 * Fix gnome-mime-data support: see
   http://www.gnome.org/learn/admin-guide/latest/ch05s02.html.
 
-
-Contributiors TODO
-------------------
-
-* Icons
-
-  -> hicolor theme should cover all MIME types
-  -> current SVGs are only basic (not really "chemical")
-  -> a MIME type chemical/<type> can still get a special icon, which have to
-     be named: gnome-mime-chemical-<type>.png.
-  -> ROX-filer can't handle generic MIME media type icons (like nautilus does)
-
-
-Future Releases
----------------
-
 * Add language support for different languages
-  currently maintained: de nl fr
+  currently maintained: de
 
-* Try to 'script' the building of kde/*.desktop(.in) and
-  chemicalmime.{keys|mime}, so we don't need to pay attention to 3 subdirs.
-
-  -> possibly use XML/XSLT and chunks?
-  -> how to handle _category field in .keys?
-  -> or maybe script the building of all mime support files by making one
-     database with all possible values and formats?
+* How to handle _category field in .keys? Do we need more fields?
 
 * Test for XFCE4.2 support
 
@@ -72,12 +46,24 @@ Future Releases
   x-questel-f1-query *.f1q
   x-smd              *.smd
   x-synopsys-accord  *.acc
+  
+  See also
+  http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/ActiveX7.0/Objects/DataType.htm
+  http://www.ch.ic.ac.uk/chemime/
+  ...
 
-* Solve conflicts:
-  - chemical/x-cerius
-  - chemical/x-chemdraw
-  - chemical/x-daylight-smiles
-  - chemical/x-genbank
-  - chemical/x-mif
+
+Contributiors TODO
+------------------
+
+* Icons (especially for contributors - I'm not an artist)
+
+  -> hicolor theme should cover all MIME types
+  -> current SVGs are only basic (not really "chemical")
+  -> a MIME type chemical/<type> can still get a special icon, which have to
+     be named: gnome-mime-chemical-<type>.png.
+  -> ROX-filer can't handle generic MIME media type icons (like nautilus does)
+  -> possible move the KDE qc icon from viewmol to this package?
+
 
 # UTF-8

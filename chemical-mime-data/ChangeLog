@@ -3,6 +3,11 @@
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* TODO: Fixed content. A lot of notes were removed, because I already
+	solved them.
+
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* Makefile.am (MAINTAINERCLEANFILES): Added archives created by 'dist'
 	target to 'maintainer-clean' target.
 
