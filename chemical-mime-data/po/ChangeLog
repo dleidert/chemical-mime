@@ -2,6 +2,10 @@
 # Summary   File-changelog for the internationalization data files of the
 #           chemical-mime-data project.
 
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* de.po: Updated. Added a more information to the header.
+
 2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* POTFILES.in: Changed to src/chemical-mime-data.xml.in. Removed all
