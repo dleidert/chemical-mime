@@ -10,7 +10,8 @@ EXTRA_DIST = \
 	cmd_common.xsl \
 	cmd_freedesktop_org.xsl \
 	cmd_gnome-keys.xsl \
-	cmd_gnome-mime.xsl
+	cmd_gnome-mime.xsl \
+	cmd_kde.xsl
 
 MAINTAINERCLEANFILES = Makefile.in
 
