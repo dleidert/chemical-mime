@@ -4,6 +4,7 @@
 # Copyright (C) 2004-2006 Daniel Leidert <daniel.leidert@wgdd.de>
 # Copyright (C) 2004-2006 Egon Willighagen <e.willighagen@science.ru.nl>
 # Copyright (C) 2004, The Free Software Foundation
+#
 # This file is distributed under the same license as the chemical-mime-data package.
 # Daniel Leidert <daniel.leidert@wgdd.de>, 2004-2006.
 #
@@ -11,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chemical-mime-data\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-02 13:32+0200\n"
-"PO-Revision-Date: 2006-05-02 13:32+0200\n"
+"POT-Creation-Date: 2006-05-02 15:21+0200\n"
+"PO-Revision-Date: 2006-05-02 15:21+0200\n"
 "Last-Translator: Daniel Leidert <daniel.leidert@wgdd.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -32,5 +33,9 @@ msgid "Chemical Markup Language"
 msgstr "Chemische Auszeichnungssprache"
 
 #: ../src/chemical-mime-database.xml.in.h:4
+msgid "GAMESS Input format"
+msgstr "GAMESS Eingabeformat"
+
+#: ../src/chemical-mime-database.xml.in.h:5
 msgid "XYZ Co-ordinate Animation Format"
 msgstr "XYZ-Koordinatendatei im Animationsformat"
