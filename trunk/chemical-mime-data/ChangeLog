@@ -3,6 +3,29 @@
 
 2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* Makefile.am (MAINTAINERCLEANFILES): Added archives created by 'dist'
+	target to 'maintainer-clean' target.
+
+	* configure.ac (AC_PACKAGE_VERSION): Increased version 0.1.91. First
+	RC.
+
+	* src/chemical-mime-database.xml.in: Added almost all MIME types,
+	which are used by jmol, gchempaint, pymol, rasmol, viewmol, xdrawchem
+	(except the x-turbomole* MIME types used by viewmol). Fixed DTD.
+	Removed comments.
+
+	* xsl/cmd_freedesktop_org.xsl (mime-type): Added information, since
+	when the MIME type is supported.
+
+	* xsl/cmd_gnome-keys.xsl (icon): Fixed a bug. Icon name was missing.
+
+	* xsl/cmd_kde.xsl (icon): Ditto. Further fixed the substring-after()
+	usage.
+
+	* xsl/cmd_gnome-mime.xsl (icon): Ditto.
+
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* freedesktop.org/Makefile.am: Fixed vpath directive to get the right
 	location for chemical-mime-database.xml. Fixes 'make distcheck' error.
 

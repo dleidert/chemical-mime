@@ -7,16 +7,16 @@
 
 	<!-- The MIME type (only chemical/*). -->	
 	<!ELEMENT mime-type (comment+,
-	                              (acronym, expanded-acronym)?,
-	                              glob+,
-	                              root-XML?,
-	                              sub-class-of*,
-	                              alias*,
-	                              conflicts*,
-	                              magic?,
-	                              icon,
-	                              supported-by?,
-	                              specification)>
+	                     (acronym+, expanded-acronym+)?,
+	                     glob+,
+	                     root-XML?,
+	                     sub-class-of+,
+	                     alias*,
+	                     conflicts*,
+	                     magic?,
+	                     icon,
+	                     supported-by?,
+	                     specification*)>
 	<!ATTLIST mime-type
 	          type CDATA #REQUIRED
 	          support (yes|no) "no"
@@ -96,30 +96,115 @@
 
 <chemical-mime id="$Id$">
 
-	<!--
-		chemical/x-cml
-	-->
-	<mime-type type="chemical/x-cml" support="yes" added="0.2.0">
+	<mime-type type="chemical/x-alchemy" support="yes" added="0.1.91">
+		<_comment>Alchemy Format</_comment>
+		<glob pattern="*.alc"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.camsoft.com/plugins/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-cache" support="yes" added="0.1.91">
+		<_comment>CAChe MolStruct Format</_comment>
+		<glob pattern="*.cac"/>
+		<glob pattern="*.cache"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-cdx" support="yes" added="0.1.91">
+		<_comment>ChemDraw eXchange Format</_comment>
+		<glob pattern="*.cdx"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.camsoft.com/plugins/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-chem3d" support="yes" added="0.1.91">
+		<_comment>Chem3D Format</_comment>
+		<glob pattern="*.c3d"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.camsoft.com/plugins/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-cif" support="yes" added="0.1.91">
+		<_comment>Crystallographic Interchange Format</_comment>
+		<_acronym>CIF</_acronym>
+		<_expanded-acronym>Crystallographic Interchange Format</_expanded-acronym>
+		<glob pattern="*.cif"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="data_" offset="0">
+				<match type="string" value="data_" offset="0" />
+			</match>
+		</magic>
+		<icon/>
+		<supported-by>
+			<application>jmol</application>
+		</supported-by>
+		<specification url="http://www.bernstein-plus-sons.com/software/rasmol/"/>
+		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-cml" support="yes" added="0.1.90">
 		<_comment>Chemical Markup Language</_comment>
 		<_acronym>CML</_acronym>
 		<_expanded-acronym>Chemical Markup Language</_expanded-acronym>
 		<glob pattern="*.cml"/>
+		<root-XML namespaceURI="http://www.xml-cml.org/schema/cml2/core" localName="cml"/>
 		<sub-class-of type="text/xml"/>
 		<alias type="chemical/cml"/>
-		<root-XML namespaceURI="http://www.xml-cml.org/schema/cml2/core" localName="cml"/>
 		<icon/>
 		<supported-by>
 			<application>gchempaint</application>
+			<application>jmol</application>
 			<application>xdrawchem</application>
 		</supported-by>
 		<specification url="http://www.xml-cml.org/"/>
 	</mime-type>
 
-	<!--
-		chemical/x-gamess-input
-	-->
-	<mime-type type="chemical/x-gamess-input" support="no" added="0.2.0">
+	<mime-type type="chemical/x-daylight-smiles" support="yes" added="0.1.91">
+		<_comment>SMILES Format</_comment>
+		<_acronym>SMILES</_acronym>
+		<_expanded-acronym>Simplified Molecular Input Line Entry Specification</_expanded-acronym>
+		<glob pattern="*.smi"/>
+		<sub-class-of type="text/plain"/>
+		<conflicts type="application/smil" gnome="yes" kde="yes"/>
+		<icon/>
+		<supported-by>
+			<application>cactvs</application>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.daylight/dayhtml/smiles/index.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-dmol" support="yes" added="0.1.91">
+		<_comment>DMol Output Frmat</_comment>
+		<glob pattern="*.outmol"/>
+		<sub-class-of type="text/plain"/>
+		<icon kde="qc"/>
+		<supported-by>
+			<application>viewmol</application>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-gamess-input" support="no">
 		<_comment>GAMESS Input format</_comment>
+		<_acronym>GAMESS</_acronym>
+		<_expanded-acronym>General Atomic and Molecular Electronic Structure System</_expanded-acronym>
 		<glob pattern="*.inp"/>
 		<glob pattern="*.gam"/>
 		<glob pattern="*.gamin"/>
@@ -128,15 +213,214 @@
 		<specification url="http://www.msg.ameslab.gov/GAMESS/Graphics/MacMolPlt.shtml"/>
 	</mime-type>
 
-	<!--
-		chemical/x-pdb
-	-->
-	<mime-type type="chemical/x-pdb" support="yes" added="0.2.0">
-		<_comment>Brookhaven Protein DataBase file format</_comment>
+	<mime-type type="chemical/x-gaussian-input" support="yes" added="0.1.91">
+		<_comment>Gaussian Input Format</_comment>
+		<glob pattern="*.gau"/>
+		<glob pattern="*.gjc"/>
+		<glob pattern="*.gjf"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>jmol</application>
+		</supported-by>
+		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-gaussian-log" support="yes" added="0.1.91">
+		<_comment>Gaussian Log Format</_comment>
+		<glob pattern="*.gal"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>molden</application>
+			<application>viewmol</application>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-hin" support="yes" added="0.1.91">
+		<_comment>HyperChem Molecule File Format</_comment>
+		<glob pattern="*.hin"/>
+		<sub-class-of type="text/plain"/>
+		<magic>
+			<match type="string" value="mol 1" offset="0">
+				<match type="string" value=".hin" offset="5:64">
+					<match type="string" value="atom 1" offset="5:128" />
+				</match>
+			</match>
+		</magic>
+		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-macromodel-input" support="yes" added="0.1.91">
+		<_comment>MacroModel Molecular Mechanics Format</_comment>
+		<glob pattern="*.mmd"/>
+		<glob pattern="*.mmod"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.columbia.edu/cu/chemistry/mmod/mmod.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mdl-molfile" support="yes" added="0.1.91">
+		<_comment>MDL Molfile Format</_comment>
+		<glob pattern="*.mdl"/>
+		<glob pattern="*.mol"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>gchempaint</application>
+			<application>jmol</application>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mdl-rdfile" support="yes" added="0.1.91">
+		<_comment>MDL Reaction Format</_comment>
+		<glob pattern="*.rd"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mdl-rxnfile" support="yes" added="0.1.91">
+		<_comment>MDL 2D Reaction-Data Representation Format</_comment>
+		<glob pattern="*.rxn"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mdl-sdfile" support="yes" added="0.1.91">
+		<_comment>MDL Structure Data Format</_comment>
+		<glob pattern="*.sd"/>
+		<glob pattern="*.sdf"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>gchempaint</application>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mdl-tgf" support="yes" added="0.1.91">
+		<_comment>MDL Transportable Graphics Format</_comment>
+		<glob pattern="*.tgf"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mmcif" support="yes" added="0.1.91">
+		<_comment>MacroMolecular CIF</_comment>
+		<_acronym>CIF</_acronym>
+		<_expanded-acronym>Crystallographic Interchange Format</_expanded-acronym>
+		<glob pattern="*.mcif"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>jmol</application>
+		</supported-by>
+		<specification url="http://www.bernstein-plus-sons.com/software/rasmol/"/>
+		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mol2" support="yes" added="0.1.91">
+		<_comment>SYBYL Portable Represenation Format</_comment>
+		<glob pattern="*.mol2"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.tripos.com/TechBriefs/mol2_format/mol2.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mopac-graph" support="yes" added="0.1.91">
+		<_comment>MOPAC Graphical Format</_comment>
+		<glob pattern="*.gpt"/>
+		<sub-class-of type="text/plain"/>
+		<alias type="chemical/x-mopac"/>
+		<icon/>
+		<supported-by>
+			<application>molden</application>
+			<application>viewmol</application>
+		</supported-by>
+		<specification url="http://products.camsoft.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mopac-input" support="yes" added="0.1.91">
+		<_comment>MOPAC Input Format</_comment>
+		<glob pattern="*.dat"/> <!-- possible clash with video/mpeg -->
+		<glob pattern="*.mop"/>
+		<glob pattern="*.mopcrt"/>
+		<glob pattern="*.mpc"/>
+		<glob pattern="*.zmt"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application>xdrawchem</application>
+		</supported-by>
+		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-msi-car" support="yes" added="0.1.91">
+		<_comment>Accelrys structure file</_comment>
+		<glob pattern="*.car"/>
+		<glob pattern="*.cor"/>
+		<glob pattern="*.arc"/> <!-- possible clash with application/x-arc -->
+		<sub-class-of type="text/plain"/>
+		<icon kde="qc"/>
+		<supported-by>
+			<application>viewmol</application>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-msi-hessian" support="yes" added="0.1.91">
+		<_comment>Accelrys Hessian File</_comment>
+		<glob pattern="*.hessian"/>
+		<sub-class-of type="text/plain"/>
+		<icon kde="qc"/>
+		<supported-by>
+			<application>viewmol</application>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-msi-mdf" support="yes" added="0.1.91">
+		<_comment>Accelrys Molecular Data File</_comment>
+		<glob pattern="*.mdf"/>
+		<sub-class-of type="text/plain"/>
+		<icon kde="qc"/>
+		<supported-by>
+			<application>viewmol</application>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-msi-msi" support="yes" added="0.1.91">
+		<_comment>Accelrys Data Model File</_comment>
+		<glob pattern="*.msi"/>
+		<sub-class-of type="text/plain"/>
+		<icon kde="qc"/>
+		<supported-by>
+			<application>viewmol</application>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-pdb" support="yes" added="0.1.90">
+		<_comment>Brookhaven Protein DataBase File Format</_comment>
 		<glob pattern="*.pdb"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/pdb"/>
-		<conflicts type="application/vnd.palm" gnome="yes" kde="no"/>
+		<conflicts type="application/vnd.palm" gnome="yes" kde="yes"/>
 		<!-- 1st line offset  0:80  -->
 		<!-- 2nd line offest 81:161 -->
 		<!-- 3nd line offest ... -->
@@ -180,25 +464,25 @@
 		</magic>
 		<icon/>
 		<supported-by>
-			<application>Jmol</application>
 			<application>gchempaint</application>
+			<application>jmol</application>
+			<application>pymol</application>
+			<application>rasmol</application>
+			<application>viewmol</application>
 			<application>xdrawchem</application>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
 
-	<!--
-		chemical/x-xyz
-	-->
-	<mime-type type="chemical/x-xyz" support="yes" added="0.2.0">
+	<mime-type type="chemical/x-xyz" support="yes" added="0.1.90">
 		<_comment>XYZ Co-ordinate Animation Format</_comment>
 		<glob pattern="*.xyz"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/xyz"/>
 		<icon/>
 		<supported-by>
-			<application>gchempaint</application>
-			<application>xdrawchem</application>
+			<application>jmol</application>
+			<application>molden</application>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>

@@ -67,7 +67,7 @@
 	<xsl:text>	icon_filename: </xsl:text>
 	<xsl:choose>
 		<xsl:when test="@gnome != ''">
-			<xsl:apply-templates/>
+			<xsl:value-of select="@gnome"/>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:text>gnome-mime-chemical.png</xsl:text>

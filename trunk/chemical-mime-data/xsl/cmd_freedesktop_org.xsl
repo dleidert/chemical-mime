@@ -47,9 +47,11 @@
 <xsl:template match="mime-type">
 	<xsl:if test="@support='yes'">
 		<xsl:comment>
-			<xsl:text>&#10;	MIME-Type </xsl:text>
+			<xsl:text>&#10;	MIME-Type: </xsl:text>
 			<xsl:value-of select="@type"/>
-			<xsl:text> &#10;</xsl:text>
+			<xsl:text>&#10;	supported since: chemical-mime-data v</xsl:text>
+			<xsl:value-of select="@added"/>
+			<xsl:text>&#10;</xsl:text>
 		</xsl:comment>
 		<xsl:element name="{local-name(.)}" xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 			<xsl:copy-of select="@type"/>
