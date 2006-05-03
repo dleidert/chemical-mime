@@ -37,7 +37,7 @@
 		<!-- Process the whole file -->
 		<xsl:with-param name="content">
 			<xsl:call-template name="header.xml"/>
-			<xsl:element name="mime-info" xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+			<xsl:element name="mime-info" namespace="http://www.freedesktop.org/standards/shared-mime-info">
 				<xsl:apply-templates/>
 			</xsl:element>
 		</xsl:with-param>
@@ -53,7 +53,7 @@
 			<xsl:value-of select="@added"/>
 			<xsl:text>&#10;</xsl:text>
 		</xsl:comment>
-		<xsl:element name="{local-name(.)}" xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+		<xsl:element name="{local-name(.)}" namespace="http://www.freedesktop.org/standards/shared-mime-info">
 			<xsl:copy-of select="@type"/>
 			<xsl:apply-templates/>
 		</xsl:element>
@@ -61,7 +61,7 @@
 </xsl:template>
 
 <xsl:template match="acronym|alias|comment|expanded-acronym|glob|magic|match|root-XML|sub-class-of">
-	<xsl:element name="{local-name(.)}" xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<xsl:element name="{local-name(.)}" namespace="http://www.freedesktop.org/standards/shared-mime-info">
 		<xsl:copy-of select="@*"/>
 		<xsl:apply-templates/>
 	</xsl:element>

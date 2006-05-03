@@ -3,6 +3,12 @@
 
 2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* xsl/cmd_freedesktop_org.xsl: Use the namespace attribute, not the
+	xmlns attribute, for xsl:element (makes no real difference, but it is
+	IMHO more common).
+
+2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* TODO: Added information pointer to gdis manual.
 
 	* src/chemical-mime-database.xml.in: Added gdis application elements.
