@@ -3,6 +3,13 @@
 
 2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* TODO: Added information pointer to gdis manual.
+
+	* src/chemical-mime-database.xml.in: Added gdis application elements.
+	(chemical/x-mopac-out): Added magic pattern and "*.out" pattern.
+
+2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* src/chemical-mime-database.xml.in (chemical/x-cif)
 	(chemical/x-mmcif): Fixed acronym explanation for 'CIF'. Changed
 	Comment.

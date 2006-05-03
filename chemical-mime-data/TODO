@@ -47,6 +47,13 @@ TODO
   x-smd              *.smd
   x-synopsys-accord  *.acc
   
+  from /usr/share/doc/gdis/gdis_manual.txt.gz
+  fdf the free data format, suitable for the SIESTA package (.fdf)
+  marvin output (.mvnout, .mvout)
+  gdis morphology file (.gmf)
+  gulp input (.gin), restart (.res), and ouput (.got) (gulp also used by viewmol!)
+  xtl (.xtl)
+  
   See also
   http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/ActiveX7.0/Objects/DataType.htm
   http://www.ch.ic.ac.uk/chemime/
