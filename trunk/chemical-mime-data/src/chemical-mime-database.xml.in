@@ -150,11 +150,12 @@
 		<sub-class-of type="text/plain"/>
 		<magic priority="50">
 			<match type="string" value="data_" offset="0">
-				<match type="string" value="data_" offset="0" />
+				<match type="string" value="data_" offset="0"/>
 			</match>
 		</magic>
 		<icon/>
 		<supported-by>
+			<application>gdis</application>
 			<application>jmol</application>
 		</supported-by>
 		<specification url="http://www.bernstein-plus-sons.com/software/rasmol/"/>
@@ -250,7 +251,7 @@
 		<magic>
 			<match type="string" value="mol 1" offset="0">
 				<match type="string" value=".hin" offset="5:64">
-					<match type="string" value="atom 1" offset="5:128" />
+					<match type="string" value="atom 1" offset="5:128"/>
 				</match>
 			</match>
 		</magic>
@@ -399,7 +400,22 @@
 		<_acronym>MOPAC</_acronym>
 		<_expanded-acronym>Molecular Orbital PACkage</_expanded-acronym>
 		<glob pattern="*.moo"/>
+		<glob pattern="*.out"/> <!-- can conflict with application/x-profile and(!) gaussian output files -->
 		<sub-class-of type="text/plain"/>
+		<!--
+			the head normally looks like this: 
+			  0:80	 *******************************************************************************
+			 81:160	 **                            MOPAC 93 (c) Fujitsu                           **
+			 81:160	 **                            MOPAC2002 (c) Fujitsu                          **
+			 81:160	 ** MOPAC FOR LINUX (PUBLIC DOMAIN VERSION)  MTA ATOMKI, Debrecen, 95-JUN-21  **
+			161:240	 *******************************************************************************
+		-->
+		<magic priority="85">
+			<match type="string" value="MOPAC" offset="81:160">
+				<match type="string" value="(c) Fujitsu" offset="81:160"/>
+			</match>
+			<match type="string" value="MOPAC" offset="81:160"/>
+		</magic>
 		<icon/>
 		<supported-by>
 			<application>molden</application>
@@ -414,6 +430,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon kde="qc"/>
 		<supported-by>
+			<application>gdis</application>
 			<application>viewmol</application>
 		</supported-by>
 	</mime-type>
@@ -459,46 +476,47 @@
 		<!-- 3nd line offest ... -->
 		<!-- but we have malformed examples in Jmol samples dir -->
 		<magic priority="85">
-			<match type="string" value="MODEL  " offset="0" />
-			<match type="string" value="HEADER " offset="0" />
-			<match type="string" value="TITLE  " offset="0" />
-			<match type="string" value="COMPND " offset="0" />
-			<match type="string" value="SOURCE " offset="0" />
-			<match type="string" value="KEYWDS " offset="0" />
-			<match type="string" value="EXPDTA " offset="0" />
-			<match type="string" value="AUTHOR " offset="0" />
-			<match type="string" value="REVDAT " offset="0" />
-			<match type="string" value="JRNL   " offset="0" />
-			<match type="string" value="REMARK " offset="0" />
-			<match type="string" value="DBREF  " offset="0" />
-			<match type="string" value="SEQRES " offset="0" />
-			<match type="string" value="SEQDAV " offset="0" />
-			<match type="string" value="HETNAM " offset="0" />
-			<match type="string" value="HETSYN " offset="0" />
-			<match type="string" value="FORMUL " offset="0" />
-			<match type="string" value="HELIX  " offset="0" />
-			<match type="string" value="SHEET  " offset="0" />
-			<match type="string" value="TURN   " offset="0" />
-			<match type="string" value="CISPEP " offset="0" />
-			<match type="string" value="LINK   " offset="0" />
-			<match type="string" value="CRYST1 " offset="0" />
-			<match type="string" value="ORIGX1 " offset="0" />
-			<match type="string" value="SCALE1 " offset="0" />
-			<match type="string" value="MTRIX1 " offset="0" />
+			<match type="string" value="MODEL  " offset="0"/>
+			<match type="string" value="HEADER " offset="0"/>
+			<match type="string" value="TITLE  " offset="0"/>
+			<match type="string" value="COMPND " offset="0"/>
+			<match type="string" value="SOURCE " offset="0"/>
+			<match type="string" value="KEYWDS " offset="0"/>
+			<match type="string" value="EXPDTA " offset="0"/>
+			<match type="string" value="AUTHOR " offset="0"/>
+			<match type="string" value="REVDAT " offset="0"/>
+			<match type="string" value="JRNL   " offset="0"/>
+			<match type="string" value="REMARK " offset="0"/>
+			<match type="string" value="DBREF  " offset="0"/>
+			<match type="string" value="SEQRES " offset="0"/>
+			<match type="string" value="SEQDAV " offset="0"/>
+			<match type="string" value="HETNAM " offset="0"/>
+			<match type="string" value="HETSYN " offset="0"/>
+			<match type="string" value="FORMUL " offset="0"/>
+			<match type="string" value="HELIX  " offset="0"/>
+			<match type="string" value="SHEET  " offset="0"/>
+			<match type="string" value="TURN   " offset="0"/>
+			<match type="string" value="CISPEP " offset="0"/>
+			<match type="string" value="LINK   " offset="0"/>
+			<match type="string" value="CRYST1 " offset="0"/>
+			<match type="string" value="ORIGX1 " offset="0"/>
+			<match type="string" value="SCALE1 " offset="0"/>
+			<match type="string" value="MTRIX1 " offset="0"/>
 			<match type="string" value="ATOM   " offset="0">
-				<match type="string" value=" " offset="11" />
+				<match type="string" value=" " offset="11"/>
 			</match>
 			<match type="string" value="HETATM " offset="0">
-				<match type="string" value=" " offset="11" />
+				<match type="string" value=" " offset="11"/>
 			</match>
 			<match type="string" value="TER    " offset="0">
-				<match type="string" value=" " offset="11" />
+				<match type="string" value=" " offset="11"/>
 			</match>
 		</magic>
 		<icon/>
 		<supported-by>
 			<application package="gnome-chemistry-utils">gchem3d-viewer</application>
 			<application>gchempaint</application>
+			<application>gdis</application>
 			<application>jmol</application>
 			<application>molden</application>
 			<application>pymol</application>
@@ -517,6 +535,7 @@
 		<icon/>
 		<supported-by>
 			<application package="gnome-chemistry-utils">gchem3d-viewer</application>
+			<application>gdis</application>
 			<application>jmol</application>
 			<application>molden</application>
 			<application>xdrawchem</application>
