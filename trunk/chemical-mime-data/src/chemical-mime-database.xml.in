@@ -86,8 +86,11 @@
 	
 	<!-- List of applications supporting the respective MIME type. -->	
 	<!ELEMENT supported-by (application+)>
-	<!ELEMENT application (#PCDATA)>
+	<!ELEMENT application EMPTY>
 	<!ATTLIST application
+	          name CDATA #REQUIRED
+	          read CDATA #IMPLIED
+	          write CDATA #IMPLIED
 	          package CDATA #IMPLIED>
 	
 	<!-- URL where to find the MIME/file type specification. -->	
@@ -104,7 +107,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.camsoft.com/plugins/"/>
 	</mime-type>
@@ -116,7 +119,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 	</mime-type>
 
@@ -126,7 +129,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.camsoft.com/plugins/"/>
 	</mime-type>
@@ -137,7 +140,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.camsoft.com/plugins/"/>
 	</mime-type>
@@ -155,8 +158,8 @@
 		</magic>
 		<icon/>
 		<supported-by>
-			<application>gdis</application>
-			<application>jmol</application>
+			<application name="gdis"/>
+			<application name="jmol"/>
 		</supported-by>
 		<specification url="http://www.bernstein-plus-sons.com/software/rasmol/"/>
 		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"/>
@@ -172,9 +175,9 @@
 		<alias type="chemical/cml"/>
 		<icon/>
 		<supported-by>
-			<application>gchempaint</application>
-			<application>jmol</application>
-			<application>xdrawchem</application>
+			<application name="gchempaint"/>
+			<application name="jmol"/>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.xml-cml.org/"/>
 	</mime-type>
@@ -188,8 +191,8 @@
 		<conflicts type="application/smil" gnome="yes" kde="yes"/>
 		<icon/>
 		<supported-by>
-			<application>cactvs</application>
-			<application>xdrawchem</application>
+			<application name="cactvs"/>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.daylight/dayhtml/smiles/index.html"/>
 	</mime-type>
@@ -200,7 +203,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon kde="qc"/>
 		<supported-by>
-			<application>viewmol</application>
+			<application name="viewmol"/>
 		</supported-by>
 	</mime-type>
 
@@ -214,7 +217,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.msg.ameslab.gov/GAMESS/Graphics/MacMolPlt.shtml"/>
 	</mime-type>
@@ -227,8 +230,8 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>jmol</application>
-			<application>xdrawchem</application>
+			<application name="jmol"/>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
@@ -239,8 +242,8 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>molden</application>
-			<application>viewmol</application>
+			<application name="molden"/>
+			<application name="viewmol"/>
 		</supported-by>
 	</mime-type>
 
@@ -257,7 +260,7 @@
 		</magic>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 	</mime-type>
 
@@ -268,7 +271,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.columbia.edu/cu/chemistry/mmod/mmod.html"/>
 	</mime-type>
@@ -282,10 +285,10 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application package="gnome-chemistry-utils">gchem3d-viewer</application>
-			<application>gchempaint</application>
-			<application>jmol</application>
-			<application>xdrawchem</application>
+			<application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
+			<application name="gchempaint"/>
+			<application name="jmol"/>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
@@ -308,7 +311,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
@@ -322,8 +325,8 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>gchempaint</application>
-			<application>xdrawchem</application>
+			<application name="gchempaint"/>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
@@ -346,7 +349,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>jmol</application>
+			<application name="jmol"/>
 		</supported-by>
 		<specification url="http://www.bernstein-plus-sons.com/software/rasmol/"/>
 		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"/>
@@ -358,7 +361,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.tripos.com/TechBriefs/mol2_format/mol2.html"/>
 	</mime-type>
@@ -372,8 +375,8 @@
 		<alias type="chemical/x-mopac"/>
 		<icon/>
 		<supported-by>
-			<application>molden</application>
-			<application>viewmol</application>
+			<application name="molden"/>
+			<application name="viewmol"/>
 		</supported-by>
 		<specification url="http://products.camsoft.com/"/>
 	</mime-type>
@@ -390,7 +393,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
-			<application>xdrawchem</application>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
@@ -418,7 +421,7 @@
 		</magic>
 		<icon/>
 		<supported-by>
-			<application>molden</application>
+			<application name="molden"/>
 		</supported-by>
 	</mime-type>
 
@@ -430,8 +433,8 @@
 		<sub-class-of type="text/plain"/>
 		<icon kde="qc"/>
 		<supported-by>
-			<application>gdis</application>
-			<application>viewmol</application>
+			<application name="gdis"/>
+			<application name="viewmol"/>
 		</supported-by>
 	</mime-type>
 
@@ -441,7 +444,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon kde="qc"/>
 		<supported-by>
-			<application>viewmol</application>
+			<application name="viewmol"/>
 		</supported-by>
 	</mime-type>
 
@@ -451,7 +454,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon kde="qc"/>
 		<supported-by>
-			<application>viewmol</application>
+			<application name="viewmol"/>
 		</supported-by>
 	</mime-type>
 
@@ -461,7 +464,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon kde="qc"/>
 		<supported-by>
-			<application>viewmol</application>
+			<application name="viewmol"/>
 		</supported-by>
 	</mime-type>
 
@@ -514,15 +517,15 @@
 		</magic>
 		<icon/>
 		<supported-by>
-			<application package="gnome-chemistry-utils">gchem3d-viewer</application>
-			<application>gchempaint</application>
-			<application>gdis</application>
-			<application>jmol</application>
-			<application>molden</application>
-			<application>pymol</application>
-			<application>rasmol</application>
-			<application>viewmol</application>
-			<application>xdrawchem</application>
+			<application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
+			<application name="gchempaint"/>
+			<application name="gdis"/>
+			<application name="jmol"/>
+			<application name="molden"/>
+			<application name="pymol"/>
+			<application name="rasmol"/>
+			<application name="viewmol"/>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
@@ -534,11 +537,11 @@
 		<alias type="chemical/xyz"/>
 		<icon/>
 		<supported-by>
-			<application package="gnome-chemistry-utils">gchem3d-viewer</application>
-			<application>gdis</application>
-			<application>jmol</application>
-			<application>molden</application>
-			<application>xdrawchem</application>
+			<application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
+			<application name="gdis"/>
+			<application name="jmol"/>
+			<application name="molden"/>
+			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
