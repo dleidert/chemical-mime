@@ -4,73 +4,82 @@
 TODO 
 ====
 
-* !!! Fix README and INSTALL (see other project) !!! before we do the official
-  0.2.0 release.
 
-* Add more MIME-types to our database.
+* Before 0.2.0 release
 
-* Add more "magic" to our database and solve conflicts for:
-  - chemical/x-cerius
-  - chemical/x-chemdraw
-  - chemical/x-daylight-smiles
-  - chemical/x-genbank
-  - chemical/x-mif
+  + Fix README, INSTALL and HACKING
 
-* Add stylesheet templates to build the related extension for GNOME and KDE
-  magic files.
+  + Support all MIME types used by kfile_plugin
 
-* Add a website stylesheet (first idea exists).
 
-* Fix gnome-mime-data support: see
-  http://www.gnome.org/learn/admin-guide/latest/ch05s02.html.
+* 0.2.0 branch
 
-* Add language support for different languages
-  currently maintained: de
+  + Add a website stylesheet (first idea exists).
 
-* How to handle _category field in .keys? Do we need more fields?
 
-* Test for XFCE4.2 support
+* Later branches
 
-* Look further for these mime types (not yet included, in alphabetical order):
+  + Add stylesheet templates to build the related extension for GNOME and KDE
+    magic files.
 
-  x-cdx              *.cdx
-  x-ct               *.ct
-  x-eye2eye          
-  x-msi-molfile      *.msm
-  x-mdl-isis         *.skc
-  x-mopac-den        
-  x-mopac-esp        *.esp, *.ESP
-  x-pdb-ribbon       
-  x-ppd              
-  x-questel-f1       *.f1d
-  x-questel-f1-query *.f1q
-  x-smd              *.smd
-  x-synopsys-accord  *.acc
+  + Fix gnome-mime-data support: see
+    http://www.gnome.org/learn/admin-guide/latest/ch05s02.html
+    http://web.archive.org/web/20041024185231/http://www.gnome.org/learn/admin-guide/latest/ch05s02.html
+
+  + How to handle _category field in .keys? Do we need more fields?
+
+  + Test for XFCE4.2 support.
+
+
+* General
+
+  + Add language support for different languages
+
+  + Add more MIME-types to our database.
   
-  from /usr/share/doc/gdis/gdis_manual.txt.gz
-  fdf the free data format, suitable for the SIESTA package (.fdf)
-  marvin output (.mvnout, .mvout)
-  gdis morphology file (.gmf)
-  gulp input (.gin), restart (.res), and ouput (.got) (gulp also used by viewmol!)
-  xtl (.xtl)
-  
-  See also
-  http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/ActiveX7.0/Objects/DataType.htm
-  http://www.ch.ic.ac.uk/chemime/
-  ...
-
-
-Contributiors TODO
-------------------
-
-* Icons (especially for contributors - I'm not an artist)
-
-  -> hicolor theme should cover all MIME types
-  -> current SVGs are only basic (not really "chemical")
-  -> a MIME type chemical/<type> can still get a special icon, which have to
-     be named: gnome-mime-chemical-<type>.png.
-  -> ROX-filer can't handle generic MIME media type icons (like nautilus does)
-  -> possible move the KDE qc icon from viewmol to this package?
+  + Add more "magic" to our database and solve conflicts for:
+    - chemical/x-cerius
+    - chemical/x-chemdraw
+    - chemical/x-daylight-smiles
+    - chemical/x-genbank
+    - chemical/x-mif
+    
+  + Look further for these mime types (not yet included, in alphabetical
+    order):
+    
+    x-cdx              *.cdx
+    x-ct               *.ct
+    x-eye2eye          
+    x-msi-molfile      *.msm
+    x-mdl-isis         *.skc
+    x-mopac-den        
+    x-mopac-esp        *.esp, *.ESP
+    x-pdb-ribbon       
+    x-ppd              
+    x-questel-f1       *.f1d
+    x-questel-f1-query *.f1q
+    x-smd              *.smd
+    x-synopsys-accord  *.acc
+    
+    from /usr/share/doc/gdis/gdis_manual.txt.gz
+    fdf the free data format, suitable for the SIESTA package (.fdf)
+    marvin output (.mvnout, .mvout)
+    gdis morphology file (.gmf)
+    gulp input (.gin), restart (.res), and ouput (.got) (gulp also used by viewmol!)
+    xtl (.xtl)
+    
+    See also
+    http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/ActiveX7.0/Objects/DataType.htm
+    http://www.ch.ic.ac.uk/chemime/
+    ...
+    
+  + Add Icons (especially for contributors - I'm not an artist)
+    - hicolor theme should cover all MIME types
+    - current SVGs are only basic (not really "chemical")
+    - a MIME type chemical/<type> can still get a special icon, which have to
+      be named: gnome-mime-chemical-<type>.png.
+    - ROX-filer can't handle generic MIME media type icons (like nautilus does)
+    - possible move the KDE qc icon from viewmol to this package?
 
 
 # UTF-8

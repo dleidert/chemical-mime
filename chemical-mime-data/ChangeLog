@@ -3,6 +3,17 @@
 
 2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* HACKING: Added.
+
+	* Makefile.am (EXTRA_DIST): Ditto.
+
+	* TODO: Improved overview and structure.
+
+	* src/chemical-mime-database.xml.in: Changed DTD for application
+	element and adjusted the usage of this element in the whole file.
+
+2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* xsl/cmd_freedesktop_org.xsl: Use the namespace attribute, not the
 	xmlns attribute, for xsl:element (makes no real difference, but it is
 	IMHO more common).

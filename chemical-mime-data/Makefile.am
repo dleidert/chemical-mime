@@ -11,6 +11,7 @@ SUBDIRS = src xsl freedesktop.org gnome kde icons po
 AUTOMAKE_OPTIONS = dist-bzip2
 
 EXTRA_DIST = \
+	HACKING \
 	intltool-extract.in \
 	intltool-update.in \
 	intltool-merge.in
