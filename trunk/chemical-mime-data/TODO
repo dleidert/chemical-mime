@@ -67,6 +67,8 @@ TODO
     gdis morphology file (.gmf)
     gulp input (.gin), restart (.res), and ouput (.got) (gulp also used by viewmol!)
     xtl (.xtl)
+
+    viewmol also uses: x-turbomole*
     
     See also
     http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/ActiveX7.0/Objects/DataType.htm

@@ -88,7 +88,7 @@
 	Now output all the possible pattern types as 'Pattern=pattern1;pattern2;'.
 -->
 <xsl:template name="pattern.list">
-	<xsl:text>Pattern=</xsl:text>
+	<xsl:text>Patterns=</xsl:text>
 	<xsl:for-each select=".//glob/@pattern">
 		<xsl:value-of select="."/>
 		<xsl:text>;</xsl:text>
