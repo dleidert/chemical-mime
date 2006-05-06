@@ -10,6 +10,7 @@ CLEANFILES = $(fdomime_DATA)
 
 MAINTAINERCLEANFILES = Makefile.in
 
+
 vpath cmd_%.xsl $(top_srcdir)/xsl
 vpath chemical-mime-database.xml $(top_builddir)/src
 
@@ -20,8 +21,8 @@ fdomime_DATA = chemical-mime-data.xml
 endif #BOOL_FREEDESKTOP_MIME
 
 
-chemical-mime-data.xml : cmd_freedesktop_org.xsl chemical-mime-database.xml
-	$(XSLTPROC) $^
+chemical-mime-data.xml : cmd_freedesktop_org.xsl chemical-mime-database.xml cmd_common.xsl
+	$(XSLTPROC) $(XSLTPROC_FLAGS) $(filter-out $(top_srcdir)/xsl/cmd_common.xsl,$^)
 
 
 install-data-hook:

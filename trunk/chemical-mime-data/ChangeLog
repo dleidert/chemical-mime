@@ -3,6 +3,16 @@
 
 2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* freedesktop.org/Makefile.am (chemical-mime-data.xml): Added
+	cmd_common.xsl to prerequisites and fixed rule.
+
+	* gnome/Makefile.am (chemical-mime-data.keys)
+	(chemical-mime-data.mime): Ditto.
+
+	* kde/Makefile.am (*.desktop): Ditto.
+
+2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* TODO: Just added a note about viewmol.
 
 	* configure.ac (AM_GNU_GETTEXT, CATOBJEXT): Work around a bug in
