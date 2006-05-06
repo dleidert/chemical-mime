@@ -3,6 +3,10 @@
 
 2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* src/Makefile.am (check-local): Added XMLLINT_FLAGS to command.
+
+2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* freedesktop.org/Makefile.am (chemical-mime-data.xml): Added
 	cmd_common.xsl to prerequisites and fixed rule.
 

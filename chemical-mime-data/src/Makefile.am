@@ -12,6 +12,8 @@ CLEANFILES = $(database_files)
 
 MAINTAINERCLEANFILES = Makefile.in
 
+XMLLINT_FLAGS  += --noout --valid
+
 
 database_in_files = chemical-mime-database.xml.in
 database_files    = $(database_in_files:.xml.in=.xml)
@@ -22,10 +24,11 @@ all-local: $(database_files)
 check-local:
 	$(info "Correct any errors before making a distribution.")
 if HAVE_XMLLINT
-	$(XMLLINT) --noout --valid $(database_files)
+	$(XMLLINT) $(XMLLINT_FLAGS) $(database_files)
 else
 	$(warning "Cannot check the XML sources because 'xmllint' is missing.")
 endif
+
 
 @INTLTOOL_XML_RULE@
 
