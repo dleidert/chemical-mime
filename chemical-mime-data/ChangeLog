@@ -1,6 +1,15 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* TODO: Just added a note about viewmol.
+
+	* configure.ac (AM_GNU_GETTEXT, CATOBJEXT): Work around a bug in
+	gettext.m4 leading to non-updateable translations.
+
+	* xsl/cmd_kde.xsl (pattern.list): Fixed the wrong field name.
+
 2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* HACKING: Added.

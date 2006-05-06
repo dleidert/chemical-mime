@@ -22,9 +22,11 @@ dnl --------------------------------------------------------------------------
 ALL_LINGUAS="de"
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST([GETTEXT_PACKAGE])
-AM_GNU_GETTEXT(external)
+AM_GNU_GETTEXT([external])
 USE_NLS=no
 AC_SUBST([USE_NLS])
+CATOBJEXT=.gmo
+AC_SUBST([CATOBJEXT])
 IT_PROG_INTLTOOL
 
 dnl --------------------------------------------------------------------------
