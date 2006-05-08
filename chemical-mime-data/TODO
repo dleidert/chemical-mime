@@ -21,6 +21,20 @@ TODO
 
   + Add stylesheet templates to build the related extension for GNOME and KDE
     magic files.
+    
+    byte     = byte
+    string   = string
+    host16   = short
+    host32   = long
+    big16    = beshort
+    big32    = belong
+    little16 = leshort
+    little32 = lelong
+    
+    support for date, bedae and ledate necessary?
+    (see /etc/gnome-vfs-mime-magic (GNOME), /usr/share/mimelnk/magic (KDE),
+    /usr/share/file/magic.mime (file(1)),
+    http://marc.10east.com/?l=apache-docs&m=107124744902978&q=p3)
 
   + Fix gnome-mime-data support: see
     http://www.gnome.org/learn/admin-guide/latest/ch05s02.html

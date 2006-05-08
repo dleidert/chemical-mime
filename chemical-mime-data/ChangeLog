@@ -1,6 +1,10 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* TODO: Added note about KDE and GNOME MIME magic databases.
+
 2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* src/Makefile.am (check-local): Added XMLLINT_FLAGS to command.
