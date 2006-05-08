@@ -3,6 +3,11 @@
 
 2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* src/chemical-mime-database.xml.in: Added more comments to the DTD
+	for a better description of their usage.
+
+2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* src/chemical-mime-database.xml.in: Removing useless spaces and tabs
 	at line-ends.
 	(chemical/x-genbank): Fixed an invalidity, which clashes with the DTD.
