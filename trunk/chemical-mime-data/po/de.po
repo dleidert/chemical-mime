@@ -73,7 +73,7 @@ msgid "Crystallographic Interchange Format"
 msgstr "Kristallographisches Austauschformat"
 
 #: ../src/chemical-mime-database.xml.in.h:14
-msgid "DMol Output Frmat"
+msgid "DMol Output Format"
 msgstr "DMol Ausgabeformat"
 
 #: ../src/chemical-mime-database.xml.in.h:15
@@ -134,7 +134,7 @@ msgstr "MacroModel Molekülmechanik-Format"
 
 #: ../src/chemical-mime-database.xml.in.h:29
 msgid "MacroMolecular CIF"
-msgstr "MacroMoleculae CIF"
+msgstr "MacroMolecular CIF"
 
 #: ../src/chemical-mime-database.xml.in.h:30
 msgid "SMILES"
@@ -145,7 +145,7 @@ msgid "SMILES Format"
 msgstr "SMILES-Format"
 
 #: ../src/chemical-mime-database.xml.in.h:32
-msgid "SYBYL Portable Represenation Format"
+msgid "SYBYL Portable Representation Format"
 msgstr "SYBYL Portables Darstellungsformat"
 
 #: ../src/chemical-mime-database.xml.in.h:33

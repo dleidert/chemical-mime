@@ -187,6 +187,7 @@
 		<_acronym>SMILES</_acronym>
 		<_expanded-acronym>Simplified Molecular Input Line Entry Specification</_expanded-acronym>
 		<glob pattern="*.smi"/>
+		<glob pattern="*.smiles"/>
 		<sub-class-of type="text/plain"/>
 		<conflicts type="application/smil" gnome="yes" kde="yes"/>
 		<icon/>
@@ -198,7 +199,7 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-dmol" support="yes" added="0.1.91">
-		<_comment>DMol Output Frmat</_comment>
+		<_comment>DMol Output Format</_comment>
 		<glob pattern="*.outmol"/>
 		<sub-class-of type="text/plain"/>
 		<icon kde="qc"/>
@@ -247,6 +248,20 @@
 		</supported-by>
 	</mime-type>
 
+	<mime-type type="chemical/x-genbank" support="yes" added="0.1.93">
+		<_comment>GenBank Flat File Format</_comment>
+		<glob pattern="*.gb"/>
+		<glob pattern="*.gen"/>
+		<sub-class-of type="text/plain"/>
+		<supported-by>
+			<application name="emboss"/>
+			<application name="biojava"/>
+			<application name="bioperl"/>
+			<application name="biopython"/>
+		</supported-by>
+		<icon/>
+	</mime-type>
+
 	<mime-type type="chemical/x-hin" support="yes" added="0.1.91">
 		<_comment>HyperChem Molecule File Format</_comment>
 		<glob pattern="*.hin"/>
@@ -261,6 +276,39 @@
 		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-inchi" support="yes" added="0.1.93">
+		<_comment>IUPAC International Chemical Identifier</_comment>
+		<glob pattern="*.inchi"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application name="bkchem"/>
+			<application name="openbabel"/>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-inchi-xml" support="yes" added="0.1.93">
+		<_comment>IUPAC International Chemical Identifier</_comment>
+		<glob pattern="*.inchix"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application name="bkchem"/>
+			<application name="openbabel"/>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-jcamp-dx" support="yes" added="0.1.93">
+		<_comment>JCAMP Spectroscopic Data Exchange Format</_comment>
+		<glob pattern="*.dx"/>
+		<glob pattern="*.jdx"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application name="jcamp-dx"/>
 		</supported-by>
 	</mime-type>
 
@@ -356,7 +404,7 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-mol2" support="yes" added="0.1.91">
-		<_comment>SYBYL Portable Represenation Format</_comment>
+		<_comment>SYBYL Portable Representation Format</_comment>
 		<glob pattern="*.mol2"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -528,6 +576,26 @@
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-shelx" support="yes" added="0.1.93">
+		<_comment>ShelX Document</_comment>
+		<glob pattern="*.res"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application name="shelx"/>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-vmd" support="yes" added="0.1.93">
+		<_comment>Visual Molecular Dynamics</_comment>
+		<glob pattern="*.vmd"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<supported-by>
+			<application name="vmd"/>
+		</supported-by>
 	</mime-type>
 
 	<mime-type type="chemical/x-xyz" support="yes" added="0.1.90">
