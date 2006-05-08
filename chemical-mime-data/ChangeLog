@@ -3,6 +3,12 @@
 
 2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* src/chemical-mime-database.xml.in: Removing useless spaces and tabs
+	at line-ends.
+	(chemical/x-genbank): Fixed an invalidity, which clashes with the DTD.
+
+2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* TODO: Removed stuff done by Jerome.
 
 	* ChangeLog: Added missing entry for Jeromes last commit.
