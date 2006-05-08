@@ -19,7 +19,7 @@ dnl --------------------------------------------------------------------------
 dnl intltool/gettext
 dnl --------------------------------------------------------------------------
 
-ALL_LINGUAS="de"
+ALL_LINGUAS="de fr"
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST([GETTEXT_PACKAGE])
 AM_GNU_GETTEXT([external])
