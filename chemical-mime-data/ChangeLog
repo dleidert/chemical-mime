@@ -3,6 +3,23 @@
 
 2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* TODO: Removed stuff done by Jerome.
+
+	* ChangeLog: Added missing entry for Jeromes last commit.
+
+2006-05-08 Jerome Pansanel <j.pansanel@pansanel.net>
+
+	* configure.ac (ALL_LINGUAS): Re-Added French to available
+	translations.
+
+	* src/chemical-mime-database.xml.in: Added chemical/x-genbank,
+	chemical/x-inchi, chemical/x-inchi-xml, chemical/x-jcamp-dx,
+	chemical/x-shelx, chemical/x-vmd MIME types (kfile_chemical support).
+	(chemical/x-daylight-smiles): Added one missing pattern.
+	(chemical/x-dmol, chemical/x-mol2): Fixed a typo in the comment.
+
+2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* TODO: Added note about KDE and GNOME MIME magic databases.
 
 2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
