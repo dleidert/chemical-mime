@@ -243,9 +243,11 @@
 
 	<mime-type type="chemical/x-genbank" support="yes" added="0.1.93">
 		<_comment>GenBank Flat File Format</_comment>
-		<glob pattern="*.gb"/>
-		<glob pattern="*.gen"/>
+		<glob pattern="*.gb"/> <!-- possible clash with application/x-gameboy-rom -->
+		<glob pattern="*.gen"/> <!-- possible clash with application/x-genesis-rom -->
 		<sub-class-of type="text/plain"/>
+		<conflicts type="application/x-gameboy-rom" gnome="yes"/>
+		<conflicts type="application/x-genesis-rom" gnome="yes"/>
 		<icon/>
 		<supported-by>
 			<application name="biojava"/>

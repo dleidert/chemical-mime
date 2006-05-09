@@ -1,6 +1,11 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-05-09 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* src/chemical-mime-database.xml.in (chemical/x-genbank): Added
+	missing conflicts information.
+
 2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* src/chemical-mime-database.xml.in: Added more comments to the DTD
