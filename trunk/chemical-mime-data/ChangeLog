@@ -3,6 +3,17 @@
 
 2006-05-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* NEWS: Released version 0.1.93.
+
+	* chemical-mime-data.pc.in (Requires): Small fix for a better output.
+
+	* configure.ac (CHEMICAL_MIME_DEPS): Ditto.
+
+	* src/chemical-mime-database.xml.in: Added comments to show up in
+	gettext's po files. Added InChI and JCAMP acronym.
+
+2006-05-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* Fixed CVS repository content to get the state before sf.net
 	CVS service crashed.
 

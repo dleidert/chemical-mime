@@ -1,12 +1,25 @@
 # Document  $Id$
 # Summary   News for every release.
 
-Version 0.1.93 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
+Version 0.1.93 2006-05-12 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Fixed an important build issue leading to a mispelled 'Pattern(s)'
+	field in KDE's .desktop files.
 
 	* Fixed several minor build issues.
 
-	* Completed/Added assignment and support for xdrawchem, molden and
-	gchem3d-viewer (gnome-chemistry-utils) was added.
+	* Completed/Added assignment and support for xdrawchem, molden,
+	gchem3d-viewer (gnome-chemistry-utils) and kfile_chemical was added:
+	chemical/x-gamess-input, chemical/x-mopac-out, chemical/x-genbank,
+	chemical/x-inchi, chemical/x-inchi-xml, chemical/x-jcamp-dx,
+	chemical/x-shelx, chemical/x-vmd.
+
+	* Fixed content and improved support for chemical/x-mdl-molfile,
+	chemical/x-mdl-rdfile, chemical/x-mdl-rxnfile, chemical/x-mdl-sdfile,
+	chemical/x-mdl-tgf, chemical/x-daylight-smiles, chemical/x-dmol,
+	chemical/x-mol2.
+
+	* Re-Added French translations (thanks to Jerome Pansanel).
 
 Version 0.1.92 2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
