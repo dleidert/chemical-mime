@@ -3,6 +3,14 @@
 
 2006-05-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* configure.ac (AC_PACKAGE_VERSION): Post-release version bump to
+	0.1.94.
+
+	* Makefile.am (MAINTAINERCLEANFILES): Just a cosmetic change (more
+	general expression).
+
+2006-05-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* NEWS: Released version 0.1.93.
 
 	* chemical-mime-data.pc.in (Requires): Small fix for a better output.
