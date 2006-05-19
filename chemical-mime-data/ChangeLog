@@ -1,6 +1,11 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-05-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* Fixed CVS repository content to get the state before sf.net
+	CVS service crashed.
+
 2006-05-09 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* src/chemical-mime-database.xml.in (chemical/x-genbank): Added
