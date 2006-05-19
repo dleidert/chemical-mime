@@ -204,7 +204,7 @@ if test "$DIR_FDMIME" != "no" ; then
 	echo -n "checking for shared-mime-info >= 0.12... "
 	PKG_CHECK_EXISTS(
 		[shared-mime-info >= 0.12],
-		[echo "yes" ;	CHEMICAL_MIME_DEPS="shared-mime-info $CHEMICAL_MIME_DEPS"],
+		[echo "yes" ; CHEMICAL_MIME_DEPS+=" shared-mime-info"],
 		[echo "no"  ; AC_MSG_ERROR([shared-mime-info package missing.])]
 	)
 	AC_ARG_VAR(
@@ -221,7 +221,7 @@ if test "$DIR_GNOMEMIME" != "no" ; then
 	echo -n "checking for gnome-mime-data... "
 	PKG_CHECK_EXISTS(
 		[gnome-mime-data-2.0],
-		[echo "yes" ; CHEMICAL_MIME_DEPS="gnome-mime-data-2.0 $CHEMICAL_MIME_DEPS"],
+		[echo "yes" ; CHEMICAL_MIME_DEPS+=" gnome-mime-data-2.0"],
 		[echo "no"  ; AC_MSG_ERROR([gnome-mime-data package missing.])]
 	)
 fi

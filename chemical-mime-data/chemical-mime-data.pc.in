@@ -7,6 +7,6 @@ Name: @PACKAGE@
 Description: Chemical MIME and file type support for KDE, GNOME and ROX desktops.
 URL: http://chemical-mime.sf.net
 Version: @VERSION@
-Requires: @CHEMICAL_MIME_DEPS@
+Requires:@CHEMICAL_MIME_DEPS@
 Libs:
 Cflags:
