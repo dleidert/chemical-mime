@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-02 19:21+0200\n"
+"POT-Creation-Date: 2006-05-19 14:49+0200\n"
 "PO-Revision-Date: 2006-05-08 13:44+0100\n"
 "Last-Translator: Jerome Pansanel <j.pansanel@pansanel.net>\n"
 "Language-Team: french <fr@li.org>\n"
@@ -24,184 +24,234 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
 
-#: ../src/chemical-mime-database.xml.in.h:1
+#. chemical/x-msi-msi
+#: ../src/chemical-mime-database.xml.in.h:2
 msgid "Accelrys Data Model File"
 msgstr "Fichier Accelrys de Modèle de Données"
 
-#: ../src/chemical-mime-database.xml.in.h:2
+#. chemical/x-msi-hessian
+#: ../src/chemical-mime-database.xml.in.h:4
 msgid "Accelrys Hessian File"
 msgstr "Fichier Accelrys de Matrice de Hesse"
 
-#: ../src/chemical-mime-database.xml.in.h:3
+#. chemical/x-msi-mdf
+#: ../src/chemical-mime-database.xml.in.h:6
 msgid "Accelrys Molecular Data File"
 msgstr "Fichier Accelrys de Données Moléculaires"
 
-#: ../src/chemical-mime-database.xml.in.h:4
+#. chemical/x-msi-car
+#: ../src/chemical-mime-database.xml.in.h:8
 msgid "Accelrys structure file"
 msgstr "Fichier Accelrys de Structure"
 
-#: ../src/chemical-mime-database.xml.in.h:5
+#. chemical/x-alchemy
+#: ../src/chemical-mime-database.xml.in.h:10
 msgid "Alchemy Format"
 msgstr "Format Alchemy"
 
-#: ../src/chemical-mime-database.xml.in.h:6
+#. chemical/x-pdb
+#: ../src/chemical-mime-database.xml.in.h:12
 msgid "Brookhaven Protein DataBase File Format"
 msgstr "Format de Fichier de la Base de Données de Protéines Brookhaven"
 
-#: ../src/chemical-mime-database.xml.in.h:7
+#. chemical/x-cache
+#: ../src/chemical-mime-database.xml.in.h:14
 msgid "CAChe MolStruct Format"
 msgstr "Format CAChe MolStruct"
 
-#: ../src/chemical-mime-database.xml.in.h:8
+#: ../src/chemical-mime-database.xml.in.h:15
 msgid "CIF"
 msgstr "CIF"
 
-#: ../src/chemical-mime-database.xml.in.h:9
+#: ../src/chemical-mime-database.xml.in.h:16
 msgid "CML"
 msgstr "CML"
 
-#: ../src/chemical-mime-database.xml.in.h:10
+#. chemical/x-chem3d
+#: ../src/chemical-mime-database.xml.in.h:18
 msgid "Chem3D Format"
 msgstr "Format Chem3D"
 
-#: ../src/chemical-mime-database.xml.in.h:11
+#. chemical/x-cdx
+#: ../src/chemical-mime-database.xml.in.h:20
 msgid "ChemDraw eXchange Format"
 msgstr "Format d'Échange ChemDraw"
 
-#: ../src/chemical-mime-database.xml.in.h:12
+#. chemical/x-cml
+#: ../src/chemical-mime-database.xml.in.h:22
 msgid "Chemical Markup Language"
 msgstr "Langage de Balisage Chimique"
 
-#: ../src/chemical-mime-database.xml.in.h:13
+#: ../src/chemical-mime-database.xml.in.h:23
 msgid "Crystallographic Information File"
 msgstr "Format d'Échange Cristallographique"
 
-#: ../src/chemical-mime-database.xml.in.h:14
+#. chemical/x-cif
+#: ../src/chemical-mime-database.xml.in.h:25
 msgid "Crystallographic Information File Format"
 msgstr "Format d'Échange Cristallographique"
 
-#: ../src/chemical-mime-database.xml.in.h:15
+#. chemical/x-dmol
+#: ../src/chemical-mime-database.xml.in.h:27
 msgid "DMol Output Format"
 msgstr "Format de Sortie DMol "
 
-#: ../src/chemical-mime-database.xml.in.h:16
+#: ../src/chemical-mime-database.xml.in.h:28
 msgid "GAMESS"
 msgstr "GAMESS"
 
-#: ../src/chemical-mime-database.xml.in.h:17
+#. chemical/x-gamess-input
+#: ../src/chemical-mime-database.xml.in.h:30
 msgid "GAMESS Input format"
 msgstr "Format d'Entrée GAMESS"
 
-#: ../src/chemical-mime-database.xml.in.h:18
+#. chemical/x-gaussian-input
+#: ../src/chemical-mime-database.xml.in.h:32
 msgid "Gaussian Input Format"
 msgstr "Format d'Entrée Gaussian"
 
-#: ../src/chemical-mime-database.xml.in.h:19
+#. chemical/x-gaussian-log
+#: ../src/chemical-mime-database.xml.in.h:34
 msgid "Gaussian Log Format"
 msgstr "Format de Journal Gaussian"
 
-#: ../src/chemical-mime-database.xml.in.h:20
+#. chemical/x-genbank
+#: ../src/chemical-mime-database.xml.in.h:36
 msgid "GenBank Flat File Format"
 msgstr "Format de Fichier GenBank"
 
-#: ../src/chemical-mime-database.xml.in.h:21
+#: ../src/chemical-mime-database.xml.in.h:37
 msgid "General Atomic and Molecular Electronic Structure System"
 msgstr ""
 
-#: ../src/chemical-mime-database.xml.in.h:22
+#. chemical/x-hin
+#: ../src/chemical-mime-database.xml.in.h:39
 msgid "HyperChem Molecule File Format"
 msgstr "Format de Fichier de Molécule HyperChem"
 
-#: ../src/chemical-mime-database.xml.in.h:23
+#. chemical/x-inchi-xml
+#: ../src/chemical-mime-database.xml.in.h:41
 msgid "IUPAC International Chemical Identifier"
 msgstr ""
 
-#: ../src/chemical-mime-database.xml.in.h:24
+#: ../src/chemical-mime-database.xml.in.h:42
+msgid "InChI"
+msgstr ""
+
+#: ../src/chemical-mime-database.xml.in.h:43
+msgid "International Chemical Identifier"
+msgstr ""
+
+#: ../src/chemical-mime-database.xml.in.h:44
+msgid "JCAMP"
+msgstr ""
+
+#. chemical/x-jcamp-dx
+#: ../src/chemical-mime-database.xml.in.h:46
 msgid "JCAMP Spectroscopic Data Exchange Format"
 msgstr ""
 
-#: ../src/chemical-mime-database.xml.in.h:25
+#: ../src/chemical-mime-database.xml.in.h:47
+msgid "Joint Committee on Atomic and Molecular Physical Data"
+msgstr ""
+
+#: ../src/chemical-mime-database.xml.in.h:48
 msgid "MDL"
 msgstr "MDL"
 
-#: ../src/chemical-mime-database.xml.in.h:26
+#. chemical/x-mdl-rxnfile
+#: ../src/chemical-mime-database.xml.in.h:50
 msgid "MDL 2D Reaction-Data Representation Format"
 msgstr "Format MDL de Représentation 2D de Données Réactionnelles"
 
-#: ../src/chemical-mime-database.xml.in.h:27
+#. chemical/x-mdl-molfile
+#: ../src/chemical-mime-database.xml.in.h:52
 msgid "MDL Molfile Format"
 msgstr "Format de Fichier MDL Molfile"
 
-#: ../src/chemical-mime-database.xml.in.h:28
+#. chemical/x-mdl-rdfile
+#: ../src/chemical-mime-database.xml.in.h:54
 msgid "MDL Reaction Format"
 msgstr "Format MDL de Réactions"
 
-#: ../src/chemical-mime-database.xml.in.h:29
+#. chemical/x-mdl-sdfile
+#: ../src/chemical-mime-database.xml.in.h:56
 msgid "MDL Structure Data Format"
 msgstr "Format de Fichier MDL de Données Structurelles"
 
-#: ../src/chemical-mime-database.xml.in.h:30
+#. chemical/x-mdl-tgf
+#: ../src/chemical-mime-database.xml.in.h:58
 msgid "MDL Transportable Graphics Format"
 msgstr "Format MDL de Graphiques Transportables"
 
-#: ../src/chemical-mime-database.xml.in.h:31
+#: ../src/chemical-mime-database.xml.in.h:59
 msgid "MOPAC"
 msgstr "MOPAC"
 
-#: ../src/chemical-mime-database.xml.in.h:32
+#. chemical/x-mopac-graph
+#: ../src/chemical-mime-database.xml.in.h:61
 msgid "MOPAC Graphical Format"
 msgstr "Format Graphique MOPAC"
 
-#: ../src/chemical-mime-database.xml.in.h:33
+#. chemical/x-mopac-input
+#: ../src/chemical-mime-database.xml.in.h:63
 msgid "MOPAC Input Format"
 msgstr "Format d'Entrée MOPAC"
 
-#: ../src/chemical-mime-database.xml.in.h:34
+#. chemical/x-mopac-out
+#: ../src/chemical-mime-database.xml.in.h:65
 #, fuzzy
 msgid "MOPAC Output Format"
 msgstr "Format d'Entrée MOPAC"
 
-#: ../src/chemical-mime-database.xml.in.h:35
+#. chemical/x-macromodel-input
+#: ../src/chemical-mime-database.xml.in.h:67
 msgid "MacroModel Molecular Mechanics Format"
 msgstr "Format de Mécanique Moléculaire MacroModel"
 
-#: ../src/chemical-mime-database.xml.in.h:36
+#. chemical/x-mmcif
+#: ../src/chemical-mime-database.xml.in.h:69
 msgid "MacroMolecular Crystallographic Information File Format"
-msgstr "Format d'Échange Cristallographique pour les Structures de Macromolécule"
+msgstr ""
+"Format d'Échange Cristallographique pour les Structures de Macromolécule"
 
-#: ../src/chemical-mime-database.xml.in.h:37
+#: ../src/chemical-mime-database.xml.in.h:70
 msgid "Molecular Design Ltd."
 msgstr ""
 
-#: ../src/chemical-mime-database.xml.in.h:38
+#: ../src/chemical-mime-database.xml.in.h:71
 msgid "Molecular Orbital PACkage"
 msgstr ""
 
-#: ../src/chemical-mime-database.xml.in.h:39
+#: ../src/chemical-mime-database.xml.in.h:72
 msgid "SMILES"
 msgstr "SMILES"
 
-#: ../src/chemical-mime-database.xml.in.h:40
+#. chemical/x-daylight-smiles
+#: ../src/chemical-mime-database.xml.in.h:74
 msgid "SMILES Format"
 msgstr "Format SMILES"
 
-#: ../src/chemical-mime-database.xml.in.h:41
+#. chemical/x-mol2
+#: ../src/chemical-mime-database.xml.in.h:76
 msgid "SYBYL Portable Representation Format"
 msgstr "Format SYBYL de Représentation Portable"
 
-#: ../src/chemical-mime-database.xml.in.h:42
+#. chemical/x-shelx
+#: ../src/chemical-mime-database.xml.in.h:78
 msgid "ShelX Document"
 msgstr "Document ShelX"
 
-#: ../src/chemical-mime-database.xml.in.h:43
+#: ../src/chemical-mime-database.xml.in.h:79
 msgid "Simplified Molecular Input Line Entry Specification"
 msgstr ""
 
-#: ../src/chemical-mime-database.xml.in.h:44
+#. chemical/x-vmd
+#: ../src/chemical-mime-database.xml.in.h:81
 msgid "Visual Molecular Dynamics"
 msgstr "Système de Visualisation de Dynamique Moléculaire"
 
-#: ../src/chemical-mime-database.xml.in.h:45
+#. chemical/x-xyz
+#: ../src/chemical-mime-database.xml.in.h:83
 msgid "XYZ Co-ordinate Animation Format"
 msgstr "Format de Coordonnées XYZ d'Animation"
-
