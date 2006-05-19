@@ -34,8 +34,8 @@ MAINTAINERCLEANFILES = \
 	missing \
 	mkinstalldirs \
 	Makefile.in \
-	chemical-mime-data-@VERSION@.tar.gz \
-	chemical-mime-data-@VERSION@.tar.bz2
+	@PACKAGE@-@VERSION@.tar.gz \
+	@PACKAGE@-@VERSION@.tar.bz2
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-database
 
