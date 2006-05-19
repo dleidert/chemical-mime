@@ -2,7 +2,15 @@
 # Summary   File-changelog for the internationalization data files of the
 #           chemical-mime-data project.
 
-2006-05-05 Jerome Pansanel < j.pansanel@pansanel.net>
+2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* chemical-mime-data.pot: Updated.
+
+	* de.po: Ditto.
+
+	* fr.po: Ditto.
+
+2006-05-05 Jerome Pansanel <j.pansanel@pansanel.net>
 
 	* add fr.po
 
