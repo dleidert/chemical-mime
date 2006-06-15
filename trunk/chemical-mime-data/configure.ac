@@ -23,6 +23,7 @@ dnl --------------------------------------------------------------------------
 ALL_LINGUAS="de fr"
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST([GETTEXT_PACKAGE])
+AM_PO_SUBDIRS
 IT_PROG_INTLTOOL
 ITPROG_VERSION=`intltoolize --version | awk '{print $4}'`
 ITPROG_VERSION_MILES=`echo $ITPROG_VERSION | cut -f1 -d.`
@@ -35,7 +36,6 @@ ITPROG_VERSION_ALL=`expr $ITPROG_VERSION_MILES '*' 1000000 + $ITPROG_VERSION_MAJ
 echo -n "Checking for intltool >= 0.35.0 ..."
 if test "$ITPROG_VERSION_ALL" -lt 35000; then
 	echo "no"
-	AM_PO_SUBDIRS
 	USE_NLS=no
 	AC_SUBST([USE_NLS])
 	CATOBJEXT=.gmo
