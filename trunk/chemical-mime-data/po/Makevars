@@ -1,0 +1,10 @@
+# Document  $Id$
+# Summary   Makevars for the chemical-mime-data project internationalization.
+#
+# Copyright (C) 2006 by Daniel Leidert.
+#
+# This file is free software. The copyright owner gives unlimited
+# permission to copy, distribute and modify it.
+
+MSGID_BUGS_ADDRESS = chemical-mime-devel@lists.sourceforge.net
+

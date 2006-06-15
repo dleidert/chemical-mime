@@ -23,13 +23,13 @@
 -->
 <xsl:template name="write.chunk">
 	<xsl:param name="filename" select="''"/>
-  <xsl:param name="method" select="''"/>
+	<xsl:param name="method" select="''"/>
 	<xsl:param name="indent" select="''"/>
 	<xsl:param name="omit-xml-declaration" select="''"/>
 	<xsl:param name="media-type" select="''"/>
 	<xsl:param name="doctype-public" select="''"/>
 	<xsl:param name="doctype-system" select="''"/>
-  <xsl:param name="content"/>
+	<xsl:param name="content"/>
 
 	<!--
 		Output the specified file.
@@ -98,13 +98,13 @@
 			</xalanredirect:write>
 		</xsl:when>
 		<xsl:otherwise>
-      <!-- it doesn't matter since we won't be making chunks... -->
-      <xsl:message terminate="yes">
-        <xsl:text>Can't make chunks with </xsl:text>
-        <xsl:value-of select="system-property('xsl:vendor')"/>
-        <xsl:text>'s processor.</xsl:text>
-      </xsl:message>
-    </xsl:otherwise>
+			<!-- it doesn't matter since we won't be making chunks... -->
+			<xsl:message terminate="yes">
+				<xsl:text>Can't make chunks with </xsl:text>
+				<xsl:value-of select="system-property('xsl:vendor')"/>
+				<xsl:text>'s processor.</xsl:text>
+			</xsl:message>
+		</xsl:otherwise>
 	</xsl:choose>
 	
 	<!--
@@ -148,12 +148,10 @@ Type=MimeType&#10;</xsl:text>
   It is distributed under the GNU Lesser General Public License version 2.1.
 
   Database: </xsl:text>
-  	<xsl:value-of select="chemical-mime/@id"/>
-  	<xsl:text>&#10;</xsl:text>
-  </xsl:comment>
+		<xsl:value-of select="chemical-mime/@id"/>
+		<xsl:text>&#10;</xsl:text>
+	</xsl:comment>
 	<xsl:text>&#10;&#10;</xsl:text>
 </xsl:template>
-
-
 
 </xsl:stylesheet>

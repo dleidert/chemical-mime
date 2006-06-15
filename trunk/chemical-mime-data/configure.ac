@@ -14,6 +14,7 @@ dnl --------------------------------------------------------------------------
 AC_INIT([chemical-mime-data],[0.1.94],[http://sourceforge.net/projects/chemical-mime/])
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_REVISION($Revision$)
+AC_CONFIG_SRCDIR(src/chemical-mime-database.xml.in)
 
 dnl --------------------------------------------------------------------------
 dnl intltool/gettext
@@ -22,12 +23,26 @@ dnl --------------------------------------------------------------------------
 ALL_LINGUAS="de fr"
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST([GETTEXT_PACKAGE])
-AM_GNU_GETTEXT([external])
-USE_NLS=no
-AC_SUBST([USE_NLS])
-CATOBJEXT=.gmo
-AC_SUBST([CATOBJEXT])
 IT_PROG_INTLTOOL
+ITPROG_VERSION=`intltoolize --version | awk '{print $4}'`
+ITPROG_VERSION_MILES=`echo $ITPROG_VERSION | cut -f1 -d.`
+ITPROG_VERSION_MAJOR=`echo $ITPROG_VERSION | cut -f2 -d.`
+ITPROG_VERSION_MINOR=`echo $ITPROG_VERSION | cut -f3 -d.`
+test -n "$ITPROG_VERSION_MILES" || ITPROG_VERSION_MILES=0
+test -n "$ITPROG_VERSION_MAJOR" || ITPROG_VERSION_MAJOR=0
+test -n "$ITPROG_VERSION_MINOR" || ITPROG_VERSION_MINOR=0
+ITPROG_VERSION_ALL=`expr $ITPROG_VERSION_MILES '*' 1000000 + $ITPROG_VERSION_MAJOR '*' 1000 + $ITPROG_VERSION_MINOR`
+echo -n "Checking for intltool >= 0.35.0 ..."
+if test "$ITPROG_VERSION_ALL" -lt 35000; then
+	echo "no"
+	AM_PO_SUBDIRS
+	USE_NLS=no
+	AC_SUBST([USE_NLS])
+	CATOBJEXT=.gmo
+	AC_SUBST([CATOBJEXT])
+else
+	echo "yes"
+fi
 
 dnl --------------------------------------------------------------------------
 dnl necessary applications
