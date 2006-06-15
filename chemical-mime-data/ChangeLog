@@ -1,6 +1,31 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Added check-news option.
+	(MAINTAINERCLEANFILES): Removing .md5 sums too. Using a shorter
+	expression for the archives.
+	(DISTCHECK_CONFIGURE_FLAGS): Added the --disable-nls option.
+
+	* NEWS: Added an entry for the post release version bump to version
+	0.1.94 to fit new check-news option.
+
+	* configure.ac: intltool fixed several issues in the latest 0.35.0
+	release. Now it uses AM_PO_SUBDIRS instead of AM_GNU_GETTEXT([..])
+	(http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=365727). Some more
+	changes added because of intltools latest release. Added the
+	AC_CONFIG_SRCDIR macro.
+
+	* freedesktop.org/Makefile.am (install-data-hook)
+	(uninstall-hook): Fixed the path expression, so 'make install' no
+	longer fails in the special case of using the DESTDIR variable as user
+	without the rights to write to $datadir/mime.
+
+	* po/Makevars: Added MSGID_BUGS_ADDRESS variable.
+
+	* xsl/cmd_common.xsl: Just a few cosmetic fixes for the formatting.
+
 2006-05-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* configure.ac (AC_PACKAGE_VERSION): Post-release version bump to

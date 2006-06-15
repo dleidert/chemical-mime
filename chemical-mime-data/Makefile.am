@@ -8,7 +8,7 @@
 
 SUBDIRS = src xsl freedesktop.org gnome kde icons po
 
-AUTOMAKE_OPTIONS = dist-bzip2
+AUTOMAKE_OPTIONS = check-news dist-bzip2
 
 EXTRA_DIST = \
 	HACKING \
@@ -34,10 +34,10 @@ MAINTAINERCLEANFILES = \
 	missing \
 	mkinstalldirs \
 	Makefile.in \
-	@PACKAGE@-@VERSION@.tar.gz \
-	@PACKAGE@-@VERSION@.tar.bz2
+	@PACKAGE@-@VERSION@.tar.{gz,bz2} \
+	@PACKAGE@-@VERSION@.tar.{gz,bz2}.md5
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-update-database
+DISTCHECK_CONFIGURE_FLAGS = --disable-update-database --disable-nls
 
 
 pkgconfigdir = $(datadir)/pkgconfig
