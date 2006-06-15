@@ -3,6 +3,10 @@
 
 2006-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* ABOUT-NLS: Removed.
+
+2006-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* configure.ac: Fixed usage of AM_PO_SUBDIRS. It is necessary in every
 	case to create po/Makefile.
 
