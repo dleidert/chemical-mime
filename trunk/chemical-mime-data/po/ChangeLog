@@ -2,6 +2,10 @@
 # Summary   File-changelog for the internationalization data files of the
 #           chemical-mime-data project.
 
+2006-07-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* chemical-mime-data.pot: Removed.
+
 2006-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* chemical-mime-data.pot:  Added Report-Msgid-Bugs-To: field entry.
