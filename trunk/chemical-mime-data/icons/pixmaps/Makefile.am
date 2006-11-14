@@ -14,7 +14,7 @@ pixmaps_list = gnome-mime-chemical.png
 
 
 if BOOL_GNOME_ICONS
-icondir = $(DIR_PIXMAPS)
-icon_DATA = $(pixmaps_list)
+pixmapsdir   = @with_pixmaps@
+pixmaps_DATA = $(pixmaps_list)
 endif #BOOL_GNOME_ICONS
 

@@ -12,6 +12,9 @@ CLEANFILES = *.png *.svgz
 
 MAINTAINERCLEANFILES = Makefile.in
 
+gnomethemedir = @with_gnome_theme@
+
+
 icon_sources = gnome-mime-chemical.svg
 icon_sizes   = 16 22 24 32 36 48 64 72 96 128 192
 
@@ -31,23 +34,23 @@ if BOOL_GNOME_THEME
 all-local: $(icon_sources:.svg=.svgz)
 
 install-data-local:
-	$(mkinstalldirs) $(DESTDIR)$(DIR_GNOMETHEME)
+	$(mkinstalldirs) $(DESTDIR)$(gnomethemedir)
 	for file in $(icon_sources) ; do \
 		icon=`echo $${file} | sed -e 's/\.svg$$//'` ; \
-		$(mkinstalldirs) $(DESTDIR)$(DIR_GNOMETHEME)/scalable/mimetypes ; \
-		$(INSTALL_DATA) $${icon}.svgz $(DESTDIR)$(DIR_GNOMETHEME)/scalable/mimetypes ; \
+		$(mkinstalldirs) $(DESTDIR)$(gnomethemedir)/scalable/mimetypes ; \
+		$(INSTALL_DATA) $${icon}.svgz $(DESTDIR)$(gnomethemedir)/scalable/mimetypes ; \
 		for size in $(icon_sizes) ; do \
-			$(mkinstalldirs) $(DESTDIR)$(DIR_GNOMETHEME)/$${size}x$${size}/mimetypes ; \
-			$(INSTALL_DATA) $${icon}_$${size}.png $(DESTDIR)$(DIR_GNOMETHEME)/$${size}x$${size}/mimetypes/$${icon}.png ; \
+			$(mkinstalldirs) $(DESTDIR)$(gnomethemedir)/$${size}x$${size}/mimetypes ; \
+			$(INSTALL_DATA) $${icon}_$${size}.png $(DESTDIR)$(gnomethemedir)/$${size}x$${size}/mimetypes/$${icon}.png ; \
 		done \
 	done
 
 uninstall-hook:
 	for file in $(icon_sources) ; do \
 		icon=`echo $${file} | sed -e 's/\.svg$$//'` ; \
-		rm -f $(DESTDIR)$(DIR_GNOMETHEME)/scalable/mimetypes/$${icon}.svgz ; \
+		rm -f $(DESTDIR)$(gnomethemedir)/scalable/mimetypes/$${icon}.svgz ; \
 		for size in $(icon_sizes) ; do \
-			rm -f $(DESTDIR)$(DIR_GNOMETHEME)/$${size}x$${size}/mimetypes/$${icon}.png ; \
+			rm -f $(DESTDIR)$(gnomethemedir)/$${size}x$${size}/mimetypes/$${icon}.png ; \
 		done \
 	done
 

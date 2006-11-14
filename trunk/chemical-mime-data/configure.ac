@@ -33,15 +33,15 @@ test -n "$ITPROG_VERSION_MILES" || ITPROG_VERSION_MILES=0
 test -n "$ITPROG_VERSION_MAJOR" || ITPROG_VERSION_MAJOR=0
 test -n "$ITPROG_VERSION_MINOR" || ITPROG_VERSION_MINOR=0
 ITPROG_VERSION_ALL=`expr $ITPROG_VERSION_MILES '*' 1000000 + $ITPROG_VERSION_MAJOR '*' 1000 + $ITPROG_VERSION_MINOR`
-echo -n "Checking for intltool >= 0.35.0 ..."
+AC_MSG_CHECKING([for intltool >= 0.35.0])
 if test "$ITPROG_VERSION_ALL" -lt 35000; then
-	echo "no"
+	AC_MSG_RESULT([no])
 	USE_NLS=no
 	AC_SUBST([USE_NLS])
 	CATOBJEXT=.gmo
 	AC_SUBST([CATOBJEXT])
 else
-	echo "yes"
+	AC_MSG_RESULT([yes])
 fi
 
 dnl --------------------------------------------------------------------------
@@ -61,11 +61,14 @@ dnl Choose to run update-mime-database
 AC_ARG_ENABLE(
 	[update-database],
 	AC_HELP_STRING(
-		[--disable-update-database],
-		[Don't run the update-mime-database utility after installation.]
+		[--enable-update-database],
+		[
+		 enable (or disable) the running of the update-mime-database utility after installation
+		 @<:@default=yes@:>@
+		]
 	),
-	[ENABLE_UPDATEDB=$enableval],
-	[ENABLE_UPDATEDB=yes]
+	[enable_update_database=$enableval],
+	[enable_update_database=yes]
 )
 
 dnl Choose to run rsvg or convert if both are installed
@@ -73,10 +76,13 @@ AC_ARG_ENABLE(
 	[convert],
 	AC_HELP_STRING(
 		[--enable-convert],
-		[Enable the usage of convert (imagemagick) if both rsvg and convert are available.]
+		[
+		 enable or disable the usage of convert (imagemagick) if both rsvg and convert are available
+		 @<:@default=no@:>@
+		]
 	),
-	[ENABLE_CONVERT=$enableval],
-	[ENABLE_CONVERT=no]
+	[enable_convert=$enableval],
+	[enable_convert=no]
 )
 
 dnl --------------------------------------------------------------------------
@@ -85,21 +91,21 @@ dnl --------------------------------------------------------------------------
 
 AC_ARG_VAR(
 	[CONVERT],
-	[The convert binary with path. Use it to define or override the location of convert.]
+	[The 'convert' binary with path. Use it to define or override the location of 'convert'.]
 )
-AC_PATH_PROG([CONVERT], [convert])
+AC_PATH_PROG([CONVERT], [convert], [no])
 AC_SUBST([CONVERT])
 
-if test "x$ENABLE_CONVERT" != "xyes" -a "x$CONVERT" = "x" ; then
-AC_ARG_VAR(
-	[RSVG],
-	[The rsvg binary with path. Use it to define or override the location of rsvg.]
-)
-AC_PATH_PROG([RSVG], [rsvg])
-AC_SUBST([RSVG])
+if test "x$enable_convert" != "xyes" -a "x$CONVERT" = "xno" ; then
+	AC_ARG_VAR(
+		[RSVG],
+		[The 'rsvg' binary with path. Use it to define or override the location of 'rsvg'.]
+	)
+	AC_PATH_PROG([RSVG], [rsvg], [no])
+	AC_SUBST([RSVG])
 fi
 
-if test "x$RSVG" = "x" -a "x$CONVERT" = "x" ; then
+if test "x$RSVG" = "xno" -a "x$CONVERT" = "xno" ; then
 	AC_MSG_ERROR([Cannot find rsvg (librsvg binary) or convert (imagemagick). Please install one of them.])
 fi
 
@@ -108,136 +114,156 @@ dnl install locations
 dnl --------------------------------------------------------------------------
 
 AC_ARG_WITH(
-	[freedesktop_org-mime],
+	[freedesktop-mime],
 	AC_HELP_STRING(
-		[--with-freedesktop_org-mime=DIR],
-		[If the freedesktop.org shared MIME info support files should not be installed, use
-		 --without-freedesktop_org-mime. (default DIR=$datadir/mime)]
+		[--with-freedesktop-mime@<:@=PATH@:>@],
+		[
+		 enable, disable or override the installation directory of the freedesktop.org shared MIME info support files
+		 @<:@default=$datadir/mime@:>@
+		]
 	),
-	[DIR_FDMIME=$withval],
-	[DIR_FDMIME=${datadir}/mime]
+	[
+	 if test "x$withval" = "xyes" ; then
+		 with_freedesktop_mime=${datadir}/mime
+	 fi
+	],
+	[with_freedesktop_mime=${datadir}/mime]
 )
-AC_CACHE_CHECK(
-	[for freedesktop.org shared MIME info support path],
-	[DIR_FDMIME],
-	[DIR_FDMIME=${datadir}/mime]
-)
-AC_SUBST([DIR_FDMIME])
+AC_SUBST([with_freedesktop_mime])
 
 AC_ARG_WITH(
-	[gnome2_4-mime],
+	[gnome-mime],
 	AC_HELP_STRING(
-		[--with-gnome2_4-mime=DIR],
-		[If the old GNOME 2.4 MIME support files should not be installed, use
-		 --without-gnome2_4-mime. (default DIR=$datadir/mime-info)]
+		[--with-gnome-mime@<:@=PATH@:>@],
+		[
+		 enable, disable or override the installation directory of the old GNOME 2.4 MIME support files
+		 @<:@default=$datadir/mime-info@:>@
+		]
 	),
-	[DIR_GNOMEMIME=$withval],
-	[DIR_GNOMEMIME=${datadir}/mime-info]
+	[
+	 if test "x$withval" = "xyes" ; then
+		 with_gnome_mime=${datadir}/mime-info
+	 fi
+	],
+	[with_gnome_mime=${datadir}/mime-info]
 )
-AC_CACHE_CHECK(
-	[for gnome-mime-data mime-info path],
-	[DIR_GNOMEMIME],
-	[DIR_GNOMEMIME=${datadir}/mime-info]
-)
-AC_SUBST([DIR_GNOMEMIME])
+AC_SUBST([with_gnome_mime])
 
 AC_ARG_WITH(
 	[pixmaps],
 	AC_HELP_STRING(
-		[--with-pixmaps=DIR],
-		[GNOME <=2.4 accepts non-themed icons for MIME support.
-		Newer GNOME expect to find themed icons (also for old GNOME 2.4 MIME support). Then
-		you should use --without-pixmaps. (default DIR=$datadir/pixmaps)]
+		[--with-pixmaps@<:@=PATH@:>@],
+		[
+		 enable, disable or override the installation directory of the non-themed GNOME icons
+		 (only for old GNOME 2.4 MIME support files)
+		 @<:@default=$datadir/pixmaps@:>@
+		]
 	),
-	[DIR_PIXMAPS=$withval],
-	[DIR_PIXMAPS=${datadir}/pixmaps]
+	[
+	 if test "x$withval" = "xyes" ; then
+		 with_pixmaps=${datadir}/pixmaps
+	 fi
+	],
+	[with_pixmaps=${datadir}/pixmaps]
 )
-AC_CACHE_CHECK(
-	[for pixmaps path],
-	[DIR_PIXMAPS],
-	[DIR_PIXMAPS=${datadir}/pixmaps]
-)
-AC_SUBST([DIR_PIXMAPS])
+AC_SUBST([with_pixmaps])
 
 AC_ARG_WITH(
 	[gnome-theme],
 	AC_HELP_STRING(
-		[--with-gnome-theme=DIR],
-		[It's strongly recommended to install theme-icons for GNOME into the hicolor-theme.
-		 (default DIR=$datadir/icons/hicolor)]
+		[--with-gnome-theme@<:@=PATH@:>@],
+		[
+		 enable, disable or override the theme-directory, where GNOME icons should be installed
+		 @<:@default=$datadir/icons/hicolor@:>@
+		]
 	),
-	[DIR_GNOMETHEME=$withval],
-	[DIR_GNOMETHEME=${datadir}/icons/hicolor]
+	[
+	 if test "x$withval" = "xyes" ; then
+		 with_gnome_theme=${datadir}/icons/hicolor
+	 fi
+	],
+	[with_gnome_theme=${datadir}/icons/hicolor]
 )
-AC_CACHE_CHECK(
-	[for gnome-theme path],
-	[DIR_GNOMETHEME],
-	[DIR_GNOMETHEME=${datadir}/icons/hicolor]
-)
-AC_SUBST([DIR_GNOMETHEME])
+AC_SUBST([with_gnome_theme])
 
 AC_ARG_WITH(
 	[kde-mime],
 	AC_HELP_STRING(
-		[--with-kde-mime=DIR],
-		[If the KDE 3.x MIME support files should not be installed, use
-		 --without-kde-mime. (default DIR=$datadir/mimelnk)]
+		[--with-kde-mime@<:@=PATH@:>@],
+		[
+		 enable, disable or override the installation directory of the KDE 3.x MIME support files
+		 @<:@default=$datadir/mimelnk@:>@
+		]
 	),
-	[DIR_KDEMIME=$withval],
-	[DIR_KDEMIME=${datadir}/mimelnk]
+	[
+	 if test "x$withval" = "xyes" ; then
+		 with_kde_mime=${datadir}/mimelnk
+	 fi
+	],
+	[with_kde_mime=${datadir}/mimelnk]
 )
-AC_CACHE_CHECK(
-	[for KDE mimelnk path],
-	[DIR_KDEMIME],
-	[DIR_KDEMIME=${datadir}/mimelnk]
-)
-AC_SUBST([DIR_KDEMIME])
+AC_SUBST([with_kde_mime])
 
 AC_ARG_WITH(
 	[kde-theme],
 	AC_HELP_STRING(
-		[--with-kde-theme=DIR],
-		[Default theme for KDE is crystalsvg.
-		 (default DIR=$datadir/icons/crystalsvg)]
+		[--with-kde-theme@<:@=PATH@:>@],
+		[
+		 enable, disable or override the theme-directory, where KDE icons should be installed
+		 @<:@default=$datadir/icons/crystalsvg@:>@
+		]
 	),
-	[DIR_KDETHEME=$withval],
-	[DIR_KDETHEME=${datadir}/icons/crystalsvg]
+	[
+	 if test "x$withval" = "xyes" ; then
+		 with_kde_mime=${datadir}/icons/crystalsvg
+	 fi
+	],
+	[with_kde_mime=${datadir}/icons/crystalsvg]
 )
-AC_CACHE_CHECK(
-	[for KDE theme path],
-	[DIR_KDETHEME],
-	[DIR_KDETHEME=${datadir}/icons/crystalsvg]
-)
-AC_SUBST([DIR_KDETHEME])
+AC_SUBST([with_kde_mime])
 
 dnl --------------------------------------------------------------------------
 dnl necessary checks
 dnl --------------------------------------------------------------------------
 
 dnl necessary checks and additions for freedesktop.org shared-mime-info
-if test "$DIR_FDMIME" != "no" ; then
-	echo -n "checking for shared-mime-info >= 0.12... "
+if test "x$with_freedesktop_mime" != "xno" ; then
+	AC_MSG_CHECKING([for shared-mime-info >= 0.12])
 	PKG_CHECK_EXISTS(
 		[shared-mime-info >= 0.12],
-		[echo "yes" ; CHEMICAL_MIME_DEPS+=" shared-mime-info"],
-		[echo "no"  ; AC_MSG_ERROR([shared-mime-info package missing.])]
+		[
+		 AC_MSG_RESULT([yes])
+		 CHEMICAL_MIME_DEPS+=" shared-mime-info"
+		],
+		[
+		 AC_MSG_RESULT([no])
+		 AC_MSG_ERROR([shared-mime-info package missing.])
+		]
 	)
 	AC_ARG_VAR(
 		[UPDATE_MIME_DATABASE],
-		[The update-mime-database binary with path.
-		 Use it to define or override the location of update-mime-database.]
+		[
+		 The update-mime-database binary with path.
+		 Use it to define or override the location of update-mime-database.
+		]
 	)
-	AC_PATH_PROG([UPDATE_MIME_DATABASE], [update-mime-database])
+	AC_PATH_PROG([UPDATE_MIME_DATABASE], [update-mime-database], [no])
 	AC_SUBST([UPDATE_MIME_DATABASE])
 fi
 
 dnl necessary checks and additions for old gnome 2.4 mime support
-if test "$DIR_GNOMEMIME" != "no" ; then
-	echo -n "checking for gnome-mime-data... "
+if test "x$with_gnome_mime" != "xno" ; then
+	AC_MSG_CHECKING([for gnome-mime-data])
 	PKG_CHECK_EXISTS(
 		[gnome-mime-data-2.0],
-		[echo "yes" ; CHEMICAL_MIME_DEPS+=" gnome-mime-data-2.0"],
-		[echo "no"  ; AC_MSG_ERROR([gnome-mime-data package missing.])]
+		[
+		 AC_MSG_RESULT([yes])
+		 CHEMICAL_MIME_DEPS+=" gnome-mime-data-2.0"
+		],
+		[
+		 AC_MSG_RESULT([no])
+		 AC_MSG_ERROR([gnome-mime-data package missing.])
+		]
 	)
 fi
 AC_SUBST([CHEMICAL_MIME_DEPS])
@@ -246,54 +272,73 @@ dnl --------------------------------------------------------------------------
 dnl conditions
 dnl --------------------------------------------------------------------------
 
-AM_CONDITIONAL(BOOL_FREEDESKTOP_MIME, [test "$DIR_FDMIME" != "no"])
-echo -n "checking for freedesktop.org shared MIME-info database file will be installed ... "
-if test "$DIR_FDMIME" != "no" ; then
-	echo "yes"
+AM_CONDITIONAL([BOOL_FREEDESKTOP_MIME], [test "x$with_freedesktop_mime" != "xno"])
+AC_MSG_CHECKING([if freedesktop.org shared MIME-info database file will be installed])
+if test "x$with_freedesktop_mime" != "xno" ; then
+	AC_MSG_RESULT([yes])
+	AC_MSG_CHECKING([for installation path of the freedesktop.org shared MIME-info database files])
+	AC_MSG_RESULT([$with_freedesktop_mime])
 else
-	echo "no"
+	AC_MSG_RESULT([no])
 fi
 
-AM_CONDITIONAL(BOOL_UPDATE_DATABASE, [test "x$ENABLE_UPDATEDB" = "xyes" -a "x$UPDATE_MIME_DATABASE" != "x" -a "$DIR_FDMIME" != "no"])
-echo -n "checking for update-mime-database will run ... "
-if test "x$ENABLE_UPDATEDB" = "xyes" -a "x$UPDATE_MIME_DATABASE" != "x" ; then
-	echo "yes"
-elif test "x$ENABLE_UPDATEDB" = "xyes" -a "x$UPDATE_MIME_DATABASE" = "x" ; then
-	echo "no (couldn't be found)"
-elif test "x$ENABLE_UPDATEDB" = "xno" ; then
-	echo "no (disabled)"
-fi
-
-echo -n "checking for old GNOME 2.4 support files will be installed ... "
-if test "$DIR_PIXMAPS" = "no"; then
-	AM_CONDITIONAL(BOOL_GNOME_MIME, [test "$DIR_GNOMEMIME" != "no" -a "$DIR_GNOMETHEME" != "no"])
-	if test "$DIR_GNOMEMIME" != "no" -a "$DIR_GNOMETHEME" != "no" ; then
-		echo "yes (with theme icons)"
-	elif test "$DIR_GNOMEMIME" != "no" -a "$DIR_GNOMETHEME" = "no" ; then
-		echo "no (icons disabled in general)"
-	else
-		echo "no"
+AM_CONDITIONAL([BOOL_UPDATE_DATABASE], [test "x$enable_update_database" = "xyes" -a "x$UPDATE_MIME_DATABASE" != "xno" -a "x$with_freedesktop_mime" != "xno"])
+AC_MSG_CHECKING([if update-mime-database will run])
+if test "x$with_freedesktop_mime" != "xno" ; then
+	if test "x$enable_update_database" = "xyes" -a "x$UPDATE_MIME_DATABASE" != "xno" ; then
+		AC_MSG_RESULT([yes])
+	elif test "x$enable_update_database" = "xyes" -a "x$UPDATE_MIME_DATABASE" = "xno" ; then
+		AC_MSG_RESULT([no])
+	elif test "x$enable_update_database" = "xno" ; then
+		AC_MSG_RESULT([no])
 	fi
-	AM_CONDITIONAL(BOOL_GNOME_THEME, [test "$DIR_FDMIME" != "no" -o "$DIR_GNOMEMIME" != "no"])
 else
-	AM_CONDITIONAL(BOOL_GNOME_MIME, [test "$DIR_GNOMEMIME" != "no"])
-	if test "$DIR_GNOMEMIME" != "no" ; then
-		echo "yes (without theme icons)"
-	else
-		echo "no"
-	fi
-	AM_CONDITIONAL(BOOL_GNOME_THEME, [test "$DIR_FDMIME" != "no"])
+	AC_MSG_RESULT([no])
 fi
-AM_CONDITIONAL(BOOL_GNOME_ICONS, [test "$DIR_GNOMEMIME" != "no" -a "$DIR_PIXMAPS" != "no"])
 
-AM_CONDITIONAL(BOOL_KDE_MIME, [test "$DIR_KDEMIME" != "no" -a "$DIR_KDETHEME" != "no"])
-echo -n "checking for KDE support files will be installed ... "
-if test "$DIR_KDEMIME" != "no" -a "$DIR_KDETHEME" != "no" ; then
-	echo "yes"
-elif test "$DIR_KDEMIME" != "no" -a "$DIR_KDETHEME" = "no" ; then
-	echo "no (icon installation disabled)"
+
+AC_MSG_CHECKING([if old GNOME 2.4 support files will be installed])
+if test "x$with_pixmaps" = "xno"; then
+	AM_CONDITIONAL([BOOL_GNOME_MIME], [test "x$with_gnome_mime" != "xno" -a "x$with_gnome_theme" != "xno"])
+	if test "x$with_gnome_mime" != "xno" -a "x$with_gnome_theme" != "xno" ; then
+		AC_MSG_RESULT([yes])
+		AC_MSG_CHECKING([for installation path of the GNOME 2.4 support files])
+		AC_MSG_RESULT([$with_gnome_mime])
+		AC_MSG_CHECKING([for installation path of the GNOME 2.4 theme icons])
+		AC_MSG_RESULT([$with_gnome_theme])
+	elif test "x$with_gnome_mime" != "xno" -a "x$with_gnome_theme" = "xno" ; then
+		AC_MSG_RESULT([no])
+	else
+		AC_MSG_RESULT([no])
+	fi
+	AM_CONDITIONAL([BOOL_GNOME_THEME], [test "x$with_freedesktop_mime" != "xno" -o "x$with_gnome_mime" != "xno"])
 else
-	echo "no"
+	AM_CONDITIONAL([BOOL_GNOME_MIME], [test "x$with_gnome_mime" != "xno"])
+	if test "x$with_gnome_mime" != "xno" ; then
+		AC_MSG_RESULT([yes])
+		AC_MSG_CHECKING([for installation path of the GNOME 2.4 support files])
+		AC_MSG_RESULT([$with_gnome_mime])
+		AC_MSG_CHECKING([for installation path of the GNOME 2.4 icons])
+		AC_MSG_RESULT([$with_pixmaps])
+	else
+		AC_MSG_RESULT([no])
+	fi
+	AM_CONDITIONAL([BOOL_GNOME_THEME], [test "x$with_freedesktop_mime" != "xno"])
+fi
+AM_CONDITIONAL([BOOL_GNOME_ICONS], [test "x$with_gnome_mime" != "xno" -a "x$with_pixmaps" != "xno"])
+
+AM_CONDITIONAL([BOOL_KDE_MIME], [test "x$with_kde_mime" != "xno" -a "x$with_kde_mime" != "xno"])
+AC_MSG_CHECKING([if KDE 3.x support files will be installed])
+if test "x$with_kde_mime" != "xno" -a "x$with_kde_mime" != "xno" ; then
+	AC_MSG_RESULT([yes])
+	AC_MSG_CHECKING([for installation path of the KDE 3.x support files])
+	AC_MSG_RESULT([$with_kde_mime])
+	AC_MSG_CHECKING([for installation path of the KDE 3.x theme icons])
+	AC_MSG_RESULT([$with_kde_mime])
+elif test "x$with_kde_mime" != "xno" -a "x$with_kde_mime" = "xno" ; then
+	AC_MSG_RESULT([no])
+else
+	AC_MSG_RESULT([no])
 fi
 
 dnl --------------------------------------------------------------------------

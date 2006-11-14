@@ -86,7 +86,7 @@
 	          write CDATA #IMPLIED
 	          package CDATA #IMPLIED>
 
-	<!-- URL where to find the MIME/file type specification. -->
+	<!-- URL where to find the MIME/file type specification or explanation. -->
 	<!ELEMENT specification EMPTY>
 	<!ATTLIST specification
 	          url CDATA #REQUIRED>
@@ -268,6 +268,44 @@
 			<application name="emboss"/>
 			<application name="kfile_plugin"/>
 		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-gulp-input" support="no">
+		<!-- chemical/x-gulp-input -->
+		<_comment>GULP input file</_comment>
+		<_acronym>GULP</_acronym>
+		<_expanded-acronym>General Utility Lattice Program</_expanded-acronym>
+		<glob pattern="*.gin"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+		<specification url="http://www.ivec.org/GULP/help/gulp_30_manual/gulpnode55.html"/>
+		<specification url="http://www.ivec.org/GULP/help/examples.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-gulp" support="yes" added="0.1.94">
+		<!-- chemical/x-gulp -->
+		<_comment>GULP output file</_comment>
+		<_acronym>GULP</_acronym>
+		<_expanded-acronym>General Utility Lattice Program</_expanded-acronym>
+		<glob pattern="*.got"/>
+		<glob pattern="*.out"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="85">
+			<match type="string" value="GENERAL UTILITY LATTICE PROGRAM" offset="81:160">
+				<match type="string" value="Julian Gale" offset="161:240">
+					<match type="string" value="Nanochemistry Research Institute" offset="241:320">
+						<match type="string" value="Curtin University of Technology, Western Australia" offset="321:400"/>
+					</match>
+				</match>
+				<match type="string" value="Julian Gale, NRI, Curtin University" offset="161:240"/>
+			</match>
+		</magic>
+		<icon/>
+		<supported-by>
+			<application name="viewmol"/>
+		</supported-by>
+		<specification url="http://www.ivec.org/GULP/help/gulp_30_manual/gulpnode55.html"/>
+		<specification url="http://www.ivec.org/GULP/help/examples.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-hin" support="yes" added="0.1.91">
