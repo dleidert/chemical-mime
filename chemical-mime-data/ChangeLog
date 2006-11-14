@@ -1,6 +1,46 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-09-05 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* autogen.sh: Many updates for a better usability.
+
+	* configure.ac: Replaced `echo' calls with the related `AC_MSG_*'
+	macros. Fixed usage of `AC_ARG_*' macros.
+	(ENABLE_UPDATEDB, ENABLE_CONVERT, DIR_FDMIME, DIR_GNOMEMIME)
+	(DIR_PIXMAPS, DIR_GNOMETHEME, DIR_KDEMIME, DIR_KDETHEME): Replaced
+	custom variables with it's automatically assigned equivalent variables
+	`enable_*' and `with_*'. Alle relevant tests have been adjusted.
+	(CONVERT, RSVG, UPDATE_MIME_DATABASE): Changed the return value if
+	determination failed to `no'. All relevant tests have been adjusted.
+
+	* freedesktop.org/Makefile.am (fdomimedir, fdomime_DATA, CLEANFILES):
+	Renamed fdomime{dir,_DATA} to freedesktopmime{dir,_DATA}.
+	(freedesktopmimedir): Changed the variable name, that holds the
+	installation path (see configure.ac changes).
+	(install-data-hook, uninstall-hook): Ditto.
+
+	* gnome/Makefile.am (gnomemimedir): Ditto.
+
+	* icons/crystalsvg/Makefile.am (kdethemedir, install-data-local)
+	(uninstall-hook): Ditto.
+
+	* icons/hicolor/Makefile.am (gnomethemedir, install-data-local)
+	(uninstall-hook): Ditto.
+
+	* icons/pixmaps/Makefile.am (pixmapsdir): Ditto.
+
+	* kde/Makefile.am (kdemimedir): Ditto.
+
+	* src/chemical-mime-database.xml.in: Added chemical/x-gulp support.
+	Added chemical/x-gulp-input, which is not completely supported yet.
+
+	* xsl/cmd_freedesktop_org.xsl: Added missing newline at the end of the
+	file.
+	(mime-type): Cosmetic fix.
+
+	* README: Typo fixed.
+
 2006-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* ABOUT-NLS: Removed.

@@ -16,7 +16,7 @@ vpath chemical-mime-database.xml $(top_builddir)/src
 
 
 if BOOL_GNOME_MIME
-gnomemimedir = $(DIR_GNOMEMIME)
+gnomemimedir   = @with_gnome_mime@
 gnomemime_DATA = chemical-mime-data.keys chemical-mime-data.mime
 endif #BOOL_GNOME_MIME
 

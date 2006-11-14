@@ -82,7 +82,7 @@ applications mentioned under >Status Information<. You will need the
 shared-mime-info package for your distribution [8]
 
 Older GNOME desktops use the mime-info path with .keys and .mime files to
-determine MIME stuff. Icons are installed into the pixmaps directory. GNOME 2.6
+determine MIME stuff. Icons are installed into the pixmaps directory.
 
 KDE desktops use the mimelnk path with .desktop files to determine MIME
 stuff. The .desktop format is developed by the freedesktop.org

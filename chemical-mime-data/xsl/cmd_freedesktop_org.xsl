@@ -11,8 +11,8 @@
   permission to copy, distribute and modify it.
 -->
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                version="1.0">
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <xsl:import href="cmd_common.xsl"/>
@@ -47,9 +47,9 @@
 <xsl:template match="mime-type">
 	<xsl:if test="@support='yes'">
 		<xsl:comment>
-			<xsl:text>&#10;	MIME-Type: </xsl:text>
+			<xsl:text>&#10;  MIME-Type: </xsl:text>
 			<xsl:value-of select="@type"/>
-			<xsl:text>&#10;	supported since: chemical-mime-data v</xsl:text>
+			<xsl:text>&#10;  supported since: chemical-mime-data v</xsl:text>
 			<xsl:value-of select="@added"/>
 			<xsl:text>&#10;</xsl:text>
 		</xsl:comment>
@@ -73,3 +73,4 @@
 <xsl:template match="application|conflicts|icon|specification|supported-by"/>
 
 </xsl:stylesheet>
+

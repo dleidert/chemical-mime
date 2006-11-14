@@ -16,7 +16,7 @@ vpath chemical-mime-database.xml $(top_builddir)/src
 
 
 if BOOL_KDE_MIME
-kdemimedir = $(DIR_KDEMIME)/chemical
+kdemimedir   = @with_kde_mime@/chemical
 kdemime_DATA = *.desktop
 endif #BOOL_KDE_MIME
 
