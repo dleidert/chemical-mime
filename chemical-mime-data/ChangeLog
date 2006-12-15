@@ -1,6 +1,13 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2006-12-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* autogen.sh: Removed automake version check and added it to
+	Makefile.am.
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Added automake version check.
+
 2006-09-05 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* autogen.sh: Many updates for a better usability.

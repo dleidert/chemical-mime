@@ -27,12 +27,6 @@ if [ -z `which $INTLTOOLIZE` ] ; then echo "Error. INTLTOOLIZE=$INTLTOOLIZE not 
 AUTOMAKE_PATH=${AUTOMAKE_PATH:-`which $AUTOMAKE | sed 's|\/bin\/automake.*||'`}
 AUTOMAKE_VERSION=`$AUTOMAKE --version | grep automake | awk '{print $4}' | awk -F. '{print $1"."$2}'`
 
-## check if automake is new enough and fail with error 2 if not
-if [[ $AUTOMAKE_VERSION = "1.4|1.5|1.6" ]] ; then
-	echo "Your automake version $AUTOMAKE_VERSION is not new enough. automake 1.7 and above are required." >&2
-	exit 2
-fi
-
 ## automake files we need to have inside our source
 AUTOMAKE_FILES="
 missing
