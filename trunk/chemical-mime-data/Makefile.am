@@ -8,7 +8,7 @@
 
 SUBDIRS = src xsl freedesktop.org gnome kde icons po
 
-AUTOMAKE_OPTIONS = check-news dist-bzip2
+AUTOMAKE_OPTIONS = check-news dist-bzip2 1.7
 
 EXTRA_DIST = \
 	HACKING \
