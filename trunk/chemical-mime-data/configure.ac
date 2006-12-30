@@ -12,7 +12,7 @@ dnl initialization
 dnl --------------------------------------------------------------------------
 
 AC_INIT([chemical-mime-data],[0.1.94],[http://sourceforge.net/projects/chemical-mime/])
-AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+AM_INIT_AUTOMAKE([-Wall])
 AC_REVISION($Revision$)
 AC_CONFIG_SRCDIR(src/chemical-mime-database.xml.in)
 
@@ -154,8 +154,7 @@ AC_ARG_WITH(
 	AC_HELP_STRING(
 		[--with-pixmaps@<:@=PATH@:>@],
 		[
-		 enable, disable or override the installation directory of the non-themed GNOME icons
-		 (only for old GNOME 2.4 MIME support files)
+		 enable, disable or override the default installation directory of non-themed icons
 		 @<:@default=$datadir/pixmaps@:>@
 		]
 	),
@@ -169,22 +168,25 @@ AC_ARG_WITH(
 AC_SUBST([with_pixmaps])
 
 AC_ARG_WITH(
-	[gnome-theme],
+	[hicolor-theme],
 	AC_HELP_STRING(
-		[--with-gnome-theme@<:@=PATH@:>@],
+		[--with-hicolor-theme@<:@=PATH@:>@],
 		[
-		 enable, disable or override the theme-directory, where GNOME icons should be installed
+		 enable, disable or override the theme-directory, where icons should be
+		 installed by default (following the standards, this is the hicolor theme)
 		 @<:@default=$datadir/icons/hicolor@:>@
 		]
 	),
 	[
 	 if test "x$withval" = "xyes" ; then
-		 with_gnome_theme=${datadir}/icons/hicolor
+		 with_hicolor_theme=${datadir}/icons/hicolor
 	 fi
 	],
-	[with_gnome_theme=${datadir}/icons/hicolor]
+	[with_hicolor_theme=${datadir}/icons/hicolor]
 )
-AC_SUBST([with_gnome_theme])
+AC_SUBST([with_hicolor_theme])
+
+AC_PATH_PROG([KDE_CONFIG], [kde-config], [no])
 
 AC_ARG_WITH(
 	[kde-mime],
@@ -197,28 +199,20 @@ AC_ARG_WITH(
 	),
 	[
 	 if test "x$withval" = "xyes" ; then
+		 if test "x$KDE_CONFIG" != "xno" ; then
+			 with_kde_mime=`$KDE_CONFIG --install mime`
+		 else
+			 with_kde_mime=${datadir}/mimelnk
+		 fi
+	 fi
+	],
+	[
+	 if test "x$KDE_CONFIG" != "xno" ; then
+		 with_kde_mime=`$KDE_CONFIG --install mime`
+	 else
 		 with_kde_mime=${datadir}/mimelnk
 	 fi
-	],
-	[with_kde_mime=${datadir}/mimelnk]
-)
-AC_SUBST([with_kde_mime])
-
-AC_ARG_WITH(
-	[kde-theme],
-	AC_HELP_STRING(
-		[--with-kde-theme@<:@=PATH@:>@],
-		[
-		 enable, disable or override the theme-directory, where KDE icons should be installed
-		 @<:@default=$datadir/icons/crystalsvg@:>@
-		]
-	),
-	[
-	 if test "x$withval" = "xyes" ; then
-		 with_kde_mime=${datadir}/icons/crystalsvg
-	 fi
-	],
-	[with_kde_mime=${datadir}/icons/crystalsvg]
+	]
 )
 AC_SUBST([with_kde_mime])
 
@@ -284,59 +278,50 @@ fi
 
 AM_CONDITIONAL([BOOL_UPDATE_DATABASE], [test "x$enable_update_database" = "xyes" -a "x$UPDATE_MIME_DATABASE" != "xno" -a "x$with_freedesktop_mime" != "xno"])
 AC_MSG_CHECKING([if update-mime-database will run])
-if test "x$with_freedesktop_mime" != "xno" ; then
-	if test "x$enable_update_database" = "xyes" -a "x$UPDATE_MIME_DATABASE" != "xno" ; then
-		AC_MSG_RESULT([yes])
-	elif test "x$enable_update_database" = "xyes" -a "x$UPDATE_MIME_DATABASE" = "xno" ; then
-		AC_MSG_RESULT([no])
-	elif test "x$enable_update_database" = "xno" ; then
-		AC_MSG_RESULT([no])
-	fi
+if test "x$enable_update_database" = "xyes" \
+     -a "x$UPDATE_MIME_DATABASE" != "xno" \
+     -a "x$with_freedesktop_mime" != "xno" ; then
+	AC_MSG_RESULT([yes])
 else
 	AC_MSG_RESULT([no])
 fi
 
-
-AC_MSG_CHECKING([if old GNOME 2.4 support files will be installed])
-if test "x$with_pixmaps" = "xno"; then
-	AM_CONDITIONAL([BOOL_GNOME_MIME], [test "x$with_gnome_mime" != "xno" -a "x$with_gnome_theme" != "xno"])
-	if test "x$with_gnome_mime" != "xno" -a "x$with_gnome_theme" != "xno" ; then
-		AC_MSG_RESULT([yes])
-		AC_MSG_CHECKING([for installation path of the GNOME 2.4 support files])
-		AC_MSG_RESULT([$with_gnome_mime])
-		AC_MSG_CHECKING([for installation path of the GNOME 2.4 theme icons])
-		AC_MSG_RESULT([$with_gnome_theme])
-	elif test "x$with_gnome_mime" != "xno" -a "x$with_gnome_theme" = "xno" ; then
-		AC_MSG_RESULT([no])
-	else
-		AC_MSG_RESULT([no])
-	fi
-	AM_CONDITIONAL([BOOL_GNOME_THEME], [test "x$with_freedesktop_mime" != "xno" -o "x$with_gnome_mime" != "xno"])
+AM_CONDITIONAL([BOOL_GNOME_MIME], [test "x$with_gnome_mime" != "xno"])
+AC_MSG_CHECKING([if old GNOME 2.4 MIME support files will be installed])
+if test "x$with_gnome_mime" != "xno" ; then
+	AC_MSG_RESULT([yes])
+	AC_MSG_CHECKING([for installation path of the GNOME 2.4 support files])
+	AC_MSG_RESULT([$with_gnome_mime])
 else
-	AM_CONDITIONAL([BOOL_GNOME_MIME], [test "x$with_gnome_mime" != "xno"])
-	if test "x$with_gnome_mime" != "xno" ; then
-		AC_MSG_RESULT([yes])
-		AC_MSG_CHECKING([for installation path of the GNOME 2.4 support files])
-		AC_MSG_RESULT([$with_gnome_mime])
-		AC_MSG_CHECKING([for installation path of the GNOME 2.4 icons])
-		AC_MSG_RESULT([$with_pixmaps])
-	else
-		AC_MSG_RESULT([no])
-	fi
-	AM_CONDITIONAL([BOOL_GNOME_THEME], [test "x$with_freedesktop_mime" != "xno"])
+	AC_MSG_RESULT([no])
 fi
-AM_CONDITIONAL([BOOL_GNOME_ICONS], [test "x$with_gnome_mime" != "xno" -a "x$with_pixmaps" != "xno"])
 
-AM_CONDITIONAL([BOOL_KDE_MIME], [test "x$with_kde_mime" != "xno" -a "x$with_kde_mime" != "xno"])
+AM_CONDITIONAL([BOOL_KDE_MIME], [test "x$with_kde_mime" != "xno"])
 AC_MSG_CHECKING([if KDE 3.x support files will be installed])
-if test "x$with_kde_mime" != "xno" -a "x$with_kde_mime" != "xno" ; then
+if test "x$with_kde_mime" != "xno" ; then
 	AC_MSG_RESULT([yes])
 	AC_MSG_CHECKING([for installation path of the KDE 3.x support files])
 	AC_MSG_RESULT([$with_kde_mime])
-	AC_MSG_CHECKING([for installation path of the KDE 3.x theme icons])
-	AC_MSG_RESULT([$with_kde_mime])
-elif test "x$with_kde_mime" != "xno" -a "x$with_kde_mime" = "xno" ; then
+else
 	AC_MSG_RESULT([no])
+fi
+
+AM_CONDITIONAL([BOOL_HICOLOR_THEME], [test "x$with_hicolor_theme" != "xno"])
+AC_MSG_CHECKING([if theme icons will be installed])
+if test "x$with_hicolor_theme" != "xno" ; then
+	AC_MSG_RESULT([yes])
+	AC_MSG_CHECKING([for installation path of theme icons])
+	AC_MSG_RESULT([$with_hicolor_theme])
+else
+	AC_MSG_RESULT([no])
+fi
+
+AM_CONDITIONAL([BOOL_PIXMAPS], [test "x$with_pixmaps" != "xno"])
+AC_MSG_CHECKING([if non-themed icons will be installed])
+if test "x$with_pixmaps" != "xno" ; then
+	AC_MSG_RESULT([yes])
+	AC_MSG_CHECKING([for installation path of non-theme icons])
+	AC_MSG_RESULT([$with_pixmaps])
 else
 	AC_MSG_RESULT([no])
 fi
@@ -350,7 +335,6 @@ AC_CONFIG_FILES([
 	Makefile
 	freedesktop.org/Makefile
 	icons/Makefile
-	icons/crystalsvg/Makefile
 	icons/hicolor/Makefile
 	icons/pixmaps/Makefile
 	kde/Makefile

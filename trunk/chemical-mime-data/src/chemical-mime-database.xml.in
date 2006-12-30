@@ -6,7 +6,7 @@
 	          id CDATA #REQUIRED>
 
 	<!-- The MIME type (only chemical/*). -->
-	<!ELEMENT mime-type (comment+, (acronym+, expanded-acronym+)?, glob+, root-XML?, sub-class-of+, alias*, conflicts*, magic?, icon, supported-by?, specification*)>
+	<!ELEMENT mime-type (comment+, (acronym+, expanded-acronym+)?, glob+, root-XML?, sub-class-of*, alias*, conflicts*, magic?, icon, supported-by?, specification*)>
 	<!ATTLIST mime-type
 	          type CDATA #REQUIRED
 	          support (yes|no) "no"
@@ -122,12 +122,39 @@
 		<!-- chemical/x-cdx -->
 		<_comment>ChemDraw eXchange Format</_comment>
 		<glob pattern="*.cdx"/>
-		<sub-class-of type="text/plain"/>
+		<magic priority="85">
+			<match type="string" value="VjCD0100" offset="0">
+				<match type="string" value="\x04\x03\x02\x01" offset="8">
+					<match type="string" value="\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" offset="12"/>
+				</match>
+			</match>
+		</magic>
 		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.camsoft.com/plugins/"/>
+		<specification url="http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/cdx/index.htm"/>
+		<specification url="http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/cdx/IntroCDX.htm"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-cdxml" support="yes" added="0.1.94">
+		<!-- chemical/x-cdxml -->
+		<_comment>ChemDraw eXchange XML-Format</_comment>
+		<glob pattern="*.cdxml"/>
+		<!-- <root-XML namespaceURI="http://www.camsoft.com" localName="CDXML"/> -->
+		<sub-class-of type="application/xml"/>
+		<magic priority="80">
+      <match value="&lt;!DOCTYPE CDXML" type="string" offset="0:256"/>
+      <match value="&lt;CDXML" type="string" offset="0:64"/>
+    </magic>
+		<icon/>
+		<supported-by>
+			<application name="xdrawchem"/>
+		</supported-by>
+		<specification url="http://www.camsoft.com/plugins/"/>
+		<specification url="http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/cdx/index.htm"/>
+		<specification url="http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/cdx/IntroCDXML.htm"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-chem3d" support="yes" added="0.1.91">
@@ -149,9 +176,11 @@
 		<_expanded-acronym>Crystallographic Information File</_expanded-acronym>
 		<glob pattern="*.cif"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="50">
-			<match type="string" value="data_" offset="0">
-				<match type="string" value="data_" offset="0"/>
+		<magic priority="60">
+			<match type="string" value="#\#CIF_1.1" offset="0">
+				<match type="byte" value="9" offset="10"/>
+				<match type="byte" value="10" offset="10"/>
+				<match type="byte" value="13" offset="10"/>
 			</match>
 		</magic>
 		<icon/>
@@ -159,12 +188,14 @@
 			<application name="gdis"/>
 			<application name="jmol"/>
 		</supported-by>
+		<specification url="http://www.iucr.org/iucr-top/cif/spec/"/>
 		<specification url="http://www.bernstein-plus-sons.com/software/rasmol/"/>
 		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-cml" support="yes" added="0.1.90">
 		<!-- chemical/x-cml -->
+		<!-- chemical/cml -->
 		<_comment>Chemical Markup Language</_comment>
 		<_acronym>CML</_acronym>
 		<_expanded-acronym>Chemical Markup Language</_expanded-acronym>
@@ -483,6 +514,7 @@
 
 	<mime-type type="chemical/x-mopac-graph" support="yes" added="0.1.91">
 		<!-- chemical/x-mopac-graph -->
+		<!-- chemical/x-mopac -->
 		<_comment>MOPAC Graphical Format</_comment>
 		<_acronym>MOPAC</_acronym>
 		<_expanded-acronym>Molecular Orbital PACkage</_expanded-acronym>
@@ -590,8 +622,47 @@
 		</supported-by>
 	</mime-type>
 
+	<mime-type type="chemical/x-ncbi-asn1" support="yes" added="0.1.94">
+		<!-- chemical/x-ncbi-asn1 -->
+		<!-- chemical/x-ncbi-asn1-ascii -->
+		<_comment>PubChem ASN.1 ASCII Format</_comment>
+		<glob pattern="*.asn"/>
+		<sub-class-of type="text/plain"/>
+		<alias type="chemical/x-ncbi-asn1-ascii"/>
+		<magic priority="80">
+      <match value="PC-AssayContainer" type="string" offset="0"/>
+      <match value="PC-Compound" type="string" offset="0"/>
+      <match value="PC-InfoData" type="string" offset="0"/>
+      <match value="PC-ID" type="string" offset="0"/>
+      <match value="PC-Source" type="string" offset="0"/>
+      <match value="PC-Substance" type="string" offset="0"/>
+      <match value="PC-XRefData" type="string" offset="0"/>
+    </magic>
+		<icon/>
+		<supported-by>
+			<application name=""/>
+		</supported-by>
+		<specification url=""/>
+	</mime-type>
+
+	<mime-type type="chemical/x-ncbi-asn1-binary" support="yes" added="0.1.94">
+		<!-- chemical/x-ncbi-asn1-binary -->
+		<_comment>PubChem ASN.1 Binary Format</_comment>
+		<glob pattern="*.asn"/>
+		<glob pattern="*.val"/>
+		<magic priority="80">
+      <match value="\x30\x80\x30\x80\xA0\x80\x30\x80\xA1\x80" type="string" offset="0"/>
+    </magic>
+		<icon/>
+		<supported-by>
+			<application name=""/>
+		</supported-by>
+		<specification url=""/>
+	</mime-type>
+
 	<mime-type type="chemical/x-pdb" support="yes" added="0.1.90">
 		<!-- chemical/x-pdb -->
+		<!-- chemical/pdb -->
 		<_comment>Brookhaven Protein DataBase File Format</_comment>
 		<glob pattern="*.pdb"/>
 		<sub-class-of type="text/plain"/>
@@ -679,6 +750,7 @@
 
 	<mime-type type="chemical/x-xyz" support="yes" added="0.1.90">
 		<!-- chemical/x-xyz -->
+		<!-- chemical/xyz -->
 		<_comment>XYZ Co-ordinate Animation Format</_comment>
 		<glob pattern="*.xyz"/>
 		<sub-class-of type="text/plain"/>
