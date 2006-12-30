@@ -2,6 +2,13 @@
 # Summary   File-changelog for the internationalization data files of the
 #           chemical-mime-data project.
 
+2006-12-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* de.po: Updated after changes to database. Fixing untranslated and
+	fuzzy entries. 37 translated messages, 2 untranslated messages.
+
+	* fr.po: Only updated after changes to database.
+
 2006-07-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* chemical-mime-data.pot: Removed.
