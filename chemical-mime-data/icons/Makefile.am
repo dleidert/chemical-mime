@@ -6,7 +6,7 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-SUBDIRS = crystalsvg hicolor pixmaps
+SUBDIRS = hicolor pixmaps
 
 MAINTAINERCLEANFILES = Makefile.in
 

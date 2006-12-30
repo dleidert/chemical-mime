@@ -28,13 +28,13 @@ AUTOMAKE_PATH=${AUTOMAKE_PATH:-`which $AUTOMAKE | sed 's|\/bin\/automake.*||'`}
 AUTOMAKE_VERSION=`$AUTOMAKE --version | grep automake | awk '{print $4}' | awk -F. '{print $1"."$2}'`
 
 ## automake files we need to have inside our source
-AUTOMAKE_FILES="
-missing
-mkinstalldirs
-install-sh
-"
+if [ $AUTOMAKE_VERSION = "1.7" ] ; then
+        AUTOMAKE_FILES="missing mkinstalldirs install-sh"
+else
+        AUTOMAKE_FILES="missing install-sh"
+fi
 
-## our help output - if autogen.sh was called with -h|--help or unkbown option
+## our help output - if autogen.sh was called with -h|--help or unknown option
 autogen_help() {
 	echo
 	echo "autogen.sh usage:"

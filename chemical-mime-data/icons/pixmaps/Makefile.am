@@ -10,11 +10,11 @@ EXTRA_DIST = $(pixmaps_list)
 
 MAINTAINERCLEANFILES = Makefile.in
 
-pixmaps_list = gnome-mime-chemical.png
+pixmaps_list = gnome-mime-chemical.png chemistry.png
 
 
-if BOOL_GNOME_ICONS
+if BOOL_PIXMAPS
 pixmapsdir   = @with_pixmaps@
 pixmaps_DATA = $(pixmaps_list)
-endif #BOOL_GNOME_ICONS
+endif #BOOL_PIXMAPS
 
