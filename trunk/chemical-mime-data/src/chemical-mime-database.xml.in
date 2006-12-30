@@ -120,7 +120,9 @@
 
 	<mime-type type="chemical/x-cdx" support="yes" added="0.1.91">
 		<!-- chemical/x-cdx -->
-		<_comment>ChemDraw eXchange Format</_comment>
+		<_comment>ChemDraw Binary CDX Format</_comment>
+		<acronym>CDX</acronym>
+		<expanded-acronym>ChemDraw eXchange</expanded-acronym>
 		<glob pattern="*.cdx"/>
 		<magic priority="85">
 			<match type="string" value="VjCD0100" offset="0">
@@ -140,7 +142,9 @@
 
 	<mime-type type="chemical/x-cdxml" support="yes" added="0.1.94">
 		<!-- chemical/x-cdxml -->
-		<_comment>ChemDraw eXchange XML-Format</_comment>
+		<_comment>ChemDraw CDXML Format</_comment>
+		<acronym>CDXML</acronym>
+		<expanded-acronym>ChemDraw eXchange XML</expanded-acronym>
 		<glob pattern="*.cdxml"/>
 		<!-- <root-XML namespaceURI="http://www.camsoft.com" localName="CDXML"/> -->
 		<sub-class-of type="application/xml"/>
@@ -172,8 +176,8 @@
 	<mime-type type="chemical/x-cif" support="yes" added="0.1.91">
 		<!-- chemical/x-cif -->
 		<_comment>Crystallographic Information File Format</_comment>
-		<_acronym>CIF</_acronym>
-		<_expanded-acronym>Crystallographic Information File</_expanded-acronym>
+		<acronym>CIF</acronym>
+		<expanded-acronym>Crystallographic Information File</expanded-acronym>
 		<glob pattern="*.cif"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="60">
@@ -197,8 +201,8 @@
 		<!-- chemical/x-cml -->
 		<!-- chemical/cml -->
 		<_comment>Chemical Markup Language</_comment>
-		<_acronym>CML</_acronym>
-		<_expanded-acronym>Chemical Markup Language</_expanded-acronym>
+		<acronym>CML</acronym>
+		<expanded-acronym>Chemical Markup Language</expanded-acronym>
 		<glob pattern="*.cml"/>
 		<root-XML namespaceURI="http://www.xml-cml.org/schema/cml2/core" localName="cml"/>
 		<sub-class-of type="text/xml"/>
@@ -215,8 +219,8 @@
 	<mime-type type="chemical/x-daylight-smiles" support="yes" added="0.1.91">
 		<!-- chemical/x-daylight-smiles -->
 		<_comment>SMILES Format</_comment>
-		<_acronym>SMILES</_acronym>
-		<_expanded-acronym>Simplified Molecular Input Line Entry Specification</_expanded-acronym>
+		<acronym>SMILES</acronym>
+		<expanded-acronym>Simplified Molecular Input Line Entry Specification</expanded-acronym>
 		<glob pattern="*.smi"/>
 		<glob pattern="*.smiles"/>
 		<sub-class-of type="text/plain"/>
@@ -243,8 +247,8 @@
 	<mime-type type="chemical/x-gamess-input" support="yes" added="0.1.93">
 		<!-- chemical/x-gamess-input -->
 		<_comment>GAMESS Input format</_comment>
-		<_acronym>GAMESS</_acronym>
-		<_expanded-acronym>General Atomic and Molecular Electronic Structure System</_expanded-acronym>
+		<acronym>GAMESS</acronym>
+		<expanded-acronym>General Atomic and Molecular Electronic Structure System</expanded-acronym>
 		<glob pattern="*.inp"/>
 		<glob pattern="*.gam"/>
 		<glob pattern="*.gamin"/>
@@ -304,8 +308,8 @@
 	<mime-type type="chemical/x-gulp-input" support="no">
 		<!-- chemical/x-gulp-input -->
 		<_comment>GULP input file</_comment>
-		<_acronym>GULP</_acronym>
-		<_expanded-acronym>General Utility Lattice Program</_expanded-acronym>
+		<acronym>GULP</acronym>
+		<expanded-acronym>General Utility Lattice Program</expanded-acronym>
 		<glob pattern="*.gin"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -316,8 +320,8 @@
 	<mime-type type="chemical/x-gulp" support="yes" added="0.1.94">
 		<!-- chemical/x-gulp -->
 		<_comment>GULP output file</_comment>
-		<_acronym>GULP</_acronym>
-		<_expanded-acronym>General Utility Lattice Program</_expanded-acronym>
+		<acronym>GULP</acronym>
+		<expanded-acronym>General Utility Lattice Program</expanded-acronym>
 		<glob pattern="*.got"/>
 		<glob pattern="*.out"/>
 		<sub-class-of type="text/plain"/>
@@ -360,8 +364,8 @@
 	<mime-type type="chemical/x-inchi" support="yes" added="0.1.93">
 		<!-- chemical/x-inchi -->
 		<_comment>IUPAC International Chemical Identifier</_comment>
-		<_acronym>InChI</_acronym>
-		<_expanded-acronym>International Chemical Identifier</_expanded-acronym>
+		<acronym>InChI</acronym>
+		<expanded-acronym>International Chemical Identifier</expanded-acronym>
 		<glob pattern="*.inchi"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -375,8 +379,8 @@
 	<mime-type type="chemical/x-inchi-xml" support="yes" added="0.1.93">
 		<!-- chemical/x-inchi-xml -->
 		<_comment>IUPAC International Chemical Identifier</_comment>
-		<_acronym>InChI</_acronym>
-		<_expanded-acronym>International Chemical Identifier</_expanded-acronym>
+		<acronym>InChI</acronym>
+		<expanded-acronym>International Chemical Identifier</expanded-acronym>
 		<glob pattern="*.inchix"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -390,8 +394,8 @@
 	<mime-type type="chemical/x-jcamp-dx" support="yes" added="0.1.93">
 		<!-- chemical/x-jcamp-dx -->
 		<_comment>JCAMP Spectroscopic Data Exchange Format</_comment>
-		<_acronym>JCAMP</_acronym>
-		<_expanded-acronym>Joint Committee on Atomic and Molecular Physical Data</_expanded-acronym>
+		<acronym>JCAMP</acronym>
+		<expanded-acronym>Joint Committee on Atomic and Molecular Physical Data</expanded-acronym>
 		<glob pattern="*.dx"/>
 		<glob pattern="*.jdx"/>
 		<sub-class-of type="text/plain"/>
@@ -418,8 +422,8 @@
 	<mime-type type="chemical/x-mdl-molfile" support="yes" added="0.1.91">
 		<!-- chemical/x-mdl-molfile -->
 		<_comment>MDL Molfile Format</_comment>
-		<_acronym>MDL</_acronym>
-		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
+		<acronym>MDL</acronym>
+		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.mdl"/>
 		<glob pattern="*.mol"/>
 		<sub-class-of type="text/plain"/>
@@ -436,8 +440,8 @@
 	<mime-type type="chemical/x-mdl-rdfile" support="yes" added="0.1.91">
 		<!-- chemical/x-mdl-rdfile -->
 		<_comment>MDL Reaction Format</_comment>
-		<_acronym>MDL</_acronym>
-		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
+		<acronym>MDL</acronym>
+		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.rd"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -447,8 +451,8 @@
 	<mime-type type="chemical/x-mdl-rxnfile" support="yes" added="0.1.91">
 		<!-- chemical/x-mdl-rxnfile -->
 		<_comment>MDL 2D Reaction-Data Representation Format</_comment>
-		<_acronym>MDL</_acronym>
-		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
+		<acronym>MDL</acronym>
+		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.rxn"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -461,8 +465,8 @@
 	<mime-type type="chemical/x-mdl-sdfile" support="yes" added="0.1.91">
 		<!-- chemical/x-mdl-sdfile -->
 		<_comment>MDL Structure Data Format</_comment>
-		<_acronym>MDL</_acronym>
-		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
+		<acronym>MDL</acronym>
+		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.sd"/>
 		<glob pattern="*.sdf"/>
 		<sub-class-of type="text/plain"/>
@@ -477,8 +481,8 @@
 	<mime-type type="chemical/x-mdl-tgf" support="yes" added="0.1.91">
 		<!-- chemical/x-mdl-tgf -->
 		<_comment>MDL Transportable Graphics Format</_comment>
-		<_acronym>MDL</_acronym>
-		<_expanded-acronym>Molecular Design Ltd.</_expanded-acronym>
+		<acronym>MDL</acronym>
+		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.tgf"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -488,8 +492,8 @@
 	<mime-type type="chemical/x-mmcif" support="yes" added="0.1.91">
 		<!-- chemical/x-mmcif -->
 		<_comment>MacroMolecular Crystallographic Information File Format</_comment>
-		<_acronym>CIF</_acronym>
-		<_expanded-acronym>Crystallographic Information File</_expanded-acronym>
+		<acronym>MMCIF</acronym>
+		<expanded-acronym>MacroMolecular Crystallographic Information File</expanded-acronym>
 		<glob pattern="*.mcif"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -516,8 +520,8 @@
 		<!-- chemical/x-mopac-graph -->
 		<!-- chemical/x-mopac -->
 		<_comment>MOPAC Graphical Format</_comment>
-		<_acronym>MOPAC</_acronym>
-		<_expanded-acronym>Molecular Orbital PACkage</_expanded-acronym>
+		<acronym>MOPAC</acronym>
+		<expanded-acronym>Molecular Orbital PACkage</expanded-acronym>
 		<glob pattern="*.gpt"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/x-mopac"/>
@@ -532,8 +536,8 @@
 	<mime-type type="chemical/x-mopac-input" support="yes" added="0.1.91">
 		<!-- chemical/x-mopac-input -->
 		<_comment>MOPAC Input Format</_comment>
-		<_acronym>MOPAC</_acronym>
-		<_expanded-acronym>Molecular Orbital PACkage</_expanded-acronym>
+		<acronym>MOPAC</acronym>
+		<expanded-acronym>Molecular Orbital PACkage</expanded-acronym>
 		<glob pattern="*.dat"/> <!-- possible clash with video/mpeg -->
 		<glob pattern="*.mop"/>
 		<glob pattern="*.mopcrt"/>
@@ -550,8 +554,8 @@
 	<mime-type type="chemical/x-mopac-out" support="yes" added="0.1.93">
 		<!-- chemical/x-mopac-out -->
 		<_comment>MOPAC Output Format</_comment>
-		<_acronym>MOPAC</_acronym>
-		<_expanded-acronym>Molecular Orbital PACkage</_expanded-acronym>
+		<acronym>MOPAC</acronym>
+		<expanded-acronym>Molecular Orbital PACkage</expanded-acronym>
 		<glob pattern="*.moo"/>
 		<glob pattern="*.out"/> <!-- can conflict with application/x-profile and(!) gaussian output files -->
 		<sub-class-of type="text/plain"/>
