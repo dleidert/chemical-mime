@@ -106,6 +106,50 @@
 		<specification url="http://www.camsoft.com/plugins/"/>
 	</mime-type>
 
+	<mime-type type="chemical/x-cactvs-ascii" support="no" added="0.1.94">
+		<!-- chemical/x-cactvs-ascii -->
+		<_comment>CACTVS ASCII Format</_comment>
+		<glob pattern="*.cascii"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="85">
+			<match type="string" value="NMDSAscii" offset="0:160">
+				<match type="string" value="Cactvs" offset="0:160"/>
+			</match>
+		</magic>
+		<icon/>
+		<supported-by>
+			<application name="csbr (cactvs)"/>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-cactvs-binary" support="yes" added="0.1.94">
+		<!-- chemical/x-cactvs-binary -->
+		<_comment>CACTVS Binary Format</_comment>
+		<glob pattern="*.cbin"/>
+		<!-- Byte 0:7 -> 8 Byte header by XDR? -->
+		<!-- Byte 0:7 -> Can it be specified?  -->
+		<magic priority="85">
+			<match type="string" value="\x07CACTVSBIN" offset="8"/>
+		</magic>
+		<icon/>
+		<supported-by>
+			<application name="csbr (cactvs)"/>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-cactvs-table" support="yes" added="0.1.94">
+		<!-- chemical/x-cactvs-table -->
+		<_comment>CACTVS Table Format</_comment>
+		<glob pattern="*.ctab"/>
+		<magic priority="85">
+			<match type="string" value="CACTVS QSAR Table" offset="0"/>
+		</magic>
+		<icon/>
+		<supported-by>
+			<application name="csbr (cactvs)"/>
+		</supported-by>
+	</mime-type>
+
 	<mime-type type="chemical/x-cache" support="yes" added="0.1.91">
 		<!-- chemical/x-cache -->
 		<_comment>CAChe MolStruct Format</_comment>
@@ -227,7 +271,7 @@
 		<conflicts type="application/smil" gnome="yes" kde="yes"/>
 		<icon/>
 		<supported-by>
-			<application name="cactvs"/>
+			<application name="csbr (cactvs)"/>
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.daylight/dayhtml/smiles/index.html"/>
@@ -269,6 +313,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
+			<application name="cs3d (cactvs)"/>
 			<application name="jmol"/>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -401,6 +446,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
+			<application name="csir (cactvs)"/>
 			<application name="jcamp-dx"/>
 			<application name="kfile_plugin"/>
 		</supported-by>
@@ -429,6 +475,8 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
+			<application name="csbr (cactvs)"/>
+			<application name="csed (cactvs)"/>
 			<application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
 			<application name="gchempaint"/>
 			<application name="jmol"/>
@@ -445,6 +493,9 @@
 		<glob pattern="*.rd"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
+		<supported-by>
+			<application name="csbr (cactvs)"/>
+		</supported-by>
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
 
@@ -457,6 +508,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
+			<application name="csbr (cactvs)"/>
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
@@ -472,6 +524,7 @@
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
+			<application name="csbr (cactvs)"/>
 			<application name="gchempaint"/>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -634,19 +687,16 @@
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/x-ncbi-asn1-ascii"/>
 		<magic priority="80">
-      <match value="PC-AssayContainer" type="string" offset="0"/>
-      <match value="PC-Compound" type="string" offset="0"/>
-      <match value="PC-InfoData" type="string" offset="0"/>
-      <match value="PC-ID" type="string" offset="0"/>
-      <match value="PC-Source" type="string" offset="0"/>
-      <match value="PC-Substance" type="string" offset="0"/>
-      <match value="PC-XRefData" type="string" offset="0"/>
-    </magic>
+			<match value="PC-AssayContainer" type="string" offset="0"/>
+			<match value="PC-Compound" type="string" offset="0"/>
+			<match value="PC-InfoData" type="string" offset="0"/>
+			<match value="PC-ID" type="string" offset="0"/>
+			<match value="PC-Source" type="string" offset="0"/>
+			<match value="PC-Substance" type="string" offset="0"/>
+			<match value="PC-XRefData" type="string" offset="0"/>
+		</magic>
 		<icon/>
-		<supported-by>
-			<application name=""/>
-		</supported-by>
-		<specification url=""/>
+		<specification url="ftp://ftp.ncbi.nih.gov/pubchem/specifications/pubchem.asn"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-ncbi-asn1-binary" support="yes" added="0.1.94">
@@ -655,13 +705,10 @@
 		<glob pattern="*.asn"/>
 		<glob pattern="*.val"/>
 		<magic priority="80">
-      <match value="\x30\x80\x30\x80\xA0\x80\x30\x80\xA1\x80" type="string" offset="0"/>
-    </magic>
+			<match value="\x30\x80\x30\x80\xA0\x80\x30\x80" type="string" offset="0"/>
+		</magic>
 		<icon/>
-		<supported-by>
-			<application name=""/>
-		</supported-by>
-		<specification url=""/>
+		<specification url="ftp://ftp.ncbi.nih.gov/pubchem/specifications/pubchem.asn"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-pdb" support="yes" added="0.1.90">
@@ -715,6 +762,7 @@
 		</magic>
 		<icon/>
 		<supported-by>
+			<application name="cs3d (cactvs)"/>
 			<application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
 			<application name="gchempaint"/>
 			<application name="gdis"/>
@@ -761,6 +809,7 @@
 		<alias type="chemical/xyz"/>
 		<icon/>
 		<supported-by>
+			<application name="cs3d (cactvs)"/>
 			<application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
 			<application name="gdis"/>
 			<application name="jmol"/>
