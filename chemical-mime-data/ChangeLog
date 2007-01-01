@@ -3,6 +3,10 @@
 
 2007-01-01 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* THANKS: Updated.
+
+2007-01-01 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* src/chemical-mime-database.xml.in: Added chemical/x-cactvs-ascii,
 	chemical/x-cactvs-binary and chemical/x-cactvs-table MIME types.
 	Thanks to Wolf-D. Ihlenfeldt. Added CACTVS applications that support
