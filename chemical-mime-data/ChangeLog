@@ -1,6 +1,11 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* src/chemical-mime-database.xml.in (chemical/x-cactvs-ascii): Support
+	activated. Magic pattern fixed.
+
 2007-01-01 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* THANKS: Updated.
