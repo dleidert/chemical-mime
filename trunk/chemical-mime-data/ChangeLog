@@ -1,6 +1,17 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-01 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* src/chemical-mime-database.xml.in: Added chemical/x-cactvs-ascii,
+	chemical/x-cactvs-binary and chemical/x-cactvs-table MIME types.
+	Thanks to Wolf-D. Ihlenfeldt. Added CACTVS applications that support
+	our MIME types (based on
+	http://www2.chemie.uni-erlangen.de/software/cactvs/mime.html). Small
+	cleanups to the database.
+	(chemical/x-ncbi-asn1-binary): Fixed the magic pattern. But I fear,
+	it's still not perfect.
+
 2006-12-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* src/chemical-mime-database.xml.in: Made all acronym and
