@@ -106,15 +106,14 @@
 		<specification url="http://www.camsoft.com/plugins/"/>
 	</mime-type>
 
-	<mime-type type="chemical/x-cactvs-ascii" support="no" added="0.1.94">
+	<mime-type type="chemical/x-cactvs-ascii" support="yes" added="0.1.94">
 		<!-- chemical/x-cactvs-ascii -->
 		<_comment>CACTVS ASCII Format</_comment>
 		<glob pattern="*.cascii"/>
 		<sub-class-of type="text/plain"/>
+		<!-- There might be comments at the beginning. We ignore this case. -->
 		<magic priority="85">
-			<match type="string" value="NMDSAscii" offset="0:160">
-				<match type="string" value="Cactvs" offset="0:160"/>
-			</match>
+			<match type="string" value="NMDSAscii" offset="0:80"/>
 		</magic>
 		<icon/>
 		<supported-by>
