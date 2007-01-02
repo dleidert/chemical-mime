@@ -521,6 +521,7 @@
 		<glob pattern="*.sd"/>
 		<glob pattern="*.sdf"/>
 		<sub-class-of type="text/plain"/>
+		<conflicts type="application/vnd.stardivision.math" gnome="no" kde="yes"/>
 		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
@@ -593,9 +594,11 @@
 		<glob pattern="*.dat"/> <!-- possible clash with video/mpeg -->
 		<glob pattern="*.mop"/>
 		<glob pattern="*.mopcrt"/>
-		<glob pattern="*.mpc"/>
+		<glob pattern="*.mpc"/> <!-- audio/x-musepack -->
 		<glob pattern="*.zmt"/>
 		<sub-class-of type="text/plain"/>
+		<conflicts type="audio/x-musepack" gnome="yes" kde="yes"/>
+		<conflicts type="video/mpeg" gnome="yes" kde="no"/>
 		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
@@ -638,6 +641,7 @@
 		<glob pattern="*.cor"/>
 		<glob pattern="*.arc"/> <!-- possible clash with application/x-arc -->
 		<sub-class-of type="text/plain"/>
+		<conflicts type="application/x-arc" gnome="no" kde="yes"/>
 		<icon kde="qc"/>
 		<supported-by>
 			<application name="gdis"/>
