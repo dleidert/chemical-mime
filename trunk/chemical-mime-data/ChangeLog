@@ -3,6 +3,10 @@
 
 2007-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* src/chemical-mime-database.xml.in: Cosmetic changes.
+
+2007-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* NEWS: Prepared for release 0.1.94.
 
 	* src/chemical-mime-database.xml.in (chemical/x-mdl-sdfile): Added

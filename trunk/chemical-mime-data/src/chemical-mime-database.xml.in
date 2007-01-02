@@ -292,9 +292,9 @@
 		<_comment>GAMESS Input format</_comment>
 		<acronym>GAMESS</acronym>
 		<expanded-acronym>General Atomic and Molecular Electronic Structure System</expanded-acronym>
-		<glob pattern="*.inp"/>
 		<glob pattern="*.gam"/>
 		<glob pattern="*.gamin"/>
+		<glob pattern="*.inp"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
 		<supported-by>
@@ -637,9 +637,9 @@
 	<mime-type type="chemical/x-msi-car" support="yes" added="0.1.91">
 		<!-- chemical/x-msi-car -->
 		<_comment>Accelrys structure file</_comment>
+		<glob pattern="*.arc"/> <!-- possible clash with application/x-arc -->
 		<glob pattern="*.car"/>
 		<glob pattern="*.cor"/>
-		<glob pattern="*.arc"/> <!-- possible clash with application/x-arc -->
 		<sub-class-of type="text/plain"/>
 		<conflicts type="application/x-arc" gnome="no" kde="yes"/>
 		<icon kde="qc"/>
