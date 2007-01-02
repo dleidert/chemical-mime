@@ -3,6 +3,16 @@
 
 2007-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* NEWS: Prepared for release 0.1.94.
+
+	* src/chemical-mime-database.xml.in (chemical/x-mdl-sdfile): Added
+	conflicts element for application/vnd.stardivision.math MIME type.
+	(chemical/x-mopac-input): Added conflicts for audio/x-musepack and
+	video/mpeg MIME types.
+	(chemical/x-msi-car): Added conflicts for application/x-arc MIME type.
+
+2007-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* src/chemical-mime-database.xml.in (chemical/x-cactvs-ascii): Support
 	activated. Magic pattern fixed.
 

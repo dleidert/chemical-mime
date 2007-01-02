@@ -3,8 +3,23 @@
 
 Version 0.1.94 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
 
-	* Fixed several build issues. Increased build dependency to
-	intltool >= 0.35.0.
+	* Fixed several build issues.
+	  - Increased build dependency to intltool >= 0.35.0.
+	  - Removed crystalsvg theme stuff.
+
+	* Added MIME type pattern:
+	  - chemical/x-cactvs-ascii
+	  - chemical/x-cactvs-binary
+	  - chemical/x-cactvs-table
+	  - chemical/x-cdxml
+	  - chemical/x-gulp
+	  - chemical/x-gulp-input
+	  - chemical/x-ncbi-asn1
+	  - chemical/x-ncbi-asn1-binary
+
+	* Fixed or improved MIME type pattern:
+	  - chemical/x-cdx
+	  - chemical/x-cif
 
 Version 0.1.93 2006-05-12 Daniel Leidert <daniel.leidert@wgdd.de>
 
