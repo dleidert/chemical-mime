@@ -3,6 +3,10 @@
 
 2007-01-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
+	* NEWS: Prepared for release 0.1.94.
+
+2007-01-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
 	* src/chemical-mime-database.xml.in: Removed the obsolete comments.
 	(mime-type): Fixed DTD. The freedesktop.org mime-info doctype allows
 	more than one root-XML element. Added currently not activated
