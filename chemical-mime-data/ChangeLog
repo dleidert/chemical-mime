@@ -1,6 +1,35 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+
+	* src/chemical-mime-database.xml.in: Removed the obsolete comments.
+	(mime-type): Fixed DTD. The freedesktop.org mime-info doctype allows
+	more than one root-XML element. Added currently not activated
+	chemical/x-cache-csf, chemical/x-macromodel-output,
+	chemical/x-qchem-input and chemical/x-qchem-output. Added
+	chemical/x-gamess-output and chemical/x-ncbi-asn1-xml. Cosmetic
+	changes.
+	(chemical/x-cactvs-ascii): Improved magic pattern. Thanks to Wolf-D.
+	Ihlenfeldt.
+	(chemical/x-cdx): Improved magic pattern by adding a second defined 16
+	Byte search string.
+	(chemical/x-cml): Added CML1 namespace.
+	(chemical/x-dmol): Added missing .dmol extension.
+	(chemical/x-gamess-input): Removed .gam extension (belongs to
+	chemical/x-gamess-output MIME type). Added magic pattern.
+	(chemical/x-gaussian-input): Added .com extension (found at
+	OpenBabel). Fixed specification URL.
+	(chemical/x-gaussian-log): Added missing .gxx and .log extensions.
+	Added rarely used MIME type aliases. Added a common magic string.
+	Added specification URL.
+	(chemical/x-gulp): Found one more extension. Currently not activated,
+	because of unknown usage.
+	(chemical/x-hin): Added missing magic priority.
+	(chemical/x-mol2): Added magic pattern.
+	(chemical/x-pdb): Added missing .ent extension.
+	(chemical/x-shelx): Added missing .ins extension. Added magic pattern.
+
 2007-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
 
 	* src/chemical-mime-database.xml.in: Cosmetic changes.
