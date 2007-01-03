@@ -12,14 +12,25 @@ Version 0.1.94 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
 	  - chemical/x-cactvs-binary
 	  - chemical/x-cactvs-table
 	  - chemical/x-cdxml
+	  - chemical/x-gamess-output
 	  - chemical/x-gulp
 	  - chemical/x-gulp-input
 	  - chemical/x-ncbi-asn1
 	  - chemical/x-ncbi-asn1-binary
+	  - chemical/x-ncbi-asn1-xml
 
 	* Fixed or improved MIME type pattern:
 	  - chemical/x-cdx
+	  - chemical/x-cml
 	  - chemical/x-cif
+	  - chemical/x-dmol
+	  - chemical/x-gamess-input
+	  - chemical/x-gaussian-input
+	  - chemical/x-gaussian-log
+	  - chemical/x-hin
+	  - chemical/x-mol2
+	  - chemical/x-pdb
+	  - chemical/x-shelx
 
 Version 0.1.93 2006-05-12 Daniel Leidert <daniel.leidert@wgdd.de>
 
