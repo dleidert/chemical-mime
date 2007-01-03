@@ -92,7 +92,7 @@
 	          url CDATA #REQUIRED>
 ]>
 
-<chemical-mime id="$Id$">
+<chemical-mime id="'$Id$'">
 
 	<mime-type type="chemical/x-alchemy" support="yes" added="0.1.91">
 		<_comment>Alchemy Format</_comment>

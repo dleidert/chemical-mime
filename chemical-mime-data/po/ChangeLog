@@ -2,18 +2,18 @@
 # Summary   File-changelog for the internationalization data files of the
 #           chemical-mime-data project.
 
-2006-12-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-12-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* de.po: Updated after changes to database. Fixing untranslated and
 	fuzzy entries. 37 translated messages, 2 untranslated messages.
 
 	* fr.po: Only updated after changes to database.
 
-2006-07-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-07-17 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* chemical-mime-data.pot: Removed.
 
-2006-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* chemical-mime-data.pot:  Added Report-Msgid-Bugs-To: field entry.
 	
@@ -21,7 +21,7 @@
 
 	* fr.po: Ditto.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* chemical-mime-data.pot: Updated.
 
@@ -37,24 +37,24 @@
 
 	* de.po: Updated
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* chemical-mime-data.pot: Updated.
 
 	* de.po: Updated.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* chemical-mime-data.pot: The first update after our change to the new
 	database format. Translator, please update your translations.
 
 	* de.po: Updated.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* de.po: Updated. Added a more information to the header.
 
-2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-04-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* POTFILES.in: Changed to src/chemical-mime-data.xml.in. Removed all
 	other files. We will just need the new database.
@@ -65,7 +65,7 @@
 
 	* nl.po: Ditto.
 
-2006-01-27 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* chemical-mime-data.pot: Update after fixing bugs in kde/*.desktop
 	files.
@@ -76,7 +76,7 @@
 
 	* nl.po: Ditto.
 
-2006-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* ChangeLog: Changed used CVS keyword to a local one. More useful
 	summary.
@@ -87,31 +87,31 @@
 
 	* nl.po: Ditto.
 
-2005-09-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-09-19 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* fr.po: Added French translation. Thanks to Jean Bréfort.
 
-2005-06-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* ChangeLog: Fixed syntax. Added a bit more info.
 
-2005-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* POTFILES.in: Added missing files.
 	
-2005-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* chemicalMIME.pot: Removed (obsolete).
 
-2005-03-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-15 Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* POTFILES.in: Fixed (file remove in ../kde).
 	
-2005-03-11 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-11 Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* ChangeLog: Added for 'dist'-target.
 
-2005-03-10 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-10 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.in.in: Removed (added by intltoolize during autogen.sh
 	run).

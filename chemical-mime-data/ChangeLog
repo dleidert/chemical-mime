@@ -1,11 +1,21 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
-2007-01-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* AUTHORS: Added some alternative mail addresses.
+	
+	* ChangeLog: Fixed my mail address.
+
+	* po/ChangeLog: Ditto.
+
+	* src/chemical-mime-database.xml.in: Cosmetic fix for ID.
+
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* NEWS: Prepared for release 0.1.94.
 
-2007-01-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Removed the obsolete comments.
 	(mime-type): Fixed DTD. The freedesktop.org mime-info doctype allows
@@ -34,11 +44,11 @@
 	(chemical/x-pdb): Added missing .ent extension.
 	(chemical/x-shelx): Added missing .ins extension. Added magic pattern.
 
-2007-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2007-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Cosmetic changes.
 
-2007-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2007-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* NEWS: Prepared for release 0.1.94.
 
@@ -48,16 +58,16 @@
 	video/mpeg MIME types.
 	(chemical/x-msi-car): Added conflicts for application/x-arc MIME type.
 
-2007-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2007-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in (chemical/x-cactvs-ascii): Support
 	activated. Magic pattern fixed.
 
-2007-01-01 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2007-01-01 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* THANKS: Updated.
 
-2007-01-01 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2007-01-01 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Added chemical/x-cactvs-ascii,
 	chemical/x-cactvs-binary and chemical/x-cactvs-table MIME types.
@@ -68,14 +78,14 @@
 	(chemical/x-ncbi-asn1-binary): Fixed the magic pattern. But I fear,
 	it's still not perfect.
 
-2006-12-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-12-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Made all acronym and
 	expanded-acronym elements untranslatable. The acronyms used here are
 	only hardly translatable, so we let it be.
 	(chemical/x-cdx, chemical/x-cdxml): Improved MIME type description.
 
-2006-12-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-12-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* autogen.sh: Fixed a typo.
 	(AUTOMAKE_FILES): Define list depending on the automake version.
@@ -115,14 +125,14 @@
 	(chemical/x-cif): Added magic pattern based on the CIF 1.1 format
 	specification.
 
-2006-12-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-12-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* autogen.sh: Removed automake version check and added it to
 	Makefile.am.
 
 	* Makefile.am (AUTOMAKE_OPTIONS): Added automake version check.
 
-2006-09-05 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-09-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* autogen.sh: Many updates for a better usability.
 
@@ -162,16 +172,16 @@
 
 	* README: Typo fixed.
 
-2006-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* ABOUT-NLS: Removed.
 
-2006-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac: Fixed usage of AM_PO_SUBDIRS. It is necessary in every
 	case to create po/Makefile.
 
-2006-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am (AUTOMAKE_OPTIONS): Added check-news option.
 	(MAINTAINERCLEANFILES): Removing .md5 sums too. Using a shorter
@@ -196,7 +206,7 @@
 
 	* xsl/cmd_common.xsl: Just a few cosmetic fixes for the formatting.
 
-2006-05-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-19 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac (AC_PACKAGE_VERSION): Post-release version bump to
 	0.1.94.
@@ -204,7 +214,7 @@
 	* Makefile.am (MAINTAINERCLEANFILES): Just a cosmetic change (more
 	general expression).
 
-2006-05-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-19 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* NEWS: Released version 0.1.93.
 
@@ -215,28 +225,28 @@
 	* src/chemical-mime-database.xml.in: Added comments to show up in
 	gettext's po files. Added InChI and JCAMP acronym.
 
-2006-05-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-19 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Fixed CVS repository content to get the state before sf.net
 	CVS service crashed.
 
-2006-05-09 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in (chemical/x-genbank): Added
 	missing conflicts information.
 
-2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-08 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Added more comments to the DTD
 	for a better description of their usage.
 
-2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-08 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Removing useless spaces and tabs
 	at line-ends.
 	(chemical/x-genbank): Fixed an invalidity, which clashes with the DTD.
 
-2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-08 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Removed stuff done by Jerome.
 
@@ -253,15 +263,15 @@
 	(chemical/x-daylight-smiles): Added one missing pattern.
 	(chemical/x-dmol, chemical/x-mol2): Fixed a typo in the comment.
 
-2006-05-08 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-08 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Added note about KDE and GNOME MIME magic databases.
 
-2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/Makefile.am (check-local): Added XMLLINT_FLAGS to command.
 
-2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* freedesktop.org/Makefile.am (chemical-mime-data.xml): Added
 	cmd_common.xsl to prerequisites and fixed rule.
@@ -271,7 +281,7 @@
 
 	* kde/Makefile.am (*.desktop): Ditto.
 
-2006-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Just added a note about viewmol.
 
@@ -280,7 +290,7 @@
 
 	* xsl/cmd_kde.xsl (pattern.list): Fixed the wrong field name.
 
-2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* HACKING: Added.
 
@@ -291,20 +301,20 @@
 	* src/chemical-mime-database.xml.in: Changed DTD for application
 	element and adjusted the usage of this element in the whole file.
 
-2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* xsl/cmd_freedesktop_org.xsl: Use the namespace attribute, not the
 	xmlns attribute, for xsl:element (makes no real difference, but it is
 	IMHO more common).
 
-2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Added information pointer to gdis manual.
 
 	* src/chemical-mime-database.xml.in: Added gdis application elements.
 	(chemical/x-mopac-out): Added magic pattern and "*.out" pattern.
 
-2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in (chemical/x-cif)
 	(chemical/x-mmcif): Fixed acronym explanation for 'CIF'. Changed
@@ -313,7 +323,7 @@
 	(chemical/x-mdl-sdfile, chemical/x-mdl-tgf): Added acronym and
 	explanation for 'MDL'.
 
-2006-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* NEWS: Added items for next version 0.1.93.
 
@@ -326,7 +336,7 @@
 	* xsl/cmd_freedesktop_org.xsl: Better use the <xsl:element> element
 	instead of the element to print.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* acinclude.m4: Added MP_PROG_XMLLINT macro to make xmllint available
 	for 'check' target.
@@ -336,15 +346,15 @@
 	* src/Makefile.am: Added check target to make sure, that the resulting
 	database follows our own document declaration.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* xsl/cmd_kde.xsl: Fixed header.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* NEWS: Fixed typo. Added a new entry for the next release.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac (AC_PACKAGE_VERSION): Post-release version bump to
 	0.1.93.
@@ -352,22 +362,22 @@
 	* Makefile.am (EXTRA_DIST): Fixed a bug. The resulting .pc file should
 	not be shipped with the 'dist' target.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac: Bump to version 0.1.92.
 
 	* NEWS: Ditto.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* NEWS: Added information about latest release.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Fixed content. A lot of notes were removed, because I already
 	solved them.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am (MAINTAINERCLEANFILES): Added archives created by 'dist'
 	target to 'maintainer-clean' target.
@@ -390,7 +400,7 @@
 
 	* xsl/cmd_gnome-mime.xsl (icon): Ditto.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* freedesktop.org/Makefile.am: Fixed vpath directive to get the right
 	location for chemical-mime-database.xml. Fixes 'make distcheck' error.
@@ -402,7 +412,7 @@
 	* xsl/Makefile.am (EXTRA_DIST): Added missing cmd_kde.xsl stylesheet.
 	Fixes 'make distcheck' error.
 
-2006-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am (SUBDIRS): Re-added kde directory.
 
@@ -436,7 +446,7 @@
 
 	* kde/*.desktop.in: Removed (replaced by new flat database).
 
-2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-04-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac (AC_PACKAGE_VERSION): Bump version to 0.1.99 to show,
 	where we want to go.
@@ -444,7 +454,7 @@
 	* src/chemical-mime-database.xml.in: Fixed just a few formatting
 	issues.
 
-2006-04-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-04-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Added new flat database.
 
@@ -486,7 +496,7 @@
 
 	* xsl/cmd_gnome-mime.xsl: Ditto.
 
-2006-02-18 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-02-18 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac (IT_PROG_INTLTOOL): Call the AM_GNU_GETTEXT macro from
 	the gettext suite instead of calling GTK's AM_GLIB_GNU_GETTEXT. Turn
@@ -501,7 +511,7 @@
 
 	* kde/Makefile.am (BOOL_KDE_MIME_TRUE): Ditto.
 
-2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am (MAINTAINERCLEANFILES): Added config.{sub,guess} which
 	may be linked/copied by automake.
@@ -511,7 +521,7 @@
 	(CATALOGS): Fixed value to avoid installation of cataloges, which are
 	useless for us.
 
-2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* freedesktop.org/Makefile.am: Fixed missing file after 'make dist'
 	issue caused by condition construct.
@@ -526,7 +536,7 @@
 
 	* icons/hicolor/Makefile.am: Ditto.
 
-2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* icons/crystalsvg/Makefile.am (EXTRA_DIST, ICONS, SIZES)
 	(icon_sources, icon_sizes, all-local, all-icons)
@@ -537,7 +547,7 @@
 	(icon_sources, icon_sizes, all-local, all-icons)
 	(install-data-local, uninstall-hook): Ditto.
 
-2006-02-17 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* AUTHORS: Updated project authors information.
 
@@ -585,11 +595,11 @@
 
 	* po/POTFILES.in: Fixed alphabetical order.
 
-2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* po/POTFILES.in: Fixed a minor bug.
 
-2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac (CONVERT, RSVG): Move the stuff related to rsvg and
 	convert detection to a better place.
@@ -599,20 +609,20 @@
 
 	* icons/hicolor/Makefile.am (all-icons): Ditto.
 
-2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac: Fix all AC_SUBST() macro calls.
 	(RSVG, CONVERT): Add possibility for custom definition where to find
 	the rsvg or convert utility (may help if they are not in PATH).
 
-2006-02-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Move all files back to sourceforge.net. Fixed all CVS headers,
 	because sf.net does not know LocalKeyword nor tag. Removed docs/ and
 	examples/, because they should not be part of the source. See the
 	ChangeLog for all changes in the past.
 
-2006-01-29 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am (MAINTAINERCLEANFILES): The maintainer-clean target
 	should clean the source for CVS works. So everything produced with
@@ -637,7 +647,7 @@
 	* autogen.sh: Add -c|--copy options to allow to choose between linking
 	and copying the files.
 
-2006-01-27 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac (PKG_CONFIG, PKG_PROG_PKG_CONFIG): Call the
 	PKG_PROG_PKG_CONFIG macro to determine PKG_CONFIG.
@@ -777,13 +787,13 @@
 	* kde/x-cactvs-table.desktop.in: The only without the bug :(. Only
 	reordering content here.
 
-2006-01-13 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-01-13 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Add some important notes.
 
 	* docs/README: Add a few resources and restructure.
 
-2006-01-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2006-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* ChangeLog: Changed used CVS keyword to a local one. More useful
 	summary.
@@ -810,7 +820,7 @@
 
 	* gnome/chemical-mime-data.mime: Ditto.
 
-2005-11-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-11-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* autogen.sh (autotools): Remove autoheader.
 
@@ -819,16 +829,16 @@
 
 	* ChangeLog: Fixed syntax.
 
-2005-10-05 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-10-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* freedesktop.org/Makefile.am: Run update-mime-database at the right
 	place $(DIR-FDMIME).
 
-2005-09-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-09-19 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac: Added French to ALL_LINGUAS (thanks to Jean Bréfort).
 
-2005-09-19 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-09-19 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* autogen.sh: Manually link to automake scripts, if running automake
 	does not copy/link the scripts.
@@ -836,7 +846,7 @@
 	* configure.ac: Fixed a bug found by Jean, which leads to a
 	unsatisfiable Requires: entry in chemical-mime-data.pc.
 
-2005-08-22 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-08-22 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac, Makefile.am: Do not run update-mime-database for
 	distcheck target but run it as default during normal installation.
@@ -848,11 +858,11 @@
 	
 	* icons/hicolor/Makefile.am: Ditto.
 
-2005-06-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* examples/README: Added some infos.
 
-2005-06-30 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* AUTHORS: Removed obsolete "DocumentId" string.
 	
@@ -878,11 +888,11 @@
 
 	* ChangeLog: Fixed syntax.
 
-2005-06-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am: Fixed EXTRA_DIST.
 
-2005-06-14 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-06-14 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* COPYING: Moved whole package to GNU LGPL v.2.1.
 	
@@ -900,7 +910,7 @@
 
 	* LICENSE: Removed. COPYING is enough.
 	
-2005-06-14 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-06-14 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* INSTALL: Readded readded with generic instructions.
 	
@@ -914,7 +924,7 @@
 	
 	* TODO: Ditto.
 
-2005-06-14 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-06-14 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am: Added AUTOMAKE_OPTIONS.
 	
@@ -922,16 +932,16 @@
 	
 	* INSTALL: Removed temporarily.
 
-2005-05-09 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Fix typo. Added naming scheme note to release list.
 
-2005-05-09 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am: Commented out disableuninstallcheck. Reordered some
 	parts.
 
-2005-05-09 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* INSTALL: Fixed typo.
 	
@@ -939,19 +949,19 @@
 	
 	* chemical-mime-data.pc.in: Fixed description.
 
-2005-05-09 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* COPYING: Updated copyright information.
 
-2005-05-09 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* gnome/chemical-mime-data.keys.in: Fix a format bug.
 
-2005-05-09 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac: Merged informational output.
 
-2005-05-07 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-07 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* kde/Makefile.am: Fix a bug (obsolete file mentioned).
 	
@@ -962,7 +972,7 @@
 	
 	* gnome/chemical-mime-data.mime: Ditto.
 
-2005-05-06 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* freedesktop.org/chemical-mime-data.xml.in: Added license information to
 	top of the file. Changed order of type and value. Set back a lot of
@@ -1005,7 +1015,7 @@
 	
 	* kde/x-ppd.desktop.in: Removed.
 
-2005-05-05 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-05 Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* AUTHORS: Updated information.
 	
@@ -1027,13 +1037,13 @@
 	
 	* debian/rules: Remove all lines running autoconf/automake parts.
 
-2005-05-05 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-05 Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* configure.ac: Added more checks and try to solve possible
 	"impossible" situations. Added a bit more output, what will be done
 	and changed some general output.
 
-2005-05-05 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-05 Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* configure.ac: Worked on a better structure. Readded possibility to
 	change path directions, but use $datadir as default. Added a bit more
@@ -1054,7 +1064,7 @@
 	
 	* TODO: Refined todo list and removed done parts.
 
-2005-05-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* configure.ac: Remove leading space in $CHEMICAL_MIME_DEPS. Added a
 	bit more info if pkgconfig cannot detect packages.
@@ -1075,7 +1085,7 @@
 	
 	* docs/APPLIST: Ditto.
 
-2005-05-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Added note about conflicting types.
 	
@@ -1101,7 +1111,7 @@
 	* debian/rules: Add a fix for an autoconf-bug, several targets and
 	.PHONY (the real solution for 2005-03-03 change).
 
-2005-05-01 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-05-01 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Too much changes to point out every file change: Complete rework of
 	theme-icon installation. Removed all raster images (they are now
@@ -1113,7 +1123,7 @@
 	ENABLE_UPDATEDB default to 'no'). Removed all obsolete files, fixed
 	the rest.
 
-2005-03-21 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-21 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* freedesktop.org/chemicalMIME.xml.in: Fixed missing end tag.
 	
@@ -1121,7 +1131,7 @@
 	
 	* TODO: Reordered list.
 
-2005-03-20 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-20 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* chemicalMIME.xml.in: Added a few MIME types, missing patterns,
 	sub-class-of and alias attributes and more detection stuff
@@ -1133,7 +1143,7 @@
 
 	* Added MIMEs metioned in Taverna.sf.net User Guide.
 
-2005-03-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* icons/*: A lot of rework to cover chemical MIME types with icons.
 	
@@ -1163,7 +1173,7 @@
 	
 	* TODO: Added comment about ROX MIME handling.
 
-2005-03-15 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* INSTALL: GNOME icon installation can be done easier by installing
 	icons into hicolor theme (for GNOME > 2.4). Pixmaps icons are now
@@ -1183,7 +1193,7 @@
 	
 	* icons/pixmaps: Ditto.
 
-2005-03-11 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-11 Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* README: Begin rewriting (adding info about configure options, basic
 	knowledge about MIME handling).
@@ -1213,7 +1223,7 @@
 	
 	* debian/chemicalmime.dirs: Removed (obsolete).
 
-2005-03-10 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-10 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* chemicalmime.pc.in: Added pk-config stuff.
 	
@@ -1226,12 +1236,12 @@
 	* debian/control: Added pkg-config stuff. Fix build dependencies (see
 	above).
 
-2005-03-04 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-04 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* GNOME 2.4 support rewritten with icons support (still to change,
 	because theme-icons can be also installed).
 
-2005-03-03 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* **/Makefile.am: Fixed several bugs and issues.
 	  
@@ -1241,7 +1251,7 @@
 	* freedesktop.org/Makefile.am: Now considers
 	--without-freedesktop_org-mime.
 
-2005-03-02 Daniel Leidert <daniel.leidert.spam@gmx.net>
+2005-03-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Clean up directory by removing unnecessary files.
 	
