@@ -947,5 +947,14 @@
 		<specification url="http://www.mdli.com/"/>
 	</mime-type>
 
+	<!-- Just for testing pruposes: Use the extension of the MIME type to test. -->
+	<!--
+	<mime-type type="chemical/x-test" support="no">
+		<comment>Test</comment>
+		<glob pattern="undefined"/>
+		<icon/>
+	</mime-type>
+	-->
+
 </chemical-mime>
 
