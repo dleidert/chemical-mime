@@ -3,6 +3,10 @@
 
 2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* README: Updated copyright.
+
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in: Added an entry as test case for
 	pattern detection rules.
 
