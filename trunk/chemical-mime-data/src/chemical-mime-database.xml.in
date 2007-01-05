@@ -353,7 +353,6 @@
 		<expanded-acronym>General Atomic and Molecular Electronic Structure System</expanded-acronym>
 		<glob pattern="*.gam"/>
 		<glob pattern="*.gamout"/>
-		<glob pattern="*.log"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="80">
 			<match type="string" value="----- GAMESS execution script -----" offset="0"/>
@@ -392,7 +391,6 @@
 		<glob pattern="*.g98"/>
 		<glob pattern="*.g03"/>
 		<glob pattern="*.gal"/>
-		<glob pattern="*.log"/>
 		<sub-class-of type="text/plain"/>
 		<!-- Seems there are some weired MIME types. -->
 		<alias type="chemical/x-gaussian"/>
