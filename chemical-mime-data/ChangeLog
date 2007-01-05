@@ -1,6 +1,12 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in(chemical/x-gamess-output)
+	(chemical/x-gaussian-log): Removed the .log extension that leads to a
+	conflict with the text/x-log MIME type.
+
 2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* README: Updated copyright.
