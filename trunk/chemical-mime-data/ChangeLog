@@ -3,6 +3,13 @@
 
 2007-01-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-gamess-output): Fixed
+	magic pattern. Now all test files work.
+	(chemical/x-gaussian-log): Just added a comment about the limitation
+	of this pattern.
+
+2007-01-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in(chemical/x-gamess-output)
 	(chemical/x-gaussian-log): Removed the .log extension that leads to a
 	conflict with the text/x-log MIME type.

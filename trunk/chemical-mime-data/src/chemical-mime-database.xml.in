@@ -357,7 +357,7 @@
 		<magic priority="80">
 			<match type="string" value="----- GAMESS execution script -----" offset="0"/>
 			<match type="string" value="GAMESS VERSION =" offset="65:130">
-				<match type="string" value="\x0A\x0A\x20EXECUTION OF GAMESS BEGUN" offset="585"/>
+				<match type="string" value="\x0A\x0A\x20EXECUTION OF GAMESS BEGUN" offset="584:585"/>
 			</match>
 		</magic>
 		<icon/>
@@ -400,6 +400,8 @@
 		<alias type="chemical/x-gaussian98-output"/>
 		<alias type="chemical/x-gaussian03-output"/>
 		<magic priority="80">
+			<!-- Also seen some stuff before this line sometimes.      -->
+			<!-- Ignore this case here. We start directly at offset 1. -->
 			<match type="string" value="Entering Gaussian System, Link 0=" offset="1"/>
 		</magic>
 		<icon/>
