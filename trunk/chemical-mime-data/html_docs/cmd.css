@@ -1,0 +1,43 @@
+/*
+ * Document  $Id$
+ * Summary   CSS stylesheet for the chemical-mime-data project website.
+ * 
+ * Copyright (C) 2007 Daniel Leidert <daniel.leidert@wgdd.de>.
+ *
+ * This file is free software. The copyright owner gives unlimited
+ * permission to copy, distribute and modify it.
+ */
+
+blockquote {
+	border:thin solid #cccccc;
+	padding: 10px;
+}
+
+html {
+	line-height: 1.3em;
+}
+
+p span.sfnet img {
+	vertical-align: bottom;
+	padding-left: 2em;
+}
+
+span.version {
+	font-weight: bold;
+}
+
+table {
+	border: 3px solid #000000;
+	border-collapse: collapse;
+}
+
+th, td {
+	vertical-align: top;
+	text-align: left;
+	border: 1px solid #000000;
+	padding: 0.25em;
+}
+
+td.mime-type {
+	font-style: italic;
+}

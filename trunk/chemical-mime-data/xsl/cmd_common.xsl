@@ -4,7 +4,7 @@
   Document  $Id$
   Summary   XSLT stylesheet that contains commonly used templates.
   
-  Copyright (C) 2006 Daniel Leidert <daniel.leidert@wgdd.de>.
+  Copyright (C) 2006,2007 Daniel Leidert <daniel.leidert@wgdd.de>.
 
   This file is free software. The copyright owner gives unlimited
   permission to copy, distribute and modify it.
@@ -14,9 +14,9 @@
                 xmlns:saxon="http://icl.com/saxon"
                 xmlns:lxslt="http://xml.apache.org/xslt"
                 xmlns:xalanredirect="org.apache.xalan.xslt.extensions.Redirect"
-                xmlns:exsl="http://exslt.org/common"
+                xmlns:exslt="http://exslt.org/common"
                 version="1.0"
-                extension-element-prefixes="saxon xalanredirect lxslt exsl">
+                extension-element-prefixes="saxon xalanredirect lxslt exslt">
 
 <!-- 
 	This template writes out the specified file.
@@ -36,10 +36,10 @@
 	-->
 	<xsl:choose>
 		<!-- exslt:document -->
-		<xsl:when test="element-available('exsl:document')">
+		<xsl:when test="element-available('exslt:document')">
 			<xsl:choose>
 				<xsl:when test="$doctype-public != '' and $doctype-system != ''">
-					<exsl:document href="{$filename}"
+					<exslt:document href="{$filename}"
 					               method="{$method}"
 					               encoding="UTF-8"
 					               indent="{$indent}"
@@ -48,17 +48,17 @@
 					               doctype-public="{$doctype-public}"
 					               doctype-system="{$doctype-system}">
 						<xsl:copy-of select="$content"/>
-					</exsl:document>
+					</exslt:document>
 				</xsl:when>
 				<xsl:otherwise>
-					<exsl:document href="{$filename}"
+					<exslt:document href="{$filename}"
 					               method="{$method}"
 					               encoding="UTF-8"
 					               indent="{$indent}"
 					               omit-xml-declaration="{$omit-xml-declaration}"
 					               media-type="{$media-type}">
 						<xsl:copy-of select="$content"/>
-					</exsl:document>
+					</exslt:document>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:when>
@@ -155,3 +155,4 @@ Type=MimeType&#10;</xsl:text>
 </xsl:template>
 
 </xsl:stylesheet>
+

@@ -3,6 +3,52 @@
 
 2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* Makefile.am: Updated copyright notice.
+	(SUBDIRS): Added the html_docs directory, that contains the HTML
+	(build) files.
+
+	* configure.ac: Updated copyright notice.
+	(AC_CONFIG_FILES): Added html_docs/Makefile and xsl/cmd_entities.dtd.
+
+	* src/Makefile.am: Updated copyright notice.
+
+	* src/chemical-mime-database.xml.in: Changed mime-type element
+	definition  bit, so that an acronym requires an expanded acronym
+	element. Makes the life easier. Changed the attribute list default of
+	the conflicts element, so that we have less work when writing this
+	element.
+	(chemical/x-genbank): Added pattern and specification found recently.
+	(chemical/x-mol2, chemical/x-ncbi-asn1): Added some specification URLs
+	I found.
+	(chemical/x-gulp-input, chemical/x-mopac-input, chemical/x-msi-car):
+	Changed conflicts element according to it's DTD change.
+
+	* xsl/Makefile.am: Updated copyright notice.
+	(EXTRA_DIST, DISTCLEANFILES): Added newly introduced files
+	cmd_website.xsl and cmd_entities.dtd(.in).
+
+	* xsl/cmd_common.xsl: Updated copyright notice. Changed exsl namespace
+	prefix to exslt. Added missing newline at the end of the file.
+
+	* xsl/cmd_freedesktop_org.xsl: Updated copyright notice.
+
+	* xsl/cmd_gnome-keys.xsl: Ditto. Added missing newline at the end of
+	the file.
+
+	* xsl/cmd_gnome-mime.xsl: Ditto.
+
+	* xsl/cmd_kde.xsl: Ditto.
+
+	* xsl/cmd_website.xsl:
+	* xsl/cmd_entities.dtd.in:
+	* html_docs/Makefile.am:
+	* html_docs/cmd.css:
+	* html_docs/index.html: Added to create the HTML files of the project
+	- the projects homepage and a large table with the information of the
+	database.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* freedesktop.org/Makefile.am: Updated copyright notice.
 	(freedesktopmimedir): Changed to use the variable directly.
 	(install-data-hook, uninstall-hook): Fixed update-mime-database

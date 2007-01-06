@@ -5,7 +5,7 @@
   Summary   XSLT stylesheet to convert XML database into freedesktop.org
             database file.
   
-  Copyright (C) 2006 Daniel Leidert <daniel.leidert@wgdd.de>.
+  Copyright (C) 2006,2007 Daniel Leidert <daniel.leidert@wgdd.de>.
 
   This file is free software. The copyright owner gives unlimited
   permission to copy, distribute and modify it.
@@ -23,6 +23,7 @@
             omit-xml-declaration="no"/>
 
 <xsl:strip-space elements="*"/>
+
 
 <xsl:template match="/">
 	<!-- Output content to 'chemical-mime-data.xml' -->

@@ -1,12 +1,12 @@
 # Document  $Id$
 # Summary   Makefile for the chemical-mime-data project.
 #
-# Copyright (C) 2004-2006 by Daniel Leidert.
+# Copyright (C) 2004-2007 by Daniel Leidert <daniel.leidert@wgdd.de>.
 #
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-SUBDIRS = src xsl freedesktop.org gnome kde icons po
+SUBDIRS = src xsl freedesktop.org gnome html_docs kde icons po
 
 AUTOMAKE_OPTIONS = check-news dist-bzip2 1.7
 

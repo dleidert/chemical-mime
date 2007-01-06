@@ -1,7 +1,8 @@
 dnl Document  $Id$
 dnl Summary   Configure script for the chemical-mime-data project.
 dnl
-dnl Copyright (C) 2004-2006 by Egon Willighagen and Daniel Leidert.
+dnl Copyright (C) 2004-2007 Daniel Leidert <daniel.leidert@wgdd.de>.
+dnl Copyright (C) 2004-2006 Egon Willighagen <e.willighagen@science.ru.nl>.
 dnl All rights reserved.
 dnl
 dnl This file is free software. The copyright owner gives unlimited
@@ -334,13 +335,15 @@ AC_CONFIG_FILES([
 	chemical-mime-data.pc
 	Makefile
 	freedesktop.org/Makefile
+	gnome/Makefile
+	html_docs/Makefile
 	icons/Makefile
 	icons/hicolor/Makefile
 	icons/pixmaps/Makefile
 	kde/Makefile
-	gnome/Makefile
 	po/Makefile.in
 	src/Makefile
 	xsl/Makefile
+	xsl/cmd_entities.dtd
 ])
 AC_OUTPUT
