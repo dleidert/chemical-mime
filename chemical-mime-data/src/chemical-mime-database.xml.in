@@ -506,6 +506,8 @@
 
 	<mime-type type="chemical/x-inchi" support="yes" added="0.1.93">
 		<_comment>IUPAC International Chemical Identifier</_comment>
+		<acronym>IUPAC</acronym>
+		<expanded-acronym>International Union of Pure and Applied Chemistry</expanded-acronym>
 		<acronym>InChI</acronym>
 		<expanded-acronym>International Chemical Identifier</expanded-acronym>
 		<glob pattern="*.inchi"/>
@@ -520,6 +522,8 @@
 
 	<mime-type type="chemical/x-inchi-xml" support="yes" added="0.1.93">
 		<_comment>IUPAC International Chemical Identifier</_comment>
+		<acronym>IUPAC</acronym>
+		<expanded-acronym>International Union of Pure and Applied Chemistry</expanded-acronym>
 		<acronym>InChI</acronym>
 		<expanded-acronym>International Chemical Identifier</expanded-acronym>
 		<glob pattern="*.inchix"/>

@@ -220,6 +220,9 @@
 	              select="following-sibling::expanded-acronym[not(@xml:lang)][$acronym.position]"/>
 
 	<xsl:choose>
+		<!-- First check if we find a known <acronym> inside <comment>.  -->
+		<!-- If yes, use the <acronym> HTML tag with the contents of     -->
+		<!-- <acronym> and <expanded-acronym> of our database.           -->
 		<xsl:when test="contains($content, $acronym.content)">
 			<xsl:value-of select="substring-before($content, $acronym.content)"/>
 			<acronym title="{$expanded.acronym.content}">
@@ -240,6 +243,34 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:when>
+		<!-- Then check, if a part of the comment fits the content of    -->
+		<!-- an <expanded-acronym>. If yes, output the related <acronym> -->
+		<!-- directly behind this substring inside braces, using the     -->
+		<!-- <acronym> HTML tag. -->
+		<xsl:when test="contains($content, $expanded.acronym.content)">
+			<xsl:value-of select="concat(substring-before($content, $expanded.acronym.content), $expanded.acronym.content)"/>
+			<xsl:text> (</xsl:text>
+			<acronym title="{$expanded.acronym.content}">
+				<xsl:value-of select="$acronym.content"/>
+			</acronym>
+			<xsl:text>) </xsl:text>
+			<xsl:choose>
+				<xsl:when test="following-sibling::acronym[not(@xml:lang)][$acronym.position + 1]">
+					<xsl:call-template name="comment.acronym.replace">
+						<xsl:with-param name="content" select="substring-after($content, $expanded.acronym.content)"/>
+						<xsl:with-param name="acronym.position" select="$acronym.position + 1"/>
+						<xsl:with-param name="acronym.replace" select="true()"/>
+					</xsl:call-template>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:call-template name="comment.acronym.no.replace">
+						<xsl:with-param name="content" select="substring-after($content, $expanded.acronym.content)"/>
+					</xsl:call-template>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:when>
+		<!-- And if nothing fits, just step to the next <acronym> position --> 
+		<!-- in our database.                                              -->
 		<xsl:otherwise>
 			<xsl:choose>
 				<xsl:when test="following-sibling::acronym[not(@xml:lang)][$acronym.position + 1]">
