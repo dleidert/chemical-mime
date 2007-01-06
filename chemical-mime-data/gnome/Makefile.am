@@ -1,7 +1,7 @@
 # Document  $Id$
 # Summary   Makefile for the chemical-mime-data project.
 #
-# Copyright (C) 2004-2006 by Daniel Leidert.
+# Copyright (C) 2004-2007 by Daniel Leidert.
 #
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
@@ -16,7 +16,7 @@ vpath chemical-mime-database.xml $(top_builddir)/src
 
 
 if BOOL_GNOME_MIME
-gnomemimedir   = @with_gnome_mime@
+gnomemimedir   = $(with_gnome_mime)
 gnomemime_DATA = chemical-mime-data.keys chemical-mime-data.mime
 endif #BOOL_GNOME_MIME
 
