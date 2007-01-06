@@ -1,7 +1,7 @@
 # Document  $Id$
 # Summary   Makefile for the chemical-mime-data project.
 #
-# Copyright (C) 2004-2006 by Daniel Leidert.
+# Copyright (C) 2004-2007 by Daniel Leidert.
 #
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
@@ -11,8 +11,6 @@ EXTRA_DIST = $(icon_sources)
 CLEANFILES = *.png *.svgz
 
 MAINTAINERCLEANFILES = Makefile.in
-
-hicolorthemedir = @with_hicolor_theme@
 
 
 icon_sources = gnome-mime-chemical.svg
@@ -34,23 +32,23 @@ if BOOL_HICOLOR_THEME
 all-local: $(icon_sources:.svg=.svgz)
 
 install-data-local:
-	$(mkinstalldirs) $(DESTDIR)$(hicolorthemedir)
+	$(mkinstalldirs) $(DESTDIR)$(with_hicolor_theme)
 	for file in $(icon_sources) ; do \
 		icon=`echo $${file} | sed -e 's/\.svg$$//'` ; \
-		$(mkinstalldirs) $(DESTDIR)$(hicolorthemedir)/scalable/mimetypes ; \
-		$(INSTALL_DATA) $${icon}.svgz $(DESTDIR)$(hicolorthemedir)/scalable/mimetypes ; \
+		$(mkinstalldirs) $(DESTDIR)$(with_hicolor_theme)/scalable/mimetypes ; \
+		$(INSTALL_DATA) $${icon}.svgz $(DESTDIR)$(with_hicolor_theme)/scalable/mimetypes ; \
 		for size in $(icon_sizes) ; do \
-			$(mkinstalldirs) $(DESTDIR)$(hicolorthemedir)/$${size}x$${size}/mimetypes ; \
-			$(INSTALL_DATA) $${icon}_$${size}.png $(DESTDIR)$(hicolorthemedir)/$${size}x$${size}/mimetypes/$${icon}.png ; \
+			$(mkinstalldirs) $(DESTDIR)$(with_hicolor_theme)/$${size}x$${size}/mimetypes ; \
+			$(INSTALL_DATA) $${icon}_$${size}.png $(DESTDIR)$(with_hicolor_theme)/$${size}x$${size}/mimetypes/$${icon}.png ; \
 		done \
 	done
 
 uninstall-hook:
 	for file in $(icon_sources) ; do \
 		icon=`echo $${file} | sed -e 's/\.svg$$//'` ; \
-		rm -f $(DESTDIR)$(hicolorthemedir)/scalable/mimetypes/$${icon}.svgz ; \
+		rm -f $(DESTDIR)$(with_hicolor_theme)/scalable/mimetypes/$${icon}.svgz ; \
 		for size in $(icon_sizes) ; do \
-			rm -f $(DESTDIR)$(hicolorthemedir)/$${size}x$${size}/mimetypes/$${icon}.png ; \
+			rm -f $(DESTDIR)$(with_hicolor_theme)/$${size}x$${size}/mimetypes/$${icon}.png ; \
 		done \
 	done
 
