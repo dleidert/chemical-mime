@@ -3,6 +3,16 @@
 
 2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-inchi)
+	(chemical/x-inchi-xml): Added an acronym/expanded-acronym combination
+	for IUPAC.
+
+	* xsl/cmd_website.xsl (comment.acronym.replace): Added a routine to
+	add an acronym /tag) directly behind a found expanded-acronym
+	substring. Added a few comments to explain, what we do.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in: Added copyright notice. Added a
 	comment for the root-XML element.
 	(chemical/x-cactvs-ascii, chemical/x-ncbi-asn1)
