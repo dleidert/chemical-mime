@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Document  $Id$
+  Summary   The main chemical MIME type database with all information
+            found about a special MIME type.
+  
+  Copyright (C) 2004-2006 Egon Willighagen <e.willighagen@science.ru.nl>.
+  Copyright (C) 2004-2007 Daniel Leidert <daniel.leidert@wgdd.de>.
+
+  This file is free software. The copyright owner gives unlimited
+  permission to copy, distribute and modify it.
+-->
+
 <!DOCTYPE chemical-mime [
 	<!-- Root database element. -->
 	<!ELEMENT chemical-mime (mime-type+)>
@@ -32,7 +45,7 @@
 	<!ATTLIST glob
             pattern CDATA #REQUIRED>
 
-	<!--  -->
+	<!-- The root XML element and the namespace. -->
 	<!ELEMENT root-XML EMPTY>
 	<!ATTLIST root-XML
 	          namespaceURI CDATA #REQUIRED
@@ -107,6 +120,8 @@
 
 	<mime-type type="chemical/x-cactvs-ascii" support="yes" added="0.1.94">
 		<_comment>CACTVS ASCII Format</_comment>
+		<acronym>ASCII</acronym>
+		<expanded-acronym>American Standard Code for Information Interchange</expanded-acronym>
 		<glob pattern="*.cascii"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="85">
@@ -763,6 +778,10 @@
 
 	<mime-type type="chemical/x-ncbi-asn1" support="yes" added="0.1.94">
 		<_comment>PubChem ASN.1 ASCII Format</_comment>
+		<acronym>ASN.1</acronym>
+		<expanded-acronym>Abstract Syntax Notation One</expanded-acronym>
+		<acronym>ASCII</acronym>
+		<expanded-acronym>American Standard Code for Information Interchange</expanded-acronym>
 		<glob pattern="*.asn"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/x-ncbi-asn1-ascii"/>
@@ -782,6 +801,8 @@
 
 	<mime-type type="chemical/x-ncbi-asn1-binary" support="yes" added="0.1.94">
 		<_comment>PubChem ASN.1 Binary Format</_comment>
+		<acronym>ASN.1</acronym>
+		<expanded-acronym>Abstract Syntax Notation One</expanded-acronym>
 		<glob pattern="*.asn"/>
 		<glob pattern="*.val"/>
 		<magic priority="80">
@@ -793,6 +814,10 @@
 
 	<mime-type type="chemical/x-ncbi-asn1-xml" support="yes" added="0.1.94">
 		<_comment>PubChem ASN.1 XML Format</_comment>
+		<acronym>ASN.1</acronym>
+		<expanded-acronym>Abstract Syntax Notation One</expanded-acronym>
+		<acronym>XML</acronym>
+		<expanded-acronym>eXtensible Markup Language</expanded-acronym>
 		<glob pattern="*.pc"/>
 		<root-XML namespaceURI="http://www.ncbi.nlm.nih.gov" localName="PC-AssayContainer"/>
 		<root-XML namespaceURI="http://www.ncbi.nlm.nih.gov" localName="PC-Compound"/>

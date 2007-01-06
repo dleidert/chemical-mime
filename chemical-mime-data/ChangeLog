@@ -3,6 +3,15 @@
 
 2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in: Added copyright notice. Added a
+	comment for the root-XML element.
+	(chemical/x-cactvs-ascii, chemical/x-ncbi-asn1)
+	(chemical/x-ncbi-asn1-binary, chemical/x-ncbi-asn1-xml): Added some
+	acronym/expanded-acronym combinations for ASCII, ASN.1 and XML
+	acronyms.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* Makefile.am: Updated copyright notice.
 	(SUBDIRS): Added the html_docs directory, that contains the HTML
 	(build) files.
