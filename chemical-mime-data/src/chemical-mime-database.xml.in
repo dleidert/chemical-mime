@@ -6,7 +6,7 @@
 	          id CDATA #REQUIRED>
 
 	<!-- The MIME type (only chemical/*). -->
-	<!ELEMENT mime-type (comment+, (acronym+, expanded-acronym+)?, glob+, root-XML*, sub-class-of*, alias*, conflicts*, magic?, icon, supported-by?, specification*)>
+	<!ELEMENT mime-type (comment+, (acronym, expanded-acronym)*, glob+, root-XML*, sub-class-of*, alias*, conflicts*, magic?, icon, supported-by?, specification*)>
 	<!ATTLIST mime-type
 	          type CDATA #REQUIRED
 	          support (yes|no) "no"
@@ -53,8 +53,8 @@
 	<!ELEMENT conflicts EMPTY>
 	<!ATTLIST conflicts
 	          type CDATA #REQUIRED
-	          gnome (yes|no) "yes"
-	          kde (yes|no) "yes">
+	          gnome (yes|no) "no"
+	          kde (yes|no) "no">
 
 	<!-- The magic pattern. Refer to the shared-mime-info database specification.
 	     Search http://sourceforge.net/docman/?group_id=159685 for the link. -->
@@ -420,6 +420,9 @@
 		<sub-class-of type="text/plain"/>
 		<conflicts type="application/x-gameboy-rom" gnome="yes"/>
 		<conflicts type="application/x-genesis-rom" gnome="yes"/>
+		<magic priority="80">
+			<match type="string" value="                    GENETIC SEQUENCE DATA BANK" offset="0"/>
+		</magic>
 		<icon/>
 		<supported-by>
 			<application name="biojava"/>
@@ -428,6 +431,8 @@
 			<application name="emboss"/>
 			<application name="kfile_plugin"/>
 		</supported-by>
+		<specification url="http://www.psc.edu/general/software/packages/seq-intro/genbankfile.html"/>
+		<specification url="http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-gulp-input" support="no">
@@ -601,7 +606,7 @@
 		<glob pattern="*.sd"/>
 		<glob pattern="*.sdf"/>
 		<sub-class-of type="text/plain"/>
-		<conflicts type="application/vnd.stardivision.math" gnome="no" kde="yes"/>
+		<conflicts type="application/vnd.stardivision.math" kde="yes"/>
 		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
@@ -646,7 +651,8 @@
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
-		<specification url="http://www.tripos.com/TechBriefs/mol2_format/mol2.html"/>
+		<specification url="http://www.tripos.com/index.php?family=modules,SimplePage,sup_mol2"/>
+		<specification url="http://www.tripos.com/data/support/mol2.pdf"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mopac-graph" support="yes" added="0.1.91">
@@ -675,7 +681,7 @@
 		<glob pattern="*.zmt"/>
 		<sub-class-of type="text/plain"/>
 		<conflicts type="audio/x-musepack" gnome="yes" kde="yes"/>
-		<conflicts type="video/mpeg" gnome="yes" kde="no"/>
+		<conflicts type="video/mpeg" gnome="yes"/>
 		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
@@ -716,7 +722,7 @@
 		<glob pattern="*.car"/>
 		<glob pattern="*.cor"/>
 		<sub-class-of type="text/plain"/>
-		<conflicts type="application/x-arc" gnome="no" kde="yes"/>
+		<conflicts type="application/x-arc" kde="yes"/>
 		<icon kde="qc"/>
 		<supported-by>
 			<application name="gdis"/>
@@ -771,6 +777,7 @@
 		</magic>
 		<icon/>
 		<specification url="ftp://ftp.ncbi.nih.gov/pubchem/specifications/pubchem.asn"/>
+		<specification url="http://www.ncbi.nlm.nih.gov/Sitemap/Summary/asn1.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-ncbi-asn1-binary" support="yes" added="0.1.94">
