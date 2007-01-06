@@ -10,11 +10,6 @@ TODO
   + Fix README, INSTALL and HACKING
 
 
-* 0.2.0 branch
-
-  + Add a website stylesheet (first idea exists).
-
-
 * Later branches
 
   + Add stylesheet templates to build the related extension for GNOME and KDE
@@ -53,13 +48,12 @@ TODO
     - chemical/x-cerius
     - chemical/x-chemdraw
     - chemical/x-daylight-smiles
-    - chemical/x-genbank
+    - chemical/x-genbank (maybe solved)
     - chemical/x-mif
     
   + Look further for these mime types (not yet included, in alphabetical
     order):
     
-    x-cdx              *.cdx
     x-ct               *.ct
     x-eye2eye          
     x-msi-molfile      *.msm
@@ -78,7 +72,7 @@ TODO
     marvin output (.mvnout, .mvout)
     gdis morphology file (.gmf)
     gulp input (.gin), restart (.res), and ouput (.got) (gulp also used by viewmol!)
-    xtl (.xtl)
+    xtl (.xtl) (gulp added but not activated)
 
     viewmol also uses: x-turbomole*
     
