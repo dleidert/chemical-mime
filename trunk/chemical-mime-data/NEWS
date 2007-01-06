@@ -27,10 +27,14 @@ Version 0.1.94 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
 	  - chemical/x-gamess-input
 	  - chemical/x-gaussian-input
 	  - chemical/x-gaussian-log
+	  - chemical/x-genbank
 	  - chemical/x-hin
 	  - chemical/x-mol2
 	  - chemical/x-pdb
 	  - chemical/x-shelx
+	
+	* Added a poject website and an initial website overview of the
+	database.
 
 Version 0.1.93 2006-05-12 Daniel Leidert <daniel.leidert@wgdd.de>
 
