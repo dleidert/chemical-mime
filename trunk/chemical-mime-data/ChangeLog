@@ -3,6 +3,11 @@
 
 2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-cmtx)
+	(chemical/x-shelx): Fixed pattern (forgot to count the newline).
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* html_docs/cmd.css: Added a border between MIME types. Increased
 	space to table cell borders.
 

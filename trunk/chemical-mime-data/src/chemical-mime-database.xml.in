@@ -323,12 +323,12 @@
 		<glob pattern="*.cmtx"/>
 		<magic priority="80">
 			<match type="string" value="TITL" offset="0">
-				<match type="string" value="NOTE" offset="4:81"/>
+				<match type="string" value="NOTE" offset="5:81"/>
 			</match>
 			<!-- molecule files begin with ^MOLE -->
 			<match type="string" value="MOLE" offset="0">
-				<match type="string" value="TITL" offset="4:81">
-					<match type="string" value="NOTE" offset="8:161"/>
+				<match type="string" value="TITL" offset="5:81">
+					<match type="string" value="NOTE" offset="10:161"/>
 				</match>
 			</match>
 		</magic>
@@ -1039,7 +1039,7 @@
 		<sub-class-of type="text/plain"/>
 		<magic priority="80">
 			<match type="string" value="TITL" offset="0">
-				<match type="string" value="CELL" offset="4:81"/>
+				<match type="string" value="CELL" offset="5:81"/>
 			</match>
 		</magic>
 		<icon/>
