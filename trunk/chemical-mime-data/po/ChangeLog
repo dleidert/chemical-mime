@@ -2,6 +2,11 @@
 # Summary   File-changelog for the internationalization data files of the
 #           chemical-mime-data project.
 
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* de.po: Updated after changes to database. Fixed fuzzy entries. 3
+	untranslated messages left.
+
 2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* de.po: Updated after changes to database. Fixed untranslated and
