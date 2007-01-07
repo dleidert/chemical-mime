@@ -125,7 +125,7 @@
 </xsl:template>
 
 <xsl:template match="mime-type">
-	<tr>
+	<tr class="mime-type">
 		<xsl:choose>
 			<xsl:when test="child::magic and child::root-XML and child::specification">
 				<td class="mime-type" rowspan="4">

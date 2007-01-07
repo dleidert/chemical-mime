@@ -3,6 +3,20 @@
 
 2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* html_docs/cmd.css: Added a border between MIME types. Increased
+	space to table cell borders.
+
+	* src/chemical-mime-database.xml.in: Added (currently unsupported)
+	chemical/x-cmdf, chemical/x-cmmf and chemical/x-cmtx MIME types.
+	(chemical/x-cerius): Fixed description.
+	(chemical/x-shelx): Improved pattern to not conflict with
+	chemical/x-cmtx.
+
+	* xsl/cmd_website.xsl (mime-type): Added a class attribute to the
+	first tr tag, to allow a border.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* NEWS: Prepared for release 0.1.94.
 
 	* src/chemical-mime-database.xml.in (chemical/x-cache)
