@@ -861,7 +861,7 @@
 	<mime-type type="chemical/x-msi-mdf" support="yes" added="0.1.91">
 		<_comment>Accelrys Molecular Data File</_comment>
 		<glob pattern="*.mdf"/>
-		<sub-class-of type="application/vnd.ms-access"/>
+		<sub-class-of type="text/plain"/>
 		<magic priority="50">
 			<match type="string" value="!BIOSYM molecular_data " offset="0"/>
 		</magic>
