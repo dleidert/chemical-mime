@@ -21,7 +21,7 @@ vpath cmd_%.xsl $(top_srcdir)/xsl
 vpath chemical-mime-database.xml $(top_builddir)/src
 
 
-htmldocsdir   = $datadir/doc/$PACKAGE
+htmldocsdir   = $(datadir)/doc/$(PACKAGE)
 htmldocs_DATA = index.html chemical-mime-data.html cmd.css
 
 
