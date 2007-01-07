@@ -3,6 +3,10 @@
 
 2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* html_docs/Makefile.am (htmldocsdir): Fixed bug.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* xsl/cmd_website.xsl (mime.type): Moved processing of alias and
 	sub-class-of into an own matching template.
 
