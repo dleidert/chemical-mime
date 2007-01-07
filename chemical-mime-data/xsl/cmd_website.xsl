@@ -125,31 +125,29 @@
 </xsl:template>
 
 <xsl:template match="mime-type">
-	<tr class="mime-type">
+	<tr>
 		<xsl:choose>
 			<xsl:when test="child::magic and child::root-XML and child::specification">
-				<td class="mime-type" rowspan="4">
-					<xsl:value-of select="@type"/>
-				</td>
+				<xsl:call-template name="mime.type">
+					<xsl:with-param name="rowspan" select="4"/>
+				</xsl:call-template>
 			</xsl:when>
 			<xsl:when test="(child::magic and child::root-XML and not(child::specification))
 			                or (child::magic and not(child::root-XML) and child::specification)
 			                or (not(child::magic) and child::root-XML and child::specification)">
-				<td class="mime-type" rowspan="3">
-					<xsl:value-of select="@type"/>
-				</td>
+				<xsl:call-template name="mime.type">
+					<xsl:with-param name="rowspan" select="3"/>
+				</xsl:call-template>
 			</xsl:when>
 			<xsl:when test="(child::magic and not(child::root-XML) and not(child::specification))
 			                or (not(child::magic) and not(child::root-XML) and child::specification)
 			                or (not(child::magic) and child::root-XML and not(child::specification))">
-				<td class="mime-type" rowspan="2">
-					<xsl:value-of select="@type"/>
-				</td>
+				<xsl:call-template name="mime.type">
+					<xsl:with-param name="rowspan" select="2"/>
+				</xsl:call-template>
 			</xsl:when>
 			<xsl:otherwise>
-				<td class="mime-type">
-					<xsl:value-of select="@type"/>
-				</td>
+				<xsl:call-template name="mime.type"/>
 			</xsl:otherwise>
 		</xsl:choose>
 		<td class="comment">
@@ -188,6 +186,47 @@
 			</td>
 		</tr>
 	</xsl:if>
+</xsl:template>
+
+<xsl:template name="mime.type">
+	<xsl:param name="rowspan" select="false()"/>
+	
+	<td class="{local-name(.)}">
+		<xsl:if test="$rowspan">
+			<xsl:attribute name="rowspan">
+				<xsl:value-of select="$rowspan"/>
+			</xsl:attribute>
+		</xsl:if>
+		<span class="{local-name(.)}">
+			<xsl:value-of select="@type"/>
+		</span>
+		<xsl:if test="child::sub-class-of">
+			<dl>
+				<dt class="sub-class-of">Sub-class of:</dt>
+					<xsl:for-each select="sub-class-of">
+					<xsl:sort select="@type"/>
+					<dd>
+						<span class="{local-name(.)}">
+							<xsl:value-of select="@type"/>
+						</span>
+					</dd>
+			</xsl:for-each>
+			</dl>
+		</xsl:if>
+		<xsl:if test="child::alias">
+			<dl>
+				<dt class="alias">Alias(s):</dt>
+				<xsl:for-each select="alias">
+					<xsl:sort select="@type"/>
+					<dd>
+						<span class="{local-name(.)}">
+							<xsl:value-of select="@type"/>
+						</span>
+					</dd>
+				</xsl:for-each>
+			</dl>
+		</xsl:if>
+	</td>
 </xsl:template>
 
 <xsl:template name="comment.acronym.no.replace">

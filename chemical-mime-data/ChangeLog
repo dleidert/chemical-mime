@@ -3,6 +3,19 @@
 
 2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* html_docs/cmd.css: Added span.alias, span.mime-type and
+	span.sub-class-of styling for the newly introduced fields at output.
+	(td.mime-type): Removed in favour of span.mime-type.
+
+	* src/chemical-mime-database.xml.in (chemical/x-inchi-xml): Fixed
+	sub-class of value.
+
+	* xsl/cmd_website.xsl (mime-type): Outsourced mime-type table cell
+	creation to new mime.type template, which also adds support for
+	sub-class-of and alias content.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in: Initially added
 	application/x-xdrawchem without activating it. Set pattern priority
 	for most MIME types (except conflicting ones) to 50 (default).

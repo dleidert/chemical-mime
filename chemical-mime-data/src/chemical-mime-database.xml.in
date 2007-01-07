@@ -613,7 +613,7 @@
 		<acronym>InChI</acronym>
 		<expanded-acronym>International Chemical Identifier</expanded-acronym>
 		<glob pattern="*.inchix"/>
-		<sub-class-of type="text/plain"/>
+		<sub-class-of type="application/xml"/>
 		<icon/>
 		<supported-by>
 			<application name="bkchem"/>
