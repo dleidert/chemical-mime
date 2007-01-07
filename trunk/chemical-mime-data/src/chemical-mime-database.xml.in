@@ -225,6 +225,13 @@
 		<specification url="http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/cdx/IntroCDXML.htm"/>
 	</mime-type>
 
+	<mime-type type="chemical/x-cerius" support="no">
+		<_comment>Accelrys Data Model File</_comment>
+		<glob pattern="*.cer"/>
+		<sub-class-of type="text/plain"/>
+		<icon/>
+	</mime-type>
+
 	<mime-type type="chemical/x-chem3d" support="yes" added="0.1.91">
 		<_comment>Chem3D Format</_comment>
 		<glob pattern="*.c3d"/>
@@ -268,6 +275,12 @@
 		<root-XML namespaceURI="http://www.xml-cml.org/schema/cml2/core" localName="cml"/>
 		<sub-class-of type="text/xml"/>
 		<alias type="chemical/cml"/>
+		<magic priority="80">
+			<match type="string" value="&lt;!DOCTYPE cml" offset="0:256"/>
+			<match type="string" value="&lt;!DOCTYPE molecule" offset="0:256"/>
+			<match type="string" value="&lt;cml" offset="0:64"/>
+			<match type="string" value="&lt;molecule" offset="0:64"/>
+		</magic>
 		<icon/>
 		<supported-by>
 			<application name="gchempaint"/>
@@ -275,6 +288,16 @@
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.xml-cml.org/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-ctx" support="no">
+		<_comment>Gasteiger ClearText File Format</_comment>
+		<glob pattern="*.ctx"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="80">
+			<match type="string" value=" /IDENT        " offset="0"/>
+		</magic>
+		<icon/>
 	</mime-type>
 
 	<mime-type type="chemical/x-daylight-smiles" support="yes" added="0.1.91">
@@ -430,6 +453,8 @@
 
 	<mime-type type="chemical/x-genbank" support="yes" added="0.1.93">
 		<_comment>GenBank Flat File Format</_comment>
+		<acronym>GenBank</acronym>
+		<expanded-acronym>National Genetic Sequence Data Base</expanded-acronym>
 		<glob pattern="*.gb"/> <!-- possible clash with application/x-gameboy-rom -->
 		<glob pattern="*.gen"/> <!-- possible clash with application/x-genesis-rom -->
 		<sub-class-of type="text/plain"/>
@@ -451,7 +476,7 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-gulp-input" support="no">
-		<_comment>GULP input file</_comment>
+		<_comment>GULP Input File Format</_comment>
 		<acronym>GULP</acronym>
 		<expanded-acronym>General Utility Lattice Program</expanded-acronym>
 		<glob pattern="*.gin"/>
@@ -462,7 +487,7 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-gulp" support="yes" added="0.1.94">
-		<_comment>GULP output file</_comment>
+		<_comment>GULP Output File Format</_comment>
 		<acronym>GULP</acronym>
 		<expanded-acronym>General Utility Lattice Program</expanded-acronym>
 		<glob pattern="*.got"/>
@@ -736,37 +761,54 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-msi-car" support="yes" added="0.1.91">
-		<_comment>Accelrys structure file</_comment>
+		<_comment>Accelrys Cartesian Coordinate Archive File</_comment>
 		<glob pattern="*.arc"/> <!-- possible clash with application/x-arc -->
 		<glob pattern="*.car"/>
-		<glob pattern="*.cor"/>
+		<!-- <glob pattern="*.cor"/> -->
+		<!-- The *.cor is the output file format. -->
 		<sub-class-of type="text/plain"/>
-		<conflicts type="application/x-arc" kde="yes"/>
+		<magic priority="80">
+			<match type="string" value="!BIOSYM archive " offset="0"/>
+		</magic>
 		<icon kde="qc"/>
 		<supported-by>
 			<application name="gdis"/>
 			<application name="viewmol"/>
 		</supported-by>
+		<specification url="http://www-bio.unizh.ch/docu/acc_docs/doc/formats980/File_Formats_1998.html#739217"/>
+		<specification url="http://www-bio.unizh.ch/docu/acc_docs/doc/formats980/File_Formats_1998.html#781840"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-msi-hessian" support="yes" added="0.1.91">
 		<_comment>Accelrys Hessian File</_comment>
 		<glob pattern="*.hessian"/>
+		<glob pattern="*.hessianx"/>
+		<glob pattern="*.xhessian"/>
 		<sub-class-of type="text/plain"/>
+		<magic priority="80">
+			<match type="string" value="$hessian" offset="0"/>
+		</magic>
 		<icon kde="qc"/>
 		<supported-by>
 			<application name="viewmol"/>
 		</supported-by>
+		<specification url="http://www-bio.unizh.ch/docu/acc_docs/doc/formats980/File_Formats_1998.html#482939"/>
+		<specification url="http://www.convert-extensions.com/format/HESSIAN-Insight-II-Hessian-File.html"/>
+		<specification url="http://www.convert-extensions.com/format/HESSIANX-Insight-II-Hessian-File.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-msi-mdf" support="yes" added="0.1.91">
 		<_comment>Accelrys Molecular Data File</_comment>
 		<glob pattern="*.mdf"/>
-		<sub-class-of type="text/plain"/>
+		<sub-class-of type="application/vnd.ms-access"/>
+		<magic priority="80">
+			<match type="string" value="!BIOSYM molecular_data " offset="0"/>
+		</magic>
 		<icon kde="qc"/>
 		<supported-by>
 			<application name="viewmol"/>
 		</supported-by>
+		<specification url="http://www-bio.unizh.ch/docu/acc_docs/doc/formats980/File_Formats_1998.html#484480"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-msi-msi" support="yes" added="0.1.91">
@@ -774,6 +816,9 @@
 		<glob pattern="*.msi"/>
 		<!-- conflicts with chemical/x-cer and application/x-msi -->
 		<sub-class-of type="text/plain"/>
+		<magic priority="80">
+			<match type="string" value="# MSI CERIUS2 DataModel File Version " offset="0"/>
+		</magic>
 		<icon kde="qc"/>
 		<supported-by>
 			<application name="viewmol"/>
@@ -908,6 +953,7 @@
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.mdli.com/"/>
+		<specification url="http://www-bio.unizh.ch/docu/acc_docs/doc/formats980/File_Formats_1998.html#781879"/>
 	</mime-type>
 
 	<!-- probably not official -->	
@@ -953,6 +999,8 @@
 			<application name="kfile_plugin"/>
 			<application name="shelx"/>
 		</supported-by>
+		<specification url="http://shelx.uni-ac.gwdg.de/SHELX/"/>
+		<specification url="http://shelx.uni-ac.gwdg.de/SHELX/shelx.pdf"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-vmd" support="yes" added="0.1.93">
@@ -964,6 +1012,7 @@
 			<application name="kfile_plugin"/>
 			<application name="vmd"/>
 		</supported-by>
+		<specification url="http://www.ks.uiuc.edu/Research/vmd/"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-xyz" support="yes" added="0.1.90">
