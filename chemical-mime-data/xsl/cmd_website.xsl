@@ -203,14 +203,10 @@
 		<xsl:if test="child::sub-class-of">
 			<dl>
 				<dt class="sub-class-of">Sub-class of:</dt>
-					<xsl:for-each select="sub-class-of">
+				<xsl:for-each select="sub-class-of">
 					<xsl:sort select="@type"/>
-					<dd>
-						<span class="{local-name(.)}">
-							<xsl:value-of select="@type"/>
-						</span>
-					</dd>
-			</xsl:for-each>
+					<xsl:apply-templates select="."/>
+				</xsl:for-each>
 			</dl>
 		</xsl:if>
 		<xsl:if test="child::alias">
@@ -218,11 +214,7 @@
 				<dt class="alias">Alias(s):</dt>
 				<xsl:for-each select="alias">
 					<xsl:sort select="@type"/>
-					<dd>
-						<span class="{local-name(.)}">
-							<xsl:value-of select="@type"/>
-						</span>
-					</dd>
+					<xsl:apply-templates select="."/>
 				</xsl:for-each>
 			</dl>
 		</xsl:if>
@@ -330,6 +322,14 @@
 	</xsl:choose>
 </xsl:template>
 
+<xsl:template match="alias|sub-class-of">
+	<dd>
+		<span class="{local-name(.)}">
+			<xsl:value-of select="@type"/>
+		</span>
+	</dd>
+</xsl:template>
+
 <xsl:template match="comment">
 	<xsl:param name="content" select="."/>
 
@@ -408,7 +408,6 @@
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template match="acronym|alias|application|expanded-acronym|icon|
-                     sub-class-of|supported-by"/>
+<xsl:template match="acronym|application|expanded-acronym|icon|supported-by"/>
 
 </xsl:stylesheet>
