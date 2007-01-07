@@ -3,6 +3,11 @@
 
 2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-msi-mdf): Fixed
+	sub-class-of value.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* html_docs/Makefile.am (htmldocsdir): Fixed bug.
 
 2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
