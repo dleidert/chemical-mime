@@ -107,6 +107,21 @@
 
 <chemical-mime id="'$Id$'">
 
+	<mime-type type="application/x-xdrawchem" support="no">
+		<_comment>Native XDrawChem Format</_comment>
+		<glob pattern="*.xdc"/>
+		<!-- <root-XML namespaceURI="http://www.xdrawchem.org" localName="xdrawchem"/> -->
+		<sub-class-of type="application/xml"/>
+		<magic priority="50">
+			<match type="string" value="&lt;!DOCTYPE xdrawchem" offset="0:256"/>
+			<match type="string" value="&lt;xdrawchem" offset="0:64"/>
+		</magic>
+		<icon/>
+		<supported-by>
+			<application name="xdrawchem"/>
+		</supported-by>
+	</mime-type>
+
 	<mime-type type="chemical/x-alchemy" support="yes" added="0.1.91">
 		<_comment>Alchemy Format</_comment>
 		<glob pattern="*.alc"/>
@@ -124,7 +139,7 @@
 		<expanded-acronym>American Standard Code for Information Interchange</expanded-acronym>
 		<glob pattern="*.cascii"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="85">
+		<magic priority="50">
 			<match type="string" value="#" offset="0">
 				<match type="string" value="Cactvs NMDSAscii by" offset="0:100"/>
 			</match>
@@ -140,7 +155,7 @@
 		<glob pattern="*.cbin"/>
 		<!-- Byte 0:7 -> 8 Byte header by XDR? -->
 		<!-- Byte 0:7 -> Can it be specified?  -->
-		<magic priority="85">
+		<magic priority="50">
 			<match type="string" value="\x07CACTVSBIN" offset="8"/>
 		</magic>
 		<icon/>
@@ -152,7 +167,7 @@
 	<mime-type type="chemical/x-cactvs-table" support="yes" added="0.1.94">
 		<_comment>CACTVS Table Format</_comment>
 		<glob pattern="*.ctab"/>
-		<magic priority="85">
+		<magic priority="50">
 			<match type="string" value="CACTVS QSAR Table" offset="0"/>
 		</magic>
 		<icon/>
@@ -191,7 +206,7 @@
 		<acronym>CDX</acronym>
 		<expanded-acronym>ChemDraw eXchange</expanded-acronym>
 		<glob pattern="*.cdx"/>
-		<magic priority="85">
+		<magic priority="50">
 			<match type="string" value="VjCD0100" offset="0">
 				<match type="string" value="\x04\x03\x02\x01" offset="8">
 					<match type="string" value="\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" offset="12"/>
@@ -216,7 +231,7 @@
 		<glob pattern="*.cdxml"/>
 		<!-- <root-XML namespaceURI="http://www.camsoft.com" localName="CDXML"/> -->
 		<sub-class-of type="application/xml"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="&lt;!DOCTYPE CDXML" offset="0:256"/>
 			<match type="string" value="&lt;CDXML" offset="0:64"/>
 		</magic>
@@ -253,7 +268,7 @@
 		<expanded-acronym>Crystallographic Information File</expanded-acronym>
 		<glob pattern="*.cif"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="60">
+		<magic priority="50">
 			<match type="string" value="#\#CIF_1.1" offset="0">
 				<match type="byte" value="9" offset="10"/>
 				<match type="byte" value="10" offset="10"/>
@@ -274,7 +289,7 @@
 		<_comment>CrystalMaker Crystal Binary File</_comment>
 		<glob pattern="*.cmdf"/>
 		<glob pattern="*.cmd5"/><!-- old format -->
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="CMDFCrystalMakerM" offset="0"/>
 			<match type="string" value="CMD5(CrystalMaker)" offset="0"/>
 		</magic>
@@ -291,7 +306,7 @@
 		<root-XML namespaceURI="http://www.xml-cml.org/schema/cml2/core" localName="cml"/>
 		<sub-class-of type="text/xml"/>
 		<alias type="chemical/cml"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="&lt;!DOCTYPE cml" offset="0:256"/>
 			<match type="string" value="&lt;!DOCTYPE molecule" offset="0:256"/>
 			<match type="string" value="&lt;cml" offset="0:64"/>
@@ -310,7 +325,7 @@
 		<_comment>CrystalMaker Molecule Binary File</_comment>
 		<glob pattern="*.cmmf"/>
 		<glob pattern="*.cmm5"/><!-- old format -->
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="CMMFCrystalMakerM" offset="0"/>
 			<match type="string" value="CMM5(CrystalMaker)" offset="0"/>
 		</magic>
@@ -340,7 +355,7 @@
 		<_comment>Gasteiger ClearText File Format</_comment>
 		<glob pattern="*.ctx"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value=" /IDENT        " offset="0"/>
 		</magic>
 		<icon/>
@@ -438,7 +453,7 @@
 		<glob pattern="*.gam"/>
 		<glob pattern="*.gamout"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="----- GAMESS execution script -----" offset="0"/>
 			<match type="string" value="GAMESS VERSION =" offset="65:130">
 				<match type="string" value="\x0A\x0A\x20EXECUTION OF GAMESS BEGUN" offset="584:585"/>
@@ -454,7 +469,7 @@
 
 	<mime-type type="chemical/x-gaussian-input" support="yes" added="0.1.91">
 		<_comment>Gaussian Input Format</_comment>
-		<glob pattern="*.com"/>
+		<!-- <glob pattern="*.com"/> -->
 		<glob pattern="*.gau"/>
 		<glob pattern="*.gjc"/>
 		<glob pattern="*.gjf"/>
@@ -483,7 +498,7 @@
 		<alias type="chemical/x-gaussian94-output"/>
 		<alias type="chemical/x-gaussian98-output"/>
 		<alias type="chemical/x-gaussian03-output"/>
-		<magic priority="80">
+		<magic priority="50">
 			<!-- Also seen some stuff before this line sometimes.      -->
 			<!-- Ignore this case here. We start directly at offset 1. -->
 			<match type="string" value="Entering Gaussian System, Link 0=" offset="1"/>
@@ -540,7 +555,7 @@
 		<!-- <glob pattern="*.gulp"/> -->
 		<glob pattern="*.out"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="85">
+		<magic priority="50">
 			<match type="string" value="GENERAL UTILITY LATTICE PROGRAM" offset="81:160">
 				<match type="string" value="Julian Gale" offset="161:240">
 					<match type="string" value="Nanochemistry Research Institute" offset="241:320">
@@ -562,10 +577,10 @@
 		<_comment>HyperChem Molecule File Format</_comment>
 		<glob pattern="*.hin"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="80">
-			<match type="string" value="mol 1" offset="0">
-				<match type="string" value=".hin" offset="5:64">
-					<match type="string" value="atom 1" offset="5:128"/>
+		<magic priority="50">
+			<match type="string" value="mol 1 " offset="0">
+				<match type="string" value=".hin" offset="6:64">
+					<match type="string" value="atom 1" offset="12:128"/>
 				</match>
 			</match>
 		</magic>
@@ -734,7 +749,7 @@
 		<_comment>SYBYL Portable Representation Format</_comment>
 		<glob pattern="*.mol2"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="@&lt;TRIPOS&gt;MOLECULE\x0D" offset="0:800"/>
 		</magic>
 		<icon/>
@@ -794,7 +809,7 @@
 			 81:160	 ** MOPAC FOR LINUX (PUBLIC DOMAIN VERSION)  MTA ATOMKI, Debrecen, 95-JUN-21  **
 			161:240	 *******************************************************************************
 		-->
-		<magic priority="85">
+		<magic priority="50">
 			<match type="string" value="MOPAC" offset="81:160">
 				<match type="string" value="(c) Fujitsu" offset="81:160"/>
 			</match>
@@ -813,7 +828,7 @@
 		<!-- <glob pattern="*.cor"/> -->
 		<!-- The *.cor is the output file format. -->
 		<sub-class-of type="text/plain"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="!BIOSYM archive " offset="0"/>
 		</magic>
 		<icon kde="qc"/>
@@ -831,7 +846,7 @@
 		<glob pattern="*.hessianx"/>
 		<glob pattern="*.xhessian"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="$hessian" offset="0"/>
 		</magic>
 		<icon kde="qc"/>
@@ -847,7 +862,7 @@
 		<_comment>Accelrys Molecular Data File</_comment>
 		<glob pattern="*.mdf"/>
 		<sub-class-of type="application/vnd.ms-access"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="!BIOSYM molecular_data " offset="0"/>
 		</magic>
 		<icon kde="qc"/>
@@ -862,7 +877,7 @@
 		<glob pattern="*.msi"/>
 		<!-- conflicts with chemical/x-cer and application/x-msi -->
 		<sub-class-of type="text/plain"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="# MSI CERIUS2 DataModel File Version " offset="0"/>
 		</magic>
 		<icon kde="qc"/>
@@ -880,7 +895,7 @@
 		<glob pattern="*.asn"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/x-ncbi-asn1-ascii"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="PC-AssayContainer" offset="0"/>
 			<match type="string" value="PC-Compound" offset="0"/>
 			<match type="string" value="PC-InfoData" offset="0"/>
@@ -900,7 +915,7 @@
 		<expanded-acronym>Abstract Syntax Notation One</expanded-acronym>
 		<glob pattern="*.asn"/>
 		<glob pattern="*.val"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="\x30\x80\x30\x80\xA0\x80\x30\x80" offset="0"/>
 		</magic>
 		<icon/>
@@ -924,7 +939,7 @@
 		<root-XML namespaceURI="http://www.ncbi.nlm.nih.gov" localName="PC-Substances"/>
 		<root-XML namespaceURI="http://www.ncbi.nlm.nih.gov" localName="PC-XRefData"/>
 		<sub-class-of type="application/xml"/>
-		<magic priority="80">
+		<magic priority="50">
 			<match type="string" value="&lt;PC-AssayContainer" offset="0:64"/>
 			<match type="string" value="&lt;PC-Compound" offset="0:64"/>
 			<match type="string" value="&lt;PC-ID" offset="0:64"/>
@@ -939,7 +954,7 @@
 
 	<mime-type type="chemical/x-pdb" support="yes" added="0.1.90">
 		<_comment>Brookhaven Protein DataBase File Format</_comment>
-		<glob pattern="*.ent"/>
+		<!-- <glob pattern="*.ent"/> -->
 		<glob pattern="*.pdb"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/pdb"/>
@@ -1019,7 +1034,7 @@
 		<_comment>Q-Chem Output File</_comment>
 		<glob pattern="*.qcout"/>
 		<sub-class-of type="text/plain"/>
-		<magic priority="80">
+		<magic priority="50">
 			<!-- Q-Chem output files start with citation. -->
 			<match type="string" value="Welcome to Q-Chem" offset="20">
 				<match type="string" value="A Quantum Leap Into The Future Of Chemistry" offset="41"/>
