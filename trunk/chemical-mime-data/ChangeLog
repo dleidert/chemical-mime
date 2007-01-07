@@ -3,6 +3,18 @@
 
 2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in: Initially added
+	application/x-xdrawchem without activating it. Set pattern priority
+	for most MIME types (except conflicting ones) to 50 (default).
+	(chemical/x-gaussian-input): Commented .com extension for the moment
+	until we have magic pattern.
+	(chemical/x-hin): Improved pattern.
+	(chemical/x-pdb): Commented .ent extension as it conflicts with
+	entitity definition files (and we don't want to open such files with
+	chemical applications).
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in (chemical/x-cmtx)
 	(chemical/x-shelx): Fixed pattern (forgot to count the newline).
 
