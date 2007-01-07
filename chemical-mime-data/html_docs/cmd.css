@@ -31,11 +31,15 @@ table {
 	border-collapse: collapse;
 }
 
-th, td {
+td, th {
 	vertical-align: top;
 	text-align: left;
 	border: 1px solid #000000;
-	padding: 0.25em;
+	padding: 0.4em;
+}
+
+tr.mime-type {
+	border-top: 2px solid #000000;
 }
 
 td.mime-type {

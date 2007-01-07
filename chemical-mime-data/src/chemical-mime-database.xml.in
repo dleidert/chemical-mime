@@ -230,7 +230,7 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-cerius" support="no">
-		<_comment>Accelrys Data Model File</_comment>
+		<_comment>MSI Cerius II format</_comment>
 		<glob pattern="*.cer"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -270,6 +270,18 @@
 		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"/>
 	</mime-type>
 
+	<mime-type type="chemical/x-cmdf" support="no">
+		<_comment>CrystalMaker Crystal Binary File</_comment>
+		<glob pattern="*.cmdf"/>
+		<glob pattern="*.cmd5"/><!-- old format -->
+		<magic priority="80">
+			<match type="string" value="CMDFCrystalMakerM" offset="0"/>
+			<match type="string" value="CMD5(CrystalMaker)" offset="0"/>
+		</magic>
+		<icon/>
+		<specification url="http://www.crystalmaker.com/library/index.html"/>
+	</mime-type>
+
 	<mime-type type="chemical/x-cml" support="yes" added="0.1.90">
 		<_comment>Chemical Markup Language</_comment>
 		<acronym>CML</acronym>
@@ -292,6 +304,36 @@
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.xml-cml.org/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-cmmf" support="no">
+		<_comment>CrystalMaker Molecule Binary File</_comment>
+		<glob pattern="*.cmmf"/>
+		<glob pattern="*.cmm5"/><!-- old format -->
+		<magic priority="80">
+			<match type="string" value="CMMFCrystalMakerM" offset="0"/>
+			<match type="string" value="CMM5(CrystalMaker)" offset="0"/>
+		</magic>
+		<icon/>
+		<specification url="http://www.crystalmaker.com/library/proteins.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-cmtx" support="no">
+		<_comment>CrystalMaker Crystal/Molecule Text File</_comment>
+		<glob pattern="*.cmtx"/>
+		<magic priority="80">
+			<match type="string" value="TITL" offset="0">
+				<match type="string" value="NOTE" offset="4:81"/>
+			</match>
+			<!-- molecule files begin with ^MOLE -->
+			<match type="string" value="MOLE" offset="0">
+				<match type="string" value="TITL" offset="4:81">
+					<match type="string" value="NOTE" offset="8:161"/>
+				</match>
+			</match>
+		</magic>
+		<icon/>
+		<specification url="http://www.crystalmaker.co.uk/downloads/CM_Users_Guide.pdf"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-ctx" support="no">
@@ -996,7 +1038,9 @@
 		<glob pattern="*.res"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="80">
-			<match type="string" value="TITL\x00" offset="0"/>
+			<match type="string" value="TITL" offset="0">
+				<match type="string" value="CELL" offset="4:81"/>
+			</match>
 		</magic>
 		<icon/>
 		<supported-by>
