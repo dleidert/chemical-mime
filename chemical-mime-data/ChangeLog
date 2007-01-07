@@ -1,6 +1,14 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Prepared for release 0.1.94.
+
+	* src/chemical-mime-database.xml.in (chemical/x-cache)
+	(chemical/x-cache-csf): Added an acronym/expanded-acronym combination
+	for the CAChe acronym.
+
 2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Added chemical/x-cerius and

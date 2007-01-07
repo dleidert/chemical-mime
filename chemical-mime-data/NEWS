@@ -30,6 +30,10 @@ Version 0.1.94 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
 	  - chemical/x-genbank
 	  - chemical/x-hin
 	  - chemical/x-mol2
+	  - chemical/x-msi-car
+	  - chemical/x-msi-hessian
+	  - chemical/x-msi-mdf
+	  - chemical/x-msi-msi
 	  - chemical/x-pdb
 	  - chemical/x-shelx
 	

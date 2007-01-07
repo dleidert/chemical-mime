@@ -163,6 +163,8 @@
 
 	<mime-type type="chemical/x-cache" support="yes" added="0.1.91">
 		<_comment>CAChe MolStruct Format</_comment>
+		<acronym>CAChe</acronym>
+		<expanded-acronym>Computer Aided Chemistry</expanded-acronym>
 		<glob pattern="*.cac"/>
 		<glob pattern="*.cache"/>
 		<sub-class-of type="text/plain"/>
@@ -174,6 +176,8 @@
 
 	<mime-type type="chemical/x-cache-csf" support="no">
 		<_comment>CAChe CSF Format</_comment>
+		<acronym>CAChe</acronym>
+		<expanded-acronym>Computer Aided Chemistry</expanded-acronym>
 		<glob pattern="*.csf"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
