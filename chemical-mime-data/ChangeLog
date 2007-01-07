@@ -3,6 +3,23 @@
 
 2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in: Added chemical/x-cerius and
+	chemical/x-ctx initially, but didn't activate it yet.
+	(chemical/x-cml): Added some magic pattern.
+	(chemical/x-genbank): Added acronym/expanded-acronym combination for
+	GenBank abbreviation.
+	(chemical/x-gulp-input, chemical/x-gulp): Improved wording.
+	(chemical/x-msi-car): Removed .cor extension for the moment. Added
+	magic patter and specification resources.
+	(chemical/x-msi-hessian): Added .hessianx and .xhessian extensions.
+	Added magic patter and specification resources.
+	(chemical/x-msi-mdf): Fixed sub-class-of. Added magic pattern and
+	specification resources.
+	(chemical/x-msi-msi): Added magic patter and specification resources.
+	(chemical/x-vmd): Added specification resource.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* NEWS: Prepared for release 0.1.94.
 
 	* TODO: Updated.
