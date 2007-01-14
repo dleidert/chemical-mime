@@ -1,6 +1,40 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-14 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (specification): Added a resource
+	attribute to comment a specification.
+
+	* xsl/cmd_website.xsl: Added documentation to most templates.
+	Reorganized the templates, renamed a lot of them and outsourced
+	several parts to own templates. Added a new html.content.foot template
+	for footnotes.
+	(chemical-mime): Outsourced HTML content creation into new
+	html.content template.
+	(comment): Adjusted after changes to comment.acronym.check (ex:
+	comment.acronym.replace) and comment.acronym.no.replace (ex:
+	comment.acronym.no.replace).
+	(glob, specification): Improved and shorter.
+	(mime-type): Adjusted after renaming mime.type template.
+	(specification): Added support for newly introduced resource
+	attribute.
+	(header.html): Renamed to html.content.head.
+	(table.mime.supported): Renamed to html.content.table.mime.supported.
+	(table.mime.unsupported): Renamed to
+	html.content.table.mime.unsupported.
+	(table.mime.header): Renamed to html.content.table.mime.head. Added
+	alias and sub-class-of headers to table header cell.
+	(comment.acronym.replace): Renamed to comment.acronym.check. Rewritten
+	template - now it always checks the whole comment content for
+	(expanded-)acronam matches and "adds" acronym tags to it's content
+	instead of just giving the right-of-match content to the new template
+	call. So we really check the whole comment content for matches.
+	(comment.acronym.no.replace): Renamed to comment.acronym.output.
+	Adjusted after changes to comment.acronym.check (ex:
+	comment.acronym.replace).
+	(mime.type): Renamed to mimetype.output.
+
 2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in (chemical/x-msi-mdf): Fixed
