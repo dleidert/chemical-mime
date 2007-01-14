@@ -290,14 +290,8 @@
   <!-- * it.                                                               -->
 	<tr>
 		<th rowspan="4">MIME type
-			<dl>
-				<dt>Sub-class <sup>[<a href="#comment_subclassof">1</a>]</sup> of:</dt>
-				<dd>...</dd>
-			</dl>
-			<dl>
-				<dt>Alias:</dt>
-				<dd>...</dd>
-			</dl>
+			<br/><br/>Sub-class of <sup>[<a href="#comment_subclassof">1</a>]</sup>
+			<br/><br/>Alias
 		</th>
 		<th>Description</th>
 		<th>Filename extension</th>
