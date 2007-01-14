@@ -102,6 +102,7 @@
 	<!-- URL where to find the MIME/file type specification or explanation. -->
 	<!ELEMENT specification EMPTY>
 	<!ATTLIST specification
+	          resource CDATA #IMPLIED
 	          url CDATA #REQUIRED>
 ]>
 
