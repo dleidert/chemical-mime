@@ -239,10 +239,14 @@
 			<link rel="stylesheet" type="text/css" href="cmd.css" media="screen" title="default" />
 		</head>
 		<body>
-			<xsl:call-template name="html.content.head"/>
-			<xsl:call-template name="html.content.table.mime.supported"/>
-			<xsl:call-template name="html.content.table.mime.unsupported"/>
-			<xsl:call-template name="html.content.foot"/>
+			<div id="content_container">
+				<xsl:call-template name="html.content.head"/>
+				<xsl:call-template name="html.content.table.mime.supported"/>
+				<xsl:call-template name="html.content.table.mime.unsupported"/>
+			</div>
+			<div id="footer">
+				<xsl:call-template name="html.content.foot"/>
+			</div>
 		</body>
 	</html>
 </xsl:template>
@@ -310,8 +314,7 @@
 <xsl:template name="html.content.foot">
   <!-- * The template contains all static data written at the beginning of   -->
   <!-- * the HTML site(headline/title, about the project, ... such data).    -->
-  <hr/>
-  <p id="comment_subclassof">[1] Entries, that do not show a <cite>Sub-class of:</cite> value are binary files and therefor of type <span class="sub-class-of">application/octet-stream</span>.</p>
+ 	<span id="comment_subclassof"><sup><strong>[1]</strong></sup> Entries, that do not show a <cite>Sub-class of:</cite> value are binary files and therefor of type <span class="sub-class-of">application/octet-stream</span>.</span>
 </xsl:template>
 
 <xsl:template name="mimetype.output">
