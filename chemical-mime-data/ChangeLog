@@ -1,6 +1,16 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/cmd.css: Added style pattern to have a fixed footer for
+	the footnote(s). Reorganized the selectors in alphabetical order.
+
+	* xsl/cmd_website.xsl (html.content): Added container around content
+	and footer to allow introduced styling.
+	(html.content.foot): The border is now realized via CSS. Improved
+	space usage.
+
 2007-01-14 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* xsl/cmd_website.xsl (html.content.table.mime.head): Improved table

@@ -13,13 +13,33 @@ blockquote {
 	padding: 10px;
 }
 
-html {
+body {
 	line-height: 1.3em;
+	margin: 0;
+	padding: 0;
+}
+
+div#content_container {
+	padding-bottom: 3em;
+	padding-left: 1em;
+}
+
+div#footer {
+	background-color: #f0f0f0;
+	border-top: 1px solid #000000;
+	bottom: 0px;
+	padding: 5px;
+	position: fixed;
+	width: 100%;
+}
+
+html {
+	font-size: 100.01%;
 }
 
 p span.sfnet img {
-	vertical-align: bottom;
 	padding-left: 2em;
+	vertical-align: bottom;
 }
 
 span.mime-type {
@@ -42,10 +62,10 @@ table {
 }
 
 td, th {
-	vertical-align: top;
-	text-align: left;
 	border: 1px solid #000000;
 	padding: 0.4em;
+	text-align: left;
+	vertical-align: top;
 }
 
 tr.mime-type {
