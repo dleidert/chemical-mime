@@ -3,6 +3,16 @@
 
 2007-01-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-cactvs-ascii)
+	(chemical/x-cactvs-binary, chemical/x-cactvs-table): Added
+	acronym/expanded-acronym combination for CACTVS.
+	(chemical/x-cerius): Ditto for MSI.
+	(chemical/x-mdl-rxnfile): Ditto for 2D.
+	(chemical/x-inchi, chemical/x-inchi-xml, chemical/x-ncbi-asn1): Re-
+	ordered acronyms in alphabetical order.
+
+2007-01-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* html_docs/cmd.css: Added style pattern to have a fixed footer for
 	the footnote(s). Reorganized the selectors in alphabetical order.
 
