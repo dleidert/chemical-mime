@@ -138,6 +138,8 @@
 		<_comment>CACTVS ASCII Format</_comment>
 		<acronym>ASCII</acronym>
 		<expanded-acronym>American Standard Code for Information Interchange</expanded-acronym>
+		<acronym>CACTVS</acronym>
+		<expanded-acronym>Chemical Algorithms Construction, Threading and Verification System</expanded-acronym>
 		<glob pattern="*.cascii"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="50">
@@ -153,6 +155,8 @@
 
 	<mime-type type="chemical/x-cactvs-binary" support="yes" added="0.1.94">
 		<_comment>CACTVS Binary Format</_comment>
+		<acronym>CACTVS</acronym>
+		<expanded-acronym>Chemical Algorithms Construction, Threading and Verification System</expanded-acronym>
 		<glob pattern="*.cbin"/>
 		<!-- Byte 0:7 -> 8 Byte header by XDR? -->
 		<!-- Byte 0:7 -> Can it be specified?  -->
@@ -167,6 +171,8 @@
 
 	<mime-type type="chemical/x-cactvs-table" support="yes" added="0.1.94">
 		<_comment>CACTVS Table Format</_comment>
+		<acronym>CACTVS</acronym>
+		<expanded-acronym>Chemical Algorithms Construction, Threading and Verification System</expanded-acronym>
 		<glob pattern="*.ctab"/>
 		<magic priority="50">
 			<match type="string" value="CACTVS QSAR Table" offset="0"/>
@@ -247,6 +253,8 @@
 
 	<mime-type type="chemical/x-cerius" support="no">
 		<_comment>MSI Cerius II format</_comment>
+		<acronym>MSI</acronym>
+		<expanded-acronym>Molecular Simulations Inc.</expanded-acronym>
 		<glob pattern="*.cer"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -593,10 +601,10 @@
 
 	<mime-type type="chemical/x-inchi" support="yes" added="0.1.93">
 		<_comment>IUPAC International Chemical Identifier</_comment>
-		<acronym>IUPAC</acronym>
-		<expanded-acronym>International Union of Pure and Applied Chemistry</expanded-acronym>
 		<acronym>InChI</acronym>
 		<expanded-acronym>International Chemical Identifier</expanded-acronym>
+		<acronym>IUPAC</acronym>
+		<expanded-acronym>International Union of Pure and Applied Chemistry</expanded-acronym>
 		<glob pattern="*.inchi"/>
 		<sub-class-of type="text/plain"/>
 		<icon/>
@@ -609,10 +617,10 @@
 
 	<mime-type type="chemical/x-inchi-xml" support="yes" added="0.1.93">
 		<_comment>IUPAC International Chemical Identifier</_comment>
-		<acronym>IUPAC</acronym>
-		<expanded-acronym>International Union of Pure and Applied Chemistry</expanded-acronym>
 		<acronym>InChI</acronym>
 		<expanded-acronym>International Chemical Identifier</expanded-acronym>
+		<acronym>IUPAC</acronym>
+		<expanded-acronym>International Union of Pure and Applied Chemistry</expanded-acronym>
 		<glob pattern="*.inchix"/>
 		<sub-class-of type="application/xml"/>
 		<icon/>
@@ -693,6 +701,8 @@
 
 	<mime-type type="chemical/x-mdl-rxnfile" support="yes" added="0.1.91">
 		<_comment>MDL 2D Reaction-Data Representation Format</_comment>
+		<acronym>2D</acronym>
+		<expanded-acronym>2-Dimensional</expanded-acronym>
 		<acronym>MDL</acronym>
 		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.rxn"/>
@@ -889,10 +899,10 @@
 
 	<mime-type type="chemical/x-ncbi-asn1" support="yes" added="0.1.94">
 		<_comment>PubChem ASN.1 ASCII Format</_comment>
-		<acronym>ASN.1</acronym>
-		<expanded-acronym>Abstract Syntax Notation One</expanded-acronym>
 		<acronym>ASCII</acronym>
 		<expanded-acronym>American Standard Code for Information Interchange</expanded-acronym>
+		<acronym>ASN.1</acronym>
+		<expanded-acronym>Abstract Syntax Notation One</expanded-acronym>
 		<glob pattern="*.asn"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/x-ncbi-asn1-ascii"/>
