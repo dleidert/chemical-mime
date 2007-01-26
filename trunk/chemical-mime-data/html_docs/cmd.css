@@ -33,6 +33,10 @@ div#footer {
 	width: 100%;
 }
 
+h2 {
+	padding-top: 1.5em;
+}
+
 html {
 	font-size: 100.01%;
 }
@@ -57,15 +61,21 @@ span.version {
 }
 
 table {
-	border: 3px solid #000000;
+	border: 5px ridge #000000;
 	border-collapse: collapse;
+	margin-top: 2em;
 }
 
 td, th {
-	border: 1px solid #000000;
-	padding: 0.4em;
+	padding: 0.5em 1em 0.5em 0.5em;
 	text-align: left;
 	vertical-align: top;
+}
+
+td,
+th,
+tr {
+	border: 1px dotted #000000;
 }
 
 tr.mime-type {
