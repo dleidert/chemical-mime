@@ -15,90 +15,75 @@
                 version="1.0">
 
 
+<!-- ********************************************************************* -->
+<!-- * Import XSL stylesheets. Define output options.                      -->
+<!-- ********************************************************************* -->
+
 <xsl:import href="cmd_common.xsl"/>
 <xsl:output method="text"
             encoding="UTF-8"/>
 
+
+<!-- ********************************************************************* -->
+<!-- * Space-stripped and -preserved elements/tokens.                      -->
+<!-- ********************************************************************* -->
+
 <xsl:strip-space elements="*"/>
 
+
+<!-- ********************************************************************* -->
+<!-- * xsl:template match (modes) section                                  -->
+<!-- ********************************************************************* -->
+
 <xsl:template match="/">
-	<xsl:apply-templates/>
+	<xsl:apply-templates select=".//mime-type[@support = 'yes'
+	                             and not(conflicts[@kde = 'yes'])]">
+		<xsl:sort select="@type"/>
+	</xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="mime-type">
-	<!--
-		If our MIME type conflicts with another MIME-type, we must suppress support for KDE 3.x
-	-->
-	<xsl:param name="conflicts">
-		<xsl:choose>
-			<xsl:when test=".//conflicts/@kde='yes'">
-				<xsl:value-of select="yes"/>
-			</xsl:when>
-			<xsl:otherwise>no</xsl:otherwise>
-		</xsl:choose>
-	</xsl:param>
-	<!--
-		Check if the MIME type is supported and if there are no conflicts.
-	-->
-	<xsl:if test="@support = 'yes' and $conflicts = 'no'">
-		<!--
-			Output content to fielname=@type.
-		-->
-		<xsl:call-template name="write.chunk">
-			<xsl:with-param name="filename" select="concat(substring-after(@type,'/'),'.desktop')"/>
-			<xsl:with-param name="method" select="'text'"/>
-			<xsl:with-param name="indent" select="'yes'"/>
-			<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
-			<xsl:with-param name="media-type" select="'text/plain'"/>
-			<xsl:with-param name="doctype-public" select="''"/>
-			<xsl:with-param name="doctype-system" select="''"/>
-			<xsl:with-param name="content">
-				<xsl:call-template name="header.desktop"/>
-				<xsl:text>MimeType=</xsl:text>
-				<xsl:value-of select="@type"/>
-				<xsl:text>&#10;</xsl:text>
-				<xsl:apply-templates/>
-				<xsl:call-template name="pattern.list"/>
-			</xsl:with-param>
-		</xsl:call-template>
-	</xsl:if>
+  <!-- * Output the content for every chemical MIME type to a separate     -->
+  <!-- * file, named from mime-type[@type]. Then just process the content  -->
+  <!-- * of the currently processed mime-type node.                        -->
+	<xsl:call-template name="common.write.chunk">
+		<xsl:with-param name="filename" select="concat(substring-after(@type,'/'),'.desktop')"/>
+		<xsl:with-param name="method" select="'text'"/>
+		<xsl:with-param name="indent" select="'yes'"/>
+		<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
+		<xsl:with-param name="media-type" select="'text/plain'"/>
+		<xsl:with-param name="doctype-public" select="''"/>
+		<xsl:with-param name="doctype-system" select="''"/>
+		<xsl:with-param name="content">
+			<xsl:call-template name="kde.desktop.header"/>
+			<xsl:text>MimeType=</xsl:text>
+			<xsl:value-of select="@type"/>
+			<xsl:text>&#10;</xsl:text>
+			<xsl:apply-templates select="comment|icon"/>
+			<xsl:if test="not(child::icon)">
+				<xsl:call-template name="kde.desktop.generic.icon"/>
+			</xsl:if>
+      <!-- * Output the pattern in alphabetical order.                     -->
+			<xsl:apply-templates select="glob">
+				<xsl:sort select="@pattern"/>
+			</xsl:apply-templates>
+			<xsl:text>&#10;</xsl:text>
+		</xsl:with-param>
+	</xsl:call-template>
 </xsl:template>
 
-<!--
-	Now we output the comment as 'Comment=...' or 'Comment[LANG]=...'.
--->
 <xsl:template match="comment">
-	<xsl:choose>
-		<xsl:when test="@xml:lang != ''">
-			<xsl:text>Comment[</xsl:text>
-			<xsl:value-of select="@xml:lang"/>
-			<xsl:text>]=</xsl:text>
-			<xsl:apply-templates/>
-			<xsl:text>&#10;</xsl:text>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:text>Comment=</xsl:text>
-			<xsl:apply-templates/>
-			<xsl:text>&#10;</xsl:text>
-		</xsl:otherwise>
-	</xsl:choose>
-</xsl:template>
-
-<!--
-	Now output all the possible pattern types as 'Pattern=pattern1;pattern2;'.
--->
-<xsl:template name="pattern.list">
-	<xsl:text>Patterns=</xsl:text>
-	<xsl:for-each select=".//glob/@pattern">
-		<xsl:value-of select="."/>
-		<xsl:text>;</xsl:text>
-	</xsl:for-each>
+	<xsl:text>Comment</xsl:text>
+	<xsl:if test="@xml:lang != ''">
+		<xsl:text>[</xsl:text>
+		<xsl:value-of select="@xml:lang"/>
+		<xsl:text>]</xsl:text>
+	</xsl:if>
+	<xsl:text>=</xsl:text>
+	<xsl:apply-templates/>
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
-<!--
-	Now we output the icon filename without suffix as 'Icon=...'.
--->
 <xsl:template match="icon">
 	<xsl:text>Icon=</xsl:text>
 	<xsl:choose>
@@ -112,12 +97,41 @@
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
+<xsl:template match="glob">
+  <!-- * The pattern must occur in the Pattern field.                      -->
+	<xsl:if test="position() = 1">
+		<xsl:text>Patterns=</xsl:text>
+	</xsl:if>
+	<xsl:value-of select="@pattern"/>
+	<xsl:text>;</xsl:text>
+  <!-- * And after the last pattern we need a newline.                     -->
+	<xsl:if test="position() = last">
+		<xsl:text>&#10;</xsl:text>
+	</xsl:if>
+</xsl:template>
 
-<!--
-	These elements are not used here.
--->
-<xsl:template match="acronym|alias|application|expanded-acronym|glob|
+<xsl:template match="acronym|alias|application|expanded-acronym|
                      magic|match|root-XML|specification|sub-class-of|supported-by"/>
+
+
+<!-- ********************************************************************* -->
+<!-- * Named templates for special processing and functions.               -->
+<!-- ********************************************************************* -->
+
+<xsl:template name="kde.desktop.header">
+  <!-- * The header of a KDE MIME(lnk) .desktop file always looks the      -->
+  <!-- * same. Output the header here.                                     -->
+	<xsl:text>[Desktop Entry]
+Encoding=UTF-8
+Type=MimeType&#10;</xsl:text>
+</xsl:template>
+
+<xsl:template name="kde.desktop.generic.icon">
+  <!-- * Just output the completely processed and (maybe) extended output  -->
+  <!-- * without escaping the content. This saves added acronym templates  -->
+  <!-- * tags.                                                             -->
+	<xsl:text>Icon=chemistry&#10;</xsl:text>
+</xsl:template>
 
 </xsl:stylesheet>
 

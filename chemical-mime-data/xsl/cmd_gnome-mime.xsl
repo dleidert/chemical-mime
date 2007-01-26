@@ -15,15 +15,30 @@
                 version="1.0">
 
 
+<!-- ********************************************************************* -->
+<!-- * Import XSL stylesheets. Define output options.                      -->
+<!-- ********************************************************************* -->
+
 <xsl:import href="cmd_common.xsl"/>
 <xsl:output method="text"
             encoding="UTF-8"/>
 
+
+<!-- ********************************************************************* -->
+<!-- * Space-stripped and -preserved elements/tokens.                      -->
+<!-- ********************************************************************* -->
+
 <xsl:strip-space elements="*"/>
 
+
+<!-- ********************************************************************* -->
+<!-- xsl:template match (modes) section                                    -->
+<!-- ********************************************************************* -->
+
 <xsl:template match="/">
-	<!-- Output content to 'chemical-mime-data.xml' -->
-	<xsl:call-template name="write.chunk">
+  <!-- * Output content to 'chemical-mime-data.mime'.                      -->
+  <!-- * Then process the whole file.                                      -->
+	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'chemical-mime-data.mime'"/>
 		<xsl:with-param name="method" select="'text'"/>
 		<xsl:with-param name="indent" select="'yes'"/>
@@ -31,50 +46,29 @@
 		<xsl:with-param name="media-type" select="'text/plain'"/>
 		<xsl:with-param name="doctype-public" select="''"/>
 		<xsl:with-param name="doctype-system" select="''"/>
-		<!-- Process the whole file -->
 		<xsl:with-param name="content">
-			<xsl:call-template name="header.text"/>
-			<xsl:apply-templates/>
+			<xsl:call-template name="common.header.text"/>
+			<xsl:apply-templates select=".//mime-type[@support = 'yes'
+			                             and not(conflicts[@gnome = 'yes'])]">
+				<xsl:sort select="@type"/>
+			</xsl:apply-templates>
 		</xsl:with-param>
 	</xsl:call-template>
 </xsl:template>
 
 <xsl:template match="mime-type">
-	<!--
-		If our MIME type conflicts with another MIME-type, we must suppress support for GNOME 2.4
-	-->
-	<xsl:param name="conflicts">
-		<xsl:choose>
-			<xsl:when test=".//conflicts/@gnome='yes'">
-				<xsl:value-of select="yes"/>
-			</xsl:when>
-			<xsl:otherwise>no</xsl:otherwise>
-		</xsl:choose>
-	</xsl:param>
-	
-	<!--
-		Check if the MIME type is supported and if there are no conflicts.
-	-->
-	<xsl:if test="@support = 'yes' and $conflicts = 'no'">
-		<xsl:value-of select="@type"/>
-		<xsl:text>&#10;</xsl:text>
-		<xsl:text>	ext:</xsl:text>
-		<xsl:apply-templates/>
-		<xsl:text>&#10;&#10;</xsl:text>
-	</xsl:if>
+	<xsl:value-of select="@type"/>
+	<xsl:text>&#10;</xsl:text>
+	<xsl:text>	ext:</xsl:text>
+	<xsl:apply-templates/>
+	<xsl:text>&#10;&#10;</xsl:text>
 </xsl:template>
 
-<!--
-	Print a list of pattern. Therefor me must strip the pattern value.
--->
 <xsl:template match="glob">
 	<xsl:text> </xsl:text>
 	<xsl:value-of select="substring-after(@pattern,'.')"/>
 </xsl:template>
 
-<!--
-	These elements are not used here.
--->
 <xsl:template match="acronym|alias|application|comment|expanded-acronym|icon|
                      magic|match|root-XML|specification|sub-class-of|supported-by"/>
 

@@ -13,15 +13,47 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:saxon="http://icl.com/saxon"
                 xmlns:lxslt="http://xml.apache.org/xslt"
-                xmlns:xalanredirect="org.apache.xalan.xslt.extensions.Redirect"
+                xmlns:redirect="http://xml.apache.org/xalan/redirect"
                 xmlns:exslt="http://exslt.org/common"
                 version="1.0"
-                extension-element-prefixes="saxon xalanredirect lxslt exslt">
+                extension-element-prefixes="saxon redirect lxslt exslt">
 
-<!-- 
-	This template writes out the specified file.
--->
-<xsl:template name="write.chunk">
+
+<!-- ********************************************************************* -->
+<!-- * Named templates for common functions.                               -->
+<!-- ********************************************************************* -->
+
+<xsl:template name="common.header.text">
+  <!-- * A created text file shall contain a header with information about -->
+  <!-- * the license and the database version.                             -->
+	<xsl:text>#  This file is part of the chemical-mime-data package.
+#  It is distributed under the GNU Lesser General Public License version 2.1.
+#
+#  Database: </xsl:text><xsl:value-of select="chemical-mime/@id"/><xsl:text>&#10;&#10;&#10;</xsl:text>
+</xsl:template>
+
+<xsl:template name="common.header.xml">
+  <!-- * A created xml file shall contain a header with information about  -->
+  <!-- * the license and the database version.                             -->
+	<xsl:comment>
+		<xsl:text>
+  This file is part of the chemical-mime-data package.
+  It is distributed under the GNU Lesser General Public License version 2.1.
+
+  Database: </xsl:text>
+		<xsl:value-of select="chemical-mime/@id"/>
+		<xsl:text>&#10;</xsl:text>
+	</xsl:comment>
+	<xsl:text>&#10;&#10;</xsl:text>
+</xsl:template>
+
+<xsl:template name="common.write.chunk">
+  <!-- * This template output the given content into a file with the given -->
+  <!-- * filename, encoding and media type. With this template we can      -->
+  <!-- * write several output files from one input file. Therefor we need  -->
+  <!-- * several extensions. The default is EXSLT, which is implemented in -->
+  <!-- * linxslt1.1 (xsltproc). The other are nice to have, but unused     -->
+  <!-- * atm.                                                              -->
 	<xsl:param name="filename" select="''"/>
 	<xsl:param name="method" select="''"/>
 	<xsl:param name="indent" select="''"/>
@@ -31,11 +63,8 @@
 	<xsl:param name="doctype-system" select="''"/>
 	<xsl:param name="content"/>
 
-	<!--
-		Output the specified file.
-	-->
 	<xsl:choose>
-		<!-- exslt:document -->
+    <!-- * Check if EXSLT's exslt:document() is available.                 -->
 		<xsl:when test="element-available('exslt:document')">
 			<xsl:choose>
 				<xsl:when test="$doctype-public != '' and $doctype-system != ''">
@@ -62,7 +91,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:when>
-		<!-- saxon:output -->
+    <!-- * Check if Saxon's saxon:output() is available.                   -->
 		<xsl:when test="element-available('saxon:output')">
 			<xsl:choose>
 				<xsl:when test="$doctype-public != '' and $doctype-system != ''">
@@ -91,14 +120,14 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:when>
-		<!-- xalanredirect -->
-		<xsl:when test="element-available('xalanredirect:write')">
-			<xalanredirect:write file="{$filename}">
+    <!-- * Check if Xalan's redirect:write() is available.                 -->
+		<xsl:when test="element-available('redirect:write')">
+			<redirect:write file="{$filename}">
 				<xsl:copy-of select="$content"/>
-			</xalanredirect:write>
+			</redirect:write>
 		</xsl:when>
 		<xsl:otherwise>
-			<!-- it doesn't matter since we won't be making chunks... -->
+      <!-- * And if nothing of these are available, output an error.       -->
 			<xsl:message terminate="yes">
 				<xsl:text>Can't make chunks with </xsl:text>
 				<xsl:value-of select="system-property('xsl:vendor')"/>
@@ -107,51 +136,12 @@
 		</xsl:otherwise>
 	</xsl:choose>
 	
-	<!--
-		Now be a bit verbose and tell, which file we wrote.
-	-->
+  <!-- * Be verbose, which file is output.                                 -->
 	<xsl:message>
 		<xsl:text>Writing </xsl:text>
 		<xsl:value-of select="$filename"/>
 		<xsl:text>.</xsl:text>
 	</xsl:message>
-</xsl:template>
-
-<!--
-	The created text-files all contain the same header.
--->
-<xsl:template name="header.desktop">
-	<xsl:text>[Desktop Entry]
-Encoding=UTF-8
-Type=MimeType&#10;</xsl:text>
-</xsl:template>
-
-<!--
-	Even the created text-files shall contain a short summary with license
-	and database version information.
--->
-<xsl:template name="header.text">
-	<xsl:text>#  This file is part of the chemical-mime-data package.
-#  It is distributed under the GNU Lesser General Public License version 2.1.
-#
-#  Database: </xsl:text><xsl:value-of select="chemical-mime/@id"/><xsl:text>&#10;&#10;&#10;</xsl:text>
-</xsl:template>
-
-<!--
-	Even the created xml-files shall contain a short summary with license
-	and database version information.
--->
-<xsl:template name="header.xml">
-	<xsl:comment>
-		<xsl:text>
-  This file is part of the chemical-mime-data package.
-  It is distributed under the GNU Lesser General Public License version 2.1.
-
-  Database: </xsl:text>
-		<xsl:value-of select="chemical-mime/@id"/>
-		<xsl:text>&#10;</xsl:text>
-	</xsl:comment>
-	<xsl:text>&#10;&#10;</xsl:text>
 </xsl:template>
 
 </xsl:stylesheet>

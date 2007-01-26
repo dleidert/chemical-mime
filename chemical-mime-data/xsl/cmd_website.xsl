@@ -24,7 +24,7 @@
 
 
 <!-- ********************************************************************* -->
-<!-- Import XSL stylesheets. Define output options.                        -->
+<!-- * Import XSL stylesheets. Define output options.                      -->
 <!-- ********************************************************************* -->
 
 <xsl:import href="cmd_common.xsl"/>
@@ -37,26 +37,26 @@
 
 
 <!-- ********************************************************************* -->
-<!-- Space-stripped and -preserved elements/tokens.                        -->
+<!-- * Space-stripped and -preserved elements/tokens.                      -->
 <!-- ********************************************************************* -->
 
 <xsl:strip-space elements="*"/>
 
 
 <!-- ********************************************************************* -->
-<!-- xsl:template match (modes) section                                    -->
+<!-- * xsl:template match (modes) section                                  -->
 <!-- ********************************************************************* -->
 
 <xsl:template match="/">
-	<!-- Output content to 'chemical-mime-data.html' -->
-	<xsl:call-template name="write.chunk">
+  <!-- * Output content to 'chemical-mime-data.html'.                      -->
+  <!-- * Then process the whole file.                                      -->
+	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'./chemical-mime-data.html'"/>
 		<xsl:with-param name="method" select="'xml'"/>
 		<xsl:with-param name="indent" select="'yes'"/>
 		<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
 		<xsl:with-param name="doctype-public" select="'-//W3C//DTD XHTML 1.0 Strict//EN'"/>
 		<xsl:with-param name="doctype-system" select="'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'"/>
-		<!-- Process the whole file -->
 		<xsl:with-param name="content">
 			<xsl:call-template name="html.content"/>
 		</xsl:with-param>
@@ -130,7 +130,7 @@
 </xsl:template>
 
 <xsl:template match="mime-type">
-	<tr>
+	<tr class="{local-name(.)}">
 		<xsl:choose>
 			<xsl:when test="child::magic and child::root-XML and child::specification">
 				<xsl:call-template name="mimetype.output">
@@ -293,21 +293,21 @@
   <!-- * Both overviews have the same table head. This template creates    -->
   <!-- * it.                                                               -->
 	<tr>
-		<th rowspan="4">MIME type
+		<th class="mime-type" rowspan="4">MIME type
 			<br/><br/>Sub-class of <sup>[<a href="#comment_subclassof">1</a>]</sup>
 			<br/><br/>Alias
 		</th>
-		<th>Description</th>
-		<th>Filename extension</th>
+		<th class="comment">Description</th>
+		<th class="glob">Filename extension</th>
 	</tr>
 	<tr>
-		<th colspan="2">Magic Pattern</th>
+		<th class="root-XML" colspan="2">Magic Pattern</th>
 	</tr>
 	<tr>
-		<th colspan="2">Root XML/Namespace</th>
+		<th class="comment" colspan="2">Root XML/Namespace</th>
 	</tr>
 	<tr>
-		<th colspan="2">Specification</th>
+		<th class="specification" colspan="2">Specification</th>
 	</tr>
 </xsl:template>
 
@@ -378,9 +378,9 @@
 	              select="following-sibling::expanded-acronym[not(@xml:lang)][$acronym.position]"/>
 
 	<xsl:choose>
-		<!-- * Check if we find a known <acronym> inside <comment>. If yes,    -->
-		<!-- * use the <acronym> HTML tag with the contents of <acronym> and   -->
-		<!-- * <expanded-acronym> of our database.                             -->
+    <!-- * Check if we find a known <acronym> inside <comment>. If yes,    -->
+    <!-- * use the <acronym> HTML tag with the contents of <acronym> and   -->
+    <!-- * <expanded-acronym> of our database.                             -->
 		<xsl:when test="contains($content, $acronym.content)">
 			<xsl:variable name="content.new.before" select="substring-before($content, $acronym.content)"/>
 			<xsl:variable name="content.new.acronym">
@@ -404,10 +404,10 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:when>			
-		<!-- * Check, if maybe a part of the comment fits the content of an    -->
-		<!-- * <expanded-acronym>. If yes, output the related <acronym>        -->
-		<!-- * directly behind the (expanded) substring inside braces, using   -->
-		<!-- * the <acronym> HTML tag.                                         -->
+    <!-- * Check, if maybe a part of the comment fits the content of an    -->
+    <!-- * <expanded-acronym>. If yes, output the related <acronym>        -->
+    <!-- * directly behind the (expanded) substring inside braces, using   -->
+    <!-- * the <acronym> HTML tag.                                         -->
 		<xsl:when test="contains($content, $expanded.acronym.content)">
 			<xsl:variable name="content.new.before" select="concat(substring-before($content, $expanded.acronym.content), $expanded.acronym.content)"/>
 			<xsl:variable name="content.new.acronym">
@@ -434,8 +434,8 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:when>
-		<!-- * And if nothing fits, just step to the next <acronym> position   -->
-		<!-- * in our database.                                                -->
+    <!-- * And if nothing fits, just step to the next <acronym> position   -->
+    <!-- * in our database.                                                -->
 		<xsl:otherwise>
 			<xsl:variable name="content.new" select="$content"/>
 			<xsl:choose>
