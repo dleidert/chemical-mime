@@ -1,6 +1,58 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-26 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_common.xsl:
+	* xsl/cmd_freedesktop_org.xsl:
+	* xsl/cmd_gnome-keys.xsl:
+	* xsl/cmd_gnome-mime.xsl:
+	* xsl/cmd_kde.xsl: Added a lot of comments for a better internal
+	documentation.
+
+	* xsl/cmd_common.xsl: (xmlns:xalanredirect)
+	(extension-element-prefixes): Changed xalanredirect namespace and
+	prefix to make the spec at
+	http://xml.apache.org/xalan-j/apidocs/org/apache/xalan/lib/Redirect.html.
+	(header.desktop): Moved to xsl/cmd_kde.xsl (and renamed to
+	kde.desktop.header).
+	(header.text, header.xml): Renamed to common.header.text and
+	common.header.xml.
+	(write.chunk): Renamed to common.write.chunk. Adjusted xalanredirect
+	prefix.
+
+	* xsl/cmd_freedesktop_org.xsl (chemical-mime):
+	* xsl/cmd_gnome-keys.xsl (chemical-mime):
+	* xsl/cmd_gnome-mime.xsl (chemical-mime):
+	* xsl/cmd_kde.xsl (chemical-mime):
+	* xsl/cmd_website.xsl (chemical-mime): Adjusted common template names
+	after changes to xsl/cmd_common.xsl.
+
+	* xsl/cmd_freedesktop_org.xsl (chemical-mime, mime-type):
+	* xsl/cmd_gnome-keys.xsl (chemical-mime, mime-type):
+	* xsl/cmd_gnome-mime.xsl (chemical-mime, mime-type):
+	* xsl/cmd_kde.xsl (chemical-mime, mime-type): Improved selection of
+	"supported" nodes, so this stuff could be removed in the mime-type
+	template.
+
+	* xsl/cmd_gnome-keys.xsl (mime-type):
+	* xsl/cmd_kde.xsl (mime-type): Added a call to gnome.keys.generic.icon
+	respectively kde.desktop.generic.icon and the related template to
+	handle the case, if no icon node was found.
+
+	* xsl/cmd_gnome-keys.xsl (comment):
+	* xsl/cmd_kde.xsl (comment): Improved the template to use a simple
+	xsl:if instead of xsl:choose.
+
+	* xsl/cmd_kde.xsl: Added kde.desktop.header template (formerly:
+	desktop.header template in xsl/cmd_common.xsl).
+	(mime-type, glob): Improved glob template. Instead of xsl:for-each we
+	now use a matching template, that outputs the pattern in alphabetical
+	order.
+
+	* xsl/cmd_website.xsl (mime-type, html.content.table.mime.head): Added
+	some class attributes for CSS styling.
+
 2007-01-15 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in (chemical/x-cactvs-ascii)

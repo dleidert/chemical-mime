@@ -15,15 +15,30 @@
                 version="1.0">
 
 
+<!-- ********************************************************************* -->
+<!-- * Import XSL stylesheets. Define output options.                      -->
+<!-- ********************************************************************* -->
+
 <xsl:import href="cmd_common.xsl"/>
 <xsl:output method="text"
             encoding="UTF-8"/>
 
+
+<!-- ********************************************************************* -->
+<!-- * Space-stripped and -preserved elements/tokens.                      -->
+<!-- ********************************************************************* -->
+
 <xsl:strip-space elements="*"/>
 
+
+<!-- ********************************************************************* -->
+<!-- * xsl:template match (modes) section                                  -->
+<!-- ********************************************************************* -->
+
 <xsl:template match="/">
-	<!-- Output content to 'chemical-mime-data.xml' -->
-	<xsl:call-template name="write.chunk">
+  <!-- * Output content to 'chemical-mime-data.keys'.                      -->
+  <!-- * Then process the whole file.                                      -->
+	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'chemical-mime-data.keys'"/>
 		<xsl:with-param name="method" select="'text'"/>
 		<xsl:with-param name="indent" select="'yes'"/>
@@ -31,36 +46,24 @@
 		<xsl:with-param name="media-type" select="'text/plain'"/>
 		<xsl:with-param name="doctype-public" select="''"/>
 		<xsl:with-param name="doctype-system" select="''"/>
-		<!-- Process the whole file -->
 		<xsl:with-param name="content">
-			<xsl:call-template name="header.text"/>
-			<xsl:apply-templates/>
+			<xsl:call-template name="common.header.text"/>
+			<xsl:apply-templates select=".//mime-type[@support = 'yes'
+			                             and not(conflicts[@gnome = 'yes'])]">
+				<xsl:sort select="@type"/>
+			</xsl:apply-templates>
 		</xsl:with-param>
 	</xsl:call-template>
 </xsl:template>
 
 <xsl:template match="mime-type">
-	<!--
-		If our MIME type conflicts with another MIME-type, we must suppress support for GNOME 2.4
-	-->
-	<xsl:param name="conflicts">
-		<xsl:choose>
-			<xsl:when test=".//conflicts/@gnome='yes'">
-				<xsl:value-of select="yes"/>
-			</xsl:when>
-			<xsl:otherwise>no</xsl:otherwise>
-		</xsl:choose>
-	</xsl:param>
-	
-	<!--
-		Check if the MIME type is supported and if there are no conflicts.
-	-->
-	<xsl:if test="@support = 'yes' and $conflicts = 'no'">
-		<xsl:value-of select="@type"/>
-		<xsl:text>&#10;</xsl:text>
-		<xsl:apply-templates/>
-		<xsl:text>&#10;</xsl:text>
+	<xsl:value-of select="@type"/>
+	<xsl:text>&#10;</xsl:text>
+	<xsl:apply-templates/>
+	<xsl:if test="not(child::icon)">
+		<xsl:call-template name="gnome.keys.generic.icon"/>
 	</xsl:if>
+	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
 <xsl:template match="icon">
@@ -77,27 +80,31 @@
 </xsl:template>
 
 <xsl:template match="comment">
-	<xsl:choose>
-		<xsl:when test="@xml:lang != ''">
-			<xsl:text>	[</xsl:text>
-			<xsl:value-of select="@xml:lang"/>
-			<xsl:text>]description: </xsl:text>
-			<xsl:apply-templates/>
-			<xsl:text>&#10;</xsl:text>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:text>	description: </xsl:text>
-			<xsl:apply-templates/>
-			<xsl:text>&#10;</xsl:text>
-		</xsl:otherwise>
-	</xsl:choose>
+	<xsl:text>	</xsl:text>
+	<xsl:if test="@xml:lang != ''">
+		<xsl:text>[</xsl:text>
+		<xsl:value-of select="@xml:lang"/>
+		<xsl:text>]</xsl:text>
+	</xsl:if>
+	<xsl:text>description: </xsl:text>
+	<xsl:apply-templates/>
+	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
-<!--
-	These elements are not used here.
--->
 <xsl:template match="acronym|alias|application|expanded-acronym|glob|
                      magic|match|root-XML|specification|sub-class-of|supported-by"/>
+
+
+<!-- ********************************************************************* -->
+<!-- * Named templates for special processing and functions.               -->
+<!-- ********************************************************************* -->
+
+<xsl:template name="gnome.keys.generic.icon">
+  <!-- * Just output the completely processed and (maybe) extended output  -->
+  <!-- * without escaping the content. This saves added acronym templates  -->
+  <!-- * tags.                                                             -->
+	<xsl:text>	icon_filename: gnome-mime-chemical.png&#10;</xsl:text>
+</xsl:template>
 
 </xsl:stylesheet>
 
