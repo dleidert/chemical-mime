@@ -3,6 +3,12 @@
 
 2007-01-26 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* html_docs/cmd.css: Added some styling for h2 and tr tags.
+	(table, td, th): Improved border styling.
+	(td, th): Improved space to border.
+
+2007-01-26 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* AUTHORS: Just fixed the file description.
 
 	* README: Removed a useless space.
