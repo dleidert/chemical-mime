@@ -3,6 +3,12 @@
 
 2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* xsl/cmd_common.xsl: Renamed exslt extension prefix accordingly to
+	http://www.exslt.org/exsl/elements/document/index.html.
+	* xsl/cmd_website.xsl: Removed exslt extension (prefix).
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in (chemical/x-cxf): Improved
 	description wording.
 

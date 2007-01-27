@@ -17,9 +17,8 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:date="http://exslt.org/dates-and-times"
-                xmlns:exslt="http://exslt.org/common"
                 version="1.0"
-                extension-element-prefixes="date exslt"
+                extension-element-prefixes="date"
                 exclude-result-prefixes="date">
 
 
