@@ -3,6 +3,13 @@
 
 2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-compass): Improved
+	wording.
+	(chemical/x-csml): Added acronym/expanded-acronym combination for
+	CSML.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in: Removed all empty icon tags after
 	fixing the DTD and the stylesheets. Added the following currently
 	not activated MIME types: chemical/x-chemdraw, chemical/x-compass,

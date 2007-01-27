@@ -351,7 +351,7 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-compass" support="no">
-		<_comment>Compass Program of the Takahashi</_comment>
+		<_comment>COMPASS Program of the Takahashi</_comment>
 		<glob pattern="*.cpa"/>
 	</mime-type>
 
@@ -362,6 +362,8 @@
 
 	<mime-type type="chemical/x-csml" support="no">
 		<_comment>Chemical Style Markup Language</_comment>
+		<acronym>CSML</acronym>
+		<expanded-acronym>Chemical Style Markup Language</expanded-acronym>
 		<glob pattern="*.csm"/>
 		<glob pattern="*.csml"/>
 	</mime-type>
