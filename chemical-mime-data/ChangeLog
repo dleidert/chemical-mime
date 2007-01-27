@@ -3,6 +3,14 @@
 
 2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* HACKING: Completed content.
+
+	* NEWS: Completed for the 0.1.94 release.
+
+	* TODO: Removed HACKING item.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* xsl/cmd_common.xsl: Renamed exslt extension prefix accordingly to
 	http://www.exslt.org/exsl/elements/document/index.html.
 	* xsl/cmd_website.xsl: Removed exslt extension (prefix).
