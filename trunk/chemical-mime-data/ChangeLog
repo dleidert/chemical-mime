@@ -3,6 +3,17 @@
 
 2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in: Initially added (currently
+	not activated) chemical/seq-aa-fasta, chemical/seq-aa-genpept,
+	chemical/seq-na-fasta.
+	(chemical/x-genbank): Added alias and specification URL for the alias.
+
+	* xsl/cmd_website.xsl (chemical-mime): Changed to filename without the
+	leading `./'.
+	(html.content.table.mime.unsupported): Fixed sorting.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* README: Updated and completed.
 
 	* html_docs/index.html: Ditto. This seems to be a first complete
