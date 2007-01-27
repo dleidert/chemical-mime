@@ -1,6 +1,34 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Removed all empty icon tags after
+	fixing the DTD and the stylesheets. Added the following currently
+	not activated MIME types: chemical/x-chemdraw, chemical/x-compass,
+	chemical/x-crossfire, chemical/x-csml, chemical/x-cxf,
+	chemical/x-embl-dl-nucleotide, chemical/x-galactic-spc,
+	chemical/x-gaussian-checkpoint, chemical/x-gaussian-cube,
+	chemical/x-gcg8-sequence, chemical/x-isostar, chemical/x-kinemage,
+	chemical/x-macmolecule, chemical/x-mif, chemical/x-molconn-Z,
+	chemical/x-rosdal, chemical/x-swissprot, chemical/x-vamas-iso14976 and
+	chemical/x-xtel.
+	(conflicts): Added an fdo attribute for conflicts with the fd.o
+	database.
+	(specification): Renamed the resource attribute to title.
+	(chemical/x-cache, chemical/x-cache-csf): Moved (alphabetical order).
+	(chemical/x-cif, chemical/x-mmcif): Removed unused spec-links.
+	(chemical/x-genbank): Added magic pattern found in spec.
+	(chemical/x-mol2): Added two file extensions found via WWW search.
+	(chemical/x-test): Extended test entry.
+
+	* xsl/cmd_freedesktop_org.xsl (chemical-mime): Fixed XPath expression
+	introduced by the earlier change (revision 1.8), that now lead to a
+	broken (almost empty) shared-mime-info database file.
+
+	* xsl/cmd_website.xsl (specification): Fixed after DTD change.
+	(html.content.table.mime.unsupported): Improved wording.
+
 2007-01-26 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* html_docs/cmd.css: Added some styling for h2 and tr tags.

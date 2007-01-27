@@ -52,7 +52,7 @@
 		<xsl:with-param name="content">
 			<xsl:call-template name="common.header.xml"/>
 			<xsl:element name="mime-info" namespace="http://www.freedesktop.org/standards/shared-mime-info">
-				<xsl:apply-templates select="mime-type[@support = 'yes']">
+				<xsl:apply-templates select=".//mime-type[@support = 'yes']">
 					<xsl:sort select="@type"/>
 				</xsl:apply-templates>
 			</xsl:element>
