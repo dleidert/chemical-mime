@@ -14,9 +14,9 @@
                 xmlns:saxon="http://icl.com/saxon"
                 xmlns:lxslt="http://xml.apache.org/xslt"
                 xmlns:redirect="http://xml.apache.org/xalan/redirect"
-                xmlns:exslt="http://exslt.org/common"
+                xmlns:exsl="http://exslt.org/common"
                 version="1.0"
-                extension-element-prefixes="saxon redirect lxslt exslt">
+                extension-element-prefixes="saxon redirect lxslt exsl">
 
 
 <!-- ********************************************************************* -->
@@ -65,10 +65,10 @@
 
 	<xsl:choose>
     <!-- * Check if EXSLT's exslt:document() is available.                 -->
-		<xsl:when test="element-available('exslt:document')">
+		<xsl:when test="element-available('exsl:document')">
 			<xsl:choose>
 				<xsl:when test="$doctype-public != '' and $doctype-system != ''">
-					<exslt:document href="{$filename}"
+					<exsl:document href="{$filename}"
 					               method="{$method}"
 					               encoding="UTF-8"
 					               indent="{$indent}"
@@ -77,17 +77,17 @@
 					               doctype-public="{$doctype-public}"
 					               doctype-system="{$doctype-system}">
 						<xsl:copy-of select="$content"/>
-					</exslt:document>
+					</exsl:document>
 				</xsl:when>
 				<xsl:otherwise>
-					<exslt:document href="{$filename}"
+					<exsl:document href="{$filename}"
 					               method="{$method}"
 					               encoding="UTF-8"
 					               indent="{$indent}"
 					               omit-xml-declaration="{$omit-xml-declaration}"
 					               media-type="{$media-type}">
 						<xsl:copy-of select="$content"/>
-					</exslt:document>
+					</exsl:document>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:when>
