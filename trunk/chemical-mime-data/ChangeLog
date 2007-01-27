@@ -3,6 +3,22 @@
 
 2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in: Initially added (currently not
+	activated) chemical/x-fasta and chemical/x-mopac-vib.
+	(chemical/seq-aa-fasta, chemical/seq-na-fasta): Moved the generic
+	extensions to the chemical/x-fasta MIME type.
+	(chemical/x-cerius): Added missing conflicts to
+	application/x-x509-ca-cert.
+
+	* xsl/cmd_website.xsl: Added a template html.content.references to add
+	references links to the tabled overview.
+	(html.content.head): Added an overview of the different sections for
+	easier navigation.
+	(html.content.table.mime.supported)
+	(html.content.table.mime.unsupported): Added IDs for h2 tags.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in: Initially added (currently
 	not activated) chemical/seq-aa-fasta, chemical/seq-aa-genpept,
 	chemical/seq-na-fasta.
