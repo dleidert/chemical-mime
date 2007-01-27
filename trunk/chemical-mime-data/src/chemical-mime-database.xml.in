@@ -378,7 +378,7 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-cxf" support="no">
-		<_comment>Chemical Abstracts Exchange Format</_comment>
+		<_comment>Chemical eXchange Format</_comment>
 		<acronym>CXF</acronym>
 		<expanded-acronym>Chemical eXchange Format</expanded-acronym>
 		<!-- <glob pattern="*.cef"/> -->
