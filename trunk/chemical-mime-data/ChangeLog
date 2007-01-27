@@ -3,6 +3,13 @@
 
 2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* README: Updated and completed.
+
+	* html_docs/index.html: Ditto. This seems to be a first complete
+	proposal.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* HACKING: Completed content.
 
 	* NEWS: Completed for the 0.1.94 release.
