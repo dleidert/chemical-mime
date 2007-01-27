@@ -29,6 +29,10 @@ Version 0.1.94 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
 	  - chemical/x-gaussian-log
 	  - chemical/x-genbank
 	  - chemical/x-hin
+	  - chemical/x-inchi
+	  - chemical/x-inchi-xml
+	  - chemical/x-mdl-rxnfile
+	  - chemical/x-mmcif
 	  - chemical/x-mol2
 	  - chemical/x-msi-car
 	  - chemical/x-msi-hessian
