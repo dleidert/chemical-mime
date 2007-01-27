@@ -3,6 +3,11 @@
 
 2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-cxf): Improved
+	description wording.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in (chemical/x-compass): Improved
 	wording.
 	(chemical/x-csml): Added acronym/expanded-acronym combination for
