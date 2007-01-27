@@ -242,6 +242,7 @@
 				<xsl:call-template name="html.content.head"/>
 				<xsl:call-template name="html.content.table.mime.supported"/>
 				<xsl:call-template name="html.content.table.mime.unsupported"/>
+				<xsl:call-template name="html.content.references"/>
 			</div>
 			<div id="footer">
 				<xsl:call-template name="html.content.foot"/>
@@ -257,12 +258,27 @@
 	<p>The source of <a href="index.html">this project</a> can be downloaded at the <a href="http://sourceforge.net/project/showfiles.php?group_id=159685&amp;package_id=179318">Sourceforge.net project page</a>. <span class="sfnet"><a href="http://www.sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=159685&amp;type=1" width="88" height="31" style="border: 0;" alt="SourceForge.net Logo"/></a></span></p>
 	<p>The released version is: <span class="version">&entversion;</span>.</p>
 	<p>The released Database version is: <span class="version"><xsl:value-of select="chemical-mime/@id"/></span>.</p>
+	<h2 id="toc">Table of Contents</h2>
+	<ol>
+		<li><a href="#supported">Supported MIME types</a></li>
+		<li><a href="#unsupported">Unsupported but known MIME types</a></li>
+		<li><a href="#references">References</a></li>
+	</ol>
+</xsl:template>
+
+<xsl:template name="html.content.references">
+  <!-- * At least print out a list of references.                            -->
+	<h2 id="references">References</h2>
+	<p>The tables contain references to specifications, standards and papers, that were used. So the following list are generic resources, that were used too.</p>
+	<ol>
+		<li><a href="http://www.ch.ic.ac.uk/chemime/">&#187;The Chemical MIME Home Page&#171;</a> by Henry Rzepa.</li>
+	</ol>
 </xsl:template>
 
 <xsl:template name="html.content.table.mime.supported">
   <!-- * Output an overview of currently (by the package) supported MIME     -->
   <!-- * types.                                                              -->
-	<h2>Supported MIME types</h2>
+	<h2 id="supported">Supported MIME types</h2>
 	<p>The following MIME types are supported by the &entpackage; package version &entversion;.</p>
 	<table>
 		<xsl:call-template name="html.content.table.mime.head"/>
@@ -276,7 +292,7 @@
 <xsl:template name="html.content.table.mime.unsupported">
   <!-- * Output an overview of currently (by the package) unsupported, but   -->
   <!-- * known and already added MIME types.                                 -->
-	<h2>Unsupported but known MIME types</h2>
+	<h2 id="unsupported">Unsupported but known MIME types</h2>
 	<p>The following MIME types are not supported by the &entpackage; package version &entversion;.</p>
 	<table>
 		<xsl:call-template name="html.content.table.mime.head"/>

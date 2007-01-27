@@ -126,18 +126,16 @@
 	<mime-type type="chemical/seq-aa-fasta" support="no">
 		<_comment>Fasta Amino Acid Sequence</_comment>
 		<glob pattern="*.aa"/>
-		<glob pattern="*.fa"/>
-		<glob pattern="*.fsa"/>
-		<sub-class-of type="text/plain"/>
+		<!-- see also chemical/x-fasta -->
+		<sub-class-of type="chemical/x-fasta"/>
 		<specification url="http://msdlocal.ebi.ac.uk/docs/mimetype.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/seq-na-fasta" support="no">
 		<_comment>Fasta Nucleotide Sequence</_comment>
 		<glob pattern="*.na"/>
-		<glob pattern="*.fa"/>
-		<glob pattern="*.fsa"/>
-		<sub-class-of type="text/plain"/>
+		<!-- see also chemical/x-fasta -->
+		<sub-class-of type="chemical/x-fasta"/>
 		<specification url="http://msdlocal.ebi.ac.uk/docs/mimetype.html"/>
 	</mime-type>
 
@@ -275,6 +273,7 @@
 		<expanded-acronym>Molecular Simulations Inc.</expanded-acronym>
 		<glob pattern="*.cer"/>
 		<sub-class-of type="text/plain"/>
+		<conflicts type="application/x-x509-ca-cert" fdo="yes" kde="yes"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-chemdraw" support="no">
@@ -448,6 +447,13 @@
 		<specification url="http://mercury.ebi.ac.uk/"/>
 		<specification url="http://www.ebi.ac.uk/embl/Documentation/User_manual/usrman.html#FORMAT"/>
 		<specification url="http://www.biobind.com/faq/emboss/formats.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-fasta" support="no">
+		<_comment>Fasta File Format</_comment>
+		<glob pattern="*.fa"/>
+		<glob pattern="*.fsa"/>
+		<sub-class-of type="text/plain"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-galactic-spc" support="no">
@@ -957,6 +963,14 @@
 		<supported-by>
 			<application name="molden"/>
 		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-mopac-vib" support="no">
+		<_comment>MOPAC Vibration Format</_comment>
+		<acronym>MOPAC</acronym>
+		<expanded-acronym>Molecular Orbital PACkage</expanded-acronym>
+		<glob pattern="*.mvb"/>
+		<sub-class-of type="text/plain"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-msi-car" support="yes" added="0.1.91">
