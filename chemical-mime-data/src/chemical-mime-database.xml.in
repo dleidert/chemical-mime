@@ -123,6 +123,32 @@
 		</supported-by>
 	</mime-type>
 
+	<mime-type type="chemical/seq-aa-fasta" support="no">
+		<_comment>Fasta Amino Acid Sequence</_comment>
+		<glob pattern="*.aa"/>
+		<glob pattern="*.fa"/>
+		<glob pattern="*.fsa"/>
+		<sub-class-of type="text/plain"/>
+		<specification url="http://msdlocal.ebi.ac.uk/docs/mimetype.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/seq-na-fasta" support="no">
+		<_comment>Fasta Nucleotide Sequence</_comment>
+		<glob pattern="*.na"/>
+		<glob pattern="*.fa"/>
+		<glob pattern="*.fsa"/>
+		<sub-class-of type="text/plain"/>
+		<specification url="http://msdlocal.ebi.ac.uk/docs/mimetype.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/seq-aa-genpept" support="no">
+		<_comment>GenPept Flat File</_comment>
+		<glob pattern="*.gp"/>
+		<sub-class-of type="text/plain"/>
+		<conflicts type="application/x-gnuplot" fdo="yes"/>
+		<specification url="http://msdlocal.ebi.ac.uk/docs/mimetype.html"/>
+	</mime-type>
+
 	<mime-type type="chemical/x-alchemy" support="yes" added="0.1.91">
 		<_comment>Alchemy Format</_comment>
 		<glob pattern="*.alc"/>
@@ -588,6 +614,7 @@
 		<glob pattern="*.gb"/> <!-- possible clash with application/x-gameboy-rom -->
 		<glob pattern="*.gen"/> <!-- possible clash with application/x-genesis-rom -->
 		<sub-class-of type="text/plain"/>
+		<alias type="chemical/seq-na-genbank"/>
 		<conflicts type="application/x-gameboy-rom" gnome="yes"/>
 		<conflicts type="application/x-genesis-rom" gnome="yes"/>
 		<magic priority="80">
@@ -603,6 +630,7 @@
 		</supported-by>
 		<specification url="http://www.psc.edu/general/software/packages/seq-intro/genbankfile.html"/>
 		<specification url="http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html"/>
+		<specification url="http://msdlocal.ebi.ac.uk/docs/mimetype.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-gulp-input" support="no">

@@ -50,7 +50,7 @@
   <!-- * Output content to 'chemical-mime-data.html'.                      -->
   <!-- * Then process the whole file.                                      -->
 	<xsl:call-template name="common.write.chunk">
-		<xsl:with-param name="filename" select="'./chemical-mime-data.html'"/>
+		<xsl:with-param name="filename" select="'chemical-mime-data.html'"/>
 		<xsl:with-param name="method" select="'xml'"/>
 		<xsl:with-param name="indent" select="'yes'"/>
 		<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
@@ -281,7 +281,7 @@
 	<table>
 		<xsl:call-template name="html.content.table.mime.head"/>
 		<xsl:for-each select=".//mime-type[not(@support = 'yes')]">
-			<xsl:sort select=".//mime-type/@type"/>
+			<xsl:sort select="@type"/>
 			<xsl:apply-templates select="."/>
 		</xsl:for-each>
 	</table>
