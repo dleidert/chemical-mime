@@ -19,7 +19,7 @@
 	          id CDATA #REQUIRED>
 
 	<!-- The MIME type (only chemical/*). -->
-	<!ELEMENT mime-type (comment+, (acronym, expanded-acronym)*, glob+, root-XML*, sub-class-of*, alias*, conflicts*, magic?, icon, supported-by?, specification*)>
+	<!ELEMENT mime-type (comment+, (acronym, expanded-acronym)*, glob+, root-XML*, sub-class-of*, alias*, conflicts*, magic?, icon?, supported-by?, specification*)>
 	<!ATTLIST mime-type
 	          type CDATA #REQUIRED
 	          support (yes|no) "no"
@@ -66,6 +66,7 @@
 	<!ELEMENT conflicts EMPTY>
 	<!ATTLIST conflicts
 	          type CDATA #REQUIRED
+	          fdo (yes|no) "no"
 	          gnome (yes|no) "no"
 	          kde (yes|no) "no">
 
@@ -102,8 +103,8 @@
 	<!-- URL where to find the MIME/file type specification or explanation. -->
 	<!ELEMENT specification EMPTY>
 	<!ATTLIST specification
-	          resource CDATA #IMPLIED
-	          url CDATA #REQUIRED>
+	          url CDATA #REQUIRED
+	          title CDATA #IMPLIED>
 ]>
 
 <chemical-mime id="'$Id$'">
@@ -117,7 +118,6 @@
 			<match type="string" value="&lt;!DOCTYPE xdrawchem" offset="0:256"/>
 			<match type="string" value="&lt;xdrawchem" offset="0:64"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -127,11 +127,33 @@
 		<_comment>Alchemy Format</_comment>
 		<glob pattern="*.alc"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.camsoft.com/plugins/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-cache" support="yes" added="0.1.91">
+		<_comment>CAChe MolStruct Format</_comment>
+		<acronym>CAChe</acronym>
+		<expanded-acronym>Computer Aided Chemistry</expanded-acronym>
+		<glob pattern="*.cac"/>
+		<glob pattern="*.cache"/>
+		<sub-class-of type="text/plain"/>
+		<supported-by>
+			<application name="xdrawchem"/>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-cache-csf" support="no">
+		<_comment>CAChe CSF Format</_comment>
+		<acronym>CAChe</acronym>
+		<expanded-acronym>Computer Aided Chemistry</expanded-acronym>
+		<glob pattern="*.csf"/>
+		<sub-class-of type="text/plain"/>
+		<supported-by>
+			<application name="xdrawchem"/>
+		</supported-by>
 	</mime-type>
 
 	<mime-type type="chemical/x-cactvs-ascii" support="yes" added="0.1.94">
@@ -147,7 +169,6 @@
 				<match type="string" value="Cactvs NMDSAscii by" offset="0:100"/>
 			</match>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 		</supported-by>
@@ -163,7 +184,6 @@
 		<magic priority="50">
 			<match type="string" value="\x07CACTVSBIN" offset="8"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 		</supported-by>
@@ -177,34 +197,8 @@
 		<magic priority="50">
 			<match type="string" value="CACTVS QSAR Table" offset="0"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
-		</supported-by>
-	</mime-type>
-
-	<mime-type type="chemical/x-cache" support="yes" added="0.1.91">
-		<_comment>CAChe MolStruct Format</_comment>
-		<acronym>CAChe</acronym>
-		<expanded-acronym>Computer Aided Chemistry</expanded-acronym>
-		<glob pattern="*.cac"/>
-		<glob pattern="*.cache"/>
-		<sub-class-of type="text/plain"/>
-		<icon/>
-		<supported-by>
-			<application name="xdrawchem"/>
-		</supported-by>
-	</mime-type>
-
-	<mime-type type="chemical/x-cache-csf" support="no">
-		<_comment>CAChe CSF Format</_comment>
-		<acronym>CAChe</acronym>
-		<expanded-acronym>Computer Aided Chemistry</expanded-acronym>
-		<glob pattern="*.csf"/>
-		<sub-class-of type="text/plain"/>
-		<icon/>
-		<supported-by>
-			<application name="xdrawchem"/>
 		</supported-by>
 	</mime-type>
 
@@ -221,7 +215,6 @@
 				</match>
 			</match>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -242,7 +235,6 @@
 			<match type="string" value="&lt;!DOCTYPE CDXML" offset="0:256"/>
 			<match type="string" value="&lt;CDXML" offset="0:64"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -257,14 +249,19 @@
 		<expanded-acronym>Molecular Simulations Inc.</expanded-acronym>
 		<glob pattern="*.cer"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
+	</mime-type>
+
+	<mime-type type="chemical/x-chemdraw" support="no">
+		<_comment>ChemDraw File</_comment>
+		<glob pattern="*.chm"/>
+		<alias type="application/x-chemdraw"/>
+		<conflicts type="application/x-chm" fdo="yes" gnome="yes" kde="yes"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-chem3d" support="yes" added="0.1.91">
 		<_comment>Chem3D Format</_comment>
 		<glob pattern="*.c3d"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -284,14 +281,11 @@
 				<match type="byte" value="13" offset="10"/>
 			</match>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="gdis"/>
 			<application name="jmol"/>
 		</supported-by>
 		<specification url="http://www.iucr.org/iucr-top/cif/spec/"/>
-		<specification url="http://www.bernstein-plus-sons.com/software/rasmol/"/>
-		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-cmdf" support="no">
@@ -302,7 +296,6 @@
 			<match type="string" value="CMDFCrystalMakerM" offset="0"/>
 			<match type="string" value="CMD5(CrystalMaker)" offset="0"/>
 		</magic>
-		<icon/>
 		<specification url="http://www.crystalmaker.com/library/index.html"/>
 	</mime-type>
 
@@ -321,7 +314,6 @@
 			<match type="string" value="&lt;cml" offset="0:64"/>
 			<match type="string" value="&lt;molecule" offset="0:64"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="gchempaint"/>
 			<application name="jmol"/>
@@ -338,7 +330,6 @@
 			<match type="string" value="CMMFCrystalMakerM" offset="0"/>
 			<match type="string" value="CMM5(CrystalMaker)" offset="0"/>
 		</magic>
-		<icon/>
 		<specification url="http://www.crystalmaker.com/library/proteins.html"/>
 	</mime-type>
 
@@ -356,8 +347,23 @@
 				</match>
 			</match>
 		</magic>
-		<icon/>
 		<specification url="http://www.crystalmaker.co.uk/downloads/CM_Users_Guide.pdf"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-compass" support="no">
+		<_comment>Compass Program of the Takahashi</_comment>
+		<glob pattern="*.cpa"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-crossfire" support="no">
+		<_comment>CrossFire File</_comment>
+		<glob pattern="*.bsd"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-csml" support="no">
+		<_comment>Chemical Style Markup Language</_comment>
+		<glob pattern="*.csm"/>
+		<glob pattern="*.csml"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-ctx" support="no">
@@ -367,7 +373,14 @@
 		<magic priority="50">
 			<match type="string" value=" /IDENT        " offset="0"/>
 		</magic>
-		<icon/>
+	</mime-type>
+
+	<mime-type type="chemical/x-cxf" support="no">
+		<_comment>Chemical Abstracts Exchange Format</_comment>
+		<acronym>CXF</acronym>
+		<expanded-acronym>Chemical eXchange Format</expanded-acronym>
+		<!-- <glob pattern="*.cef"/> -->
+		<glob pattern="*.cxf"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-daylight-smiles" support="yes" added="0.1.91">
@@ -378,7 +391,6 @@
 		<glob pattern="*.smiles"/>
 		<sub-class-of type="text/plain"/>
 		<conflicts type="application/smil" gnome="yes" kde="yes"/>
-		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 			<application name="xdrawchem"/>
@@ -395,6 +407,28 @@
 		<supported-by>
 			<application name="viewmol"/>
 		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-embl-dl-nucleotide" support="no">
+		<_comment>EMBL Nucleotide Format</_comment>
+		<acronym>EMBL</acronym>
+		<expanded-acronym>European Molecular Biology Laboratory</expanded-acronym>
+		<glob pattern="*.emb"/>
+		<magic priority="50">
+			<match type="string" value="ID   " offset="0"/>
+		</magic>
+		<specification url="http://mercury.ebi.ac.uk/"/>
+		<specification url="http://www.ebi.ac.uk/embl/Documentation/User_manual/usrman.html#FORMAT"/>
+		<specification url="http://www.biobind.com/faq/emboss/formats.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-galactic-spc" support="no">
+		<_comment>SPC Format for Spectral and Chromatographic Data</_comment>
+		<!-- <glob pattern="*.fir"/> -->
+		<!-- <glob pattern="*.rmn"/> -->
+		<glob pattern="*.spc"/>
+		<specification url="https://ftirsearch.com/features/converters/SPCFileFormat.htm"/>
+		<specification url="http://web.archive.org/web/20021201230302/www.galactic.com/instruments/spc.htm"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-gamess-input" support="yes" added="0.1.93">
@@ -446,7 +480,6 @@
 				<match type="string" value="$END" offset="8:80"/>
 			</match>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -468,12 +501,25 @@
 				<match type="string" value="\x0A\x0A\x20EXECUTION OF GAMESS BEGUN" offset="584:585"/>
 			</match>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.msg.ameslab.gov/GAMESS/doc.menu.html"/>
 		<specification url="http://www.msg.ameslab.gov/GAMESS/Graphics/MacMolPlt.shtml"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-gaussian-checkpoint" support="no">
+		<_comment>Gaussian Checkpoint Format</_comment>
+		<glob pattern="*.fch"/>
+		<glob pattern="*.fchk"/>
+		<sub-class-of type="text/plain"/>
+		<specification url="http://gaussian.com/tech_top_level.htm"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-gaussian-cube" support="no">
+		<_comment>Gaussian Cube (Wavefunction) Format</_comment>
+		<glob pattern="*.cub"/>
+		<specification url="http://gaussian.com/tech_top_level.htm"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-gaussian-input" support="yes" added="0.1.91">
@@ -483,7 +529,6 @@
 		<glob pattern="*.gjc"/>
 		<glob pattern="*.gjf"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="cs3d (cactvs)"/>
 			<application name="jmol"/>
@@ -512,13 +557,26 @@
 			<!-- Ignore this case here. We start directly at offset 1. -->
 			<match type="string" value="Entering Gaussian System, Link 0=" offset="1"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="molden"/>
 			<application name="viewmol"/>
 			<application name="xmol"/>
 		</supported-by>
 		<specification url="http://gaussian.com/tech_top_level.htm"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-gcg8-sequence" support="no">
+		<_comment>GCG 8 Sequence (Chemical) File Format</_comment>
+		<acronym></acronym>
+		<expanded-acronym></expanded-acronym>
+		<glob pattern="*.gcg"/>
+		<glob pattern="*.gcg8"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="!!AA_SEQUENCE 1.0\x0A" offset="0"/>
+			<match type="string" value="!!NA_SEQUENCE 1.0\x0A" offset="0"/>
+		</magic>
+		<specification url="http://www.biobind.com/faq/emboss/formats.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-genbank" support="yes" added="0.1.93">
@@ -532,8 +590,8 @@
 		<conflicts type="application/x-genesis-rom" gnome="yes"/>
 		<magic priority="80">
 			<match type="string" value="                    GENETIC SEQUENCE DATA BANK" offset="0"/>
+			<match type="string" value="LOCUS       " offset="0"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="biojava"/>
 			<application name="bioperl"/>
@@ -551,7 +609,6 @@
 		<expanded-acronym>General Utility Lattice Program</expanded-acronym>
 		<glob pattern="*.gin"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<specification url="http://www.ivec.org/GULP/help/gulp_30_manual/gulpnode55.html"/>
 		<specification url="http://www.ivec.org/GULP/help/examples.html"/>
 	</mime-type>
@@ -574,7 +631,6 @@
 				<match type="string" value="Julian Gale, NRI, Curtin University" offset="161:240"/>
 			</match>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="viewmol"/>
 		</supported-by>
@@ -593,7 +649,6 @@
 				</match>
 			</match>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -607,7 +662,6 @@
 		<expanded-acronym>International Union of Pure and Applied Chemistry</expanded-acronym>
 		<glob pattern="*.inchi"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="bkchem"/>
 			<application name="kfile_plugin"/>
@@ -623,12 +677,23 @@
 		<expanded-acronym>International Union of Pure and Applied Chemistry</expanded-acronym>
 		<glob pattern="*.inchix"/>
 		<sub-class-of type="application/xml"/>
-		<icon/>
 		<supported-by>
 			<application name="bkchem"/>
 			<application name="kfile_plugin"/>
 			<application name="openbabel"/>
 		</supported-by>
+	</mime-type>
+
+	<mime-type type="chemical/x-isostar" support="no">
+		<_comment>IsoStar Library of Intermolecular Interactions</_comment>
+		<glob pattern="*.ist"/>
+		<glob pattern="*.istr"/>
+		<sub-class-of type="chemical/x-mol2"/>
+		<magic priority="50">
+			<match type="string" value="# Isostar Scatter Plot" offset="0"/>
+		</magic>
+		<specification url="http://www.ccdc.cam.ac.uk/products/csd_system/isostar/"/>
+		<specification url="http://www.ccdc.cam.ac.uk/support/documentation/isostar/portable/isostar_portable-3-074.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-jcamp-dx" support="yes" added="0.1.93">
@@ -638,7 +703,6 @@
 		<glob pattern="*.dx"/>
 		<glob pattern="*.jdx"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="csir (cactvs)"/>
 			<application name="jcamp-dx"/>
@@ -646,12 +710,37 @@
 		</supported-by>
 	</mime-type>
 
+	<mime-type type="chemical/x-kinemage" support="no">
+		<_comment>Kinemage Chemical Protein Images</_comment>
+		<glob pattern="*.kin"/>
+		<sub-class-of type="text/plain"/>
+		<alias type="application/kinemage"/>
+		<magic priority="50">
+			<!-- probably, this needs to be refined -->
+			<match type="string" value="&lt;title&gt;" offset="0">
+				<match type="string" value="\x0A@text" offset="16:240"/>
+				<match type="string" value="\x0A@kinemage" offset="16:240"/>
+			</match>
+			<match type="string" value="@text" offset="0"/>
+			<match type="string" value="@kinemage" offset="0"/>
+		</magic>
+		<specification url="http://kinemage.biochem.duke.edu/kinemage/magepage.php"/>
+		<specification url="http://kinemage.biochem.duke.edu/kinemage/magehelp.php#pt50"/>
+		<specification url="http://suna.biochem.duke.edu/downloads/PDFs/format-kinemage.pdf"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-macmolecule" support="no">
+		<_comment>MacMolecule File Format</_comment>
+		<glob pattern="*.mcm"/>
+		<sub-class-of type="text/plain"/>
+		<specification url="http://web.archive.org/web/20020224015619/http://www.molvent.com/support/filespec.html"/>
+	</mime-type>
+
 	<mime-type type="chemical/x-macromodel-input" support="yes" added="0.1.91">
 		<_comment>MacroModel Molecular Mechanics Format</_comment>
 		<glob pattern="*.mmd"/>
 		<glob pattern="*.mmod"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -663,7 +752,6 @@
 		<glob pattern="*.dat"/>
 		<glob pattern="*.out"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<specification url="http://www.columbia.edu/cu/chemistry/mmod/mmod.html"/>
 	</mime-type>
 
@@ -674,7 +762,6 @@
 		<glob pattern="*.mdl"/>
 		<glob pattern="*.mol"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 			<application name="csed (cactvs)"/>
@@ -692,7 +779,6 @@
 		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.rd"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 		</supported-by>
@@ -707,7 +793,6 @@
 		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.rxn"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 			<application name="xdrawchem"/>
@@ -723,7 +808,6 @@
 		<glob pattern="*.sdf"/>
 		<sub-class-of type="text/plain"/>
 		<conflicts type="application/vnd.stardivision.math" kde="yes"/>
-		<icon/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 			<application name="gchempaint"/>
@@ -738,8 +822,17 @@
 		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.tgf"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mif" support="no">
+		<_comment>Molecular Information File Format</_comment>
+		<acronym>MIF</acronym>
+		<expanded-acronym>Molecular Information File</expanded-acronym>
+		<glob pattern="*.mif"/>
+		<sub-class-of type="text/plain"/>
+		<conflicts type="application/x-mif" fdo="yes" gnome="yes"/>
+		<specification url="http://pubs.acs.org/cgi-bin/abstract.cgi/jcisd8/1995/35/i03/f-pdf/f_ci00025a009.pdf?sessid=6006l3"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mmcif" support="yes" added="0.1.91">
@@ -748,27 +841,34 @@
 		<expanded-acronym>MacroMolecular Crystallographic Information File</expanded-acronym>
 		<glob pattern="*.mcif"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="jmol"/>
 		</supported-by>
-		<specification url="http://www.bernstein-plus-sons.com/software/rasmol/"/>
-		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"/>
+		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mol2" support="yes" added="0.1.91">
 		<_comment>SYBYL Portable Representation Format</_comment>
+		<glob pattern="*.ml2"/>
 		<glob pattern="*.mol2"/>
+		<glob pattern="*.sy2"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="50">
 			<match type="string" value="@&lt;TRIPOS&gt;MOLECULE\x0D" offset="0:800"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.tripos.com/index.php?family=modules,SimplePage,sup_mol2"/>
 		<specification url="http://www.tripos.com/data/support/mol2.pdf"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-molconn-Z" support="no">
+		<_comment>Molconn-Z File Format</_comment>
+		<acronym>Molconn</acronym>
+		<expanded-acronym>Molecular Connectivity</expanded-acronym>
+		<glob pattern="*.b"/>
+		<sub-class-of type="text/plain"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mopac-graph" support="yes" added="0.1.91">
@@ -778,7 +878,6 @@
 		<glob pattern="*.gpt"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/x-mopac"/>
-		<icon/>
 		<supported-by>
 			<application name="molden"/>
 			<application name="viewmol"/>
@@ -798,7 +897,6 @@
 		<sub-class-of type="text/plain"/>
 		<conflicts type="audio/x-musepack" gnome="yes" kde="yes"/>
 		<conflicts type="video/mpeg" gnome="yes"/>
-		<icon/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -826,7 +924,6 @@
 			</match>
 			<match type="string" value="MOPAC" offset="81:160"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="molden"/>
 		</supported-by>
@@ -915,7 +1012,6 @@
 			<match type="string" value="PC-Substance" offset="0"/>
 			<match type="string" value="PC-XRefData" offset="0"/>
 		</magic>
-		<icon/>
 		<specification url="ftp://ftp.ncbi.nih.gov/pubchem/specifications/pubchem.asn"/>
 		<specification url="http://www.ncbi.nlm.nih.gov/Sitemap/Summary/asn1.html"/>
 	</mime-type>
@@ -929,7 +1025,6 @@
 		<magic priority="50">
 			<match type="string" value="\x30\x80\x30\x80\xA0\x80\x30\x80" offset="0"/>
 		</magic>
-		<icon/>
 		<specification url="ftp://ftp.ncbi.nih.gov/pubchem/specifications/pubchem.asn"/>
 	</mime-type>
 
@@ -959,7 +1054,6 @@
 			<match type="string" value="&lt;PC-Substance" offset="0:64"/>
 			<match type="string" value="&lt;PC-XRefData" offset="0:64"/>
 		</magic>
-		<icon/>
 		<specification url="ftp://ftp.ncbi.nih.gov/pubchem/specifications/pubchem.xsd"/>
 	</mime-type>
 
@@ -1011,7 +1105,6 @@
 			<match type="string" value="TITLE  " offset="0"/>
 			<match type="string" value="TURN   " offset="0"/>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="cs3d (cactvs)"/>
 			<application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
@@ -1033,7 +1126,6 @@
 		<_comment>Q-Chem Input File</_comment>
 		<glob pattern="*.qcin"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="Q-Chem"/>
 		</supported-by>
@@ -1051,11 +1143,18 @@
 				<match type="string" value="A Quantum Leap Into The Future Of Chemistry" offset="41"/>
 			</match>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="Q-Chem"/>
 		</supported-by>
 		<specification url="http://www.q-chem.com/technical-info.htm"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-rosdal" support="no">
+		<!-- this is not an official name, so replace it with such a name -->
+		<_comment>ROSDAL Universal Structure Format</_comment>
+		<acronym>ROSDAL</acronym>
+		<expanded-acronym>Representation Of Structure Description Arranged Linearly</expanded-acronym>
+		<glob pattern="*.ros"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-shelx" support="yes" added="0.1.93">
@@ -1068,7 +1167,6 @@
 				<match type="string" value="CELL" offset="5:81"/>
 			</match>
 		</magic>
-		<icon/>
 		<supported-by>
 			<application name="kfile_plugin"/>
 			<application name="shelx"/>
@@ -1077,11 +1175,37 @@
 		<specification url="http://shelx.uni-ac.gwdg.de/SHELX/shelx.pdf"/>
 	</mime-type>
 
+	<mime-type type="chemical/x-swissprot" support="no">
+		<_comment>SWISS-PROT Protein Sequence Database Format</_comment>
+		<glob pattern="*.sw"/>
+		<glob pattern="*.swiss"/>
+		<glob pattern="*.swissprot"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="ID   " offset="0"/>
+		</magic>
+		<specification url="http://www.expasy.ch/cgi-bin/keywlist.pl"/>
+		<specification url="http://ca.expasy.org/sprot/userman.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-vamas-iso14976" support="no">
+		<_comment>Versailles Agreement on Materials and Standards</_comment>
+		<acronym>VAMAS</acronym>
+		<expanded-acronym>Versailles Agreement on Materials and Standards</expanded-acronym>
+		<glob pattern="*.vms"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="VAMAS Surface Chemical Analysis Standard Data Transfer Format 1988 May 4" offset="0"/>
+		</magic>
+		<specification url="http://www.vamas.org/"/>
+		<specification url="http://www.npl.co.uk/nanoanalysis/vamas1.html"/>
+		<specification url="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=24269" title="ISO 14976:1998"/>
+	</mime-type>
+
 	<mime-type type="chemical/x-vmd" support="yes" added="0.1.93">
 		<_comment>Visual Molecular Dynamics</_comment>
 		<glob pattern="*.vmd"/>
 		<sub-class-of type="text/plain"/>
-		<icon/>
 		<supported-by>
 			<application name="kfile_plugin"/>
 			<application name="vmd"/>
@@ -1089,12 +1213,19 @@
 		<specification url="http://www.ks.uiuc.edu/Research/vmd/"/>
 	</mime-type>
 
+	<mime-type type="chemical/x-xtel" support="no">
+		<_comment>Xtelplot File Format</_comment>
+		<acronym></acronym>
+		<expanded-acronym></expanded-acronym>
+		<glob pattern="*.xtel"/>
+		<sub-class-of type="text/plain"/>
+	</mime-type>
+
 	<mime-type type="chemical/x-xyz" support="yes" added="0.1.90">
 		<_comment>XYZ Co-ordinate Animation Format</_comment>
 		<glob pattern="*.xyz"/>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/xyz"/>
-		<icon/>
 		<supported-by>
 			<application name="cs3d (cactvs)"/>
 			<application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
@@ -1108,10 +1239,10 @@
 
 	<!-- Just for testing pruposes: Use the extension of the MIME type to test. -->
 	<!--
-	<mime-type type="chemical/x-test" support="no">
+	<mime-type type="chemical/x-test" support="yes">
 		<comment>Test</comment>
-		<glob pattern="undefined"/>
-		<icon/>
+		<sub-class-of type="text/plain"/>
+		<glob pattern="*.undefined"/>
 	</mime-type>
 	-->
 

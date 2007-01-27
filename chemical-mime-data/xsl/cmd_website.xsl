@@ -195,9 +195,9 @@
 
 <xsl:template match="specification">
 	<a href="{@url}">
-		<xsl:if test="string-length(@resource)">
+		<xsl:if test="string-length(@title)">
 			<xsl:attribute name="title">
-				<xsl:value-of select="@resource"/>
+				<xsl:value-of select="@title"/>
 			</xsl:attribute>
 		</xsl:if>
 		<xsl:value-of select="@url"/>
@@ -286,7 +286,7 @@
 			<xsl:apply-templates select="."/>
 		</xsl:for-each>
 	</table>
-	<p>There might be more MIME types, that simply were not yet added to the database. If you know one missing, just let us know and send a <a href="https://sourceforge.net/tracker/?func=add&amp;group_id=159685&amp;atid=812822">report</a>.</p>
+	<p>There might be more MIME types, that simply were not yet added to the database. If you know one missing, just <a href="https://sourceforge.net/tracker/?func=add&amp;group_id=159685&amp;atid=812822">let us know</a>.</p>
 </xsl:template>
 
 <xsl:template name="html.content.table.mime.head">
