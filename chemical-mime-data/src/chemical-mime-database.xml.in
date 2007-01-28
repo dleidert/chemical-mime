@@ -422,7 +422,7 @@
 			<application name="csbr (cactvs)"/>
 			<application name="xdrawchem"/>
 		</supported-by>
-		<specification url="http://www.daylight/dayhtml/smiles/index.html"/>
+		<specification url="http://www.daylight.com/smiles/"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-dmol" support="yes" added="0.1.91">
