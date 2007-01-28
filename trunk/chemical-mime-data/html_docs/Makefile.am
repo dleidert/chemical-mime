@@ -26,8 +26,8 @@ chemical-mime-data.html : cmd_website.xsl chemical-mime-database.xml
 
 install-sfnet: $(htmldocs_DATA)
 	@echo "******************************************************************************"
-	@echo "* Copying the HTML files to sf.net.                                          *"
-	@echo "* Make sure to have an entry for 'sf.net' in your ${HOME}/.ssh/config.       *"
+	@echo "* Copying the HTML files to sf.net."
+	@echo "* Make sure to have an entry for 'sf.net' in your ${HOME}/.ssh/config."
 	@echo "******************************************************************************"
 	scp $^ sf.net:/home/groups/c/ch/chemical-mime/htdocs
 
