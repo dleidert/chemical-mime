@@ -22,11 +22,11 @@ database_files    = $(database_in_files:.xml.in=.xml)
 all-local: $(database_files)
 
 check-local:
-	$(info "Correct any errors before making a distribution.")
+	@echo -e "\033[1mCorrect any errors before making a distribution.\033[0m"
 if HAVE_XMLLINT
 	$(XMLLINT) $(XMLLINT_FLAGS) $(database_files)
 else
-	$(warning "Cannot check the XML sources because 'xmllint' is missing.")
+	@echo -e "\033[1mCannot check the XML sources because 'xmllint' is missing.\033[0m"
 endif
 
 

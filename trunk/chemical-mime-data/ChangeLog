@@ -3,6 +3,27 @@
 
 2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* Makefile.am:
+	* html_docs/Makefile.am: Added a target install-sfnet to copy the
+	files to sourceforge.net via scp.
+
+	* freedesktop.org/Makefile.am (vpath, chemical-mime-data.xml):
+	* gnome/Makefile.am (vpath, chemical-mime-data.keys)
+	(chemical-mime-data.mime):
+	* html_docs/Makefile.am (vpath, chemical-mime-data.html):
+	* kde/Makefile.am (vpath, *.desktop): Replaced vpath directives with
+	VPATH variables. Removed GNU make text processing functions to avoid
+	portability warnings. Removed the cmd_common.xsl prerequisite too, to
+	allow the last step.
+
+	* icons/hicolor/Makefile.am (.svgz): Moved over to an old-fashioned
+	suffix rule to avoid portability warnings.
+
+	* src/Makefile.am (check-local): Moved GNU make control functions to
+	simple echo calls to avoid portability warnings.
+
+2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* README:
 	* html_docs/index.html: Synced both files. Added and completed
 	content.

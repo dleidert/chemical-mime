@@ -12,6 +12,7 @@ CLEANFILES = *.png *.svgz
 
 MAINTAINERCLEANFILES = Makefile.in
 
+SUFFIXES = .svg .svgz
 
 icon_sources = gnome-mime-chemical.svg
 icon_sizes   = 16 22 24 32 36 48 64 72 96 128 192
@@ -19,7 +20,7 @@ icon_sizes   = 16 22 24 32 36 48 64 72 96 128 192
 
 if BOOL_HICOLOR_THEME
 
-%.svgz : %.svg
+.svg.svgz:
 	gzip $< -c > $@
 	for size in $(icon_sizes) ; do \
 		if test "x$(RSVG)" != "x" ; then \

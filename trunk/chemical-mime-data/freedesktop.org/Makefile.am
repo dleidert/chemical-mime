@@ -10,9 +10,7 @@ CLEANFILES = $(freedesktopmime_DATA)
 
 MAINTAINERCLEANFILES = Makefile.in
 
-
-vpath cmd_%.xsl $(top_srcdir)/xsl
-vpath chemical-mime-database.xml $(top_builddir)/src
+VPATH += $(top_builddir)/src $(top_srcdir)/xsl 
 
 
 if BOOL_FREEDESKTOP_MIME
@@ -20,9 +18,8 @@ freedesktopmimedir   = $(with_freedesktop_mime)/packages
 freedesktopmime_DATA = chemical-mime-data.xml
 endif #BOOL_FREEDESKTOP_MIME
 
-
-chemical-mime-data.xml : cmd_freedesktop_org.xsl chemical-mime-database.xml cmd_common.xsl
-	$(XSLTPROC) $(XSLTPROC_FLAGS) $(filter-out $(top_srcdir)/xsl/cmd_common.xsl,$^)
+chemical-mime-data.xml : cmd_freedesktop_org.xsl chemical-mime-database.xml
+	$(XSLTPROC) $(XSLTPROC_FLAGS) $^
 
 
 install-data-hook:

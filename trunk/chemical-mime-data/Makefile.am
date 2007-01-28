@@ -43,3 +43,7 @@ DISTCHECK_CONFIGURE_FLAGS = --disable-update-database --disable-nls
 pkgconfigdir = $(datadir)/pkgconfig
 pkgconfig_DATA = chemical-mime-data.pc
 
+
+install-sfnet:
+	@cd html_docs && $(MAKE) install-sfnet || exit 1
+
