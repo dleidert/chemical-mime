@@ -447,6 +447,7 @@
 		<specification url="http://mercury.ebi.ac.uk/"/>
 		<specification url="http://www.ebi.ac.uk/embl/Documentation/User_manual/usrman.html#FORMAT"/>
 		<specification url="http://www.biobind.com/faq/emboss/formats.html"/>
+		<specification url="http://www.psc.edu/general/software/packages/seq-intro/emblfile.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-fasta" support="no">
@@ -454,6 +455,10 @@
 		<glob pattern="*.fa"/>
 		<glob pattern="*.fsa"/>
 		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="&lt;" offset="0"/>
+		</magic>
+		<specification url="http://www.ncbi.nlm.nih.gov/blast/fasta.shtml"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-galactic-spc" support="no">
@@ -624,7 +629,7 @@
 		<conflicts type="application/x-gameboy-rom" gnome="yes"/>
 		<conflicts type="application/x-genesis-rom" gnome="yes"/>
 		<magic priority="80">
-			<match type="string" value="                    GENETIC SEQUENCE DATA BANK" offset="0"/>
+			<match type="string" value="                   GENETIC SEQUENCE DATA BANK" offset="0"/>
 			<match type="string" value="LOCUS       " offset="0"/>
 		</magic>
 		<supported-by>
