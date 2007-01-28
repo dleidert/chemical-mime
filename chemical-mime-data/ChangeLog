@@ -3,6 +3,12 @@
 
 2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* HACKING: Fixed typo.
+
+	* html_docs/Makefile.am (install-sfnet): Fixed typo.
+
+2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* Makefile.am:
 	* html_docs/Makefile.am: Added a target install-sfnet to copy the
 	files to sourceforge.net via scp.

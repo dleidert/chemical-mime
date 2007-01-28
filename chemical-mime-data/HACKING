@@ -126,7 +126,7 @@ Common templates used by more than one stylesheet SHOULD go into the generic
 cmd_common.xsl stylesheet.
 
 
-4. Website
+5. Website
 ==========
 
 It is RECOMMENDed that variable content is created automatically via (e.g.)
