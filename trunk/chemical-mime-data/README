@@ -8,9 +8,11 @@
   1. About chemical-mime-data
   2. Copyright and License
   3. Introduction and configuration
-  4. Installation
-  5. Associate your chemical application with a chemical MIME type
-  6. Footnotes
+  4. Supported MIME types
+  5. Download and Installation
+  6. Associate your chemical application with a chemical MIME type
+  7. TODO
+  8. Footnotes
 
 
 1. About chemical-mime-data
@@ -20,14 +22,9 @@ The chemical-mime-data [1] package is a collection of data [2] files to add
 support for various chemical MIME types on Linux/UNIX desktops, such as
 KDE [3] and GNOME [4].
 
-Chemical MIMEs [5] have been proposed [6] in 1995, though it seems they have
-never been registered with IANA [7]. But they are widely used and the projects
-aim is, to support these important, but unofficial MIME types.
-
-Initial data was taken from »The Chemical MIME Home Page« of Henry Rzepa [5],
-but this compilation is written and continuously extended by Egon Willighagen,
-Daniel Leidert and others (see the distributed AUTHORS [8] file for a list of
-who has contributed to this project).
+Chemical MIMEs [5] were proposed [6] in 1995, though it seems they have never
+been registered with IANA [7]. But they are widely used and the project's aim
+is, to support these important, but unofficial MIME types.
 
 
 2. Copyright and License
@@ -50,11 +47,13 @@ Copyright (C) 2004-2006 Egon Willighagen <e.willighagen@science.ru.nl>.
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 					
-Please see the file COPYING [9] or visit http://www.gnu.org [10] to obtain a
+Please see the file COPYING or visit http://www.gnu.org [8] to obtain a
 copy of the GNU Lesser General Public License.
 
-See the files AUTHORS [8] and THANKS [11] for a list of who has contributed to this
-project.
+Initial data was taken from »The Chemical MIME Home Page« of Henry Rzepa [5],
+but this compilation is written and continuously extended by Egon Willighagen,
+Daniel Leidert and others (see the distributed AUTHORS and THANKS files for a
+list of who has contributed to this project).
 
 
 3. Introduction and configuration
@@ -62,41 +61,60 @@ project.
 
 Newer desktop systems need to know the MIME type to associate applications
 with it. Writers of chemical applications can, will and make use of this
-feature too. But there are several systems [12].
+feature too. But there are several systems [9], which first need to be
+prepared. During the development of Jmol [10] and CDK [11] we came to the
+problem, to integrate these applications into the Linux desktop. This issue
+raised up the chemicalMIME [12] project, which is the forerunner of the
+chemical-mime-data [1] project.
 
-Newer GNOME [4] and ROX [13] desktops use the Shared MIME-info
-Database [14][15] to determine MIMEs. We provide a file chemical-mime-data.xml
-which has be installed into the 'packages' sub-directory. It follows the
-freedesktop.org [16] specification [17]. After running 'update-mime-database'
-the chemical MIME types are registered.
+freedesktop.org [13] project system
 
-To associate an icon for a MIME type, the icon has to be installed into the
-hicolor-theme [18] and named e.g.:
+    Newer GNOME [4] and ROX [14] desktops use the Shared MIME-info
+    Database [15] to determine MIMEs. We provide a file
+    chemical-mime-data.xml, which has to be installed into the database at
+    $XDG_DATA_DIRS/mime/packages and follows the freedesktop.org
+    specification [16]. After running update-mime-database the MIME types are
+    registered. This should work for all systems and applications mentioned
+    at [17]. You will need the shared-mime-info package [18] for your
+    distribution.
 
-    gnome-mime-chemical-x-xyz.png
-    gnome-mime-chemical-x-cml.png
+    To associate an icon for a MIME type, the icon has to be installed into
+    the hicolor-theme [19] and named e.g.:
 
-The syntax is:
+        gnome-mime-chemical-x-xyz.png
+        gnome-mime-chemical-x-cml.png
 
-    gnome-<icon-type>-<mime-media-type>-</mime-sub-type>.png
+    The syntax is:
 
-If the icon naming scheme follows this direction, the MIME type is
-automatically associated with the icon. This should work for all systems and
-applications mentioned under >6. Current Status< [14]. You will need the
-shared-mime-info [14] package for your distribution
+        gnome-<icon-type>-<mime-media-type>-</mime-sub-type>.png
 
-Older GNOME desktops use the mime-info [14] path with .keys and .mime files to
-determine MIME stuff. Icons are installed into the pixmaps directory.
+    If the icon naming scheme follows this direction, the MIME type is
+    automatically associated with the icon.
 
-KDE desktops use the mimelnk [14] path with .desktop files to determine MIME
-stuff. The .desktop format is now developed by the freedesktop.org
-project [16] and specified on [19].
+GNOME [4] <= 2.4
 
-A collection of documents can be found at the projects site [20].
+    Older GNOME [4] desktops use the ${datadir}/mime-info path with .keys and
+    .mime files [20] to determine [21] MIME stuff. Icons are determined the
+    same way.
+
+KDE [3] < 4
+
+    KDE [3] desktops use the ${datadir}/mimelnk [22] path with .desktop files
+    to determine MIME stuff. Icons are determined the same way.
+
+If you need more information, checkout the documentation section [23] of the
+projects website.
 
 
-4. Installation
-===============
+4. Supported MIME types
+=======================
+
+Please check the large table form you can find at [2]. This table is also
+shipped with the package.
+
+
+5. Download and Installation
+============================
 
 To build and install chemical-mime-data from CVS:
 
@@ -105,73 +123,99 @@ To build and install chemical-mime-data from CVS:
     (3) run autogen.sh (./autogen.sh)
     (4) see next part ...
 
+The latest release can always be found in the download section [24] of the
+project's website. Make sure to also download the MD5 sum file (.md5) to check
+the files integrity. For e.g. the .tar.gz tarball check it with:
+
+   md5sum -c chemical-mime-data-<version>.tar.gz.md5
+
 To build and install chemical-mime-data from release tarballs:
 
     (1) Get the required applications:
-        - intltool/gettext, pkg-config
-        - RSVG2 or imagemagick
-        - xsltproc
-        - gnome-mime-data, shared-mime-info
+        - intltool/gettext (I18N)
+        - pkg-config
+        - RSVG2 or imagemagick (convert SVG into PNG)
+        - xsltproc (create .desktop, .mime, ... files from XML)
+        - gnome-mime-data
+        - shared-mime-info (contains update-mime-database)
     
     (2) Configure and compile:
         (see ./configure --help for possible configure options)
           $ ./configure [options-you-like-most-here]
           $ make
        
-    (3) Install everything:
+    (3) Install everything (probably needs root permissions):
           $ su
           # make install
        
 ($: means user-shell, #: means root-shell)
 
-The file INSTALL [21] contains some generic installation instructions.
+The file INSTALL contains some generic installation instructions.
 
 
-5. Associate your chemical application with a chemical MIME type
+6. Associate your chemical application with a chemical MIME type
 ================================================================
 
 To associate the chemical MIME types with a special application, you need to
 do the following:
 
-	* KDE: [19][22][23] ([19] only for KDE 3.3 and above)
-	* GNOME [19][24][25][26]
+	* KDE: [25][26][27] ([25] only for KDE 3.3 and above)
+	* GNOME [25][28][29][30][31] ([25-28] for GNOME > 2.4, [31] for <= 2.4)
 
-The desktop-file-utils [27] package contains command-line applications to
-validate, manipulate and install .desktop files and to update the database,
-which holds information about applications and associated MIME types.
+The desktop-file-utils package [32] contains the command-line tool
+desktop-file-validate to validate, manipulate and install .desktop files and
+to update the database, which holds information about applications and
+associated MIME types.
+
+If you need more information, checkout the documentation section [23] of the
+projects website.
 
 
-6. Footnotes
+7. TODO
+=======
+
+For a list of things, that need to be done in the near future or for later
+releases, refer to TODO.
+
+If you want to have an overview, which features need to be implemented or
+which bugs need to be fixed, check the projects tracker [33] page.
+
+
+8. Footnotes
 ============
 
 [1]  http://sourceforge.net/projects/chemical-mime
-[2]  html_docs/chemical-mime-data.html
-     http://chemical-mime.sourceforge.net/chemical-mime-data.html
+[2]  http://chemical-mime.sourceforge.net/chemical-mime-data.html
 [3]  http://www.kde.org
 [4]  http://www.gnome.org
 [5]  http://www.ch.ic.ac.uk/chemime/
 [6]  https://datatracker.ietf.org/public/idindex.cgi?command=id_detail&id=928
 [7]  http://www.iana.org/assignments/media-types/
-[8]  http://chemical-mime.cvs.sourceforge.net/*checkout*/chemical-mime/chemical-mime-data/AUTHORS
-[9]  http://chemical-mime.cvs.sourceforge.net/*checkout*/chemical-mime/chemical-mime-data/COPYING
-[10] http://www.gnu.org/licenses/lgpl.html
-[11] http://chemical-mime.cvs.sourceforge.net/*checkout*/chemical-mime/chemical-mime-data/THANKS
-[12] http://www.freedesktop.org/wiki/Standards_2fOtherSystems
-[13] http://rox.sourceforge.net
-[14] http://www.freedesktop.org/wiki/Standards_2fshared_2dmime_2dinfo_2dspec
-     http://www.freedesktop.org/wiki/Standards_2fshared_2dmime_2dinfo_2dspec#head-3aa1d93d613d40c76fc8990ce8985119496b917e
-[15] http://www.gnome.org/learn/admin-guide/latest/mimetypes-0.html
-[16] http://www.freedesktop.org
-[17] http://standards.freedesktop.org/shared-mime-info-spec/latest/
-[18] http://standards.freedesktop.org/icon-theme-spec/latest/
-[19] http://standards.freedesktop.org/desktop-entry-spec/latest/
-[20] http://sourceforge.net/docman/?group_id=159685.
-[21] http://chemical-mime.cvs.sourceforge.net/*checkout*/chemical-mime/chemical-mime-data/INSTALL
-[22] http://www.kde.org/areas/sysadmin/fsh.php
-[23] http://developer.kde.org/documentation/tutorials/dot/servicemenus.html
-[24] http://www.gnome.org/learn/admin-guide/latest/mimetypes-registering.html
-[25] http://www.gnome.org/learn/admin-guide/latest/menustructure-desktopentry.html
-[26] http://www.gnome.org/learn/admin-guide/latest/mimetypes-9.html
-[27] http://freedesktop.org/Software/desktop-file-utils
+[8]  http://www.gnu.org/licenses/lgpl.html
+[9]  http://www.freedesktop.org/wiki/Standards_2fOtherSystems
+[10] http://www.jmol.org
+[11] http://cdk.sourceforge.net
+[12] http://cdk.cvs.sourceforge.net/cdk/chemicalMIME/
+[13] http://www.freedesktop.org
+[14] http://rox.sourceforge.net
+[15] http://www.freedesktop.org/wiki/Standards_2fshared_2dmime_2dinfo_2dspec
+[16] http://standards.freedesktop.org/shared-mime-info-spec/latest/
+[17] http://www.freedesktop.org/wiki/Standards_2fshared_2dmime_2dinfo_2dspec#head-3aa1d93d613d40c76fc8990ce8985119496b917e
+[18] http://www.freedesktop.org/software/shared-mime-info/
+[19] http://standards.freedesktop.org/icon-theme-spec/latest/
+[20] http://www.freedesktop.org/wiki/Standards_2fOtherSystems#head-84abb4e7909f64bc187f2734fe98576848f7dffd
+[21] http://web.archive.org/web/20041024185231/http://www.gnome.org/learn/admin-guide/latest/ch05s02.html
+[22] http://www.freedesktop.org/wiki/Standards_2fOtherSystems#head-b4621d6841f56c8aecb7eab95c28aa5a33dc41e0
+[23] http://sourceforge.net/docman/?group_id=159685
+[24] http://sourceforge.net/project/showfiles.php?group_id=159685
+[25] http://standards.freedesktop.org/desktop-entry-spec/latest/
+[26] http://www.kde.org/areas/sysadmin/fsh.php
+[27] http://developer.kde.org/documentation/tutorials/dot/servicemenus.html
+[28] http://www.gnome.org/learn/admin-guide/latest/mimetypes-registering.html
+[29] http://www.gnome.org/learn/admin-guide/latest/menustructure-desktopentry.html
+[30] http://www.gnome.org/learn/admin-guide/latest/mimetypes-9.html
+[31] http://web.archive.org/web/20041024190358/http://www.gnome.org/learn/admin-guide/latest/ch05s03.html
+[32] http://freedesktop.org/Software/desktop-file-utils
+[33] http://sourceforge.net/tracker/?group_id=159685
 
 # UTF-8

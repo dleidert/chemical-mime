@@ -1,6 +1,14 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* README:
+	* html_docs/index.html: Synced both files. Added and completed
+	content.
+
+	* TODO: Removed README related item.
+
 2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Initially added (currently not
