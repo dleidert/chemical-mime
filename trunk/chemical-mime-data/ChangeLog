@@ -3,6 +3,16 @@
 
 2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* TODO: Updated.
+
+	* src/chemical-mime-database.xml.in (chemical/x-fasta): Added magic
+	pattern and specification URL.
+	(chemical/x-embl-dl-nucleotide): Added specification URL.
+	(chemical/x-genbank): Fixed detection rules based on specification
+	from www.psc.edu.
+
+2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in (chemical/x-daylight-smiles):
 	Fixed specification URL.
 

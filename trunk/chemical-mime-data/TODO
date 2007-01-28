@@ -25,9 +25,9 @@ TODO
     little32 = lelong
     
     support for date, bedate and ledate necessary?
-    (see /etc/gnome-vfs-mime-magic (GNOME), /usr/share/mimelnk/magic (KDE),
-    /usr/share/file/magic.mime (file(1)),
-    http://marc.10east.com/?l=apache-docs&m=107124744902978&q=p3)
+    see /etc/gnome-vfs-mime-magic (GNOME), /usr/share/mimelnk/magic (KDE),
+    /usr/share/file/magic.mime (file(1), magic(5),
+    http://marc.10east.com/?l=apache-docs&m=107124744902978&q=p3
 
   + Fix gnome-mime-data support: see
     http://www.gnome.org/learn/admin-guide/latest/ch05s02.html
@@ -73,6 +73,10 @@ TODO
     gdis morphology file (.gmf)
     gulp input (.gin), restart (.res), and ouput (.got) (gulp also used by viewmol!)
     xtl (.xtl) (gulp added but not activated)
+    'ACC', "chemical/x-synopsys-accord" Accord ActiveX Chemistry Control
+    Questel DARC-F1
+    NBRF/PIR http://www.psc.edu/general/software/packages/seq-intro/nbrffile.html
+    chemixal/x-mpsa http://bioinformatics.oxfordjournals.org/cgi/screenpdf/16/3/286.pdf
 
     viewmol also uses: x-turbomole*
     
