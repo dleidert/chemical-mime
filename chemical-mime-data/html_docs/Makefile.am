@@ -12,20 +12,22 @@ CLEANFILES = chemical-mime-data.html
 
 MAINTAINERCLEANFILES = Makefile.in
 
-VPATH += @top_builddir@/xsl
+VPATH += $(top_builddir)/src $(top_builddir)/xsl $(top_srcdir)/xsl
 
 XSLTPROC_FLAGS += --path "$(VPATH)"
-
-
-vpath cmd_%.xsl $(top_srcdir)/xsl
-vpath chemical-mime-database.xml $(top_builddir)/src
 
 
 htmldocsdir   = $(datadir)/doc/$(PACKAGE)
 htmldocs_DATA = index.html chemical-mime-data.html cmd.css
 
 
-chemical-mime-data.html : cmd_website.xsl chemical-mime-database.xml cmd_common.xsl
-	$(XSLTPROC) $(XSLTPROC_FLAGS) $(filter-out $(top_srcdir)/xsl/cmd_common.xsl,$^)
+chemical-mime-data.html : cmd_website.xsl chemical-mime-database.xml
+	$(XSLTPROC) $(XSLTPROC_FLAGS) $^
 
+install-sfnet: $(htmldocs_DATA)
+	@echo "******************************************************************************"
+	@echo "* Copying the HTML files to sf.net.                                          *"
+	@echo "* Make sure to have an entry for 'sf.net' in your ${HOME}/.ssh/config.       *"
+	@echo "******************************************************************************"
+	scp $^ sf.net:/home/groups/c/ch/chemical-mime/htdocs
 
