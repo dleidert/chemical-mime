@@ -3,6 +3,12 @@
 
 2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* html_docs/Makefile.am (EXTRA_DIST, htmldocs_DATA):
+	* icons/pixmaps/Makefile.am (EXTRA_DIST, pixmaps_list)
+	(pixmaps_DATA): Changed to use dist_ prefix. Makes the files smaller.
+
+2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* html_docs/index.html: Improved markup.
 
 2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
