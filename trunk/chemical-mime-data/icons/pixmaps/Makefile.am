@@ -6,15 +6,11 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-EXTRA_DIST = $(pixmaps_list)
-
 MAINTAINERCLEANFILES = Makefile.in
-
-pixmaps_list = gnome-mime-chemical.png chemistry.png
 
 
 if BOOL_PIXMAPS
 pixmapsdir   = $(with_pixmaps)
-pixmaps_DATA = $(pixmaps_list)
+dist_pixmaps_DATA = gnome-mime-chemical.png chemistry.png
 endif #BOOL_PIXMAPS
 

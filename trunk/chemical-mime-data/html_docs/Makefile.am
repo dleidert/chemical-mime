@@ -6,8 +6,6 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-EXTRA_DIST = index.html cmd.css
-
 CLEANFILES = chemical-mime-data.html
 
 MAINTAINERCLEANFILES = Makefile.in
@@ -18,7 +16,8 @@ XSLTPROC_FLAGS += --path "$(VPATH)"
 
 
 htmldocsdir   = $(datadir)/doc/$(PACKAGE)
-htmldocs_DATA = index.html chemical-mime-data.html cmd.css
+htmldocs_DATA = chemical-mime-data.html
+dist_htmldocs_DATA = index.html cmd.css
 
 
 chemical-mime-data.html : cmd_website.xsl chemical-mime-database.xml
