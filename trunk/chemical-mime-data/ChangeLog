@@ -3,6 +3,10 @@
 
 2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* html_docs/index.html: Added missing acronym/abbreviation tags.
+
+2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in: Initially added (currently not
 	activated) application/x-chemtool, application/x-ghemical,
 	chemical/x-turbomole-basis, chemical/x-turbomole-control,
