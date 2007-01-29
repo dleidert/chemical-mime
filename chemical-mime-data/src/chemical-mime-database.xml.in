@@ -109,6 +109,42 @@
 
 <chemical-mime id="'$Id$'">
 
+	<mime-type type="application/x-chemtool" support="no">
+		<_comment>Chemtool File</_comment>
+		<glob pattern="*.cht"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="Chemtool Version " offset="0"/>
+		</magic>
+		<icon kde="chemtool"/>
+		<supported-by>
+			<application name="chemtool"/>
+		</supported-by>
+	</mime-type>
+
+	<mime-type type="application/x-ghemical" support="no">
+		<_comment>Ghemical QM Format</_comment>
+		<acronym>QM</acronym>
+		<expanded-acronym>Quantum Mechanics</expanded-acronym>
+		<glob pattern="*.gpr"/>
+		<glob pattern="*.mm1gp"/>
+		<glob pattern="*.qm1gp"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="!Header gpr " offset="0">
+				<match type="string" value="100\n" offset="12"/>
+				<match type="string" value="110\n" offset="12"/>
+				<match type="string" value="111\n" offset="12"/>
+			</match>
+			<match type="string" value="!Header mmlgp " offset="0">
+				<match type="string" value="100\n" offset="14"/>
+			</match>
+		</magic>
+		<supported-by>
+			<application name="ghemical"/>
+		</supported-by>
+	</mime-type>
+
 	<mime-type type="application/x-xdrawchem" support="no">
 		<_comment>Native XDrawChem Format</_comment>
 		<glob pattern="*.xdc"/>
@@ -574,6 +610,7 @@
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://gaussian.com/tech_top_level.htm"/>
+		<specification url="http://www.gaussian.com/g_ur/m_input.htm"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-gaussian-log" support="yes" added="0.1.91">
@@ -708,6 +745,7 @@
 			<application name="kfile_plugin"/>
 			<application name="openbabel"/>
 		</supported-by>
+		<specification url="http://www.iupac.org/inchi/"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-inchi-xml" support="yes" added="0.1.93">
@@ -718,11 +756,15 @@
 		<expanded-acronym>International Union of Pure and Applied Chemistry</expanded-acronym>
 		<glob pattern="*.inchix"/>
 		<sub-class-of type="application/xml"/>
+		<magic priority="50">
+			<match type="string" value="&lt;INChI" offset="0:64"/>
+		</magic>
 		<supported-by>
 			<application name="bkchem"/>
 			<application name="kfile_plugin"/>
 			<application name="openbabel"/>
 		</supported-by>
+		<specification url="http://www.iupac.org/inchi/"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-isostar" support="no">
@@ -1166,7 +1208,7 @@
 			<application name="viewmol"/>
 			<application name="xdrawchem"/>
 		</supported-by>
-		<specification url="http://www.mdli.com/"/>
+		<specification url="http://www.rcsb.org/pdb/static.do?p=file_formats/pdb/index.html"/>
 		<specification url="http://www-bio.unizh.ch/docu/acc_docs/doc/formats980/File_Formats_1998.html#781879"/>
 	</mime-type>
 
@@ -1237,6 +1279,128 @@
 		<specification url="http://ca.expasy.org/sprot/userman.html"/>
 	</mime-type>
 
+	<mime-type type="chemical/x-turbomole-basis" support="no">
+		<_comment>Turbomole Basis Set File</_comment>
+		<glob pattern="basis"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="$basis\n" offset="0"/>
+		</magic>
+		<icon kde="qc"/>
+		<supported-by>
+			<application name="viewmol"/>
+		</supported-by>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-turbomole-control" support="no">
+		<_comment>Turbomole Control File</_comment>
+		<glob pattern="control"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="$title\n" offset="0"/>
+			<match type="string" value="$operating system unix\n" offset="0"/>
+		</magic>
+		<icon kde="qc"/>
+		<supported-by>
+			<application name="viewmol"/>
+		</supported-by>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/node230.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-turbomole-coord" support="no">
+		<_comment>Turbomole Coordinate File</_comment>
+		<glob pattern="coord"/>
+		<glob pattern="*.tmol"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="$coord\n" offset="0"/>
+		</magic>
+		<icon kde="qc"/>
+		<supported-by>
+			<application name="viewmol"/>
+		</supported-by>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-turbomole-grad" support="no">
+		<_comment>Turbomole Gradient File</_comment>
+		<glob pattern="gradient"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="$grad " offset="0"/>
+		</magic>
+		<icon kde="qc"/>
+		<supported-by>
+			<application name="viewmol"/>
+		</supported-by>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-turbomole-input" support="no">
+		<_comment>Turbomole Calculation Input File</_comment>
+		<glob pattern="turbo.in"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="%method\n" offset="0">
+				<match type="string" value="ENRGY :: " offset="8"/>
+				<match type="string" value="FORCE :: " offset="8"/>
+				<match type="string" value="GEOMY :: " offset="8"/>
+				<match type="string" value="GRADI :: " offset="8"/>
+			</match>
+		</magic>
+		<icon kde="qc"/>
+		<supported-by>
+			<application name="viewmol"/>
+		</supported-by>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/node23.html"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-turbomole-jbas" support="no">
+		<_comment>Turbomole Auxiliary Basis Set File</_comment>
+		<glob pattern="auxbasis"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="$jbas " offset="0"/>
+		</magic>
+		<icon kde="qc"/>
+		<supported-by>
+			<application name="viewmol"/>
+		</supported-by>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-turbomole-scfmo" support="no">
+		<_comment>Turbomole SCF Molecular Orbital File</_comment>
+		<acronym>MO</acronym>
+		<expanded-acronym>Molecular Orbital</expanded-acronym>
+		<acronym>SCF</acronym>
+		<expanded-acronym>Self-Consistent Field</expanded-acronym>
+		<glob pattern="mos"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="$scfmo " offset="0"/>
+		</magic>
+		<icon kde="qc"/>
+		<supported-by>
+			<application name="viewmol"/>
+		</supported-by>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-turbomole-vibrational" support="no">
+		<_comment>Turbomole Vibrational Data File</_comment>
+		<glob pattern="???"/>
+		<sub-class-of type="text/plain"/>
+		<icon kde="qc"/>
+		<supported-by>
+			<application name="viewmol"/>
+		</supported-by>
+		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+	</mime-type>
+
 	<mime-type type="chemical/x-vamas-iso14976" support="no">
 		<_comment>Versailles Agreement on Materials and Standards</_comment>
 		<acronym>VAMAS</acronym>
@@ -1283,7 +1447,7 @@
 			<application name="molden"/>
 			<application name="xdrawchem"/>
 		</supported-by>
-		<specification url="http://www.mdli.com/"/>
+		<specification url="http://openbabel.sourceforge.net/wiki/XYZ"/>
 	</mime-type>
 
 	<!-- Just for testing pruposes: Use the extension of the MIME type to test. -->

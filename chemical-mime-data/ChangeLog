@@ -1,6 +1,22 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Initially added (currently not
+	activated) application/x-chemtool, application/x-ghemical,
+	chemical/x-turbomole-basis, chemical/x-turbomole-control,
+	chemical/x-turbomole-coord, chemical/x-turbomole-grad,
+	chemical/x-turbomole-input, chemical/x-turbomole-jbas,
+	chemical/x-turbomole-scfmo and chemical/x-turbomole-vibrational MIME
+	types.
+	(chemical/x-gaussian-input): Added more specific specification URL.
+	(chemical/x-inchi, chemical/x-inchi-xml): Added specification URL.
+	(chemical/x-inchi-xml): Added some magic.
+	(chemical/x-pdb): Added specification URL and removed a useless one.
+	(chemical/x-xyz): Added some specification URL with a short format
+	explanation.
+
 2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Updated.
