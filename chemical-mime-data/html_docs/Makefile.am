@@ -22,7 +22,7 @@ dist_html_DATA = index.html cmd.css
 chemical-mime-data.html : cmd_website.xsl chemical-mime-database.xml
 	$(XSLTPROC) $(XSLTPROC_FLAGS) $^
 
-install-sfnet: $(htmldocs_DATA)
+install-sfnet: $(html_DATA)
 	@echo "******************************************************************************"
 	@echo "* Copying the HTML files to sf.net."
 	@echo "* Make sure to have an entry for 'sf.net' in your ${HOME}/.ssh/config."
