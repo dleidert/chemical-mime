@@ -15,9 +15,8 @@ VPATH += $(top_builddir)/src $(top_builddir)/xsl $(top_srcdir)/xsl
 XSLTPROC_FLAGS += --path "$(VPATH)"
 
 
-htmldocsdir   = $(datadir)/doc/$(PACKAGE)
-htmldocs_DATA = chemical-mime-data.html
-dist_htmldocs_DATA = index.html cmd.css
+html_DATA = chemical-mime-data.html
+dist_html_DATA = index.html cmd.css
 
 
 chemical-mime-data.html : cmd_website.xsl chemical-mime-database.xml

@@ -5,10 +5,13 @@ Many thanks to Henry Rzepa, whose work is one base of this project.
 
 Thanks to
 
-  Wolf-D. Ihlenfeldt for the code to detect chemical/x-cactvs-ascii,
-    chemical/x-cactvs-binary and chemical/x-cactvs-table.
+  Wolf-D. Ihlenfeldt (developer of CACTVS) for the code to detect
+    chemical/x-cactvs-ascii, chemical/x-cactvs-binary and
+    chemical/x-cactvs-table.
 
   Francesco Pietra for the test files to check and improve the chemical/x-cdx
     and chemical/x-cdxml support.
 
- 
+  Rajanarayanan (CambridgeSoft Technical Support) for the explanation of the
+    anomalies/obscurities in the CDX format (chemical/x-cdxml) documentation.
+

@@ -1,12 +1,22 @@
+# Document  $Id$
+# Summary   pkgconfig file (.pc) for chemical-mime-data.
+
+PACKAGE=@PACKAGE@
+VERSION=@VERSION@
+PACKAGE_BUGREPORT=@PACKAGE_BUGREPORT@
+PACKAGE_NAME=@PACKAGE_NAME@
+PACKAGE_STRING=@PACKAGE_STRING@
+PACKAGE_TARNAME=@PACKAGE_TARNAME@
+PACKAGE_VERSION=@PACKAGE_VERSION@
+
 prefix=@prefix@
-exec_prefix=${prefix}
-libdir=${exec_prefix}/lib
-includedir=${prefix}/include
+datarootdir=@datarootdir@
+datadir=@datadir@
+docdir=@docdir@
+htmldir=@htmldir@
 
 Name: @PACKAGE@
 Description: Chemical MIME and file type support for KDE, GNOME and ROX desktops.
-URL: http://chemical-mime.sf.net
 Version: @VERSION@
+URL: http://chemical-mime.sf.net
 Requires:@CHEMICAL_MIME_DEPS@
-Libs:
-Cflags:

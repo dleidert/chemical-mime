@@ -7,7 +7,7 @@ dnl All rights reserved.
 dnl
 dnl This file is free software. The copyright owner gives unlimited
 dnl permission to copy, distribute and modify it.
-dnl
+
 dnl --------------------------------------------------------------------------
 dnl initialization
 dnl --------------------------------------------------------------------------
@@ -224,15 +224,28 @@ dnl --------------------------------------------------------------------------
 dnl necessary checks and additions for freedesktop.org shared-mime-info
 if test "x$with_freedesktop_mime" != "xno" ; then
 	AC_MSG_CHECKING([for shared-mime-info >= 0.12])
-	PKG_CHECK_EXISTS(
-		[shared-mime-info >= 0.12],
-		[
-		 AC_MSG_RESULT([yes])
-		 CHEMICAL_MIME_DEPS+=" shared-mime-info"
+	m4_ifdef(
+		[PKG_CHECK_EXISTS],
+		[PKG_CHECK_EXISTS(
+			[shared-mime-info >= 0.12],
+			[
+			 AC_MSG_RESULT([yes])
+			 CHEMICAL_MIME_DEPS="$CHEMICAL_MIME_DEPS shared-mime-info"
+			],
+			[
+			 AC_MSG_RESULT([no])
+			 AC_MSG_ERROR([shared-mime-info package missing.])
+			]
+		 )
 		],
 		[
-		 AC_MSG_RESULT([no])
-		 AC_MSG_ERROR([shared-mime-info package missing.])
+		 if ( $PKG_CONFIG shared-mime-info --atleast-version=0.12 ); then
+			AC_MSG_RESULT([yes])
+			CHEMICAL_MIME_DEPS="$CHEMICAL_MIME_DEPS shared-mime-info"
+		 else
+			AC_MSG_RESULT([no])
+			AC_MSG_ERROR([shared-mime-info package missing.])
+		 fi
 		]
 	)
 	AC_ARG_VAR(
@@ -249,15 +262,28 @@ fi
 dnl necessary checks and additions for old gnome 2.4 mime support
 if test "x$with_gnome_mime" != "xno" ; then
 	AC_MSG_CHECKING([for gnome-mime-data])
-	PKG_CHECK_EXISTS(
-		[gnome-mime-data-2.0],
-		[
-		 AC_MSG_RESULT([yes])
-		 CHEMICAL_MIME_DEPS+=" gnome-mime-data-2.0"
+	m4_ifdef(
+		[PKG_CHECK_EXISTS],
+		[PKG_CHECK_EXISTS(
+			[gnome-mime-data-2.0],
+			[
+			 AC_MSG_RESULT([yes])
+			 CHEMICAL_MIME_DEPS="$CHEMICAL_MIME_DEPS gnome-mime-data-2.0"
+			],
+			[
+			 AC_MSG_RESULT([no])
+			 AC_MSG_ERROR([gnome-mime-data package missing.])
+			]
+		 )
 		],
 		[
-		 AC_MSG_RESULT([no])
-		 AC_MSG_ERROR([gnome-mime-data package missing.])
+		 if ( $PKG_CONFIG gnome-mime-data-2.0 --exists ); then
+			AC_MSG_RESULT([yes])
+			CHEMICAL_MIME_DEPS="$CHEMICAL_MIME_DEPS gnome-mime-data-2.0"
+		 else
+			AC_MSG_RESULT([no])
+			AC_MSG_ERROR([gnome-mime-data package missing.])
+		 fi
 		]
 	)
 fi
@@ -325,6 +351,36 @@ if test "x$with_pixmaps" != "xno" ; then
 	AC_MSG_RESULT([$with_pixmaps])
 else
 	AC_MSG_RESULT([no])
+fi
+
+dnl --------------------------------------------------------------------------
+dnl location determination
+dnl --------------------------------------------------------------------------
+
+if test "x$datarootdir" = "x" ; then
+	AC_SUBST(
+		[datarootdir],
+		[${datadir}]
+	)
+fi
+
+if test "x$docdir" = "x" ; then
+	AC_SUBST(
+		[docdir],
+		[m4_ifset(
+			[AC_PACKAGE_TARNAME],
+			[${datadir}'/doc/${PACKAGE_TARNAME}'],
+			[${datadir}'/doc/${PACKAGE}']
+		 )
+		]
+	)
+fi
+
+if test "x$htmldir" = "x" ; then
+	AC_SUBST(
+		[htmldir],
+		['${docdir}']
+	)
 fi
 
 dnl --------------------------------------------------------------------------
