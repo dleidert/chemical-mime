@@ -1,6 +1,30 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-02-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* THANKS: Updated. Added dedication to CambridgeSoft Technical
+	Support.
+
+	* chemical-mime-data.pc.in: Added some more stuff and a header.
+	(exec_prefix, libdir, includedir, Libs, Cflags): Removed (see
+	https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=225095). Thanks
+	to Ville Skyttä and Julian Sikorski (closes RH #225095 and sf.net
+	#1616568).
+
+	* configure.ac: Check, if PKG_CHECK_EXISTS is defined and make a safe
+	fallback if not. This fixes a compilation issue with older intltool
+	versions and hardens the configure script. Further define several
+	locations, if they were not defined via autoconf (necessary for the
+	pkg-config file).
+
+	* html_docs/Makefile.am (htmldocsdir, htmldocs_DATA)
+	(dist_htmldocs_DATA): Changed to use htmldir, that can be changed by
+	the user with the --htmldir configure option (autoconf 2.60).
+
+	* po/Makevars: Added builddir variable to make intltool-* tools stop
+	complaining.
+
 2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* html_docs/Makefile.am (EXTRA_DIST, htmldocs_DATA):
