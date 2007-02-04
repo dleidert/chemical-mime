@@ -242,7 +242,9 @@
 		<!-- Byte 0:7 -> 8 Byte header by XDR? -->
 		<!-- Byte 0:7 -> Can it be specified?  -->
 		<magic priority="50">
-			<match type="string" value="\x07CACTVSBIN" offset="8"/>
+			<match type="byte" value="07" offset="8">
+				<match type="string" value="CACTVSBIN" offset="9"/>
+			</match>
 		</magic>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
@@ -269,9 +271,13 @@
 		<glob pattern="*.cdx"/>
 		<magic priority="50">
 			<match type="string" value="VjCD0100" offset="0">
-				<match type="string" value="\x04\x03\x02\x01" offset="8">
-					<match type="string" value="\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" offset="12"/>
-					<match type="string" value="\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00" offset="12"/>
+				<match type="little32" value="0x01020304" offset="8">
+					<match type="little32" value="0x00000000" offset="12">
+						<match type="little32" value="0x00000000" offset="16">
+							<match type="little32" value="0x80000000" offset="20"/>
+							<match type="little32" value="0x00000000" offset="20"/>
+						</match>
+					</match>
 				</match>
 			</match>
 		</magic>
@@ -573,7 +579,7 @@
 		<magic priority="50">
 			<match type="string" value="----- GAMESS execution script -----" offset="0"/>
 			<match type="string" value="GAMESS VERSION =" offset="65:130">
-				<match type="string" value="\x0A\x0A\x20EXECUTION OF GAMESS BEGUN" offset="584:585"/>
+				<match type="string" value="\n\n EXECUTION OF GAMESS BEGUN" offset="584:585"/>
 			</match>
 		</magic>
 		<supported-by>
@@ -649,8 +655,8 @@
 		<glob pattern="*.gcg8"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="50">
-			<match type="string" value="!!AA_SEQUENCE 1.0\x0A" offset="0"/>
-			<match type="string" value="!!NA_SEQUENCE 1.0\x0A" offset="0"/>
+			<match type="string" value="!!AA_SEQUENCE 1.0\n" offset="0"/>
+			<match type="string" value="!!NA_SEQUENCE 1.0\n" offset="0"/>
 		</magic>
 		<specification url="http://www.biobind.com/faq/emboss/formats.html"/>
 	</mime-type>
@@ -801,8 +807,8 @@
 		<magic priority="50">
 			<!-- probably, this needs to be refined -->
 			<match type="string" value="&lt;title&gt;" offset="0">
-				<match type="string" value="\x0A@text" offset="16:240"/>
-				<match type="string" value="\x0A@kinemage" offset="16:240"/>
+				<match type="string" value="\n@text" offset="17:240"/>
+				<match type="string" value="\n@kinemage" offset="17:240"/>
 			</match>
 			<match type="string" value="@text" offset="0"/>
 			<match type="string" value="@kinemage" offset="0"/>
@@ -1114,7 +1120,12 @@
 		<glob pattern="*.asn"/>
 		<glob pattern="*.val"/>
 		<magic priority="50">
-			<match type="string" value="\x30\x80\x30\x80\xA0\x80\x30\x80" offset="0"/>
+			<match type="little32" value="0x803080A0" offset="0">
+				<match type="little32" value="0x80308030" offset="4"/>
+			</match>
+			<match type="little32" value="0x80308030" offset="0">
+				<match type="little32" value="0x803080A0" offset="4"/>
+			</match>
 		</magic>
 		<specification url="ftp://ftp.ncbi.nih.gov/pubchem/specifications/pubchem.asn"/>
 	</mime-type>
@@ -1452,10 +1463,10 @@
 
 	<!-- Just for testing pruposes: Use the extension of the MIME type to test. -->
 	<!--
-	<mime-type type="chemical/x-test" support="yes">
+	<mime-type type="chemical/test" support="yes">
 		<comment>Test</comment>
+		<glob pattern="*.undef"/>
 		<sub-class-of type="text/plain"/>
-		<glob pattern="*.undefined"/>
 	</mime-type>
 	-->
 
