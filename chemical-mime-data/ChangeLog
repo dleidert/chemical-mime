@@ -1,6 +1,13 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-02-04 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-cactvs-binary)
+	(chemical/x-cdx, chemical/x-gamess-output, chemical/x-gcg8-sequence)
+	(chemical/x-kinemage, chemical/x-ncbi-asn1): Improved magic pattern.
+	Newlines abd byte-sequences have been replaced by appropriate code.
+
 2007-02-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* THANKS: Updated. Added dedication to CambridgeSoft Technical
