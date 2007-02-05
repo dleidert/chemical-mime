@@ -1,6 +1,11 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac (AC_PACKAGE_VERSION):
+	* NEWS: Post-release version bump to 0.1.95.
+
 2007-02-04 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* NEWS: Final 0.1.94 release.
