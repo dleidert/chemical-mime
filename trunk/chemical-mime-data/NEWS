@@ -18,7 +18,6 @@ Version 0.1.94 2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
 	  - chemical/x-cdxml
 	  - chemical/x-gamess-output
 	  - chemical/x-gulp
-	  - chemical/x-gulp-input
 	  - chemical/x-ncbi-asn1
 	  - chemical/x-ncbi-asn1-binary
 	  - chemical/x-ncbi-asn1-xml

@@ -3,6 +3,11 @@
 
 2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* NEWS (0.1.94): Fixed a wrong item. Support was not added for
+	chemical/x-gulp-input.
+
+2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* configure.ac (AC_PACKAGE_VERSION):
 	* NEWS: Post-release version bump to 0.1.95.
 
