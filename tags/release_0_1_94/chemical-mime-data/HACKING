@@ -1,0 +1,136 @@
+# Document  $Id$
+# Summary   Hacking on and contributing to the project.
+
+Terms like "MAY", "MUST", "MUST NOT", "RECOMMEND", "SHALL" and "SHOULD" are
+based on RFC 2119 (http://www.ietf.org/rfc/rfc2119.txt).
+
+  1. General
+  2. MIME type database
+  3. Icons, Graphics and Art
+  4. Stylesheets
+  5. Website
+
+
+1. General
+==========
+
+All source files MUST be UTF-8 encoded.
+
+All source files MUST contain a copyright and a short license information. A
+copyright is granted with significant changes (don't forget to add or update
+the copyright information in such a situation).
+
+All source files SHOULD contain an ID and summary line at the top of the file
+or at least in the head section. It's format SHALL be for text files:
+
+  # Document  $Id$
+  # Summary   ...summary...
+
+and for XML files:
+
+  <!--
+    Document  $Id$
+    Summary   ...summary...
+  -->
+
+Files of the build system, like e.g. Makefile.am, configure.ac or XSLT
+stylesheets, SHALL be licensed with a non-restrictive all-permissive
+license:
+
+  # This file is free software. The copyright owner gives unlimited
+  # permission to copy, distribute and modify it.
+
+ChangeLog entries MUST follow the GNU coding standards
+http://www.gnu.org/prep/standards/html_node/Change-Logs.html.
+
+CVS commit messages MUST be created from the related ChangeLog entry for a
+change.
+
+Before a release, the NEWS file MUST be updated.
+
+Releases MUST be created from `make distcheck' to ensure an error-free build.
+
+
+2. MIME type database
+=====================
+
+The chemical MIME types, global pattern and acronyms SHALL be in alphabetical
+order without dividing between supported and unsupported MIME types.
+
+The database XML file MUST have an indentation with one tab per indentation
+level.
+
+Every MIME type entry, that is considered to be supported, MUST have a
+non-empty `added' attribute.
+
+The DTD MUST be documented for easy understanding.
+
+
+3. Icons, Graphics and Art
+==========================
+
+Another important part of the package are basic graphics. Users SHOULD be able
+to identify chemical files ideally on the spur of the moment. Good icons shown
+in nautilus, konqueror or thunar can help here. Icons MAY show if a file
+contains:
+
+  - 2D or 3D data
+  - spectra or structure data
+  - crystal or molecule data
+  - XML, plain text or binary data
+  - simple (SMILES) strings data
+  - sequence data (DNA, ...)
+  - MM results
+  - MDL or CambridgeSoft (or ...) data (showing their icons)
+  - ...
+
+So there are no boundaries set to your creativity - with a few exceptions
+
+  (1) Only icons for the generic hicolor theme and the general pixmaps
+      location are accepted. If you want to create icons (or if you already
+      have icons) for specific KDE and GNOME themes, they SHALL go directly
+      into these themes (upstream) and MUST NOT go into the chemical-mime-data
+      package. Despite this limitation you MAY create different icons for KDE
+      and GNOME.
+
+  (2) Theme icons for the hicolor theme MUST be in scalable vector graphics.
+      Raster images MUST be in PNG format.
+
+  (3) Your images MUST be available at least under an OSI-approved license
+      compatible to the license used for the chemical-mime-data package - this
+      is currently the GNU Lesser General Public License (LGPL) 2.1 (see
+      COPYING).
+
+
+4. Stylesheets
+==============
+
+Stylesheets MUST have an indentation with one tab per indentation level.
+
+Named templates MUST contain a meaningful template name and an introducing
+documentation of the kind:
+
+  <!-- * ...comment...                                                     --> 
+
+The order of templates/elements is:
+
+  - xsl:import
+  - xsl:output
+  - xsl:(preserve|strip)-space
+  - matching xsl:templates beginning with the root element followed by the
+    other in alpabetical order, ended with those, which are not processed
+  - named xsl:templates beginning with a root template (if any) followed by
+    the other in alphabetical order 
+
+Common templates used by more than one stylesheet SHOULD go into the generic
+cmd_common.xsl stylesheet.
+
+
+5. Website
+==========
+
+It is RECOMMENDed that variable content is created automatically via (e.g.)
+XSLT to ease and reduce maintenance work.   
+
+
+# UTF-8

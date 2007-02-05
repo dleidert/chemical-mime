@@ -1,0 +1,1795 @@
+# Document  $Id$
+# Summary   File changelog for the chemical-mime-data project.
+
+2007-02-04 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Final 0.1.94 release.
+
+2007-02-04 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/Makefile.am (install-sfnet): Fixed pre-requisite.
+
+2007-02-04 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-cactvs-binary)
+	(chemical/x-cdx, chemical/x-gamess-output, chemical/x-gcg8-sequence)
+	(chemical/x-kinemage, chemical/x-ncbi-asn1): Improved magic pattern.
+	Newlines abd byte-sequences have been replaced by appropriate code.
+
+2007-02-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* THANKS: Updated. Added dedication to CambridgeSoft Technical
+	Support.
+
+	* chemical-mime-data.pc.in: Added some more stuff and a header.
+	(exec_prefix, libdir, includedir, Libs, Cflags): Removed (see
+	https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=225095). Thanks
+	to Ville Skytt� and Julian Sikorski (closes RH #225095 and sf.net
+	#1616568).
+
+	* configure.ac: Check, if PKG_CHECK_EXISTS is defined and make a safe
+	fallback if not. This fixes a compilation issue with older intltool
+	versions and hardens the configure script. Further define several
+	locations, if they were not defined via autoconf (necessary for the
+	pkg-config file).
+
+	* html_docs/Makefile.am (htmldocsdir, htmldocs_DATA)
+	(dist_htmldocs_DATA): Changed to use htmldir, that can be changed by
+	the user with the --htmldir configure option (autoconf 2.60).
+
+	* po/Makevars: Added builddir variable to make intltool-* tools stop
+	complaining.
+
+2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/Makefile.am (EXTRA_DIST, htmldocs_DATA):
+	* icons/pixmaps/Makefile.am (EXTRA_DIST, pixmaps_list)
+	(pixmaps_DATA): Changed to use dist_ prefix. Makes the files smaller.
+
+2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/index.html: Improved markup.
+
+2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/index.html: Added missing acronym/abbreviation tags.
+
+2007-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Initially added (currently not
+	activated) application/x-chemtool, application/x-ghemical,
+	chemical/x-turbomole-basis, chemical/x-turbomole-control,
+	chemical/x-turbomole-coord, chemical/x-turbomole-grad,
+	chemical/x-turbomole-input, chemical/x-turbomole-jbas,
+	chemical/x-turbomole-scfmo and chemical/x-turbomole-vibrational MIME
+	types.
+	(chemical/x-gaussian-input): Added more specific specification URL.
+	(chemical/x-inchi, chemical/x-inchi-xml): Added specification URL.
+	(chemical/x-inchi-xml): Added some magic.
+	(chemical/x-pdb): Added specification URL and removed a useless one.
+	(chemical/x-xyz): Added some specification URL with a short format
+	explanation.
+
+2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Updated.
+
+	* src/chemical-mime-database.xml.in (chemical/x-fasta): Added magic
+	pattern and specification URL.
+	(chemical/x-embl-dl-nucleotide): Added specification URL.
+	(chemical/x-genbank): Fixed detection rules based on specification
+	from www.psc.edu.
+
+2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-daylight-smiles):
+	Fixed specification URL.
+
+2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* HACKING: Fixed typo.
+
+	* html_docs/Makefile.am (install-sfnet): Fixed typo.
+
+2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am:
+	* html_docs/Makefile.am: Added a target install-sfnet to copy the
+	files to sourceforge.net via scp.
+
+	* freedesktop.org/Makefile.am (vpath, chemical-mime-data.xml):
+	* gnome/Makefile.am (vpath, chemical-mime-data.keys)
+	(chemical-mime-data.mime):
+	* html_docs/Makefile.am (vpath, chemical-mime-data.html):
+	* kde/Makefile.am (vpath, *.desktop): Replaced vpath directives with
+	VPATH variables. Removed GNU make text processing functions to avoid
+	portability warnings. Removed the cmd_common.xsl prerequisite too, to
+	allow the last step.
+
+	* icons/hicolor/Makefile.am (.svgz): Moved over to an old-fashioned
+	suffix rule to avoid portability warnings.
+
+	* src/Makefile.am (check-local): Moved GNU make control functions to
+	simple echo calls to avoid portability warnings.
+
+2007-01-28 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* README:
+	* html_docs/index.html: Synced both files. Added and completed
+	content.
+
+	* TODO: Removed README related item.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Initially added (currently not
+	activated) chemical/x-fasta and chemical/x-mopac-vib.
+	(chemical/seq-aa-fasta, chemical/seq-na-fasta): Moved the generic
+	extensions to the chemical/x-fasta MIME type.
+	(chemical/x-cerius): Added missing conflicts to
+	application/x-x509-ca-cert.
+
+	* xsl/cmd_website.xsl: Added a template html.content.references to add
+	references links to the tabled overview.
+	(html.content.head): Added an overview of the different sections for
+	easier navigation.
+	(html.content.table.mime.supported)
+	(html.content.table.mime.unsupported): Added IDs for h2 tags.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Initially added (currently
+	not activated) chemical/seq-aa-fasta, chemical/seq-aa-genpept,
+	chemical/seq-na-fasta.
+	(chemical/x-genbank): Added alias and specification URL for the alias.
+
+	* xsl/cmd_website.xsl (chemical-mime): Changed to filename without the
+	leading `./'.
+	(html.content.table.mime.unsupported): Fixed sorting.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* README: Updated and completed.
+
+	* html_docs/index.html: Ditto. This seems to be a first complete
+	proposal.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* HACKING: Completed content.
+
+	* NEWS: Completed for the 0.1.94 release.
+
+	* TODO: Removed HACKING item.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_common.xsl: Renamed exslt extension prefix accordingly to
+	http://www.exslt.org/exsl/elements/document/index.html.
+	* xsl/cmd_website.xsl: Removed exslt extension (prefix).
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-cxf): Improved
+	description wording.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-compass): Improved
+	wording.
+	(chemical/x-csml): Added acronym/expanded-acronym combination for
+	CSML.
+
+2007-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Removed all empty icon tags after
+	fixing the DTD and the stylesheets. Added the following currently
+	not activated MIME types: chemical/x-chemdraw, chemical/x-compass,
+	chemical/x-crossfire, chemical/x-csml, chemical/x-cxf,
+	chemical/x-embl-dl-nucleotide, chemical/x-galactic-spc,
+	chemical/x-gaussian-checkpoint, chemical/x-gaussian-cube,
+	chemical/x-gcg8-sequence, chemical/x-isostar, chemical/x-kinemage,
+	chemical/x-macmolecule, chemical/x-mif, chemical/x-molconn-Z,
+	chemical/x-rosdal, chemical/x-swissprot, chemical/x-vamas-iso14976 and
+	chemical/x-xtel.
+	(conflicts): Added an fdo attribute for conflicts with the fd.o
+	database.
+	(specification): Renamed the resource attribute to title.
+	(chemical/x-cache, chemical/x-cache-csf): Moved (alphabetical order).
+	(chemical/x-cif, chemical/x-mmcif): Removed unused spec-links.
+	(chemical/x-genbank): Added magic pattern found in spec.
+	(chemical/x-mol2): Added two file extensions found via WWW search.
+	(chemical/x-test): Extended test entry.
+
+	* xsl/cmd_freedesktop_org.xsl (chemical-mime): Fixed XPath expression
+	introduced by the earlier change (revision 1.8), that now lead to a
+	broken (almost empty) shared-mime-info database file.
+
+	* xsl/cmd_website.xsl (specification): Fixed after DTD change.
+	(html.content.table.mime.unsupported): Improved wording.
+
+2007-01-26 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/cmd.css: Added some styling for h2 and tr tags.
+	(table, td, th): Improved border styling.
+	(td, th): Improved space to border.
+
+2007-01-26 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* AUTHORS: Just fixed the file description.
+
+	* README: Removed a useless space.
+
+2007-01-26 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_common.xsl:
+	* xsl/cmd_freedesktop_org.xsl:
+	* xsl/cmd_gnome-keys.xsl:
+	* xsl/cmd_gnome-mime.xsl:
+	* xsl/cmd_kde.xsl: Added a lot of comments for a better internal
+	documentation.
+
+	* xsl/cmd_common.xsl: (xmlns:xalanredirect)
+	(extension-element-prefixes): Changed xalanredirect namespace and
+	prefix to make the spec at
+	http://xml.apache.org/xalan-j/apidocs/org/apache/xalan/lib/Redirect.html.
+	(header.desktop): Moved to xsl/cmd_kde.xsl (and renamed to
+	kde.desktop.header).
+	(header.text, header.xml): Renamed to common.header.text and
+	common.header.xml.
+	(write.chunk): Renamed to common.write.chunk. Adjusted xalanredirect
+	prefix.
+
+	* xsl/cmd_freedesktop_org.xsl (chemical-mime):
+	* xsl/cmd_gnome-keys.xsl (chemical-mime):
+	* xsl/cmd_gnome-mime.xsl (chemical-mime):
+	* xsl/cmd_kde.xsl (chemical-mime):
+	* xsl/cmd_website.xsl (chemical-mime): Adjusted common template names
+	after changes to xsl/cmd_common.xsl.
+
+	* xsl/cmd_freedesktop_org.xsl (chemical-mime, mime-type):
+	* xsl/cmd_gnome-keys.xsl (chemical-mime, mime-type):
+	* xsl/cmd_gnome-mime.xsl (chemical-mime, mime-type):
+	* xsl/cmd_kde.xsl (chemical-mime, mime-type): Improved selection of
+	"supported" nodes, so this stuff could be removed in the mime-type
+	template.
+
+	* xsl/cmd_gnome-keys.xsl (mime-type):
+	* xsl/cmd_kde.xsl (mime-type): Added a call to gnome.keys.generic.icon
+	respectively kde.desktop.generic.icon and the related template to
+	handle the case, if no icon node was found.
+
+	* xsl/cmd_gnome-keys.xsl (comment):
+	* xsl/cmd_kde.xsl (comment): Improved the template to use a simple
+	xsl:if instead of xsl:choose.
+
+	* xsl/cmd_kde.xsl: Added kde.desktop.header template (formerly:
+	desktop.header template in xsl/cmd_common.xsl).
+	(mime-type, glob): Improved glob template. Instead of xsl:for-each we
+	now use a matching template, that outputs the pattern in alphabetical
+	order.
+
+	* xsl/cmd_website.xsl (mime-type, html.content.table.mime.head): Added
+	some class attributes for CSS styling.
+
+2007-01-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-cactvs-ascii)
+	(chemical/x-cactvs-binary, chemical/x-cactvs-table): Added
+	acronym/expanded-acronym combination for CACTVS.
+	(chemical/x-cerius): Ditto for MSI.
+	(chemical/x-mdl-rxnfile): Ditto for 2D.
+	(chemical/x-inchi, chemical/x-inchi-xml, chemical/x-ncbi-asn1): Re-
+	ordered acronyms in alphabetical order.
+
+2007-01-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/cmd.css: Added style pattern to have a fixed footer for
+	the footnote(s). Reorganized the selectors in alphabetical order.
+
+	* xsl/cmd_website.xsl (html.content): Added container around content
+	and footer to allow introduced styling.
+	(html.content.foot): The border is now realized via CSS. Improved
+	space usage.
+
+2007-01-14 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_website.xsl (html.content.table.mime.head): Improved table
+	header cell content.
+
+2007-01-14 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (specification): Added a resource
+	attribute to comment a specification.
+
+	* xsl/cmd_website.xsl: Added documentation to most templates.
+	Reorganized the templates, renamed a lot of them and outsourced
+	several parts to own templates. Added a new html.content.foot template
+	for footnotes.
+	(chemical-mime): Outsourced HTML content creation into new
+	html.content template.
+	(comment): Adjusted after changes to comment.acronym.check (ex:
+	comment.acronym.replace) and comment.acronym.no.replace (ex:
+	comment.acronym.no.replace).
+	(glob, specification): Improved and shorter.
+	(mime-type): Adjusted after renaming mime.type template.
+	(specification): Added support for newly introduced resource
+	attribute.
+	(header.html): Renamed to html.content.head.
+	(table.mime.supported): Renamed to html.content.table.mime.supported.
+	(table.mime.unsupported): Renamed to
+	html.content.table.mime.unsupported.
+	(table.mime.header): Renamed to html.content.table.mime.head. Added
+	alias and sub-class-of headers to table header cell.
+	(comment.acronym.replace): Renamed to comment.acronym.check. Rewritten
+	template - now it always checks the whole comment content for
+	(expanded-)acronam matches and "adds" acronym tags to it's content
+	instead of just giving the right-of-match content to the new template
+	call. So we really check the whole comment content for matches.
+	(comment.acronym.no.replace): Renamed to comment.acronym.output.
+	Adjusted after changes to comment.acronym.check (ex:
+	comment.acronym.replace).
+	(mime.type): Renamed to mimetype.output.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-msi-mdf): Fixed
+	sub-class-of value.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/Makefile.am (htmldocsdir): Fixed bug.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_website.xsl (mime.type): Moved processing of alias and
+	sub-class-of into an own matching template.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/cmd.css: Added span.alias, span.mime-type and
+	span.sub-class-of styling for the newly introduced fields at output.
+	(td.mime-type): Removed in favour of span.mime-type.
+
+	* src/chemical-mime-database.xml.in (chemical/x-inchi-xml): Fixed
+	sub-class of value.
+
+	* xsl/cmd_website.xsl (mime-type): Outsourced mime-type table cell
+	creation to new mime.type template, which also adds support for
+	sub-class-of and alias content.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Initially added
+	application/x-xdrawchem without activating it. Set pattern priority
+	for most MIME types (except conflicting ones) to 50 (default).
+	(chemical/x-gaussian-input): Commented .com extension for the moment
+	until we have magic pattern.
+	(chemical/x-hin): Improved pattern.
+	(chemical/x-pdb): Commented .ent extension as it conflicts with
+	entitity definition files (and we don't want to open such files with
+	chemical applications).
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-cmtx)
+	(chemical/x-shelx): Fixed pattern (forgot to count the newline).
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/cmd.css: Added a border between MIME types. Increased
+	space to table cell borders.
+
+	* src/chemical-mime-database.xml.in: Added (currently unsupported)
+	chemical/x-cmdf, chemical/x-cmmf and chemical/x-cmtx MIME types.
+	(chemical/x-cerius): Fixed description.
+	(chemical/x-shelx): Improved pattern to not conflict with
+	chemical/x-cmtx.
+
+	* xsl/cmd_website.xsl (mime-type): Added a class attribute to the
+	first tr tag, to allow a border.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Prepared for release 0.1.94.
+
+	* src/chemical-mime-database.xml.in (chemical/x-cache)
+	(chemical/x-cache-csf): Added an acronym/expanded-acronym combination
+	for the CAChe acronym.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Added chemical/x-cerius and
+	chemical/x-ctx initially, but didn't activate it yet.
+	(chemical/x-cml): Added some magic pattern.
+	(chemical/x-genbank): Added acronym/expanded-acronym combination for
+	GenBank abbreviation.
+	(chemical/x-gulp-input, chemical/x-gulp): Improved wording.
+	(chemical/x-msi-car): Removed .cor extension for the moment. Added
+	magic patter and specification resources.
+	(chemical/x-msi-hessian): Added .hessianx and .xhessian extensions.
+	Added magic patter and specification resources.
+	(chemical/x-msi-mdf): Fixed sub-class-of. Added magic pattern and
+	specification resources.
+	(chemical/x-msi-msi): Added magic patter and specification resources.
+	(chemical/x-vmd): Added specification resource.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Prepared for release 0.1.94.
+
+	* TODO: Updated.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-inchi)
+	(chemical/x-inchi-xml): Added an acronym/expanded-acronym combination
+	for IUPAC.
+
+	* xsl/cmd_website.xsl (comment.acronym.replace): Added a routine to
+	add an acronym /tag) directly behind a found expanded-acronym
+	substring. Added a few comments to explain, what we do.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Added copyright notice. Added a
+	comment for the root-XML element.
+	(chemical/x-cactvs-ascii, chemical/x-ncbi-asn1)
+	(chemical/x-ncbi-asn1-binary, chemical/x-ncbi-asn1-xml): Added some
+	acronym/expanded-acronym combinations for ASCII, ASN.1 and XML
+	acronyms.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am: Updated copyright notice.
+	(SUBDIRS): Added the html_docs directory, that contains the HTML
+	(build) files.
+
+	* configure.ac: Updated copyright notice.
+	(AC_CONFIG_FILES): Added html_docs/Makefile and xsl/cmd_entities.dtd.
+
+	* src/Makefile.am: Updated copyright notice.
+
+	* src/chemical-mime-database.xml.in: Changed mime-type element
+	definition  bit, so that an acronym requires an expanded acronym
+	element. Makes the life easier. Changed the attribute list default of
+	the conflicts element, so that we have less work when writing this
+	element.
+	(chemical/x-genbank): Added pattern and specification found recently.
+	(chemical/x-mol2, chemical/x-ncbi-asn1): Added some specification URLs
+	I found.
+	(chemical/x-gulp-input, chemical/x-mopac-input, chemical/x-msi-car):
+	Changed conflicts element according to it's DTD change.
+
+	* xsl/Makefile.am: Updated copyright notice.
+	(EXTRA_DIST, DISTCLEANFILES): Added newly introduced files
+	cmd_website.xsl and cmd_entities.dtd(.in).
+
+	* xsl/cmd_common.xsl: Updated copyright notice. Changed exsl namespace
+	prefix to exslt. Added missing newline at the end of the file.
+
+	* xsl/cmd_freedesktop_org.xsl: Updated copyright notice.
+
+	* xsl/cmd_gnome-keys.xsl: Ditto. Added missing newline at the end of
+	the file.
+
+	* xsl/cmd_gnome-mime.xsl: Ditto.
+
+	* xsl/cmd_kde.xsl: Ditto.
+
+	* xsl/cmd_website.xsl:
+	* xsl/cmd_entities.dtd.in:
+	* html_docs/Makefile.am:
+	* html_docs/cmd.css:
+	* html_docs/index.html: Added to create the HTML files of the project
+	- the projects homepage and a large table with the information of the
+	database.
+
+2007-01-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* freedesktop.org/Makefile.am: Updated copyright notice.
+	(freedesktopmimedir): Changed to use the variable directly.
+	(install-data-hook, uninstall-hook): Fixed update-mime-database
+	command line. Thanks to Jean Bréfort for reporting this issue.
+
+	* kde/Makefile.am: Updated copyright notice.
+	(kdemimedir): Changed to use the variable directly.
+
+	* gnome/Makefile.am: Ditto.
+	(gnomemimedir): Ditto.
+
+	* icons/pixmaps/Makefile.am: Ditto.
+	(pixmapsdir): Ditto.
+
+	* icons/hicolor/Makefile.am: Ditto.
+	(hicolorthemedir, install-data-local, uninstall-hook): Ditto.
+
+2007-01-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-gamess-output): Fixed
+	magic pattern. Now all test files work.
+	(chemical/x-gaussian-log): Just added a comment about the limitation
+	of this pattern.
+
+2007-01-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in(chemical/x-gamess-output)
+	(chemical/x-gaussian-log): Removed the .log extension that leads to a
+	conflict with the text/x-log MIME type.
+
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* README: Updated copyright.
+
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Added an entry as test case for
+	pattern detection rules.
+
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* AUTHORS: Added some alternative mail addresses.
+	
+	* ChangeLog: Fixed my mail address.
+
+	* po/ChangeLog: Ditto.
+
+	* src/chemical-mime-database.xml.in: Cosmetic fix for ID.
+
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Prepared for release 0.1.94.
+
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Removed the obsolete comments.
+	(mime-type): Fixed DTD. The freedesktop.org mime-info doctype allows
+	more than one root-XML element. Added currently not activated
+	chemical/x-cache-csf, chemical/x-macromodel-output,
+	chemical/x-qchem-input and chemical/x-qchem-output. Added
+	chemical/x-gamess-output and chemical/x-ncbi-asn1-xml. Cosmetic
+	changes.
+	(chemical/x-cactvs-ascii): Improved magic pattern. Thanks to Wolf-D.
+	Ihlenfeldt.
+	(chemical/x-cdx): Improved magic pattern by adding a second defined 16
+	Byte search string.
+	(chemical/x-cml): Added CML1 namespace.
+	(chemical/x-dmol): Added missing .dmol extension.
+	(chemical/x-gamess-input): Removed .gam extension (belongs to
+	chemical/x-gamess-output MIME type). Added magic pattern.
+	(chemical/x-gaussian-input): Added .com extension (found at
+	OpenBabel). Fixed specification URL.
+	(chemical/x-gaussian-log): Added missing .gxx and .log extensions.
+	Added rarely used MIME type aliases. Added a common magic string.
+	Added specification URL.
+	(chemical/x-gulp): Found one more extension. Currently not activated,
+	because of unknown usage.
+	(chemical/x-hin): Added missing magic priority.
+	(chemical/x-mol2): Added magic pattern.
+	(chemical/x-pdb): Added missing .ent extension.
+	(chemical/x-shelx): Added missing .ins extension. Added magic pattern.
+
+2007-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Cosmetic changes.
+
+2007-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Prepared for release 0.1.94.
+
+	* src/chemical-mime-database.xml.in (chemical/x-mdl-sdfile): Added
+	conflicts element for application/vnd.stardivision.math MIME type.
+	(chemical/x-mopac-input): Added conflicts for audio/x-musepack and
+	video/mpeg MIME types.
+	(chemical/x-msi-car): Added conflicts for application/x-arc MIME type.
+
+2007-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-cactvs-ascii): Support
+	activated. Magic pattern fixed.
+
+2007-01-01 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* THANKS: Updated.
+
+2007-01-01 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Added chemical/x-cactvs-ascii,
+	chemical/x-cactvs-binary and chemical/x-cactvs-table MIME types.
+	Thanks to Wolf-D. Ihlenfeldt. Added CACTVS applications that support
+	our MIME types (based on
+	http://www2.chemie.uni-erlangen.de/software/cactvs/mime.html). Small
+	cleanups to the database.
+	(chemical/x-ncbi-asn1-binary): Fixed the magic pattern. But I fear,
+	it's still not perfect.
+
+2006-12-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Made all acronym and
+	expanded-acronym elements untranslatable. The acronyms used here are
+	only hardly translatable, so we let it be.
+	(chemical/x-cdx, chemical/x-cdxml): Improved MIME type description.
+
+2006-12-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* autogen.sh: Fixed a typo.
+	(AUTOMAKE_FILES): Define list depending on the automake version.
+
+	* configure.ac: Fixed description of `--with-pixmaps' option. Replaced
+	`--with-gnome-theme' with the more appropriate `--with-hicolor-theme'
+	option. The latter also changed all relevant variables. Further
+	removed the `--with-kde-theme' option. This option is obsolete with
+	these changes.
+	(AM_INIT_AUTOMAKE): Fixed macro usage. Providing AC_PACKAGE_ variables
+	to this macro is obsolete.
+	(KDE_CONFIG, with_kde_mime): Improved path search by using
+	`kde-config'.
+	(BOOL_*): Fixed/improved boolean variables.
+	(AC_CONFIG_FILES): Removed icons/crystalsvg/Makefile, that was
+	removed.
+
+	* icons/hicolor/Makefile.am:
+	* icons/pixmaps/Makefile.am: Changed theme related variables
+	accordingly to the changes in configure.ac.
+
+	* icons/Makefile.am (SUBDIRS):
+	* icons/crystalsvg/Makefile.am:
+	* icons/crystalsvg/chemistry.svg:
+	* icons/pixmaps/Makefile.am (pixmaps_list):
+	* icons/pixmaps/chemistry.png: The crystalsvg directory was completely
+	removed from the package. Instead only the desktop-neutral places for
+	theme and on-theme icons are used. So a raster image for the KDE 3
+	.desktop files is installed into non-theme icons for the moment.
+
+	* src/chemical-mime-database.xml.in: Fixed an issue in the mime-type
+	element definition. sub-class-of may not appear. Added
+	chemical/x-cdxml, chemical/x-ncbi-asn1 and
+	chemical/x-ncbi-asn1-binary.
+	(chemical/x-cdx): Added magic pattern based on the format description
+	at cambridgesoft.com.
+	(chemical/x-cif): Added magic pattern based on the CIF 1.1 format
+	specification.
+
+2006-12-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* autogen.sh: Removed automake version check and added it to
+	Makefile.am.
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Added automake version check.
+
+2006-09-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* autogen.sh: Many updates for a better usability.
+
+	* configure.ac: Replaced `echo' calls with the related `AC_MSG_*'
+	macros. Fixed usage of `AC_ARG_*' macros.
+	(ENABLE_UPDATEDB, ENABLE_CONVERT, DIR_FDMIME, DIR_GNOMEMIME)
+	(DIR_PIXMAPS, DIR_GNOMETHEME, DIR_KDEMIME, DIR_KDETHEME): Replaced
+	custom variables with it's automatically assigned equivalent variables
+	`enable_*' and `with_*'. Alle relevant tests have been adjusted.
+	(CONVERT, RSVG, UPDATE_MIME_DATABASE): Changed the return value if
+	determination failed to `no'. All relevant tests have been adjusted.
+
+	* freedesktop.org/Makefile.am (fdomimedir, fdomime_DATA, CLEANFILES):
+	Renamed fdomime{dir,_DATA} to freedesktopmime{dir,_DATA}.
+	(freedesktopmimedir): Changed the variable name, that holds the
+	installation path (see configure.ac changes).
+	(install-data-hook, uninstall-hook): Ditto.
+
+	* gnome/Makefile.am (gnomemimedir): Ditto.
+
+	* icons/crystalsvg/Makefile.am (kdethemedir, install-data-local)
+	(uninstall-hook): Ditto.
+
+	* icons/hicolor/Makefile.am (gnomethemedir, install-data-local)
+	(uninstall-hook): Ditto.
+
+	* icons/pixmaps/Makefile.am (pixmapsdir): Ditto.
+
+	* kde/Makefile.am (kdemimedir): Ditto.
+
+	* src/chemical-mime-database.xml.in: Added chemical/x-gulp support.
+	Added chemical/x-gulp-input, which is not completely supported yet.
+
+	* xsl/cmd_freedesktop_org.xsl: Added missing newline at the end of the
+	file.
+	(mime-type): Cosmetic fix.
+
+	* README: Typo fixed.
+
+2006-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* ABOUT-NLS: Removed.
+
+2006-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac: Fixed usage of AM_PO_SUBDIRS. It is necessary in every
+	case to create po/Makefile.
+
+2006-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Added check-news option.
+	(MAINTAINERCLEANFILES): Removing .md5 sums too. Using a shorter
+	expression for the archives.
+	(DISTCHECK_CONFIGURE_FLAGS): Added the --disable-nls option.
+
+	* NEWS: Added an entry for the post release version bump to version
+	0.1.94 to fit new check-news option.
+
+	* configure.ac: intltool fixed several issues in the latest 0.35.0
+	release. Now it uses AM_PO_SUBDIRS instead of AM_GNU_GETTEXT([..])
+	(http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=365727). Some more
+	changes added because of intltools latest release. Added the
+	AC_CONFIG_SRCDIR macro.
+
+	* freedesktop.org/Makefile.am (install-data-hook)
+	(uninstall-hook): Fixed the path expression, so 'make install' no
+	longer fails in the special case of using the DESTDIR variable as user
+	without the rights to write to $datadir/mime.
+
+	* po/Makevars: Added MSGID_BUGS_ADDRESS variable.
+
+	* xsl/cmd_common.xsl: Just a few cosmetic fixes for the formatting.
+
+2006-05-19 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac (AC_PACKAGE_VERSION): Post-release version bump to
+	0.1.94.
+
+	* Makefile.am (MAINTAINERCLEANFILES): Just a cosmetic change (more
+	general expression).
+
+2006-05-19 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Released version 0.1.93.
+
+	* chemical-mime-data.pc.in (Requires): Small fix for a better output.
+
+	* configure.ac (CHEMICAL_MIME_DEPS): Ditto.
+
+	* src/chemical-mime-database.xml.in: Added comments to show up in
+	gettext's po files. Added InChI and JCAMP acronym.
+
+2006-05-19 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Fixed CVS repository content to get the state before sf.net
+	CVS service crashed.
+
+2006-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-genbank): Added
+	missing conflicts information.
+
+2006-05-08 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Added more comments to the DTD
+	for a better description of their usage.
+
+2006-05-08 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Removing useless spaces and tabs
+	at line-ends.
+	(chemical/x-genbank): Fixed an invalidity, which clashes with the DTD.
+
+2006-05-08 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Removed stuff done by Jerome.
+
+	* ChangeLog: Added missing entry for Jeromes last commit.
+
+2006-05-08 Jerome Pansanel <j.pansanel@pansanel.net>
+
+	* configure.ac (ALL_LINGUAS): Re-Added French to available
+	translations.
+
+	* src/chemical-mime-database.xml.in: Added chemical/x-genbank,
+	chemical/x-inchi, chemical/x-inchi-xml, chemical/x-jcamp-dx,
+	chemical/x-shelx, chemical/x-vmd MIME types (kfile_chemical support).
+	(chemical/x-daylight-smiles): Added one missing pattern.
+	(chemical/x-dmol, chemical/x-mol2): Fixed a typo in the comment.
+
+2006-05-08 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Added note about KDE and GNOME MIME magic databases.
+
+2006-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/Makefile.am (check-local): Added XMLLINT_FLAGS to command.
+
+2006-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* freedesktop.org/Makefile.am (chemical-mime-data.xml): Added
+	cmd_common.xsl to prerequisites and fixed rule.
+
+	* gnome/Makefile.am (chemical-mime-data.keys)
+	(chemical-mime-data.mime): Ditto.
+
+	* kde/Makefile.am (*.desktop): Ditto.
+
+2006-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Just added a note about viewmol.
+
+	* configure.ac (AM_GNU_GETTEXT, CATOBJEXT): Work around a bug in
+	gettext.m4 leading to non-updateable translations.
+
+	* xsl/cmd_kde.xsl (pattern.list): Fixed the wrong field name.
+
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* HACKING: Added.
+
+	* Makefile.am (EXTRA_DIST): Ditto.
+
+	* TODO: Improved overview and structure.
+
+	* src/chemical-mime-database.xml.in: Changed DTD for application
+	element and adjusted the usage of this element in the whole file.
+
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_freedesktop_org.xsl: Use the namespace attribute, not the
+	xmlns attribute, for xsl:element (makes no real difference, but it is
+	IMHO more common).
+
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Added information pointer to gdis manual.
+
+	* src/chemical-mime-database.xml.in: Added gdis application elements.
+	(chemical/x-mopac-out): Added magic pattern and "*.out" pattern.
+
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in (chemical/x-cif)
+	(chemical/x-mmcif): Fixed acronym explanation for 'CIF'. Changed
+	Comment.
+	(chemical/x-mdl-molfile, chemical/x-mdl-rdfile, chemical/x-mdl-rxnfile)
+	(chemical/x-mdl-sdfile, chemical/x-mdl-tgf): Added acronym and
+	explanation for 'MDL'.
+
+2006-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Added items for next version 0.1.93.
+
+	* src/chemical-mime-database.xml.in: Small DTD change to support a
+	package attribute for the application element. Added support for
+	chemical/x-gamess-input and chemical/x-mopac-out. Added application
+	elements for xdrawchem and molden, where I missed them before, and
+	initially added the application elements for gchem3d-viewer.
+
+	* xsl/cmd_freedesktop_org.xsl: Better use the <xsl:element> element
+	instead of the element to print.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* acinclude.m4: Added MP_PROG_XMLLINT macro to make xmllint available
+	for 'check' target.
+
+	* configure.ac: Ditto.
+
+	* src/Makefile.am: Added check target to make sure, that the resulting
+	database follows our own document declaration.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_kde.xsl: Fixed header.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Fixed typo. Added a new entry for the next release.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac (AC_PACKAGE_VERSION): Post-release version bump to
+	0.1.93.
+
+	* Makefile.am (EXTRA_DIST): Fixed a bug. The resulting .pc file should
+	not be shipped with the 'dist' target.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac: Bump to version 0.1.92.
+
+	* NEWS: Ditto.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* NEWS: Added information about latest release.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Fixed content. A lot of notes were removed, because I already
+	solved them.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am (MAINTAINERCLEANFILES): Added archives created by 'dist'
+	target to 'maintainer-clean' target.
+
+	* configure.ac (AC_PACKAGE_VERSION): Increased version 0.1.91. First
+	RC.
+
+	* src/chemical-mime-database.xml.in: Added almost all MIME types,
+	which are used by jmol, gchempaint, pymol, rasmol, viewmol, xdrawchem
+	(except the x-turbomole* MIME types used by viewmol). Fixed DTD.
+	Removed comments.
+
+	* xsl/cmd_freedesktop_org.xsl (mime-type): Added information, since
+	when the MIME type is supported.
+
+	* xsl/cmd_gnome-keys.xsl (icon): Fixed a bug. Icon name was missing.
+
+	* xsl/cmd_kde.xsl (icon): Ditto. Further fixed the substring-after()
+	usage.
+
+	* xsl/cmd_gnome-mime.xsl (icon): Ditto.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* freedesktop.org/Makefile.am: Fixed vpath directive to get the right
+	location for chemical-mime-database.xml. Fixes 'make distcheck' error.
+
+	* gnome/Makefile.am: Ditto.
+
+	* kde/Makefile.am: Ditto.
+
+	* xsl/Makefile.am (EXTRA_DIST): Added missing cmd_kde.xsl stylesheet.
+	Fixes 'make distcheck' error.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am (SUBDIRS): Re-added kde directory.
+
+	* README: Adjusted info-set.
+
+	* THANKS: Added.
+
+	* src/chemical-mime-database.xml.in: Fixed formatting issues and
+	changed element name for chemical-mime-type to mime-type as used by
+	fd.o. Added chemical/x-gamess-input for testing.
+
+	* xsl/cmd_common.xsl: Fixed header.
+	(write.chunk): Removed standalone and added media-type parameter.
+	(header.desktop): Added template to generate the header part of
+	KDE's .desktop files.
+	(header.xml): Fixed. Use xsl:comment instead of xsl:text.
+
+	* xsl/cmd_freedesktop_org.xsl: Fixed header and several parameters.
+	(chemical-mime-type, mime-type): Fixed template to fit changes in
+	src/chemical-mime-database.xml.in.
+	(acronym|alias|comment|expanded-acronym|glob|magic|match|root-XML)
+	(sub-class-of): Small changes.
+
+	* xsl/cmd_gnome-keys.xsl: Ditto.
+	(chemical-mime-type, mime-type): Ditto.
+
+	* xsl/cmd_gnome-mime.xsl: Ditto.
+	(chemical-mime-type, mime-type): Ditto.
+
+	* xsl/cmd_kde.xsl: Added stylesheet for KDE's .desktop files.
+
+	* kde/*.desktop.in: Removed (replaced by new flat database).
+
+2006-04-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac (AC_PACKAGE_VERSION): Bump version to 0.1.99 to show,
+	where we want to go.
+
+	* src/chemical-mime-database.xml.in: Fixed just a few formatting
+	issues.
+
+2006-04-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Added new flat database.
+
+	* Makefile.am (SUBDIRS): Added new directories.
+
+	* TODO: Moved information to the new flat database. Added a few points
+	which are related to our latest change to a flat database file.
+
+	* acinclude.m4: Added to provide a macro to get the location of
+	xsltproc (and possible options to use).
+
+	* configure.ac: Added new template to get xsltproc.
+	(ALL_LINGUAS): Removed nl and fr for the moment (changes are too
+	heavy, so the files need a complete update).
+	(AC_CONFIG_FILES): Added new directories and Makefiles.
+
+	* freedesktop.org/Makefile.am: Fixed to fit new flat database.
+
+	* gnome/Makefile.am: Ditto.
+
+	* kde/Makefile.am: Ditto.
+
+	* freedesktop.org/chemical-mime-data.xml.in: Removed (replaced by new
+	flat database).
+
+	* gnome/chemical-mime-data.keys.in: Ditto.
+
+	* gnome/chemical-mime-data.mime: Ditto.
+
+	* src/Makefile.am: Added.
+
+	* xsl/Makefile.am: Ditto.
+
+	* xsl/cmd_common.xsl: Ditto.
+
+	* xsl/cmd_freedesktop_org.xsl: Ditto.
+
+	* xsl/cmd_gnome-keys.xsl: Ditto.
+
+	* xsl/cmd_gnome-mime.xsl: Ditto.
+
+2006-02-18 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac (IT_PROG_INTLTOOL): Call the AM_GNU_GETTEXT macro from
+	the gettext suite instead of calling GTK's AM_GLIB_GNU_GETTEXT. Turn
+	USE_NLS to 'no' to avoid installation of catalog files.
+
+	* ABOUT-NLS: Added for AM_GNU_GETTEXT to be satisfied.
+
+	* freedesktop.org/Makefile.am (BOOL_FREEDESKTOP_MIME_TRUE): Minor
+	cleanup.
+
+	* gnome/Makefile.am (BOOL_GNOME_MIME_TRUE): Ditto.
+
+	* kde/Makefile.am (BOOL_KDE_MIME_TRUE): Ditto.
+
+2006-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am (MAINTAINERCLEANFILES): Added config.{sub,guess} which
+	may be linked/copied by automake.
+
+	* configure.ac (PACKAGE_BUGREPORT): Fixed project and bug-tracker URL.
+	(AC_PROG_INTLTOOL, IT_PROG_INTLTOOL): AC_PROG_INTLTOOL is obsolete.
+	(CATALOGS): Fixed value to avoid installation of cataloges, which are
+	useless for us.
+
+2006-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* freedesktop.org/Makefile.am: Fixed missing file after 'make dist'
+	issue caused by condition construct.
+
+	* gnome/Makefile.am: Ditto.
+
+	* icons/pixmaps/Makefile.am: Ditto.
+
+	* kde/Makefile.am: Ditto.
+
+	* icons/crystalsvg/Makefile.am: Cleaned.
+
+	* icons/hicolor/Makefile.am: Ditto.
+
+2006-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* icons/crystalsvg/Makefile.am (EXTRA_DIST, ICONS, SIZES)
+	(icon_sources, icon_sizes, all-local, all-icons)
+	(install-data-local, uninstall-hook): Make it much more deterministic
+	and simple.
+
+	* icons/hicolor/Makefile.am (EXTRA_DIST, ICONS, SIZES)
+	(icon_sources, icon_sizes, all-local, all-icons)
+	(install-data-local, uninstall-hook): Ditto.
+
+2006-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* AUTHORS: Updated project authors information.
+
+	* COPYING: Updated FSF address.
+
+	* README: Ditto. Updated license and copyright information.
+
+	* autogen.sh: Added license and file information.
+
+	* Makefile.am: Added license and file information.
+	(EXTRA_DIST): Remove automatically included files.
+	(pkgconfig_DATA): Install pkgconfig file in every case.
+
+	* chemical-mime-data.pc.in (Description, URL): Added project URL.
+	Fixed description.
+
+	* configure.ac: Added license and file information. Removed
+	everything, which is put to config.h (we do not need it). Fixed option
+	descriptions. Fixed result output. Fixed markup issues.
+	(UPDATE_MIME_DATABASE): Added possibility for custom definition.
+
+	* freedesktop.org/Makefile.am: Added license and file information.
+	Reordered. Added information to if-endif constructs.
+
+	* gnome/Makefile.am: Ditto.
+
+	* icons/Makefile.am: Ditto.
+
+	* icons/crystalsvg/Makefile.am: Ditto.
+
+	* icons/hicolor/Makefile.am: Ditto.
+
+	* icons/pixmaps/Makefile.am: Ditto.
+
+	* kde/Makefile.am: Ditto.
+
+	* freedesktop.org/chemical-mime-data.xml.in: Updated FSF address.
+	(chemical/x-cerius, chemical/x-chemdraw, chemical/x-daylight-smiles)
+	(chemical/x-genbank, chemical/x-mif): Commented out all MIME types
+	which cause a conflict with well known MIME types.
+
+	* gnome/chemical-mime-data.keys.in: Updated FSF address.
+
+	* gnome/chemical-mime-data.mime: Updated FSF address.
+
+	* po/POTFILES.in: Fixed alphabetical order.
+
+2006-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* po/POTFILES.in: Fixed a minor bug.
+
+2006-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac (CONVERT, RSVG): Move the stuff related to rsvg and
+	convert detection to a better place.
+
+	* icons/crystalsvg/Makefile.am (all-icons): Adjust the test for RSVG
+	after changing configure.ac.
+
+	* icons/hicolor/Makefile.am (all-icons): Ditto.
+
+2006-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac: Fix all AC_SUBST() macro calls.
+	(RSVG, CONVERT): Add possibility for custom definition where to find
+	the rsvg or convert utility (may help if they are not in PATH).
+
+2006-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Move all files back to sourceforge.net. Fixed all CVS headers,
+	because sf.net does not know LocalKeyword nor tag. Removed docs/ and
+	examples/, because they should not be part of the source. See the
+	ChangeLog for all changes in the past.
+
+2006-01-29 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am (MAINTAINERCLEANFILES): The maintainer-clean target
+	should clean the source for CVS works. So everything produced with
+	autogen.sh is removed with this target.
+
+	* gnome/Makefile.am (MAINTAINERCLEANFILES): Ditto.
+
+	* icons/Makefile.am (MAINTAINERCLEANFILES): Ditto.
+
+	* icons/crystalsvg/Makefile.am (MAINTAINERCLEANFILES): Ditto.
+
+	* icons/hicolor/Makefile.am (MAINTAINERCLEANFILES): Ditto.
+
+	* icons/pixmaps/Makefile.am (MAINTAINERCLEANFILES): Ditto.
+
+	* freedesktop.org/Makefile.am (MAINTAINERCLEANFILES): Ditto.
+	(CLEANFILES): Use variable.
+
+	* kde/Makefile.am (MAINTAINERCLEANFILES): Ditto.
+	(CLEANFILES): Ditto.
+
+	* autogen.sh: Add -c|--copy options to allow to choose between linking
+	and copying the files.
+
+2006-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac (PKG_CONFIG, PKG_PROG_PKG_CONFIG): Call the
+	PKG_PROG_PKG_CONFIG macro to determine PKG_CONFIG.
+	(PKG_CHECK_EXISTS): Determine the existance of shared-mime-info and
+	gnome-mime-data-2.0 via PKG_CHECK_EXISTS macro.
+	(BOOL_UPDATE_DATABASE): Fixed a bug when the fd.o shared-mime-info
+	stuff should not be installed.
+
+	* freedesktop.org/chemical-mime-data.xml.in: Began to fix the db
+	stuff, whichcurrently prevents the package from working with GNOM 2.12
+	and above.
+
+	* kde/seq-aa-fasta.desktop.in: Bug (typo) fix. Reordering content.
+	
+	* kde/seq-aa-genpept.desktop.in: Ditto.
+	
+	* kde/seq-na-fasta.desktop.in: Ditto.
+	
+	* kde/seq-na-genbank.desktop.in: Ditto.
+	
+	* kde/x-alchemy.desktop.in: Ditto.
+	
+	* kde/x-cache-csf.desktop.in: Ditto.
+	
+	* kde/x-cache.desktop.in: Ditto.
+	
+	* kde/x-cactvs-ascii.desktop.in: Ditto.
+	
+	* kde/x-cactvs-binary.desktop.in: Ditto.
+	
+	* kde/x-cactvs-table.desktop.in: Ditto.
+	
+	* kde/x-cdx.desktop.in: Ditto.
+	
+	* kde/x-cerius.desktop.in: Ditto.
+	
+	* kde/x-chem3d.desktop.in: Ditto.
+	
+	* kde/x-chemdraw.desktop.in: Ditto.
+	
+	* kde/x-cif.desktop.in: Ditto.
+	
+	* kde/x-cmdf.desktop.in: Ditto.
+	
+	* kde/x-cml.desktop.in: Ditto.
+	
+	* kde/x-compass.desktop.in: Ditto.
+	
+	* kde/x-crossfire.desktop.in: Ditto.
+	
+	* kde/x-csml.desktop.in: Ditto.
+	
+	* kde/x-ctx.desktop.in: Ditto.
+	
+	* kde/x-cxf.desktop.in: Ditto.
+	
+	* kde/x-daylight-smiles.desktop.in: Ditto.
+	
+	* kde/x-embl-dl-nucleotide.desktop.in: Ditto.
+	
+	* kde/x-fasta.desktop.in: Ditto.
+	
+	* kde/x-galactic-spc.desktop.in: Ditto.
+	
+	* kde/x-gamess-input.desktop.in: Ditto.
+	
+	* kde/x-gaussian-checkpoint.desktop.in: Ditto.
+	
+	* kde/x-gaussian-cube.desktop.in: Ditto.
+	
+	* kde/x-gaussian-input.desktop.in: Ditto.
+	
+	* kde/x-gaussian-log.desktop.in: Ditto.
+	
+	* kde/x-gcg8-sequence.desktop.in: Ditto.
+	
+	* kde/x-genbank.desktop.in: Ditto.
+	
+	* kde/x-hin.desktop.in: Ditto.
+	
+	* kde/x-isostart.desktop.in: Ditto.
+	
+	* kde/x-jcamp-dx.desktop.in: Ditto.
+	
+	* kde/x-kinemage.desktop.in: Ditto.
+	
+	* kde/x-macmolecule.desktop.in: Ditto.
+	
+	* kde/x-macromodel-input.desktop.in: Ditto.
+	
+	* kde/x-mdl-molfile.desktop.in: Ditto.
+	
+	* kde/x-mdl-rdfile.desktop.in: Ditto.
+	
+	* kde/x-mdl-rxnfile.desktop.in: Ditto.
+	
+	* kde/x-mdl-sdfile.desktop.in: Ditto.
+	
+	* kde/x-mdl-tgf.desktop.in: Ditto.
+	
+	* kde/x-mif.desktop.in: Ditto.
+	
+	* kde/x-mmcif.desktop.in: Ditto.
+	
+	* kde/x-mol2.desktop.in: Ditto.
+	
+	* kde/x-molconn-Z.desktop.in: Ditto.
+	
+	* kde/x-mopac-graph.desktop.in: Ditto.
+	
+	* kde/x-mopac-input.desktop.in: Ditto.
+	
+	* kde/x-mopac-out.desktop.in: Ditto.
+	
+	* kde/x-mopac-vib.desktop.in: Ditto.
+	
+	* kde/x-ncbi-asn1-ascii.desktop.in: Ditto.
+	
+	* kde/x-ncbi-asn1-binary.desktop.in: Ditto.
+	
+	* kde/x-ncbi-asn1-spec.desktop.in: Ditto.
+	
+	* kde/x-pdb.desktop.in: Ditto.
+	
+	* kde/x-rosdal.desktop.in: Ditto.
+	
+	* kde/x-swissprot.desktop.in: Ditto.
+	
+	* kde/x-vamas-iso14976.desktop.in: Ditto.
+	
+	* kde/x-vmd.desktop.in: Ditto.
+	
+	* kde/x-xtel.desktop.in: Ditto.
+	
+	* kde/x-xyz.desktop.in: Ditto.
+
+	* kde/x-cactvs-table.desktop.in: The only without the bug :(. Only
+	reordering content here.
+
+2006-01-13 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Add some important notes.
+
+	* docs/README: Add a few resources and restructure.
+
+2006-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* ChangeLog: Changed used CVS keyword to a local one. More useful
+	summary.
+
+	* AUTHORS: Ditto.
+
+	* NEWS: Ditto.
+
+	* TODO: Ditto.
+
+	* autogen.sh: Ditto.
+
+	* docs/APPLIST: Ditto.
+
+	* docs/README: Ditto.
+
+	* examples/README: Ditto.
+
+	* README: Ditto. Fixed copyright info.
+
+	* freedesktop.org/chemical-mime-data.xml.in: Ditto.
+
+	* gnome/chemical-mime-data.keys.in: Ditto.
+
+	* gnome/chemical-mime-data.mime: Ditto.
+
+2005-11-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* autogen.sh (autotools): Remove autoheader.
+
+	* configure.ac (dnl initialisation): Remove useless (auto)header
+	stuff.
+
+	* ChangeLog: Fixed syntax.
+
+2005-10-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* freedesktop.org/Makefile.am: Run update-mime-database at the right
+	place $(DIR-FDMIME).
+
+2005-09-19 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac: Added French to ALL_LINGUAS (thanks to Jean Bréfort).
+
+2005-09-19 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* autogen.sh: Manually link to automake scripts, if running automake
+	does not copy/link the scripts.
+
+	* configure.ac: Fixed a bug found by Jean, which leads to a
+	unsatisfiable Requires: entry in chemical-mime-data.pc.
+
+2005-08-22 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac, Makefile.am: Do not run update-mime-database for
+	distcheck target but run it as default during normal installation.
+
+	* configure.ac: Added option to choose the application to convert the
+	verctor graphics and fix the decision-condition.
+	
+	* icons/crystalsvg/Makefile.am: Ditto.
+	
+	* icons/hicolor/Makefile.am: Ditto.
+
+2005-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* examples/README: Added some infos.
+
+2005-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* AUTHORS: Removed obsolete "DocumentId" string.
+	
+	* ChangeLog: Ditto.
+	
+	* NEWS: Ditto.
+	
+	* README: Ditto.
+	
+	* TODO: Ditto.
+	
+	* autogen.sh: Ditto.
+	
+	* docs/APPLIST: Ditto.
+
+	* docs/README: Ditto.
+	
+	* freedesktop.org/chemical-mime-data.xml.in: Ditto.
+
+	* gnome/chemical-mime-data.keys.in: Ditto.
+	
+	* gnome/chemical-mime-data.mime: Ditto.
+
+	* ChangeLog: Fixed syntax.
+
+2005-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am: Fixed EXTRA_DIST.
+
+2005-06-14 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* COPYING: Moved whole package to GNU LGPL v.2.1.
+	
+	* NEWS: Ditto.
+	
+	* README: Ditto.
+	
+	* debian/copyright: Ditto.
+
+	* freedesktop.org/chemical-mime-data.xml.in: Ditto.
+
+	* gnome/chemical-mime-data.keys.in: Ditto.
+	
+	* gnome/chemical-mime-data.mime: Ditto.
+
+	* LICENSE: Removed. COPYING is enough.
+	
+2005-06-14 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* INSTALL: Readded readded with generic instructions.
+	
+	* AUTHORS: Added some infos. Fixed format issues.
+	
+	* COPYING: Ditto.
+	
+	* NEWS: Ditto.
+	
+	* README: Ditto.
+	
+	* TODO: Ditto.
+
+2005-06-14 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am: Added AUTOMAKE_OPTIONS.
+	
+	* configure.ac: Remove AUTOMAKE_OPTIONS (dist-bzip2).
+	
+	* INSTALL: Removed temporarily.
+
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Fix typo. Added naming scheme note to release list.
+
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am: Commented out disableuninstallcheck. Reordered some
+	parts.
+
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* INSTALL: Fixed typo.
+	
+	* NEWS: Added some more notes about done stuff.
+	
+	* chemical-mime-data.pc.in: Fixed description.
+
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* COPYING: Updated copyright information.
+
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* gnome/chemical-mime-data.keys.in: Fix a format bug.
+
+2005-05-09 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac: Merged informational output.
+
+2005-05-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* kde/Makefile.am: Fix a bug (obsolete file mentioned).
+	
+	* freedesktop.org/chemical-mime-data.xml.in: Added a bit more info to
+	the header.
+
+	* gnome/chemical-mime-data.keys.in: Ditto.
+	
+	* gnome/chemical-mime-data.mime: Ditto.
+
+2005-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* freedesktop.org/chemical-mime-data.xml.in: Added license information to
+	top of the file. Changed order of type and value. Set back a lot of
+	comments for now.
+	
+	* gnome/chemical-mime-data.keys.in: Added missing types. Changed some
+	descriptions. Added license information to top of the file.
+	
+	* gnome/chemical-mime-data.mime: Added missing MIME types. Commented out
+	conflicting ones. Added license information to top of the file.
+	
+	* kde/Makefile.am: Added missing files. Fixed a build issue.
+	
+	* kde/seq-aa-genpept.desktop.in: Fixed comment and added missing
+	pattern.
+	
+	* kde/seq-na-genbank.desktop.in: Ditto.
+
+	* kde/x-mdl-rdfile.desktop: Ditto.
+	
+	* kde/x-mif.desktop.in: Ditto.
+	
+	* kde/x-pdb.desktop.in: Ditto.
+
+	* kde/x-rosdal.desktop.in: Ditto.
+	
+	* kde/x-vamas-iso14976.desktop.in: Ditto.
+	
+	* kde/seq-aa-fasta.desktop.in: Ditto.
+	
+	* kde/seq-na-fasta.desktop.in: Ditto.
+	
+	* kde/x-fasta.desktop.in: Ditto.
+	
+	* kde/x-ncbi-asn1-ascii.desktop.in: Ditto.
+
+	* kde/x-ncbi-asn1-spec.desktop.in: Ditto.
+	
+	* kde/x-ncbi-asn1.desktop.in: Removed.
+	
+	* kde/x-ppd.desktop.in: Removed.
+
+2005-05-05 Daniel Leidert <daniel.leidert@wgdd.de>
+	
+	* AUTHORS: Updated information.
+	
+	* INSTALL: Ditto.
+	
+	* README: Ditto.
+	
+	* NEWS: Ditto.
+	
+	* TODO: Ditto.
+	
+	* autogen.sh: Remove --force option to prevent overwriting INSTALL.
+	
+	* debian/changelog: Changed from native to non-native package
+	revision.
+	
+	* debian/control: Updated depends (removed all autoconf/automake
+	depends).
+	
+	* debian/rules: Remove all lines running autoconf/automake parts.
+
+2005-05-05 Daniel Leidert <daniel.leidert@wgdd.de>
+	
+	* configure.ac: Added more checks and try to solve possible
+	"impossible" situations. Added a bit more output, what will be done
+	and changed some general output.
+
+2005-05-05 Daniel Leidert <daniel.leidert@wgdd.de>
+	
+	* configure.ac: Worked on a better structure. Readded possibility to
+	change path directions, but use $datadir as default. Added a bit more
+	useful output. Added checks for shared-mime-info and gnome-mime-data.
+	
+	* freedesktop.org/Makefile.am: Fixed installation path determination
+	(determined during configure, see above).
+	
+	* gnome/Makefile.am: Ditto.
+
+	* icons/crystalsvg/Makefile.am: Ditto.
+	
+	* icons/hicolor/Makefile.am: Ditto.
+
+	* icons/pixmaps/Makefile.am: Ditto.
+	
+	* kde/Makefile.am: Ditto.
+	
+	* TODO: Refined todo list and removed done parts.
+
+2005-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
+	
+	* configure.ac: Remove leading space in $CHEMICAL_MIME_DEPS. Added a
+	bit more info if pkgconfig cannot detect packages.
+	
+	* chemical-mime-data.pc.in: Fixed description. Added empty 'Libs:' and
+	'Cflags' fields.
+	
+	* TODO: Some clean up.
+	
+	* examples/README: Added basic structure for additional testing. Added
+	additional infos.
+	
+	* docs/mime-data-specification.txt: Added additional infos.
+	
+	* docs/mime-descriptions-guidelines: Ditto.
+
+	* docs/README: Ditto.
+	
+	* docs/APPLIST: Ditto.
+
+2005-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Added note about conflicting types.
+	
+	* freedesktop.org/chemical-mime-data.xml.in: Ditto.
+	
+	* Makefile.am: Fixed clean/distclean target. Added workaround for
+	distcheck target.
+	
+	* chemical-mime-data.pc.in: Added dependencies. Added correct
+	information during parse process.
+	
+	* configure.ac: Fixed a possible error situation
+	(update-mime-database). Added a bit more useful output. Added
+	dependency collection and dist-bzip2 target. Option update-database is
+	turned off by default.
+	
+	* icons/hicolor/Makefile.am: More work on flexibility.
+	
+	* icons/crystalsvg/Makefile.am: Ditto.
+	
+	* debian/control: Fixed Depends/Suggests/Replaces.
+	
+	* debian/rules: Add a fix for an autoconf-bug, several targets and
+	.PHONY (the real solution for 2005-03-03 change).
+
+2005-05-01 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Too much changes to point out every file change: Complete rework of
+	theme-icon installation. Removed all raster images (they are now
+	created from vector format). Removed the whole check for paths (need
+	to be reintroduced later again, but in a better way then the old one).
+	Renamed package and files to chemical-mime-data (IMHO a better name).
+	Fixed almost all distcheck issues except the one caused by the run of
+	update-mime-database which seems unsolvable (workaround: set
+	ENABLE_UPDATEDB default to 'no'). Removed all obsolete files, fixed
+	the rest.
+
+2005-03-21 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* freedesktop.org/chemicalMIME.xml.in: Fixed missing end tag.
+	
+	* kde/Makefile.am: Added a missing MIME type (still not complete).
+	
+	* TODO: Reordered list.
+
+2005-03-20 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* chemicalMIME.xml.in: Added a few MIME types, missing patterns,
+	sub-class-of and alias attributes and more detection stuff
+	(chemical/x-pdb, chemical/x-hin, chemical/x-cml).
+
+	* docs/shared-mime-info-spec.pdf.gz: added spec information.
+
+2005-03-18 Egon Willighagen <e.willighagen@science.ru.nl>
+
+	* Added MIMEs metioned in Taverna.sf.net User Guide.
+
+2005-03-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* icons/*: A lot of rework to cover chemical MIME types with icons.
+	
+	* kde/x-cactvs-ascii.desktop.in: Added both by dividing
+	kde/x-cactvs-binary.desktop.in.
+	
+	* kde/x-cactvs-table.desktop.in: Ditto.
+	
+	* kde/x-ncbi-asn1-spec.desktop.in: Removed (seem to be obsolete).
+	
+	* kde/x-ncbi-asn1-ascii.desktop.in: Removed (seem to be obsolete).
+	
+	* kde/x-ncbi-asn1.desktop.in: Changed description a bit.
+	
+	* kde/x-ncbi-asn1-binary.desktop.in: Ditto.
+	
+	* kde/*.desktop.in: Fixed (see above).
+	
+	* gnome/chemicalmime.mime: Ditto.
+	
+	* gnome/chemicalmime.keys: Ditto.
+
+	* freedesktop.org/chemicalMIME.xml.in: Ditto. Commented out *.dat
+	extension for chemical/x-mopac-input.
+	
+	* configure.ac: Cosmetic fix (change option order and PATH-tests).
+	
+	* TODO: Added comment about ROX MIME handling.
+
+2005-03-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* INSTALL: GNOME icon installation can be done easier by installing
+	icons into hicolor theme (for GNOME > 2.4). Pixmaps icons are now
+	represented by one icon (should be extended later - this is for now).
+	Some variables changed because auf changes in configure.ac. Renamed
+	options to fit their real need.
+	
+	* README: Ditto.
+	
+	* TODO: Ditto.
+	
+	* configure.ac: Ditto.
+	
+	* icons/hicolor/*: Ditto.
+
+	* icons/crystalsvg/*: Ditto.
+	
+	* icons/pixmaps: Ditto.
+
+2005-03-11 Daniel Leidert <daniel.leidert@wgdd.de>
+	
+	* README: Begin rewriting (adding info about configure options, basic
+	knowledge about MIME handling).
+	
+	* TODO: Added note about chemical/x-cdx.
+	
+	* configure.ac: Added options to handle theme icon install. Clean
+	up and fix a bug related to intltool.
+	
+	* Makefile.am: Do not clean up all autotools stuff. Removed VERSION
+	from EXTRA_DIST. Added po to SUBDIRS.
+	
+	* icons/Makefile.am: Readded pixmaps subdir.
+	
+	* icons/pixmaps: Ditto.
+	
+	* icons/gnome: Added gnome (theme) subdir.
+	
+	* icons/*/Makefile.am: Fixed renamed theme install path.
+	
+	* gnome/icons: Moved back to icons/pixmaps.
+	
+	* gnome/Makefile.am: Fixed renamed booleans, removed pixmaps subdir.
+	
+	* kde/Makefile.am: Fixed renamed booleans, EXTRA_DIST, CLEANFILES (fix
+	'make dist' target), non-available x-cdx.desktop(.in).
+	
+	* debian/chemicalmime.dirs: Removed (obsolete).
+
+2005-03-10 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* chemicalmime.pc.in: Added pk-config stuff.
+	
+	* Makefile.am: Ditto.
+	
+	* configure.ac: Ditto and some clean-up. 
+
+	* debian/rules: Clean-up autotools run.
+	
+	* debian/control: Added pkg-config stuff. Fix build dependencies (see
+	above).
+
+2005-03-04 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* GNOME 2.4 support rewritten with icons support (still to change,
+	because theme-icons can be also installed).
+
+2005-03-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* **/Makefile.am: Fixed several bugs and issues.
+	  
+	* debian/rules: Fixed targets (it should not process the build-target
+	several times).
+	
+	* freedesktop.org/Makefile.am: Now considers
+	--without-freedesktop_org-mime.
+
+2005-03-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Clean up directory by removing unnecessary files.
+	
+	* Adding options to configure-script to choose, which support should
+	be installed.
+	
+	* Fixing all related Makefiles.
+	
+	* Moving special stuff in subdiretories to get a better overview for
+	every package part (pixmaps, kde mimelnk files, gnome2.4 mime-info
+	and freedesktop.org shared mime info).
+	
+	* Fix building of the Debian package.
+
+# UTF-8
+
