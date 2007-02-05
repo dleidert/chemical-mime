@@ -3,6 +3,10 @@
 
 2007-02-04 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* NEWS: Final 0.1.94 release.
+
+2007-02-04 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* html_docs/Makefile.am (install-sfnet): Fixed pre-requisite.
 
 2007-02-04 Daniel Leidert <daniel.leidert@wgdd.de>

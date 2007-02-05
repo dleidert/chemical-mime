@@ -1,7 +1,7 @@
 # Document  $Id$
 # Summary   News for every release.
 
-Version 0.1.94 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
+Version 0.1.94 2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Fixed several build issues.
 	  - Increased build dependency to intltool >= 0.35.0.
@@ -43,6 +43,14 @@ Version 0.1.94 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
 	
 	* Added a poject website and an initial website overview of the
 	database.
+
+	* Updated and added documentation provided with the source.
+
+	* Bugs closed:
+	  - RH bug #225095
+	    (https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=225095)
+	  - SF.net bug #1616568
+	    (http://sourceforge.net/tracker/index.php?func=detail&aid=1616568&group_id=159685&atid=812819)
 
 Version 0.1.93 2006-05-12 Daniel Leidert <daniel.leidert@wgdd.de>
 
