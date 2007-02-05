@@ -1,6 +1,10 @@
 # Document  $Id$
 # Summary   News for every release.
 
+Version 0.1.95 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* ...
+
 Version 0.1.94 2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Fixed several build issues.
