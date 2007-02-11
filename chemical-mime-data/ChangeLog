@@ -3,6 +3,10 @@
 
 2007-02-11 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* test/compare_pattern.xsl: Improved output layout.
+
+2007-02-11 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* Makefile.am: Added a note for running `make distcheck' with the
 	latest changes.
 

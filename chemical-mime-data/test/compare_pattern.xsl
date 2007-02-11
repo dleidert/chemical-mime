@@ -37,11 +37,10 @@
 <xsl:template match="/">
   <!-- * Select every chemical MIME type node of the root node to start    -->
   <!-- * the test.                                                         -->
-  <xsl:message>
+	<xsl:message>
+TEST: Compare global pattern to <xsl:value-of select="$database.uri"/>
+TEST: <xsl:value-of select="$database.type"/> database for unrecognized pattern conflicts.
 /*****************************************************************************
-* TEST: Compare global pattern to <xsl:value-of select="$database.uri"/>
-* TEST: database for unrecognized pattern conflicts.
-*
 * STARTING pattern test .....
 	</xsl:message>
 	<xsl:apply-templates select=".//mime-type">
