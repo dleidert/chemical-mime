@@ -19,7 +19,7 @@
 	          id CDATA #REQUIRED>
 
 	<!-- The MIME type (only chemical/*). -->
-	<!ELEMENT mime-type (comment+, (acronym, expanded-acronym)*, glob+, root-XML*, sub-class-of*, alias*, conflicts*, magic?, icon?, supported-by?, specification*)>
+	<!ELEMENT mime-type (comment+, (acronym, expanded-acronym)*, glob+, root-XML*, sub-class-of*, alias*, magic?, icon?, supported-by?, specification*)>
 	<!ATTLIST mime-type
 	          type CDATA #REQUIRED
 	          support (yes|no) "no"
@@ -41,9 +41,18 @@
 	          xml:lang CDATA #IMPLIED>
 
 	<!-- File pattern of the MIME type. -->
-	<!ELEMENT glob EMPTY>
+	<!ELEMENT glob (conflicts)*>
 	<!ATTLIST glob
             pattern CDATA #REQUIRED>
+
+	<!-- Conflicting MIME-type(s). Use the @gnome and/or @kde attributes to 
+	     determine if we will have problems with KDE 3.x, GNOME <= 2.4 or both. -->
+	<!ELEMENT conflicts EMPTY>
+	<!ATTLIST conflicts
+	          type CDATA #REQUIRED
+	          fdo (yes|no) "no"
+	          gnome (yes|no) "no"
+	          kde (yes|no) "no">
 
 	<!-- The root XML element and the namespace. -->
 	<!ELEMENT root-XML EMPTY>
@@ -60,15 +69,6 @@
 	<!ELEMENT alias EMPTY>
 	<!ATTLIST alias
 	          type CDATA #REQUIRED>
-
-	<!-- Conflicting MIME-type(s). Use the @gnome and/or @kde attributes to 
-	     determine if we will have problems with KDE 3.x, GNOME <= 2.4 or both. -->
-	<!ELEMENT conflicts EMPTY>
-	<!ATTLIST conflicts
-	          type CDATA #REQUIRED
-	          fdo (yes|no) "no"
-	          gnome (yes|no) "no"
-	          kde (yes|no) "no">
 
 	<!-- The magic pattern. Refer to the shared-mime-info database specification.
 	     Search http://sourceforge.net/docman/?group_id=159685 for the link. -->
@@ -177,9 +177,10 @@
 
 	<mime-type type="chemical/seq-aa-genpept" support="no">
 		<_comment>GenPept Flat File</_comment>
-		<glob pattern="*.gp"/>
+		<glob pattern="*.gp">
+			<conflicts type="application/x-gnuplot" fdo="yes"/>
+		</glob>
 		<sub-class-of type="text/plain"/>
-		<conflicts type="application/x-gnuplot" fdo="yes"/>
 		<specification url="http://msdlocal.ebi.ac.uk/docs/mimetype.html"/>
 	</mime-type>
 
@@ -313,16 +314,18 @@
 		<_comment>MSI Cerius II format</_comment>
 		<acronym>MSI</acronym>
 		<expanded-acronym>Molecular Simulations Inc.</expanded-acronym>
-		<glob pattern="*.cer"/>
+		<glob pattern="*.cer">
+			<conflicts type="application/x-x509-ca-cert" fdo="yes" kde="yes"/>
+		</glob>
 		<sub-class-of type="text/plain"/>
-		<conflicts type="application/x-x509-ca-cert" fdo="yes" kde="yes"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-chemdraw" support="no">
 		<_comment>ChemDraw File</_comment>
-		<glob pattern="*.chm"/>
+		<glob pattern="*.chm">
+			<conflicts type="application/x-chm" fdo="yes" gnome="yes" kde="yes"/>
+		</glob>
 		<alias type="application/x-chemdraw"/>
-		<conflicts type="application/x-chm" fdo="yes" gnome="yes" kde="yes"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-chem3d" support="yes" added="0.1.91">
@@ -456,10 +459,12 @@
 		<_comment>SMILES Format</_comment>
 		<acronym>SMILES</acronym>
 		<expanded-acronym>Simplified Molecular Input Line Entry Specification</expanded-acronym>
-		<glob pattern="*.smi"/>
+		<glob pattern="*.smi">
+			<conflicts type="application/smil" fdo="yes" kde="yes"/>
+			<conflicts type="application/x-smil" gnome="yes"/>
+		</glob>
 		<glob pattern="*.smiles"/>
 		<sub-class-of type="text/plain"/>
-		<conflicts type="application/smil" gnome="yes" kde="yes"/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 			<application name="xdrawchem"/>
@@ -665,12 +670,14 @@
 		<_comment>GenBank Flat File Format</_comment>
 		<acronym>GenBank</acronym>
 		<expanded-acronym>National Genetic Sequence Data Base</expanded-acronym>
-		<glob pattern="*.gb"/> <!-- possible clash with application/x-gameboy-rom -->
-		<glob pattern="*.gen"/> <!-- possible clash with application/x-genesis-rom -->
+		<glob pattern="*.gb">
+			<conflicts type="application/x-gameboy-rom" fdo="yes" gnome="yes"/>
+		</glob>
+		<glob pattern="*.gen">
+			<conflicts type="application/x-genesis-rom" fdo="yes" gnome="yes"/>
+		</glob>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/seq-na-genbank"/>
-		<conflicts type="application/x-gameboy-rom" gnome="yes"/>
-		<conflicts type="application/x-genesis-rom" gnome="yes"/>
 		<magic priority="80">
 			<match type="string" value="                   GENETIC SEQUENCE DATA BANK" offset="0"/>
 			<match type="string" value="LOCUS       " offset="0"/>
@@ -838,7 +845,9 @@
 
 	<mime-type type="chemical/x-macromodel-output" support="no">
 		<_comment>MacroModel Molecular Mechanics Output Format</_comment>
-		<glob pattern="*.dat"/>
+		<glob pattern="*.dat">
+			<conflicts type="video/mpeg" gnome="yes"/>
+		</glob>
 		<glob pattern="*.out"/>
 		<sub-class-of type="text/plain"/>
 		<specification url="http://www.columbia.edu/cu/chemistry/mmod/mmod.html"/>
@@ -894,9 +903,10 @@
 		<acronym>MDL</acronym>
 		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.sd"/>
-		<glob pattern="*.sdf"/>
+		<glob pattern="*.sdf">
+			<conflicts type="application/vnd.stardivision.math" kde="yes"/>
+		</glob>
 		<sub-class-of type="text/plain"/>
-		<conflicts type="application/vnd.stardivision.math" kde="yes"/>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 			<application name="gchempaint"/>
@@ -918,9 +928,10 @@
 		<_comment>Molecular Information File Format</_comment>
 		<acronym>MIF</acronym>
 		<expanded-acronym>Molecular Information File</expanded-acronym>
-		<glob pattern="*.mif"/>
+		<glob pattern="*.mif">
+			<conflicts type="application/x-mif" fdo="yes" gnome="yes"/>
+		</glob>
 		<sub-class-of type="text/plain"/>
-		<conflicts type="application/x-mif" fdo="yes" gnome="yes"/>
 		<specification url="http://pubs.acs.org/cgi-bin/abstract.cgi/jcisd8/1995/35/i03/f-pdf/f_ci00025a009.pdf?sessid=6006l3"/>
 	</mime-type>
 
@@ -978,14 +989,16 @@
 		<_comment>MOPAC Input Format</_comment>
 		<acronym>MOPAC</acronym>
 		<expanded-acronym>Molecular Orbital PACkage</expanded-acronym>
-		<glob pattern="*.dat"/> <!-- possible clash with video/mpeg -->
+		<glob pattern="*.dat">
+			<conflicts type="video/mpeg" gnome="yes"/>
+		</glob>
 		<glob pattern="*.mop"/>
 		<glob pattern="*.mopcrt"/>
-		<glob pattern="*.mpc"/> <!-- audio/x-musepack -->
+		<glob pattern="*.mpc">
+			<conflicts type="audio/x-musepack" fdo="yes" kde="yes"/>
+		</glob>
 		<glob pattern="*.zmt"/>
 		<sub-class-of type="text/plain"/>
-		<conflicts type="audio/x-musepack" gnome="yes" kde="yes"/>
-		<conflicts type="video/mpeg" gnome="yes"/>
 		<supported-by>
 			<application name="xdrawchem"/>
 		</supported-by>
@@ -1079,8 +1092,9 @@
 
 	<mime-type type="chemical/x-msi-msi" support="yes" added="0.1.91">
 		<_comment>Accelrys Data Model File</_comment>
-		<glob pattern="*.msi"/>
-		<!-- conflicts with chemical/x-cer and application/x-msi -->
+		<glob pattern="*.msi">
+			<conflicts type="application/x-msi"/>
+		</glob>
 		<sub-class-of type="text/plain"/>
 		<magic priority="50">
 			<match type="string" value="# MSI CERIUS2 DataModel File Version " offset="0"/>
@@ -1162,10 +1176,12 @@
 	<mime-type type="chemical/x-pdb" support="yes" added="0.1.90">
 		<_comment>Brookhaven Protein DataBase File Format</_comment>
 		<!-- <glob pattern="*.ent"/> -->
-		<glob pattern="*.pdb"/>
+		<glob pattern="*.pdb">
+			<conflicts type="application/vnd.palm" fdo="yes" kde="yes"/>
+			<conflicts type="application/x-palm-database" gnome="yes"/>
+		</glob>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/pdb"/>
-		<conflicts type="application/vnd.palm" gnome="yes" kde="yes"/>
 		<!-- 1st line offset  0:80  -->
 		<!-- 2nd line offest 81:161 -->
 		<!-- 3nd line offest ... -->
@@ -1261,7 +1277,9 @@
 
 	<mime-type type="chemical/x-shelx" support="yes" added="0.1.93">
 		<_comment>ShelX Document</_comment>
-		<glob pattern="*.ins"/>
+		<glob pattern="*.ins">
+			<conflicts type="text/x-tex" fdo="yes"/>
+		</glob>
 		<glob pattern="*.res"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="80">

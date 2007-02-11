@@ -18,7 +18,6 @@
                 version="1.0"
                 extension-element-prefixes="saxon redirect lxslt exsl">
 
-
 <!-- ********************************************************************* -->
 <!-- * Named templates for common functions.                               -->
 <!-- ********************************************************************* -->
@@ -145,4 +144,3 @@
 </xsl:template>
 
 </xsl:stylesheet>
-

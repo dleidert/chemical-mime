@@ -1,0 +1,13 @@
+# Document  $Id$
+# Summary   Makefile includes for the chemical-mime-data project.
+#
+# Copyright (C) 2007 by Daniel Leidert <daniel.leidert@wgdd.de>.
+#
+# This file is free software. The copyright owner gives unlimited
+# permission to copy, distribute and modify it.
+
+GNOME_VFS_MIME_XML_CUSTOM = \
+	<gnome-vfs-mime> \
+		<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="$(GNOME_VFS_MIME_DATA_DB)" parse="text" encoding="utf-8"/> \
+	</gnome-vfs-mime>
+
