@@ -6,7 +6,7 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-SUBDIRS = src xsl freedesktop.org gnome html_docs kde icons po
+SUBDIRS = po src xsl freedesktop.org gnome html_docs kde icons test
 
 AUTOMAKE_OPTIONS = check-news dist-bzip2 1.7
 
@@ -37,6 +37,9 @@ MAINTAINERCLEANFILES = \
 	@PACKAGE@-@VERSION@.tar.{gz,bz2} \
 	@PACKAGE@-@VERSION@.tar.{gz,bz2}.md5
 
+# `fakeroot make distcheck \
+# FDO_SHARED_MIME_INFO_DB=/usr/share/mime/packages/freedesktop.org.xml \
+# GNOME_VFS_MIME_DATA_DB=/usr/share/mime-info/gnome-vfs.mime'
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-database --disable-nls
 
 

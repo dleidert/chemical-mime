@@ -14,7 +14,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
 
-
 <!-- ********************************************************************* -->
 <!-- * Import XSL stylesheets. Define output options.                      -->
 <!-- ********************************************************************* -->
@@ -23,13 +22,11 @@
 <xsl:output method="text"
             encoding="UTF-8"/>
 
-
 <!-- ********************************************************************* -->
 <!-- * Space-stripped and -preserved elements/tokens.                      -->
 <!-- ********************************************************************* -->
 
 <xsl:strip-space elements="*"/>
-
 
 <!-- ********************************************************************* -->
 <!-- xsl:template match (modes) section                                    -->
@@ -49,7 +46,7 @@
 		<xsl:with-param name="content">
 			<xsl:call-template name="common.header.text"/>
 			<xsl:apply-templates select=".//mime-type[@support = 'yes'
-			                             and not(conflicts[@gnome = 'yes'])]">
+			                             and child::glob[not(conflicts[attribute::gnome = 'yes'])]]">
 				<xsl:sort select="@type"/>
 			</xsl:apply-templates>
 		</xsl:with-param>
@@ -60,7 +57,7 @@
 	<xsl:value-of select="@type"/>
 	<xsl:text>&#10;</xsl:text>
 	<xsl:text>	ext:</xsl:text>
-	<xsl:apply-templates/>
+	<xsl:apply-templates select="glob[not(conflicts[attribute::gnome = 'yes'])]"/>
 	<xsl:text>&#10;&#10;</xsl:text>
 </xsl:template>
 
@@ -73,4 +70,3 @@
                      magic|match|root-XML|specification|sub-class-of|supported-by"/>
 
 </xsl:stylesheet>
-

@@ -14,7 +14,6 @@
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-
 <!-- ********************************************************************* -->
 <!-- * Import XSL stylesheets. Define output options.                      -->
 <!-- ********************************************************************* -->
@@ -26,13 +25,11 @@
             media-type="text/xml"
             omit-xml-declaration="no"/>
 
-
 <!-- ********************************************************************* -->
 <!-- * Space-stripped and -preserved elements/tokens.                      -->
 <!-- ********************************************************************* -->
 
 <xsl:strip-space elements="*"/>
-
 
 <!-- ********************************************************************* -->
 <!-- xsl:template match (modes) section                                    -->
@@ -84,4 +81,3 @@
 <xsl:template match="application|conflicts|icon|specification|supported-by"/>
 
 </xsl:stylesheet>
-

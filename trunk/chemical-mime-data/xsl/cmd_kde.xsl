@@ -14,7 +14,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
 
-
 <!-- ********************************************************************* -->
 <!-- * Import XSL stylesheets. Define output options.                      -->
 <!-- ********************************************************************* -->
@@ -23,13 +22,11 @@
 <xsl:output method="text"
             encoding="UTF-8"/>
 
-
 <!-- ********************************************************************* -->
 <!-- * Space-stripped and -preserved elements/tokens.                      -->
 <!-- ********************************************************************* -->
 
 <xsl:strip-space elements="*"/>
-
 
 <!-- ********************************************************************* -->
 <!-- * xsl:template match (modes) section                                  -->
@@ -37,7 +34,7 @@
 
 <xsl:template match="/">
 	<xsl:apply-templates select=".//mime-type[@support = 'yes'
-	                             and not(conflicts[@kde = 'yes'])]">
+	                             and child::glob[not(conflicts[attribute::kde = 'yes'])]]">
 		<xsl:sort select="@type"/>
 	</xsl:apply-templates>
 </xsl:template>
@@ -64,7 +61,7 @@
 				<xsl:call-template name="kde.desktop.generic.icon"/>
 			</xsl:if>
       <!-- * Output the pattern in alphabetical order.                     -->
-			<xsl:apply-templates select="glob">
+			<xsl:apply-templates select="glob[not(conflicts[attribute::kde = 'yes'])]">
 				<xsl:sort select="@pattern"/>
 			</xsl:apply-templates>
 			<xsl:text>&#10;</xsl:text>
@@ -113,7 +110,6 @@
 <xsl:template match="acronym|alias|application|expanded-acronym|
                      magic|match|root-XML|specification|sub-class-of|supported-by"/>
 
-
 <!-- ********************************************************************* -->
 <!-- * Named templates for special processing and functions.               -->
 <!-- ********************************************************************* -->
@@ -134,4 +130,3 @@ Type=MimeType&#10;</xsl:text>
 </xsl:template>
 
 </xsl:stylesheet>
-

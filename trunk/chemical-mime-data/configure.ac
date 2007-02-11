@@ -111,7 +111,7 @@ if test "x$RSVG" = "xno" -a "x$CONVERT" = "xno" ; then
 fi
 
 dnl --------------------------------------------------------------------------
-dnl install locations
+dnl installation locations
 dnl --------------------------------------------------------------------------
 
 AC_ARG_WITH(
@@ -216,6 +216,38 @@ AC_ARG_WITH(
 	]
 )
 AC_SUBST([with_kde_mime])
+
+dnl --------------------------------------------------------------------------
+dnl Check target file locations
+dnl --------------------------------------------------------------------------
+
+AC_ARG_VAR(
+	[FDO_SHARED_MIME_INFO_DB],
+	[
+	 The freedesktop.org shared-mime-info database.
+	 @<:@default=$datadir/mime/packages/freedesktop.org.xml@:>@
+	]
+)
+if test -z $FDO_SHARED_MIME_INFO_DB; then
+	AC_SUBST(
+		[FDO_SHARED_MIME_INFO_DB],
+		[${datadir}/mime/packages/freedesktop.org.xml]
+	)
+fi
+
+AC_ARG_VAR(
+	[GNOME_VFS_MIME_DATA_DB],
+	[
+	 The GNOME-VFS mime data database.
+	 @<:@default=$datadir/mime-info/gnome-vfs.mime@:>@
+	]
+)
+if test -z $GNOME_VFS_MIME_DATA_DB; then
+	AC_SUBST(
+		[GNOME_VFS_MIME_DATA_DB],
+		[${datadir}/mime-info/gnome-vfs.mime]
+	)
+fi
 
 dnl --------------------------------------------------------------------------
 dnl necessary checks
@@ -399,6 +431,7 @@ AC_CONFIG_FILES([
 	kde/Makefile
 	po/Makefile.in
 	src/Makefile
+	test/Makefile
 	xsl/Makefile
 	xsl/cmd_entities.dtd
 ])

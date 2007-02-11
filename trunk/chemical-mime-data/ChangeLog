@@ -1,6 +1,60 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-02-11 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am: Added a note for running `make distcheck' with the
+	latest changes.
+
+	* configure.ac (AC_CONFIG_FILES):
+	* Makefile.am (SUBDIRS):
+	* test/Makefile.am:
+	* test/Makefile.incl: Added test directory and related build files.
+
+	* configure.ac: Added a new section containing configure variables to
+	determine the shared-mime-info and gnome-mime-data database files.
+
+	* src/chemical-mime-database.xml.in (mime-type, glob, conflicts):
+	Changed DTD. Moved the conflicts into the glob element, so that
+	conflicts are assigned only to the conflicting global pattern.
+	(chemical/seq-aa-genpept, chemical/x-cerius, chemical/x-chemdraw)
+	(chemical/x-daylight-smiles, chemical/x-genbank,
+	(chemical/x-mdl-sdfile, chemical/x-mopac-input, chemical/x-mif)
+	(chemical/x-pdb, chemical/x-shelx): Fixed XML after changing the DTD
+	and moved the conflicts to it's related global pattern.
+	(chemical/x-daylight-smiles): Removed gnome conflicts to
+	application/smil. Added gnome conflicts to application/x-smil.
+	(chemical/x-macromodel-output): Added gnome conflicts to video/mpeg.
+	(chemical/x-mopac-input): Added fdo conflicts and removed gnome
+	conflicts to audio/x-musepack.
+	(chemical/x-msi-msi): Added general conflicts.
+	(chemical/x-pdb): Added fdo and removed gnome conflicts to
+	application/vnd.palm. Added gnome conflicts to
+	application/x-palm-database.
+
+	* xsl/cmd_common.xsl:
+	* xsl/cmd_freedesktop_org.xsl:
+	* xsl/cmd_gnome-keys.xsl:
+	* xsl/cmd_gnome-mime.xsl:
+	* xsl/cmd_kde.xsl:
+	* xsl/cmd_website.xsl: Removed some empty lines.
+
+	* xsl/cmd_gnome-keys.xsl (chemical-mime):
+	* xsl/cmd_gnome-mime.xsl (chemical-mime, mime-type):
+	* xsl/cmd_kde.xsl (chemical-mime, mime-type): Fixed after changes to
+	source database DTD. Now process all entries which have at least one
+	non-conflicting global-pattern and output only such pattern. This
+	means, we can still have e.g. a KDE .desktop file for e.g.
+	chemical/x-mopac-inputi, as long as at least one non-conflicting
+	global pattern exists.
+
+	* test/Makefile.am:
+	* test/Makefile.incl:
+	* test/compare_pattern.xsl:
+	* test/gnome-vfs-mime.xsl: Added first test against shared-mime-info
+	and gnome-mime-data MIME type databases to check for unrecognized
+	conflicting global pattern.
+
 2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* NEWS (0.1.94): Fixed a wrong item. Support was not added for
