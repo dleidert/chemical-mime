@@ -27,8 +27,9 @@
 <!-- * Parameter declaration section.                                      -->
 <!-- ********************************************************************* -->
 
-<xsl:param name="database.uri"/>
+<xsl:param name="database"/>
 <xsl:param name="database.type"/>
+<xsl:param name="database.uri"/>
 
 <!-- ********************************************************************* -->
 <!-- * xsl:template match (modes) section                                  -->
@@ -38,7 +39,7 @@
   <!-- * Select every chemical MIME type node of the root node to start    -->
   <!-- * the test.                                                         -->
 	<xsl:message>
-TEST: Compare global pattern to <xsl:value-of select="$database.uri"/>
+TEST: Compare global pattern to <xsl:value-of select="$database"/>
 TEST: <xsl:value-of select="$database.type"/> database for unrecognized pattern conflicts.
 /*****************************************************************************
 * STARTING pattern test .....
@@ -190,7 +191,9 @@ TEST: <xsl:value-of select="$database.type"/> database for unrecognized pattern 
 			<xsl:text>".</xsl:text>
 		</xsl:message>
 		<xsl:choose>
-			<xsl:when test="$ext.database.type != $mime.type.conflict">
+			<xsl:when test="$ext.database.type != $mime.type.conflict
+			                and child::alias[attribute::type != $mime.type.conflict]
+			                and child::fdosmi:alias[attribute::type != $mime.type.conflict]">
 				<xsl:message terminate="yes">       ** ERROR **: MUST add this conflict to "<xsl:value-of select="$ext.database.type"/>"!
 *
 * TEST: Pattern test bailed out with an error.

@@ -44,9 +44,9 @@
   <!-- * XML node. Then put it into a real XML structure.                  -->
 	<xsl:variable name="token.content" select="str:tokenize(string(.),'&#10;')"/>
 	
-	<xsl:comment> * This file was created automatically by gnome-mime-vfs.xsl. Do not   </xsl:comment>
-	<xsl:comment> * edit it by hand. It's just for temporary usage during the           </xsl:comment>
-	<xsl:comment> * `make (dist)check' target.                                          </xsl:comment>
+	<xsl:comment> * This file was created automatically by gnome-mime-vfs.xsl. Do not </xsl:comment>
+	<xsl:comment> * edit it by hand. It's just for temporary usage during the         </xsl:comment>
+	<xsl:comment> * `make (dist)check' target.                                        </xsl:comment>
 	<gnome-vfs-mime>
 		<xsl:for-each select="$token.content">
 			<xsl:if test="starts-with(normalize-space(.),'ext:')">
@@ -55,7 +55,7 @@
 					                select="preceding-sibling::token[not(starts-with(normalize-space(),'ext:')
 				                          or starts-with(normalize-space(),'regex:')
 				                          or starts-with(normalize-space(),'regex,'))][1]"/>
-					<xsl:with-param name="node.pattern" select="."/>
+					<xsl:with-param name="node.pattern" select="substring-after(.,'ext:')"/>
 				</xsl:call-template>
 			</xsl:if>
 		</xsl:for-each>
@@ -69,14 +69,14 @@
 <xsl:template name="compare.token.content">
   <!-- * Create an XML file from the plain GNOME-VFS MIME database by      -->
   <!-- * using the nodes created earlier. The structure is nearly similar  -->
-  <!-- * to the shared-mime-info XML database, but misses all the          -->
+  <!-- * to the shared-mime-info XML database, but misses all the data,    -->
   <!-- * that cannot be extracted from a gnome-mime-data database .mime    -->
-  <!-- * file.                                                             -->
+  <!-- * file, because the database does not contain such data.            -->
 	<xsl:param name="node.mime"/>
 	<xsl:param name="node.pattern"/>
 	
 	<mime-type type="{$node.mime}">
-		<xsl:for-each select="str:tokenize(substring-after(string($node.pattern), 'ext:'),' ')">
+		<xsl:for-each select="str:tokenize($node.pattern,' ')">
 			<xsl:sort select="$node.mime"/>
 			<glob pattern="{concat('*.', .)}"/>
 		</xsl:for-each>

@@ -39,7 +39,8 @@ MAINTAINERCLEANFILES = \
 
 # `fakeroot make distcheck \
 # FDO_SHARED_MIME_INFO_DB=/usr/share/mime/packages/freedesktop.org.xml \
-# GNOME_VFS_MIME_DATA_DB=/usr/share/mime-info/gnome-vfs.mime'
+# GNOME_VFS_MIME_DATA_DB=/usr/share/mime-info/gnome-vfs.mime \
+# KDE_MIMELNK_DATA_DB=/usr/share/mimelnk'
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-database --disable-nls
 
 

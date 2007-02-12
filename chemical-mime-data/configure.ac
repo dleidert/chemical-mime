@@ -249,6 +249,27 @@ if test -z $GNOME_VFS_MIME_DATA_DB; then
 	)
 fi
 
+AC_ARG_VAR(
+	[KDE_MIMELNK_DATA_DB],
+	[
+	 The KDE mimelnk mime data database path.
+	 @<:@default=auto or $datadir/mimelnk@:>@
+	]
+)
+if test -z $KDE_MIMELNK_DATA_DB; then
+	if test "x$KDE_CONFIG" != "xno" ; then
+		AC_SUBST(
+			[KDE_MIMELNK_DATA_DB],
+			[`$KDE_CONFIG --install mime`]
+		)		
+	else
+		AC_SUBST(
+			[KDE_MIMELNK_DATA_DB],
+			[${datadir}/mimelnk]
+		)		
+	fi
+fi
+
 dnl --------------------------------------------------------------------------
 dnl necessary checks
 dnl --------------------------------------------------------------------------
