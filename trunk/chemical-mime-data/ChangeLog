@@ -1,6 +1,43 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-02-12 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am: Just completed the comment for `make distcheck'.
+
+	* configure.ac:
+	* test/Makefile.am (EXTRA_DIST, MOSTLYCLEANFILES, check-local):
+	* test/Makefile.incl:
+	* test/kde-mimelnk.xsl: Added a new stylesheet, related targets
+	(check-pattern-kde-mimelnk-db and requirements) and a configure
+	variable (KDE_MIMELNK_DATA_DB) to check our source database against
+	the KDE 3 mimelnk system.
+
+	* test/Makefile.am (check-local, check-fdo-smi-db)
+	(check-gnome-vfs-db): Reorganized the check sub-targets a bit. All
+	targets related to pattern tests are now suffixed by `check-pattern'.
+
+	* test/Makefile.incl (GNOME_VFS_MIME_XML_CUSTOM): Moved the namespace
+	declaration to the root node.
+
+	* test/compare_pattern.xsl: Added a new parameter, that holds the
+	original database name/location and output this parameter instead of
+	the XML database URI at test beginning.
+	(match.mime.type.glob): Make sure, that an existing conflicts tag does
+	not contain the alias name of a found conflicts, before we bail out
+	with an error.
+
+	* test/gnome-vfs-mime.xsl (chemical-mime, compare.token.content):
+	Fixed the comments. Moved the string split into the matching template.
+
+	* src/chemical-mime-database.xml.in (conflicts): Added a new attribute
+	to mention internal conflicts.
+	(chemical/x-chemdraw): Removed kde conflicts to application/x-chm.
+	Added kde conflicts to application/chm.
+	(chemical/x-macromodel-output, chemical/x-mopac-input): Added internal
+	conflicts.
+	(chemical/x-msi-car): Added kde conflicts to application/x-arc.
+
 2007-02-11 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* test/compare_pattern.xsl: Improved output layout.

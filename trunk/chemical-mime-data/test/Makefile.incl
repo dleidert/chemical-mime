@@ -6,8 +6,29 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
+MOSTLYCLEANFILES += $(KDE_MIMELNK_XML_CUSTOM)
+
+
+KDE_MIMELNK_XML_CUSTOM = tmp_kde-mimelnk-mime.xml
+
+
 GNOME_VFS_MIME_XML_CUSTOM = \
-	<gnome-vfs-mime> \
-		<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="$(GNOME_VFS_MIME_DATA_DB)" parse="text" encoding="utf-8"/> \
+	<gnome-vfs-mime xmlns:xi="http://www.w3.org/2003/XInclude" > \
+		<xi:include href="$(GNOME_VFS_MIME_DATA_DB)" parse="text" encoding="utf-8"/> \
 	</gnome-vfs-mime>
+
+
+KDE_MIMELNK_FILES = \
+	`find $(KDE_MIMELNK_DATA_DB) -mindepth 1 -type d ! -name chemical -exec find "{}" -name "*.desktop" ";"`
+
+$(KDE_MIMELNK_XML_CUSTOM): $(KDE_MIMELNK_DATA_DB)
+	@echo "<kde-mimelnk xmlns:xi=\"http://www.w3.org/2003/XInclude\">" > $@
+	@for i in $(KDE_MIMELNK_FILES); do \
+		echo -e "  <desktop-entry>\n\
+    <xi:include href=\"$$i\" parse=\"text\">\n\
+      <xi:fallback/>\n\
+    </xi:include>\n\
+  </desktop-entry>" >> $@; \
+	done
+	@echo "</kde-mimelnk>" >> $@
 
