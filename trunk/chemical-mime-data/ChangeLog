@@ -1,6 +1,22 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am: Added check-pattern to allow pattern-check only run.
+	(install-sfnet): Improved (easier syntax).
+
+	* src/chemical-mime-database.xml.in: Added initial stuff for a
+	chemical/x-mdl-xdfile MIME type.
+	(chemical/x-cml): Fixed sub-class-of value.
+	(chemical/x-cxf): Added *.cef file extension.
+	(chemical/x-mdl-molfile, chemical/x-mdl-rdfile)
+	(chemical/x-mdl-rxnfile, chemical/x-mdl-sdfile): Added specification
+	URL and some magic based on this specification.
+
+	* test/kde-mimelnk.xsl: Fixed top-level output comment.
+	(desktop-entry): Added template description.
+
 2007-02-12 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* .cvsignore: Added. Shall prevent cvs from complaing about

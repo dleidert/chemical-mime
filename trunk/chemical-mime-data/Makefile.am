@@ -48,6 +48,9 @@ pkgconfigdir = $(datadir)/pkgconfig
 pkgconfig_DATA = chemical-mime-data.pc
 
 
+check-pattern:
+	@$(MAKE) -C test check-pattern || exit 1
+
 install-sfnet:
-	@cd html_docs && $(MAKE) install-sfnet || exit 1
+	@$(MAKE) -C html_docs install-sfnet || exit 1
 

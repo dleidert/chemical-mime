@@ -378,7 +378,7 @@
 		<glob pattern="*.cml"/>
 		<root-XML namespaceURI="http://www.xml-cml.org/schema" localName="cml"/>
 		<root-XML namespaceURI="http://www.xml-cml.org/schema/cml2/core" localName="cml"/>
-		<sub-class-of type="text/xml"/>
+		<sub-class-of type="application/xml"/>
 		<alias type="chemical/cml"/>
 		<magic priority="50">
 			<match type="string" value="&lt;!DOCTYPE cml" offset="0:256"/>
@@ -453,7 +453,7 @@
 		<_comment>Chemical eXchange Format</_comment>
 		<acronym>CXF</acronym>
 		<expanded-acronym>Chemical eXchange Format</expanded-acronym>
-		<!-- <glob pattern="*.cef"/> -->
+		<glob pattern="*.cef"/>
 		<glob pattern="*.cxf"/>
 	</mime-type>
 
@@ -871,7 +871,8 @@
 			<application name="jmol"/>
 			<application name="xdrawchem"/>
 		</supported-by>
-		<specification url="http://www.mdli.com/"/>
+		<specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		               title="MDL CTFile Formats - Chapter 4: Molfiles"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mdl-rdfile" support="yes" added="0.1.91">
@@ -880,10 +881,17 @@
 		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.rd"/>
 		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<!-- the so-called RDfile Header -->
+			<match type="string" value="$RDFILE 1\n" offset="0">
+				<match type="string" value="$DATM" offset="10"/>
+			</match>
+		</magic>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 		</supported-by>
-		<specification url="http://www.mdli.com/"/>
+		<specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		               title="MDL CTFile Formats - Chapter 8: RDfiles"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mdl-rxnfile" support="yes" added="0.1.91">
@@ -894,11 +902,17 @@
 		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.rxn"/>
 		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<!-- the so-called RXNfile header block -->
+			<match type="string" value="$RXN\n" offset="0"/>
+			<match type="string" value="$RXN V3000\n" offset="0"/>
+		</magic>
 		<supported-by>
 			<application name="csbr (cactvs)"/>
 			<application name="xdrawchem"/>
 		</supported-by>
-		<specification url="http://www.mdli.com/"/>
+		<specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		               title="MDL CTFile Formats - Chapter 7: RXNfiles"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mdl-sdfile" support="yes" added="0.1.91">
@@ -915,7 +929,8 @@
 			<application name="gchempaint"/>
 			<application name="xdrawchem"/>
 		</supported-by>
-		<specification url="http://www.mdli.com/"/>
+		<specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		               title="MDL CTFile Formats - Chapter 6: SDfiles"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mdl-tgf" support="yes" added="0.1.91">
@@ -925,6 +940,22 @@
 		<glob pattern="*.tgf"/>
 		<sub-class-of type="text/plain"/>
 		<specification url="http://www.mdli.com/"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-mdl-xdfile" support="no">
+		<_comment>MDL XML Data Format</_comment>
+		<acronym>MDL</acronym>
+		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
+		<acronym>XML</acronym>
+		<expanded-acronym>eXtensible Markup Language</expanded-acronym>
+		<glob pattern="*.xd"/>
+		<root-XML namespaceURI="http://www.mdl.com/XDfile/NS" localName="XDfile"/>
+		<sub-class-of type="application/xml"/>
+		<magic priority="50">
+			<match type="string" value="&lt;XDfile" offset="0:64"/>
+		</magic>
+		<specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		               title="MDL CTFile Formats - Chapter 9: XDfiles"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mif" support="no">
