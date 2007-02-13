@@ -43,7 +43,7 @@
   <!-- * make it possible to select the MIME-Type and every single         -->
   <!-- * extension pattern of the plain KDE mimelnk .desktop files as      -->
   <!-- * single XML node. Then put it into a real XML structure.           -->
-	<xsl:comment> * This file was created automatically by gnome-mime-vfs.xsl. Do not </xsl:comment>
+	<xsl:comment> * This file was created automatically by kde-mimelnk.xsl. Do not    </xsl:comment>
 	<xsl:comment> * edit it by hand. It's just for temporary usage during the         </xsl:comment>
 	<xsl:comment> * `make (dist)check' target.                                        </xsl:comment>
 	<kde-mimelnk>
@@ -52,6 +52,10 @@
 </xsl:template>
 
 <xsl:template match="desktop-entry">
+  <!-- * Put the content of the faked XML structure into a node set to     -->
+  <!-- * make it possible to select the MIME-Type and every single         -->
+  <!-- * extension pattern of the plain KDE mimelnk .desktop files as      -->
+  <!-- * single XML node. Then put it into a real XML structure.           -->
 	<xsl:variable name="token.content" select="str:tokenize(string(.),'&#10;')"/>
 	
 	<xsl:for-each select="$token.content">
