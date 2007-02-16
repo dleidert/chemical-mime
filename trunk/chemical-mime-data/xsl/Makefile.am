@@ -8,6 +8,7 @@
 
 EXTRA_DIST = \
 	cmd_common.xsl \
+	cmd_file-magic.xsl \
 	cmd_freedesktop_org.xsl \
 	cmd_gnome-keys.xsl \
 	cmd_gnome-mime.xsl \

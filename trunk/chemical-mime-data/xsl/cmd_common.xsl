@@ -22,18 +22,18 @@
 <!-- * Named templates for common functions.                               -->
 <!-- ********************************************************************* -->
 
+<!-- * A created text file shall contain a header with information about   -->
+<!-- * the license and the database version.                               -->
 <xsl:template name="common.header.text">
-  <!-- * A created text file shall contain a header with information about -->
-  <!-- * the license and the database version.                             -->
 	<xsl:text>#  This file is part of the chemical-mime-data package.
 #  It is distributed under the GNU Lesser General Public License version 2.1.
 #
 #  Database: </xsl:text><xsl:value-of select="chemical-mime/@id"/><xsl:text>&#10;&#10;&#10;</xsl:text>
 </xsl:template>
 
+<!-- * A created xml file shall contain a header with information about    -->
+<!-- * the license and the database version.                               -->
 <xsl:template name="common.header.xml">
-  <!-- * A created xml file shall contain a header with information about  -->
-  <!-- * the license and the database version.                             -->
 	<xsl:comment>
 		<xsl:text>
   This file is part of the chemical-mime-data package.
@@ -46,18 +46,17 @@
 	<xsl:text>&#10;&#10;</xsl:text>
 </xsl:template>
 
+<!-- * This template output the given content into a file with the given   -->
+<!-- * filename, encoding and media type. With this template we can write  -->
+<!-- * several output files from one input file. Therefor we need several  -->
+<!-- * extensions. The default is EXSLT, which is implemented in           -->
+<!-- * libxslt1.1 (xsltproc). The other are nice to have, but unused atm.  -->
 <xsl:template name="common.write.chunk">
-  <!-- * This template output the given content into a file with the given -->
-  <!-- * filename, encoding and media type. With this template we can      -->
-  <!-- * write several output files from one input file. Therefor we need  -->
-  <!-- * several extensions. The default is EXSLT, which is implemented in -->
-  <!-- * linxslt1.1 (xsltproc). The other are nice to have, but unused     -->
-  <!-- * atm.                                                              -->
-	<xsl:param name="filename" select="''"/>
-	<xsl:param name="method" select="''"/>
-	<xsl:param name="indent" select="''"/>
-	<xsl:param name="omit-xml-declaration" select="''"/>
-	<xsl:param name="media-type" select="''"/>
+	<xsl:param name="filename"/>
+	<xsl:param name="method"/>
+	<xsl:param name="indent" select="'yes'"/>
+	<xsl:param name="omit-xml-declaration" select="'yes'"/>
+	<xsl:param name="media-type"/>
 	<xsl:param name="doctype-public" select="''"/>
 	<xsl:param name="doctype-system" select="''"/>
 	<xsl:param name="content"/>
@@ -134,13 +133,74 @@
 			</xsl:message>
 		</xsl:otherwise>
 	</xsl:choose>
-	
   <!-- * Be verbose, which file is output.                                 -->
 	<xsl:message>
 		<xsl:text>Writing </xsl:text>
 		<xsl:value-of select="$filename"/>
 		<xsl:text>.</xsl:text>
 	</xsl:message>
+</xsl:template>
+
+<!-- * This template was inspired by / adapted from the DocBook-XSL        -->
+<!-- * project (http://docbook.sf.net). It get's a string content and a    -->
+<!-- * nodeset of strings to substitute and their substitution strings. If -->
+<!-- * it finds a match, then it calls a second template, that replaces    -->
+<!-- * the match with the new string.                                      -->
+<xsl:template name="string.subst.apply.map">
+	<xsl:param name="self.content"/>
+	<xsl:param name="map.contents"/>
+	
+	<xsl:variable name="replaced_text">
+		<xsl:call-template name="string.subst">
+			<xsl:with-param name="string" select="$self.content"/>
+			<xsl:with-param name="target" select="$map.contents[1]/@oldstring"/>
+			<xsl:with-param name="replacement" select="$map.contents[1]/@newstring"/>
+		</xsl:call-template>
+	</xsl:variable>
+	<xsl:choose>
+		<xsl:when test="$map.contents[2]">
+			<xsl:call-template name="string.subst.apply.map">
+				<xsl:with-param name="self.content" select="$replaced_text"/>
+				<xsl:with-param name="map.contents" select="$map.contents[position() &gt; 1]"/>
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="$replaced_text"/>
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:template>
+
+<!-- * This template was inspired by / adapted from the DocBook-XSL        -->
+<!-- * project (http://docbook.sf.net). It get's a string, the target to   -->
+<!-- * replace and its replacement. Then it checks, if the string          -->
+<!-- * contains the target. If yes, it replaces the target with its        -->
+<!-- * replacement and checks the rest of the string by calling the        -->
+<!-- * template again with the rest of the stringas parameter.             -->
+<xsl:template name="string.subst">
+	<xsl:param name="string"/>
+	<xsl:param name="target"/>
+	<xsl:param name="replacement"/>
+
+	<xsl:choose>
+    <!-- * Check, if the string contains the target to replace ...         -->
+		<xsl:when test="contains($string, $target)">
+			<xsl:variable name="rest">
+        <!-- * Call the template again, with the rest of the string found  -->
+        <!-- * after the match. This recursively replaces all targets.     -->
+				<xsl:call-template name="string.subst">
+					<xsl:with-param name="string" select="substring-after($string, $target)"/>
+					<xsl:with-param name="target" select="$target"/>
+					<xsl:with-param name="replacement" select="$replacement"/>
+				</xsl:call-template>
+			</xsl:variable>
+      <!-- * Now concat the results.                                       -->
+			<xsl:value-of select="concat(substring-before($string, $target), $replacement, $rest)"/>
+		</xsl:when>
+    <!-- * ... otherwise simply output the string.                         -->
+		<xsl:otherwise>
+			<xsl:value-of select="$string"/>
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:template>
 
 </xsl:stylesheet>

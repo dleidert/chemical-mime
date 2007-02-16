@@ -443,6 +443,7 @@ dnl --------------------------------------------------------------------------
 AC_CONFIG_FILES([
 	chemical-mime-data.pc
 	Makefile
+	file/Makefile
 	freedesktop.org/Makefile
 	gnome/Makefile
 	html_docs/Makefile

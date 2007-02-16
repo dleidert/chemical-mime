@@ -49,8 +49,7 @@
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'chemical-mime-data.html'"/>
 		<xsl:with-param name="method" select="'xml'"/>
-		<xsl:with-param name="indent" select="'yes'"/>
-		<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
+		<xsl:with-param name="media-type" select="'text/xml'"/>
 		<xsl:with-param name="doctype-public" select="'-//W3C//DTD XHTML 1.0 Strict//EN'"/>
 		<xsl:with-param name="doctype-system" select="'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'"/>
 		<xsl:with-param name="content">
@@ -85,7 +84,9 @@
 </xsl:template>
 
 <xsl:template match="glob">
-	<code><xsl:value-of select="@pattern"/></code>
+	<code class="{local-name(.)}">
+		<xsl:value-of select="@pattern"/>
+	</code>
 	<xsl:if test="following-sibling::glob">
 		<xsl:text>, </xsl:text>
 	</xsl:if>
@@ -97,10 +98,10 @@
 		<xsl:text>    </xsl:text>
 	</xsl:for-each>
 	<xsl:text>&lt;</xsl:text>
-	<xsl:value-of select="local-name()"/>
+	<xsl:value-of select="$local.name"/>
 	<xsl:for-each select="@*">
 		<xsl:text> </xsl:text>
-		<xsl:value-of select="local-name()"/>
+		<xsl:value-of select="$local.name"/>
 		<xsl:text>="</xsl:text>
 		<xsl:value-of select="." />
 		<xsl:text>"</xsl:text>
@@ -114,7 +115,7 @@
 				<xsl:text>    </xsl:text>
 			</xsl:for-each>
 			<xsl:text>&lt;/</xsl:text>
-			<xsl:value-of select="local-name()"/>
+			<xsl:value-of select="$local.name"/>
 			<xsl:text>&gt;</xsl:text>
 			<br/>
 		</xsl:when>
@@ -126,25 +127,15 @@
 </xsl:template>
 
 <xsl:template match="mime-type">
+	<xsl:variable name="count.rowspan" select="number(count(child::magic[1])
+	                                           + count(child::root-XML[1])
+	                                           + count(child::specification[1])
+	                                           + 1)"/>
 	<tr class="{local-name(.)}">
 		<xsl:choose>
-			<xsl:when test="child::magic and child::root-XML and child::specification">
+			<xsl:when test="$count.rowspan &gt; 1">
 				<xsl:call-template name="mimetype.output">
-					<xsl:with-param name="rowspan" select="4"/>
-				</xsl:call-template>
-			</xsl:when>
-			<xsl:when test="(child::magic and child::root-XML and not(child::specification))
-			                or (child::magic and not(child::root-XML) and child::specification)
-			                or (not(child::magic) and child::root-XML and child::specification)">
-				<xsl:call-template name="mimetype.output">
-					<xsl:with-param name="rowspan" select="3"/>
-				</xsl:call-template>
-			</xsl:when>
-			<xsl:when test="(child::magic and not(child::root-XML) and not(child::specification))
-			                or (not(child::magic) and not(child::root-XML) and child::specification)
-			                or (not(child::magic) and child::root-XML and not(child::specification))">
-				<xsl:call-template name="mimetype.output">
-					<xsl:with-param name="rowspan" select="2"/>
+					<xsl:with-param name="rowspan" select="$count.rowspan"/>
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:otherwise>
@@ -312,10 +303,10 @@
 		<th class="glob">Filename extension</th>
 	</tr>
 	<tr>
-		<th class="root-XML" colspan="2">Magic Pattern</th>
+		<th class="magic" colspan="2">Magic Pattern</th>
 	</tr>
 	<tr>
-		<th class="comment" colspan="2">Root XML/Namespace</th>
+		<th class="root-XML" colspan="2">Root XML/Namespace</th>
 	</tr>
 	<tr>
 		<th class="specification" colspan="2">Specification</th>

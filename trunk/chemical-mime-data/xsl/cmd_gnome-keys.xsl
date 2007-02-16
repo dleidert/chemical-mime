@@ -38,11 +38,7 @@
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'chemical-mime-data.keys'"/>
 		<xsl:with-param name="method" select="'text'"/>
-		<xsl:with-param name="indent" select="'yes'"/>
-		<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
 		<xsl:with-param name="media-type" select="'text/plain'"/>
-		<xsl:with-param name="doctype-public" select="''"/>
-		<xsl:with-param name="doctype-system" select="''"/>
 		<xsl:with-param name="content">
 			<xsl:call-template name="common.header.text"/>
 			<xsl:apply-templates select=".//mime-type[@support = 'yes'

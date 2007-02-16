@@ -46,11 +46,7 @@
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="concat(substring-after(@type,'/'),'.desktop')"/>
 		<xsl:with-param name="method" select="'text'"/>
-		<xsl:with-param name="indent" select="'yes'"/>
-		<xsl:with-param name="omit-xml-declaration" select="'yes'"/>
 		<xsl:with-param name="media-type" select="'text/plain'"/>
-		<xsl:with-param name="doctype-public" select="''"/>
-		<xsl:with-param name="doctype-system" select="''"/>
 		<xsl:with-param name="content">
 			<xsl:call-template name="kde.desktop.header"/>
 			<xsl:text>MimeType=</xsl:text>

@@ -41,11 +41,8 @@
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'chemical-mime-data.xml'"/>
 		<xsl:with-param name="method" select="'xml'"/>
-		<xsl:with-param name="indent" select="'yes'"/>
 		<xsl:with-param name="omit-xml-declaration" select="'no'"/>
 		<xsl:with-param name="media-type" select="'text/xml'"/>
-		<xsl:with-param name="doctype-public" select="''"/>
-		<xsl:with-param name="doctype-system" select="''"/>
 		<xsl:with-param name="content">
 			<xsl:call-template name="common.header.xml"/>
 			<xsl:element name="mime-info" namespace="http://www.freedesktop.org/standards/shared-mime-info">
