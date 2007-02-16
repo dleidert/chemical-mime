@@ -32,9 +32,9 @@
 <!-- * xsl:template match (modes) section                                  -->
 <!-- ********************************************************************* -->
 
+<!-- * Output content to 'chemical-mime-data.keys'. Then process the whole -->
+<!-- * file.                                                               -->
 <xsl:template match="/">
-  <!-- * Output content to 'chemical-mime-data.keys'.                      -->
-  <!-- * Then process the whole file.                                      -->
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'chemical-mime-data.keys'"/>
 		<xsl:with-param name="method" select="'text'"/>
@@ -91,10 +91,10 @@
 <!-- * Named templates for special processing and functions.               -->
 <!-- ********************************************************************* -->
 
+<!-- * Just output the completely processed and (maybe) extended output    -->
+<!-- * without escaping the content. This saves added acronym templates    -->
+<!-- * tags.                                                               -->
 <xsl:template name="gnome.keys.generic.icon">
-  <!-- * Just output the completely processed and (maybe) extended output  -->
-  <!-- * without escaping the content. This saves added acronym templates  -->
-  <!-- * tags.                                                             -->
 	<xsl:text>	icon_filename: gnome-mime-chemical.png&#10;</xsl:text>
 </xsl:template>
 

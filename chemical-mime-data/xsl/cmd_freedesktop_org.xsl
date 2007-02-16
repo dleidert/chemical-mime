@@ -35,9 +35,9 @@
 <!-- xsl:template match (modes) section                                    -->
 <!-- ********************************************************************* -->
 
+<!-- * Output content to 'chemical-mime-data.xml'. Then process the whole  -->
+<!-- * file.                                                               -->
 <xsl:template match="/">
-  <!-- * Output content to 'chemical-mime-data.xml'.                       -->
-  <!-- * Then process the whole file.                                      -->
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'chemical-mime-data.xml'"/>
 		<xsl:with-param name="method" select="'xml'"/>
@@ -56,11 +56,11 @@
 
 <xsl:template match="mime-type">
 	<xsl:comment>
-		<xsl:text>&#10;  MIME-Type: </xsl:text>
+		<xsl:text> * MIME-Type: </xsl:text>
 		<xsl:value-of select="@type"/>
-		<xsl:text>&#10;  supported since: chemical-mime-data v</xsl:text>
+		<xsl:text> (supported since version </xsl:text>
 		<xsl:value-of select="@added"/>
-		<xsl:text>&#10;</xsl:text>
+		<xsl:text>) </xsl:text>
 	</xsl:comment>
 	<xsl:element name="{local-name(.)}" namespace="http://www.freedesktop.org/standards/shared-mime-info">
 		<xsl:copy-of select="@type"/>

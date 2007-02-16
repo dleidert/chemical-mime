@@ -1,6 +1,27 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_freedesktop_org.xsl:
+	* xsl/cmd_gnome-keys.xsl:
+	* xsl/cmd_gnome-mime.xsl:
+	* xsl/cmd_kde.xsl: Moved the general template documentation outside
+	the template. 
+
+	* xsl/cmd_freedesktop_org.xsl (mime-type): Use less space.
+
+	* xsl/cmd_kde.xsl: Added a template to create X-KDE-IsAlso and
+	X-KDE-Text stuff.
+	(chemical-mime, mime-type): Now that a KMimeMagic database can be
+	produced, process all MIME types that have at least magic pattern
+	(independent from the conflicts) or fall back to rpocess onyl the
+	global pattern, that do not conflict.
+	(glob): Fixed XPath expression.
+
+	* xsl/cmd_website.xsl (common.write.chunk): Do not omit the XML
+	declaration.
+
 2007-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* .cvsignore:
