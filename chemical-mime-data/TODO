@@ -12,8 +12,8 @@ TODO
 
 * Later branches
 
-  + Add stylesheet templates to build the related extension for GNOME and KDE
-    magic files.
+  + Add stylesheet templates to build the related extension for GNOME
+    magic file.
     
     byte     = byte
     string   = string
@@ -25,10 +25,8 @@ TODO
     little32 = lelong
     
     support for date, bedate and ledate necessary?
-    see /etc/gnome-vfs-mime-magic (GNOME), /usr/share/mimelnk/magic (KDE),
-    /usr/share/file/magic.mime (file(1), magic(5),
-    http://marc.10east.com/?l=apache-docs&m=107124744902978&q=p3
-
+    see /etc/gnome-vfs-mime-magic (GNOME)
+    
   + Fix gnome-mime-data support: see
     http://www.gnome.org/learn/admin-guide/latest/ch05s02.html
     http://web.archive.org/web/20041024185231/http://www.gnome.org/learn/admin-guide/latest/ch05s02.html

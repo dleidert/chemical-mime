@@ -1,6 +1,49 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* .cvsignore:
+	* Makefile.am (MAINTAINERCLEANFILES): Do not longer remove archives,
+	but ignore them.
+
+	* TODO:
+	* xsl/Makefile.am (EXTRA_DIST):
+	* xsl/cmd_common.xsl:
+	* xsl/cmd_file-magic.xsl: Added a new stylesheet and templates to
+	process the database and output a MIME magic pattern database for
+	magic.mime/file(1) and KMimeMagic/KDE (GNOME support is missing here).
+
+	* Makefile.am (SUBDIRS):
+	* configure.ac (AC_CONFIG_FILES):
+	* file/Makefile.am: Initially added to create file(1)'s mime.magic
+	database addition.
+
+	* kde/Makefile.am (CLEANFILES, XSLTPROC_FLAGS): Added targets to
+	create and install the KMimeMagic database addition.
+
+	* src/chemical-mime-database.xml.in: Improved documentation of the
+	DTD.
+	(chemical/x-mmcif): Fixed specification URL.
+
+	* src/Makefile.am: Really small cosmetic change.
+
+	* xsl/cmd_common.xsl: Improved template documentation.
+
+	* xsl/cmd_common.xsl (common.write.chunk):
+	* xsl/cmd_freedesktop_org.xsl (common.write.chunk):
+	* xsl/cmd_gnome-keys.xsl (common.write.chunk):
+	* xsl/cmd_gnome-mime.xsl (common.write.chunk):
+	* xsl/cmd_kde.xsl (common.write.chunk):
+	* xsl/cmd_website.xsl (common.write.chunk): Removed initial and
+	overhanded useless parameters.
+
+	* xsl/cmd_website.xsl (glob): Added class value.
+	(magic, match, root-XML): Make use of the $local.name value instead
+	calling local-name() every time.
+	(mime-type): Improved rowspan value detection.
+	(html.content.table.mime.head): Fixed class values.
+	
 2007-02-13 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am: Added check-pattern to allow pattern-check only run.

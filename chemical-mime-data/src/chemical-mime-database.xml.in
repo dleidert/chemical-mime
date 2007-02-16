@@ -13,99 +13,100 @@
 -->
 
 <!DOCTYPE chemical-mime [
-	<!-- Root database element. -->
-	<!ELEMENT chemical-mime (mime-type+)>
-	<!ATTLIST chemical-mime
-	          id CDATA #REQUIRED>
 
-	<!-- The MIME type (only chemical/*). -->
-	<!ELEMENT mime-type (comment+, (acronym, expanded-acronym)*, glob+, root-XML*, sub-class-of*, alias*, magic?, icon?, supported-by?, specification*)>
-	<!ATTLIST mime-type
-	          type CDATA #REQUIRED
-	          support (yes|no) "no"
-	          added CDATA #IMPLIED>
+  <!-- * Root database element.                                            -->
+  <!ELEMENT chemical-mime (mime-type+)>
+  <!ATTLIST chemical-mime id CDATA #REQUIRED>
 
-	<!-- Comment describing a document with the respective MIME type. -->
-	<!ELEMENT comment (#PCDATA)>
-	<!ATTLIST comment
-	          xml:lang CDATA #IMPLIED>
+    <!-- * The MIME type (only chemical/*).                                -->
+    <!ELEMENT mime-type (comment+, (acronym, expanded-acronym)*, glob+, root-XML*, sub-class-of*, alias*, magic?, icon?, supported-by?, specification*)>
+    <!ATTLIST mime-type type CDATA #REQUIRED
+                        support (yes|no) "no"
+                        added CDATA #IMPLIED>
 
-	<!-- Comment describing the respective unexpanded MIME type acronym. -->
-	<!ELEMENT acronym (#PCDATA)>
-	<!ATTLIST acronym
-	          xml:lang CDATA #IMPLIED>
+    <!-- * Comment describing a document with the respective MIME type.    -->
+    <!ELEMENT comment (#PCDATA)>
+    <!ATTLIST comment xml:lang CDATA #IMPLIED>
 
-	<!-- Comment describing the respective unexpanded MIME type acronym. -->
-	<!ELEMENT expanded-acronym (#PCDATA)>
-	<!ATTLIST expanded-acronym
-	          xml:lang CDATA #IMPLIED>
+    <!-- * Comment describing the respective unexpanded MIME type acronym. -->
+    <!ELEMENT acronym (#PCDATA)>
+    <!ATTLIST acronym xml:lang CDATA #IMPLIED>
 
-	<!-- File pattern of the MIME type. -->
-	<!ELEMENT glob (conflicts)*>
-	<!ATTLIST glob
-            pattern CDATA #REQUIRED>
+    <!-- * Comment describing the respective expanded MIME type acronym.   -->
+    <!ELEMENT expanded-acronym (#PCDATA)>
+    <!ATTLIST expanded-acronym
+              xml:lang CDATA #IMPLIED>
 
-	<!-- Conflicting MIME-type(s). Use the @gnome and/or @kde attributes to 
-	     determine if we will have problems with KDE 3.x, GNOME <= 2.4 or both. -->
-	<!ELEMENT conflicts EMPTY>
-	<!ATTLIST conflicts
-	          type CDATA #REQUIRED
-	          cmd (yes|no) "no"
-	          fdo (yes|no) "no"
-	          gnome (yes|no) "no"
-	          kde (yes|no) "no">
+    <!-- * File pattern of the MIME type.                                  -->
+    <!ELEMENT glob (conflicts)*>
+    <!ATTLIST glob pattern CDATA #REQUIRED>
 
-	<!-- The root XML element and the namespace. -->
-	<!ELEMENT root-XML EMPTY>
-	<!ATTLIST root-XML
-	          namespaceURI CDATA #REQUIRED
-	          localName CDATA #REQUIRED>
+      <!-- * Conflicting MIME-type(s). Use the @gnome and/or @kde          -->
+      <!-- * attributes to determine if we will have problems with         -->
+      <!-- * KDE 3.x, GNOME <= 2.4 or both.                                -->
+      <!ELEMENT conflicts EMPTY>
+      <!ATTLIST conflicts type CDATA #REQUIRED
+                          cmd (yes|no) "no"
+                          fdo (yes|no) "no"
+                          gnome (yes|no) "no"
+                          kde (yes|no) "no">
 
-	<!-- The main class the MIME type belongs to. Mainly text/plain or text/xml. -->
-	<!ELEMENT sub-class-of EMPTY>
-	<!ATTLIST sub-class-of
-	          type CDATA #REQUIRED>
+    <!-- * The root XML element and the namespace.                         -->
+    <!ELEMENT root-XML EMPTY>
+    <!ATTLIST root-XML namespaceURI CDATA #REQUIRED
+                       localName CDATA #REQUIRED>
 
-	<!-- The alias of the specified MIME type if any exists. -->
-	<!ELEMENT alias EMPTY>
-	<!ATTLIST alias
-	          type CDATA #REQUIRED>
+    <!-- * The main class the MIME type belongs to. Mainly text/plain or   -->
+    <!-- * text/xml.                                                       -->
+    <!ELEMENT sub-class-of EMPTY>
+    <!ATTLIST sub-class-of type CDATA #REQUIRED>
 
-	<!-- The magic pattern. Refer to the shared-mime-info database specification.
-	     Search http://sourceforge.net/docman/?group_id=159685 for the link. -->
-	<!ELEMENT magic (match)+>
-	<!ATTLIST magic
-	          priority CDATA #IMPLIED>
-	<!ELEMENT match (match)*>
-	<!ATTLIST match
-	          offset CDATA #REQUIRED
-	          type (string|big16|big32|little16|little32|host16|host32|byte) #REQUIRED
-	          value CDATA #REQUIRED
-	          mask CDATA #IMPLIED>
+    <!-- * The alias of the specified MIME type if any exists.             -->
+    <!ELEMENT alias EMPTY>
+    <!ATTLIST alias
+              type CDATA #REQUIRED>
 
-	<!-- Icon for GNOME 2.4 and/or KDE 3.x system. Use the @gnome and/or @kde
-	     attributes to determine the icon especially for KDE and/or GNOME. -->
-	<!ELEMENT icon EMPTY>
-	<!ATTLIST icon
-	          gnome CDATA #IMPLIED
-	          kde CDATA #IMPLIED>
+    <!-- * The magic pattern root element. Refer to the shared-mime-info   -->
+    <!-- * database specification. Search                                  -->
+    <!-- * http://sourceforge.net/docman/?group_id=159685 for the link.    -->
+    <!ELEMENT magic (match)+>
+    <!ATTLIST magic priority CDATA #IMPLIED>
 
-	<!-- List of applications supporting the respective MIME type.
-	     Use the @read and @write attributes to determine, if the application
-	     reads or writes or reads&writes the specified MIME type -->
-	<!ELEMENT supported-by (application+)>
-	<!ELEMENT application EMPTY>
-	<!ATTLIST application
-	          name CDATA #REQUIRED
-	          read CDATA #IMPLIED
-	          write CDATA #IMPLIED
-	          package CDATA #IMPLIED>
+      <!-- * The magic pattern rules. Refer to the shared-mime-info        -->
+      <!-- *  database specification. Search                               -->
+      <!-- * http://sourceforge.net/docman/?group_id=159685 for the link.  -->
+      <!ELEMENT match (match)*>
+      <!ATTLIST match offset CDATA #REQUIRED
+                      type (string|big16|big32|little16|little32|host16|host32|byte) #REQUIRED
+                      value CDATA #REQUIRED
+                      mask CDATA #IMPLIED>
 
-	<!-- URL where to find the MIME/file type specification or explanation. -->
-	<!ELEMENT specification EMPTY>
-	<!ATTLIST specification
-	          url CDATA #REQUIRED
-	          title CDATA #IMPLIED>
+    <!-- * Icon for GNOME 2.4 and/or KDE 3.x system. Use the @gnome and/or -->
+    <!-- * @kde attributes to determine the icon especially for KDE and/or -->
+    <!-- * GNOME.                                                          -->
+    <!ELEMENT icon EMPTY>
+    <!ATTLIST icon gnome CDATA #IMPLIED
+                   kde CDATA #IMPLIED>
+
+    <!-- * Wrapper element for a list of applications supporting the       -->
+    <!-- * respective MIME type.                                           -->
+    <!ELEMENT supported-by (application+)>
+
+      <!-- * Application supporting the respective MIME type. Use the      -->
+      <!-- * @read and @write attributes to determine, if the application  -->
+      <!-- * reads and/or writes the specified MIME type.                  -->
+      <!ELEMENT application EMPTY>
+      <!ATTLIST application name CDATA #REQUIRED
+                            read CDATA #IMPLIED
+                            write CDATA #IMPLIED
+                            package CDATA #IMPLIED>
+
+    <!-- * URL where to find the MIME/file type specification or           -->
+    <!-- * explanation.                                                    -->
+    <!ELEMENT specification EMPTY>
+    <!ATTLIST specification url CDATA #REQUIRED
+                            title CDATA #IMPLIED>
+
 ]>
 
 <chemical-mime id="'$Id$'">
@@ -978,7 +979,7 @@
 		<supported-by>
 			<application name="jmol"/>
 		</supported-by>
-		<specification url="http://ndbserver.rutgers.edu/NDB/mmcif"/>
+		<specification url="http://mmcif.pdb.org/"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mol2" support="yes" added="0.1.91">
