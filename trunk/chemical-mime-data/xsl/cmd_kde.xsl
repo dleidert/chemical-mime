@@ -34,15 +34,15 @@
 
 <xsl:template match="/">
 	<xsl:apply-templates select=".//mime-type[@support = 'yes'
-	                             and child::glob[not(conflicts[attribute::kde = 'yes'])]]">
+	                             and (child::glob[not(conflicts[attribute::kde = 'yes'])] or child::magic)]">
 		<xsl:sort select="@type"/>
 	</xsl:apply-templates>
 </xsl:template>
 
+<!-- * Output the content for every chemical MIME type to a separate file, -->
+<!-- * named from mime-type[@type]. Then just process the content of the   -->
+<!-- * currently processed mime-type node.                                 -->
 <xsl:template match="mime-type">
-  <!-- * Output the content for every chemical MIME type to a separate     -->
-  <!-- * file, named from mime-type[@type]. Then just process the content  -->
-  <!-- * of the currently processed mime-type node.                        -->
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="concat(substring-after(@type,'/'),'.desktop')"/>
 		<xsl:with-param name="method" select="'text'"/>
@@ -56,11 +56,17 @@
 			<xsl:if test="not(child::icon)">
 				<xsl:call-template name="kde.desktop.generic.icon"/>
 			</xsl:if>
-      <!-- * Output the pattern in alphabetical order.                     -->
-			<xsl:apply-templates select="glob[not(conflicts[attribute::kde = 'yes'])]">
+      <!-- * Output the pattern in alphabetical order. Therefor choose all -->
+      <!-- * pattern, if there is some magic (then we have a KMimeMagic    -->
+      <!-- * database). Or if no magic is defined, only apply              -->
+      <!-- * non-conflicting global pattern.                               -->
+			<xsl:apply-templates select="glob[not(conflicts[attribute::kde = 'yes'])][not(following-sibling::magic)]
+			                            |glob[following-sibling::magic]">
 				<xsl:sort select="@pattern"/>
 			</xsl:apply-templates>
-			<xsl:text>&#10;</xsl:text>
+			<xsl:if test="child::sub-class-of">
+				<xsl:apply-templates select="sub-class-of"/>
+			</xsl:if>
 		</xsl:with-param>
 	</xsl:call-template>
 </xsl:template>
@@ -98,13 +104,25 @@
 	<xsl:value-of select="@pattern"/>
 	<xsl:text>;</xsl:text>
   <!-- * And after the last pattern we need a newline.                     -->
-	<xsl:if test="position() = last">
+	<xsl:if test="position() = last()">
 		<xsl:text>&#10;</xsl:text>
 	</xsl:if>
 </xsl:template>
 
+<xsl:template match="sub-class-of">
+	<xsl:text>X-KDE-IsAlso=</xsl:text>
+	<xsl:value-of select="@type"/>
+	<xsl:text>&#10;</xsl:text>
+	<xsl:if test="@type = ('text/plain' or 'application/xml' or 'text/xml')">
+		<xsl:text>&#10;</xsl:text>
+		<xsl:text>[Property::X-KDE-text]&#10;</xsl:text>
+		<xsl:text>Type=bool&#10;</xsl:text>
+		<xsl:text>Value=true&#10;</xsl:text>
+	</xsl:if>
+</xsl:template>
+
 <xsl:template match="acronym|alias|application|expanded-acronym|
-                     magic|match|root-XML|specification|sub-class-of|supported-by"/>
+                     magic|match|root-XML|specification|supported-by"/>
 
 <!-- ********************************************************************* -->
 <!-- * Named templates for special processing and functions.               -->

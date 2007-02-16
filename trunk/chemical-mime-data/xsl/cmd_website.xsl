@@ -49,6 +49,7 @@
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'chemical-mime-data.html'"/>
 		<xsl:with-param name="method" select="'xml'"/>
+		<xsl:with-param name="omit-xml-declaration" select="'no'"/>
 		<xsl:with-param name="media-type" select="'text/xml'"/>
 		<xsl:with-param name="doctype-public" select="'-//W3C//DTD XHTML 1.0 Strict//EN'"/>
 		<xsl:with-param name="doctype-system" select="'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'"/>

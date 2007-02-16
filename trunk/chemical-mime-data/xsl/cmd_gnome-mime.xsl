@@ -32,9 +32,9 @@
 <!-- xsl:template match (modes) section                                    -->
 <!-- ********************************************************************* -->
 
+<!-- * Output content to 'chemical-mime-data.mime'. Then process the whole -->
+<!-- * file.                                                               -->
 <xsl:template match="/">
-  <!-- * Output content to 'chemical-mime-data.mime'.                      -->
-  <!-- * Then process the whole file.                                      -->
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="'chemical-mime-data.mime'"/>
 		<xsl:with-param name="method" select="'text'"/>
