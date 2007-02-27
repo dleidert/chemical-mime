@@ -259,8 +259,8 @@
 <!-- * different to file(1)'s one (magic(5). So we need to process the     -->
 <!-- * match elements in an own template, that does currently nothing.     --> 
 <xsl:template match="match" mode="gnome">
-	<xsl:message>Do nothing (mode=<xsl:value-of select="$file.magic.mode"/></xsl:message>
-	<xsl:message>TODO: Stylesheet-template needs to be written.</xsl:message>
+	<xsl:message>INFO (match[mode="gnome"]): Do nothing.</xsl:message>
+	<xsl:message>TODO (match[mode="gnome"]): Stylesheet-template needs to be written.</xsl:message>
 </xsl:template>
 
 <!-- * The KMimeMagic database syntax is similar to file(1)'s magic.mime   -->
@@ -270,8 +270,8 @@
 <!-- *   - The value-types differ between the freedesktop.org and the      -->
 <!-- *     KMimeMagic(5) format, so they need to be transformed.           -->
 <xsl:template match="match" mode="kde">
-	<xsl:message>Do nothing (mode=<xsl:value-of select="$file.magic.mode"/></xsl:message>
-	<xsl:message>TODO: Stylesheet-template needs to be written.</xsl:message>
+	<xsl:message>INFO (match[mode="kde"]): Do nothing.</xsl:message>
+	<xsl:message>TODO (match[mode="kde"]): Stylesheet-template needs to be written.</xsl:message>
 </xsl:template>
 
 <!-- * If found a mime-type element, output the MIME type name as a        -->
