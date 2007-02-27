@@ -3,6 +3,38 @@
 
 2007-02-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (alias): Minor cosmetic fix.
+	(application[@read], application[@write]): Changed DTD. The read and
+	write attributes can be choosen from ("yes"|"no") with a default of
+	"yes" to limit write work.
+	(chemical/x-embl-dl-nucleotide): Added missing file extension and
+	sub-class-of value.
+	(chemical/x-fasta): Completed information found at wikipedia. This
+	includes adding file extensions and magic (the initial string was
+	also wrong).
+	(chemical/x-gamess-output, chemical/x-gaussian-log): Added gausssum to
+	list of applications.
+	(chemical/x-pdb): Better use masks.
+
+	* xsl/cmd_file-magic.xsl (match[mode=gnome], match[mode=kde]):
+	Improved the message. Minor change.
+
+	* xsl/cmd_kde.xsl: Added support for aliases following the suggestion
+	from David Faure at
+	http://lists.kde.org/?l=kde-core-devel&m=117187815920099&w=2.
+	(chemical-mime): Added support for processing mime-type and
+	mime-type/alias.
+	(mime-type): Commented out the sub-class-of processing, because we
+	need this template for the new alias processing, but don't want to
+	process these elements here atm.
+	(alias): Added to output .desktop files for aliases.
+	(glob): Added support for outputting *.FOO too, if a pattern is *.foo
+	(case-insensitive).
+	(sub-class-of): Added rules to create an X-KDE-IsAlso entry for
+	aliases.
+
+2007-02-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* TODO: Found an already existing gnome-vfs testing tool called
 	gnomevfs-info, that can be used to determine, if gnome-vfs detects the
 	right file type.

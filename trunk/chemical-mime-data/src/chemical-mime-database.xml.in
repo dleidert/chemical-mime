@@ -63,8 +63,7 @@
 
     <!-- * The alias of the specified MIME type if any exists.             -->
     <!ELEMENT alias EMPTY>
-    <!ATTLIST alias
-              type CDATA #REQUIRED>
+    <!ATTLIST alias type CDATA #REQUIRED>
 
     <!-- * The magic pattern root element. Refer to the shared-mime-info   -->
     <!-- * database specification. Search                                  -->
@@ -97,8 +96,8 @@
       <!-- * reads and/or writes the specified MIME type.                  -->
       <!ELEMENT application EMPTY>
       <!ATTLIST application name CDATA #REQUIRED
-                            read CDATA #IMPLIED
-                            write CDATA #IMPLIED
+                            read (yes|no) "no"
+                            write (yes|no) "no"
                             package CDATA #IMPLIED>
 
     <!-- * URL where to find the MIME/file type specification or           -->
@@ -491,6 +490,8 @@
 		<acronym>EMBL</acronym>
 		<expanded-acronym>European Molecular Biology Laboratory</expanded-acronym>
 		<glob pattern="*.emb"/>
+		<glob pattern="*.embl"/>
+		<sub-class-of type="text/plain"/>
 		<magic priority="50">
 			<match type="string" value="ID   " offset="0"/>
 		</magic>
@@ -503,12 +504,38 @@
 	<mime-type type="chemical/x-fasta" support="no">
 		<_comment>Fasta File Format</_comment>
 		<glob pattern="*.fa"/>
+		<glob pattern="*.fna"/>
 		<glob pattern="*.fsa"/>
+		<glob pattern="*.fasta"/>
+		<glob pattern="*.mpfa"/>
 		<sub-class-of type="text/plain"/>
 		<magic priority="50">
-			<match type="string" value="&lt;" offset="0"/>
+			<!-- overview: http://en.wikipedia.org/wiki/Fasta_format -->
+			<match type="string" value="&gt;" offset="0">
+				<!-- GenInfo Backbone Id -->
+				<match type="string" value="bbs|" offset="1"/>
+				<!-- GenBank/EMBL Data Library/DDBJ, DNA Database of Japan/NCBI Reference Sequence/SWISS-PROT -->
+				<match type="string" value="gi|" offset="1"/>
+				<!-- General database identifier -->
+				<match type="string" value="gnl|" offset="1"/>
+				<!-- Local Sequence identifier -->
+				<match type="string" value="lcl|" offset="1"/>
+				<!-- Patents -->
+				<match type="string" value="pat|" offset="1"/>
+				<!-- Brookhaven Protein Data Bank -->
+				<match type="string" value="pdb|" offset="1"/>
+				<!-- NBRF PIR -->
+				<match type="string" value="pir||" offset="1"/>
+				<!-- Protein Research Foundation -->
+				<match type="string" value="prf||" offset="1"/>
+				<!-- NCBI Reference Sequence -->
+				<match type="string" value="ref|" offset="1"/>
+				<!-- SWISS-PROT -->
+				<match type="string" value="sp|" offset="1"/>
+			</match>
 		</magic>
 		<specification url="http://www.ncbi.nlm.nih.gov/blast/fasta.shtml"/>
+		<specification url="http://en.wikipedia.org/wiki/Fasta_format"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-galactic-spc" support="no">
@@ -591,6 +618,7 @@
 			</match>
 		</magic>
 		<supported-by>
+			<application name="gausssum" write="no"/>
 			<application name="xdrawchem"/>
 		</supported-by>
 		<specification url="http://www.msg.ameslab.gov/GAMESS/doc.menu.html"/>
@@ -648,6 +676,7 @@
 			<match type="string" value="Entering Gaussian System, Link 0=" offset="1"/>
 		</magic>
 		<supported-by>
+			<application name="gausssum" write="no"/>
 			<application name="molden"/>
 			<application name="viewmol"/>
 			<application name="xmol"/>
@@ -1225,15 +1254,9 @@
 		<!-- 3nd line offest ... -->
 		<!-- but we have malformed examples in Jmol samples dir -->
 		<magic priority="85">
-			<match type="string" value="ATOM   " offset="0">
-				<match type="string" value=" " offset="11"/>
-			</match>
-			<match type="string" value="HETATM " offset="0">
-				<match type="string" value=" " offset="11"/>
-			</match>
-			<match type="string" value="TER    " offset="0">
-				<match type="string" value=" " offset="11"/>
-			</match>
+			<match type="string" value="ATOM   xxxx " offset="0" mask="0xffffffffffffff00000000ff"/>
+			<match type="string" value="HETATM xxxx " offset="0" mask="0xffffffffffffff00000000ff"/>
+			<match type="string" value="TER    xxxx " offset="0" mask="0xffffffffffffff00000000ff"/>
 			<match type="string" value="AUTHOR " offset="0"/>
 			<match type="string" value="CISPEP " offset="0"/>
 			<match type="string" value="COMPND " offset="0"/>
