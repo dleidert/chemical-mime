@@ -41,7 +41,7 @@
 			<xsl:value-of select="'gnome-vfs-mime-magic'"/>
 		</xsl:when>
 		<xsl:when test="$file.magic.mode = 'kde'">
-			<xsl:value-of select="'magic'"/>
+			<xsl:value-of select="'chemical-mime-data.magic'"/>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:value-of select="'magic.mime'"/>
@@ -91,11 +91,16 @@
 <!-- * build the database and apply all the match elements depending on    -->
 <!-- * the system (with copying the MIME type too).                        -->
 <xsl:template match="magic">
-	<xsl:param name="magic.mime.type" select="ancestor::mime-type/@type"/>
+	<xsl:variable name="magic.mime.type" select="ancestor::mime-type/@type"/>
 	
 	<xsl:choose>
-		<xsl:when test="$file.magic.mode != 'gnome'">
-			<xsl:apply-templates select="match" mode="file">
+		<xsl:when test="$file.magic.mode = 'gnome'">
+			<xsl:apply-templates select="match" mode="gnome">
+				<xsl:with-param name="match.mime.type" select="$magic.mime.type"/>
+			</xsl:apply-templates>
+		</xsl:when>
+		<xsl:when test="$file.magic.mode = 'kde'">
+			<xsl:apply-templates select="match" mode="kde">
 				<xsl:with-param name="match.mime.type" select="$magic.mime.type"/>
 			</xsl:apply-templates>
 		</xsl:when>
@@ -107,8 +112,8 @@
 	</xsl:choose>
 </xsl:template>
 
-<!-- * The KMimeMagic and file(1)'s mime.magic database use the same       -->
-<!-- * database format. The problem(s):                                    -->
+<!-- * file(1)'s mime.magic database uses a format, described in magic(5). -->
+<!-- * The problem(s) with the format/syntax:                              -->
 <!-- *   - Offset-ranges need to be tranformed, because there is no        -->
 <!-- *     similar Offset_start:Offset_end syntax in magic(5) format.      -->
 <!-- *   - The value-types differ between the freedesktop.org and the      -->
@@ -255,7 +260,18 @@
 <!-- * match elements in an own template, that does currently nothing.     --> 
 <xsl:template match="match" mode="gnome">
 	<xsl:message>Do nothing (mode=<xsl:value-of select="$file.magic.mode"/></xsl:message>
-	<xsl:text># Stylesheet-template needs to be written.</xsl:text>
+	<xsl:message>TODO: Stylesheet-template needs to be written.</xsl:message>
+</xsl:template>
+
+<!-- * The KMimeMagic database syntax is similar to file(1)'s magic.mime   -->
+<!-- * database. It is based on an old version of file, so we cannot use   -->
+<!-- * the same syntax. KMimeMagic e.g. doesn't know the search and regex  -->
+<!-- * types. The problem(s) with the format/syntax:                       -->
+<!-- *   - The value-types differ between the freedesktop.org and the      -->
+<!-- *     KMimeMagic(5) format, so they need to be transformed.           -->
+<xsl:template match="match" mode="kde">
+	<xsl:message>Do nothing (mode=<xsl:value-of select="$file.magic.mode"/></xsl:message>
+	<xsl:message>TODO: Stylesheet-template needs to be written.</xsl:message>
 </xsl:template>
 
 <!-- * If found a mime-type element, output the MIME type name as a        -->
@@ -343,20 +359,21 @@
 <!-- * This template only outputs a header for every possible MIME mgaic   -->
 <!-- * pattern database with instructions, how to use it.                  -->
 <xsl:template name="file.specific.header.text">
-	<xsl:text># This file was created automatically by cmd_file-magic.xsl. Copy or   &#10;</xsl:text>
+	<xsl:text># This file was created automatically by cmd_file-magic.xsl.        &#10;</xsl:text>
 	<xsl:choose>
 		<xsl:when test="$file.magic.mode = 'gnome'">
-			<xsl:text># append its content to GNOME's MIME magic database (on Debian         &#10;</xsl:text>
+			<xsl:text># Copy or append its content to GNOME's MIME magic database (on Debian &#10;</xsl:text>
 			<xsl:text># systems, it's the file /etc/gnome-vfs-mime-magic). Please note, that &#10;</xsl:text>
 			<xsl:text># order is important here.                                             &#10;</xsl:text>
 		</xsl:when>
 		<xsl:when test="$file.magic.mode = 'kde'">
-			<xsl:text># append its content to KDE's MIME magic database (on Debian systems,  &#10;</xsl:text>
-			<xsl:text># it's the file /usr/share/mimelnk/magic.                              &#10;</xsl:text>
+			<xsl:text># Copy it to KDE's config directory, into the magic sub-directory (on  &#10;</xsl:text>
+			<xsl:text># Debian systems, it's the path /etc/kde3/config/magic - for your      &#10;</xsl:text>
+			<xsl:text># distribution, check `kde-config -install config'.                    &#10;</xsl:text>
 		</xsl:when>
 		<xsl:otherwise>
-			<xsl:text># append its content to file(1)'s MIME magic database (on Debian       &#10;</xsl:text>
-			<xsl:text># systems, it's the file /etc/magic.mime.                              &#10;</xsl:text>
+			<xsl:text># Copy or append its content to file(1)'s MIME magic database (on      &#10;</xsl:text>
+			<xsl:text># Debian systems, it's the file /etc/magic.mime.                       &#10;</xsl:text>
 		</xsl:otherwise>
 	</xsl:choose>
 	<xsl:text>&#10;&#10;</xsl:text>

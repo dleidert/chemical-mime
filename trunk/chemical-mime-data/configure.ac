@@ -190,12 +190,40 @@ AC_SUBST([with_hicolor_theme])
 AC_PATH_PROG([KDE_CONFIG], [kde-config], [no])
 
 AC_ARG_WITH(
+	[kde-magic],
+	AC_HELP_STRING(
+		[--with-kde-magic@<:@=PATH@:>@],
+		[
+		 enable, disable or override the installation directory of the KDE 3.x MIME magic snippet files
+		 @<:@default=auto(=$sysconfdir/kde3/magic)@:>@
+		]
+	),
+	[
+	 if test "x$withval" = "xyes" ; then
+		 if test "x$KDE_CONFIG" != "xno" ; then
+			 with_kde_magic=`$KDE_CONFIG --install config`/magic
+		 else
+			 with_kde_magic=${sysconfdir}/kde3/magic
+		 fi
+	 fi
+	],
+	[
+	 if test "x$KDE_CONFIG" != "xno" ; then
+		 with_kde_magic=`$KDE_CONFIG --install config`/magic
+	 else
+		 with_kde_magic=${sysconfdir}/kde3/magic
+	 fi
+	]
+)
+AC_SUBST([with_kde_magic])
+
+AC_ARG_WITH(
 	[kde-mime],
 	AC_HELP_STRING(
 		[--with-kde-mime@<:@=PATH@:>@],
 		[
 		 enable, disable or override the installation directory of the KDE 3.x MIME support files
-		 @<:@default=$datadir/mimelnk@:>@
+		 @<:@default=auto(=$datadir/mimelnk)@:>@
 		]
 	),
 	[
@@ -376,11 +404,21 @@ else
 	AC_MSG_RESULT([no])
 fi
 
+AM_CONDITIONAL([BOOL_KDE_MAGIC], [test "x$with_kde_magic" != "xno"])
+AC_MSG_CHECKING([if KDE 3.x MIME magic files will be installed])
+if test "x$with_kde_magic" != "xno" ; then
+	AC_MSG_RESULT([yes])
+	AC_MSG_CHECKING([for installation path of the KDE 3.x MIME magic files])
+	AC_MSG_RESULT([$with_kde_magic])
+else
+	AC_MSG_RESULT([no])
+fi
+
 AM_CONDITIONAL([BOOL_KDE_MIME], [test "x$with_kde_mime" != "xno"])
-AC_MSG_CHECKING([if KDE 3.x support files will be installed])
+AC_MSG_CHECKING([if KDE 3.x MIME definition files will be installed])
 if test "x$with_kde_mime" != "xno" ; then
 	AC_MSG_RESULT([yes])
-	AC_MSG_CHECKING([for installation path of the KDE 3.x support files])
+	AC_MSG_CHECKING([for installation path of the KDE 3.x MIME definition files])
 	AC_MSG_RESULT([$with_kde_mime])
 else
 	AC_MSG_RESULT([no])

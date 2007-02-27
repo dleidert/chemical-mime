@@ -91,5 +91,8 @@ TODO
     - ROX-filer can't handle generic MIME media type icons (like nautilus does)
     - possible move the KDE qc icon from viewmol to this package?
 
+  + Add tests:
+    - gnomevfs-info (testing gnome-vfs)
+
 
 # UTF-8
