@@ -110,6 +110,8 @@
 </xsl:template>
 
 <xsl:template match="sub-class-of">
+	<!-- * Be empty at the moment.                                           -->
+	<!--
 	<xsl:text>X-KDE-IsAlso=</xsl:text>
 	<xsl:value-of select="@type"/>
 	<xsl:text>&#10;</xsl:text>
@@ -119,6 +121,7 @@
 		<xsl:text>Type=bool&#10;</xsl:text>
 		<xsl:text>Value=true&#10;</xsl:text>
 	</xsl:if>
+	-->
 </xsl:template>
 
 <xsl:template match="acronym|alias|application|expanded-acronym|

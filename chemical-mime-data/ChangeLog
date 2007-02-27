@@ -1,6 +1,48 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-02-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Found an already existing gnome-vfs testing tool called
+	gnomevfs-info, that can be used to determine, if gnome-vfs detects the
+	right file type.
+
+	* configure.ac: Added a new option to determine KDE magic database
+	installation location. The installation of the magic database depends
+	on the given path for this new configure option.
+	(kde-mime): Fixed default value in help output and improved wording in
+	configure output.
+
+	* kde/Makefile.am (kdemagicdir, kdemagic_DATA): Fixed KDE MIME magic
+	database installation location and file name (thanks to David Faure).
+	(kdemime_DATA): Improved the build rule a bit.
+	(XSLTPROC_FLAGS): Moved the string-param into the command for the
+	kdemagic_DATA creation (kdemime_DATA doesn't need this param).
+
+	* test/Makefile.incl (GNOME_VFS_MIME_XML_CUSTOM)
+	(KDE_MIMELNK_XML_CUSTOM): Fixed XInclude namespace.
+
+	* xsl/cmd_file-magic.xsl (file.magic.name): Fixed KDE MIME magic
+	database name.
+	(magic): Fixed to divide into all 3 possibilities of $file.magic.mode,
+	because of the recently detected problems with the KDE 3 magic pattern
+	creation.
+	(match[mode=file]): Fixed documentation. See above.
+	(match[mode=gnome]): Don't output the comment into the file. Just be
+	noisy during XSL-processing.
+	(match[mode=kde]): Added. The split of a KDE-mode from the file-mode
+	was necessary, because KDE uses an older magic(5) syntax, than we use
+	in the file-mode (thanks to David Faure). See also the added comments.
+	(file.specific.header.text): Improved template structure and fixed KDE
+	comment (thanks to David Faure for the latter).
+
+	* xsl/cmd_kde.xsl (sub-class-of): Commented out the template content
+	because of recently detected issues with these keys (thanks to David
+	Faure).
+
+	* THANKS: Added a dedication to David Faure for his explanations about
+	the KDE MIME system.
+
 2007-02-17 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* xsl/cmd_freedesktop_org.xsl:
