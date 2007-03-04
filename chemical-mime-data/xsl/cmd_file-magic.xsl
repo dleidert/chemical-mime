@@ -11,9 +11,11 @@
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:cm="http://chemical-mime.sourceforge.net/chemical-mime"
                 xmlns:exsl="http://exslt.org/common"
+                xmlns:fdo="http://www.freedesktop.org/standards/shared-mime-info"
                 extension-element-prefixes="exsl"
-                exclude-result-prefixes="exsl"
+                exclude-result-prefixes="cm exsl fdo"
                 version="1.0">
 
 <!-- ********************************************************************* -->
@@ -79,8 +81,8 @@
 		<xsl:with-param name="content">
 			<xsl:call-template name="common.header.text"/>
 			<xsl:call-template name="file.specific.header.text"/>
-			<xsl:apply-templates select=".//mime-type[child::magic]">
-				<xsl:sort select="magic/@priority" order="descending" data-type="number"/>
+			<xsl:apply-templates select=".//fdo:mime-type[child::fdo:magic]">
+				<xsl:sort select="fdo:magic/@priority" order="descending" data-type="number"/>
 				<xsl:sort select="@type"/>
 			</xsl:apply-templates>
 		</xsl:with-param>
@@ -90,22 +92,22 @@
 <!-- * If a magic element is found, check for which system we want to      -->
 <!-- * build the database and apply all the match elements depending on    -->
 <!-- * the system (with copying the MIME type too).                        -->
-<xsl:template match="magic">
-	<xsl:variable name="magic.mime.type" select="ancestor::mime-type/@type"/>
+<xsl:template match="fdo:magic">
+	<xsl:variable name="magic.mime.type" select="ancestor::fdo:mime-type/@type"/>
 	
 	<xsl:choose>
 		<xsl:when test="$file.magic.mode = 'gnome'">
-			<xsl:apply-templates select="match" mode="gnome">
+			<xsl:apply-templates select="fdo:match" mode="gnome">
 				<xsl:with-param name="match.mime.type" select="$magic.mime.type"/>
 			</xsl:apply-templates>
 		</xsl:when>
 		<xsl:when test="$file.magic.mode = 'kde'">
-			<xsl:apply-templates select="match" mode="kde">
+			<xsl:apply-templates select="fdo:match" mode="kde">
 				<xsl:with-param name="match.mime.type" select="$magic.mime.type"/>
 			</xsl:apply-templates>
 		</xsl:when>
 		<xsl:otherwise>
-			<xsl:apply-templates select="match" mode="gnome">
+			<xsl:apply-templates select="fdo:match" mode="file">
 				<xsl:with-param name="match.mime.type" select="$magic.mime.type"/>
 			</xsl:apply-templates>
 		</xsl:otherwise>
@@ -125,12 +127,12 @@
 <!-- *     need to be escaped for the database.                            -->
 <!-- *   - Pattern test continuation ('>') must be implemented for         -->
 <!-- *     (a) each <match> level and (b) for every string-split.          --> 
-<xsl:template match="match" mode="file">
+<xsl:template match="fdo:match" mode="file">
   <!-- * The 'match.level.symbol' parameter holds the string for the test  -->
   <!-- * pattern continuation. After every run, it is encreased with at    -->
   <!-- * least one '>'.                                                    -->
 	<xsl:param name="match.level.symbol" select="''"/>
-	<xsl:param name="match.mime.type" select="ancestor::mime-type/@type"/>
+	<xsl:param name="match.mime.type" select="ancestor::fdo:mime-type/@type"/>
 
   <!-- * Offset values of the kind 'Offset_start:Offset_end' cannot be     -->
   <!-- * used. Here we extract the starting offset.                        -->
@@ -208,7 +210,8 @@
   <!-- * Now if the string is longer than 31 characeters, we need to split -->
   <!-- * it and process the rest separated in the template                 -->
   <!-- * 'split.string.match'.                                             -->
-	<xsl:if test="@type = 'string' and not(string-length(@value) &lt; 32)">
+	<xsl:if test="@type = 'string'
+	              and string-length(@value) &gt; 31">
 		<xsl:call-template name="split.string.match">
 			<xsl:with-param name="string.content" select="substring(@value,31)"/>
 			<xsl:with-param name="match.level.symbol" select="concat($match.level.symbol,'&gt;')"/>
@@ -217,7 +220,7 @@
 	<xsl:choose>
     <!-- * And if that's the last pattern test, output the MIME type       -->
     <!-- * followed by a linebreak.                                        -->
-		<xsl:when test="not(child::match)">
+		<xsl:when test="not(child::fdo:match)">
 			<xsl:text>	</xsl:text>
 			<xsl:value-of select="$match.mime.type"/>
 			<xsl:text>&#10;</xsl:text>
@@ -247,7 +250,7 @@
 			</xsl:variable>
       <!-- * Now process all match children and increase the continutaion  -->
       <!-- * level with the earlier computed level value.                  -->
-			<xsl:apply-templates select="match" mode="file">
+			<xsl:apply-templates select="fdo:match" mode="file">
 				<xsl:with-param name="match.level.symbol" select="concat($match.level.symbol,$match.level.symbol.add)"/>
 				<xsl:with-param name="match.mime.type" select="$match.mime.type"/>
 			</xsl:apply-templates>
@@ -258,7 +261,7 @@
 <!-- * The GNOME-VFS MIME magic database uses a file format, that is       -->
 <!-- * different to file(1)'s one (magic(5). So we need to process the     -->
 <!-- * match elements in an own template, that does currently nothing.     --> 
-<xsl:template match="match" mode="gnome">
+<xsl:template match="fdo:match" mode="gnome">
 	<xsl:message>INFO (match[mode="gnome"]): Do nothing.</xsl:message>
 	<xsl:message>TODO (match[mode="gnome"]): Stylesheet-template needs to be written.</xsl:message>
 </xsl:template>
@@ -269,30 +272,29 @@
 <!-- * types. The problem(s) with the format/syntax:                       -->
 <!-- *   - The value-types differ between the freedesktop.org and the      -->
 <!-- *     KMimeMagic(5) format, so they need to be transformed.           -->
-<xsl:template match="match" mode="kde">
+<xsl:template match="fdo:match" mode="kde">
 	<xsl:message>INFO (match[mode="kde"]): Do nothing.</xsl:message>
 	<xsl:message>TODO (match[mode="kde"]): Stylesheet-template needs to be written.</xsl:message>
 </xsl:template>
 
 <!-- * If found a mime-type element, output the MIME type name as a        -->
 <!-- * comment before any pattern rule. Then process the rules.            --> 
-<xsl:template match="mime-type">
+<xsl:template match="fdo:mime-type">
 	<xsl:variable name="mime.type" select="@type"/>
 	
 	<xsl:text># </xsl:text>
 	<xsl:value-of select="$mime.type"/>
 	<xsl:text> </xsl:text>
-	<xsl:value-of select="magic/@priority"/>
+	<xsl:value-of select="fdo:magic/@priority"/>
 	<xsl:text>&#10;</xsl:text>
-	<xsl:apply-templates select="magic">
+	<xsl:apply-templates select="fdo:magic">
 		<xsl:with-param name="mime.type" select="$mime.type"/>
 	</xsl:apply-templates>
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
 <!-- * These elements son't need to be processed.                          -->
-<xsl:template match="acronym|alias|application|comment|expanded-acronym|glob|icon|
-                     root-XML|specification|sub-class-of|supported-by"/>
+<xsl:template match="*"/>
 
 <!-- ********************************************************************* -->
 <!-- * Named templates for special processing and functions.               -->

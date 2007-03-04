@@ -3,6 +3,51 @@
 
 2007-03-04 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in:
+	* test/compare_pattern.xsl:
+	* xsl/cmd_common.xsl:
+	* xsl/cmd_file-magic.xsl:
+	* xsl/cmd_freedesktop_org.xsl:
+	* xsl/cmd_gnome-keys.xsl:
+	* xsl/cmd_gnome-mime.xsl:
+	* xsl/cmd_kde.xsl:
+	* xsl/cmd_website.xsl: This is a heavy DTD change. The new database
+	XML format uses the freedesktop.org database elements with the
+	freedesktop.org namespace. Elements used by the chemical-mime-data
+	package were put into a different namespace. All XSL templates have
+	been fixed to hit the namespaced elements. This makes the stylesheets
+	sometimes a bit more difficult and sometimes it makes them easier.
+	Check it out.
+
+	* src/chemical-mime-database.xml.in (chemical/x-cif): Fixed magic
+	pattern. The backslash needs to be escaped to not be an escape sign.
+	(chemical/x-inchi): Added initial magic pattern.
+
+	* test/Makefile.am (check-pattern-fdo-smi-db)
+	(check-pattern-gnome-vfs-db, check-pattern-kde-mimelnk-db): This is
+	just a cosmetic fix for a better output.
+
+	* test/compare_pattern.xsl: Renamed all mime.type* variables to
+	my.mime.type*, to just better explain their function.
+	(match.mime.type.glob): Improved wording ad indentation of output.
+
+	* test/gnome-vfs-mime.xsl (mime-info, compare.token.content):
+	* test/kde-mimelnk.xsl (mime-info, compare.token.content): Added
+	mime-info element with freedesktop.org namespace around mime-type
+	elements.
+
+	* xsl/cmd_file-magic.xsl (magic): Fixed the mode value to output
+	file's magic.mime.
+
+	* xsl/cmd_website.xsl (magic, match, root-XML): Improved the template
+	a bit by adding and overhanding the indentation level.
+	(mime-type, html.content.table.mime.supported)
+	(html.content.table.mime.unsupported, mimetype.output): Improved the
+	template a bit and replaced the usage of xsl:for-each directly with
+	xsl:apply-templates, where applicable.
+
+2007-03-04 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* xsl/cmd_gnome-keys.xsl (mime-type, icon): Only process icon
 	elements, that have a @gnome attribute. For all other use the generic
 	icon name.

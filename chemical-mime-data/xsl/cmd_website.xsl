@@ -16,10 +16,12 @@
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:cm="http://chemical-mime.sourceforge.net/chemical-mime"
                 xmlns:date="http://exslt.org/dates-and-times"
+                xmlns:fdo="http://www.freedesktop.org/standards/shared-mime-info"
                 version="1.0"
                 extension-element-prefixes="date"
-                exclude-result-prefixes="date">
+                exclude-result-prefixes="cm date fdo">
 
 <!-- ********************************************************************* -->
 <!-- * Import XSL stylesheets. Define output options.                      -->
@@ -59,7 +61,7 @@
 	</xsl:call-template>
 </xsl:template>
 
-<xsl:template match="alias|sub-class-of">
+<xsl:template match="fdo:alias|fdo:sub-class-of">
 	<dd>
 		<span class="{local-name(.)}">
 			<xsl:value-of select="@type"/>
@@ -67,10 +69,10 @@
 	</dd>
 </xsl:template>
 
-<xsl:template match="comment">
+<xsl:template match="fdo:comment">
 	<xsl:variable name="content" select="."/>
 	<xsl:choose>
-		<xsl:when test="following-sibling::acronym">
+		<xsl:when test="following-sibling::fdo:acronym">
 			<xsl:call-template name="comment.acronym.check">
 				<xsl:with-param name="content" select="$content"/>
 				<xsl:with-param name="acronym.position" select="1"/>
@@ -84,20 +86,20 @@
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template match="glob">
+<xsl:template match="fdo:glob">
 	<code class="{local-name(.)}">
 		<xsl:value-of select="@pattern"/>
 	</code>
-	<xsl:if test="following-sibling::glob">
+	<xsl:if test="following-sibling::fdo:glob">
 		<xsl:text>, </xsl:text>
 	</xsl:if>
 </xsl:template>
 
-<xsl:template match="magic|match|root-XML">
+<xsl:template match="fdo:magic|fdo:match|fdo:root-XML">
+	<xsl:param name="indent.level" select="''"/>
 	<xsl:variable name="local.name" select="local-name()"/>
-	<xsl:for-each select="ancestor::*[self::magic or self::match]">
-		<xsl:text>    </xsl:text>
-	</xsl:for-each>
+
+	<xsl:value-of select="$indent.level"/>
 	<xsl:text>&lt;</xsl:text>
 	<xsl:value-of select="$local.name"/>
 	<xsl:for-each select="@*">
@@ -108,13 +110,13 @@
 		<xsl:text>"</xsl:text>
 	</xsl:for-each>
 	<xsl:choose>
-		<xsl:when test="child::*">
+		<xsl:when test="child::fdo:*">
 			<xsl:text>&gt;</xsl:text>
 			<br/>
-			<xsl:apply-templates/>
-			<xsl:for-each select="ancestor::*[self::magic or self::match]">
-				<xsl:text>    </xsl:text>
-			</xsl:for-each>
+			<xsl:apply-templates>
+				<xsl:with-param name="indent.level" select="concat($indent.level,'    ')"/>
+			</xsl:apply-templates>
+			<xsl:value-of select="$indent.level"/>
 			<xsl:text>&lt;/</xsl:text>
 			<xsl:value-of select="$local.name"/>
 			<xsl:text>&gt;</xsl:text>
@@ -127,10 +129,10 @@
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template match="mime-type">
-	<xsl:variable name="count.rowspan" select="number(count(child::magic[1])
-	                                           + count(child::root-XML[1])
-	                                           + count(child::specification[1])
+<xsl:template match="fdo:mime-type">
+	<xsl:variable name="count.rowspan" select="number(count(child::fdo:magic[1])
+	                                           + count(child::fdo:root-XML[1])
+	                                           + count(child::cm:specification[1])
 	                                           + 1)"/>
 	<tr class="{local-name(.)}">
 		<xsl:choose>
@@ -144,44 +146,40 @@
 			</xsl:otherwise>
 		</xsl:choose>
 		<td class="comment">
-			<xsl:for-each select="comment[not(@xml:lang)]">
-				<xsl:apply-templates select="."/>
-			</xsl:for-each>
+			<xsl:apply-templates select="fdo:comment[not(@xml:lang)]"/>
 		</td>
 		<td class="glob">
-			<xsl:for-each select="glob">
-				<xsl:apply-templates select="."/>
-			</xsl:for-each>
+			<xsl:apply-templates select="fdo:glob"/>
 		</td>
 	</tr>
-	<xsl:if test="child::magic">
+	<xsl:if test="child::fdo:magic">
 		<tr>
 			<td colspan="2" class="magic">
 				<pre>
-					<xsl:apply-templates select="magic"/>
+					<xsl:apply-templates select="fdo:magic"/>
 				</pre>
 			</td>
 		</tr>
 	</xsl:if>
-	<xsl:if test="child::root-XML">
+	<xsl:if test="child::fdo:root-XML">
 		<tr>
 			<td colspan="2" class="root-XML">
 				<pre>
-					<xsl:apply-templates select="root-XML"/>
+					<xsl:apply-templates select="fdo:root-XML"/>
 				</pre>
 			</td>
 		</tr>
 	</xsl:if>
-	<xsl:if test="child::specification">
+	<xsl:if test="child::cm:specification">
 		<tr>
 			<td colspan="2" class="specification">
-				<xsl:apply-templates select="specification"/>
+				<xsl:apply-templates select="cm:specification"/>
 			</td>
 		</tr>
 	</xsl:if>
 </xsl:template>
 
-<xsl:template match="specification">
+<xsl:template match="cm:specification">
 	<a href="{@url}">
 		<xsl:if test="string-length(@title)">
 			<xsl:attribute name="title">
@@ -190,13 +188,13 @@
 		</xsl:if>
 		<xsl:value-of select="@url"/>
 	</a>
-	<xsl:if test="following-sibling::specification">
+	<xsl:if test="following-sibling::cm:specification">
 		<xsl:text>,</xsl:text>
 		<br/>
 	</xsl:if>
 </xsl:template>
 
-<xsl:template match="acronym|application|expanded-acronym|icon|supported-by"/>
+<xsl:template match="*"/>
 
 <!-- ********************************************************************* -->
 <!-- * Named templates for special processing and functions.               -->
@@ -245,7 +243,7 @@
 	<h1>chemical-mime-data</h1>
 	<p>The source of <a href="index.html">this project</a> can be downloaded at the <a href="http://sourceforge.net/project/showfiles.php?group_id=159685&amp;package_id=179318">Sourceforge.net project page</a>. <span class="sfnet"><a href="http://www.sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=159685&amp;type=1" width="88" height="31" style="border: 0;" alt="SourceForge.net Logo"/></a></span></p>
 	<p>The released version is: <span class="version">&entversion;</span>.</p>
-	<p>The released Database version is: <span class="version"><xsl:value-of select="chemical-mime/@id"/></span>.</p>
+	<p>The released Database version is: <span class="version"><xsl:value-of select="/fdo_mime-info/@cm:vcsid"/></span>.</p>
 	<h2 id="toc">Table of Contents</h2>
 	<ol>
 		<li><a href="#supported">Supported MIME types</a></li>
@@ -270,10 +268,9 @@
 	<p>The following MIME types are supported by the &entpackage; package version &entversion;.</p>
 	<table>
 		<xsl:call-template name="html.content.table.mime.head"/>
-		<xsl:for-each select=".//mime-type[@support = 'yes']">
+		<xsl:apply-templates select=".//fdo:mime-type[@cm:support = 'yes']">
 			<xsl:sort select="@type"/>
-			<xsl:apply-templates select="."/>
-		</xsl:for-each>
+		</xsl:apply-templates>
 	</table>
 </xsl:template>
 
@@ -284,10 +281,9 @@
 	<p>The following MIME types are not supported by the &entpackage; package version &entversion;.</p>
 	<table>
 		<xsl:call-template name="html.content.table.mime.head"/>
-		<xsl:for-each select=".//mime-type[not(@support = 'yes')]">
+		<xsl:apply-templates select=".//fdo:mime-type[not(@cm:support = 'yes')]">
 			<xsl:sort select="@type"/>
-			<xsl:apply-templates select="."/>
-		</xsl:for-each>
+		</xsl:apply-templates>
 	</table>
 	<p>There might be more MIME types, that simply were not yet added to the database. If you know one missing, just <a href="https://sourceforge.net/tracker/?func=add&amp;group_id=159685&amp;atid=812822">let us know</a>.</p>
 </xsl:template>
@@ -344,22 +340,20 @@
 		<span class="{local-name(.)}">
 			<xsl:value-of select="@type"/>
 		</span>
-		<xsl:if test="child::sub-class-of">
+		<xsl:if test="child::fdo:sub-class-of">
 			<dl>
 				<dt class="sub-class-of">Sub-class of:</dt>
-				<xsl:for-each select="sub-class-of">
+				<xsl:apply-templates select="fdo:sub-class-of">
 					<xsl:sort select="@type"/>
-					<xsl:apply-templates select="."/>
-				</xsl:for-each>
+				</xsl:apply-templates>
 			</dl>
 		</xsl:if>
-		<xsl:if test="child::alias">
+		<xsl:if test="child::fdo:alias">
 			<dl>
 				<dt class="alias">Alias(s):</dt>
-				<xsl:for-each select="alias">
+				<xsl:apply-templates select="fdo:alias">
 					<xsl:sort select="@type"/>
-					<xsl:apply-templates select="."/>
-				</xsl:for-each>
+				</xsl:apply-templates>
 			</dl>
 		</xsl:if>
 	</td>
@@ -376,9 +370,9 @@
 	<xsl:param name="acronym.position"/>
 
 	<xsl:variable name="acronym.content"
-	              select="following-sibling::acronym[not(@xml:lang)][$acronym.position]"/>
+	              select="following-sibling::fdo:acronym[not(@xml:lang)][$acronym.position]"/>
 	<xsl:variable name="expanded.acronym.content"
-	              select="following-sibling::expanded-acronym[not(@xml:lang)][$acronym.position]"/>
+	              select="following-sibling::fdo:expanded-acronym[not(@xml:lang)][$acronym.position]"/>
 
 	<xsl:choose>
     <!-- * Check if we find a known <acronym> inside <comment>. If yes,    -->
@@ -394,7 +388,7 @@
 			<xsl:variable name="content.new.after" select="substring-after($content, $acronym.content)"/>
 			<xsl:variable name="content.new" select="concat($content.new.before, $content.new.middle, $content.new.after)"/>
 			<xsl:choose>
-				<xsl:when test="following-sibling::acronym[not(@xml:lang)][$acronym.position + 1]">
+				<xsl:when test="following-sibling::fdo:acronym[not(@xml:lang)][$acronym.position + 1]">
 					<xsl:call-template name="comment.acronym.check">
 						<xsl:with-param name="content" select="$content.new"/>
 						<xsl:with-param name="acronym.position" select="$acronym.position + 1"/>
@@ -424,7 +418,7 @@
 			<xsl:variable name="content.new.after" select="substring-after($content, $expanded.acronym.content)"/>
 			<xsl:variable name="content.new" select="concat($content.new.before, $content.new.middle, $content.new.after)"/>
 			<xsl:choose>
-				<xsl:when test="following-sibling::acronym[not(@xml:lang)][$acronym.position + 1]">
+				<xsl:when test="following-sibling::fdo:acronym[not(@xml:lang)][$acronym.position + 1]">
 					<xsl:call-template name="comment.acronym.check">
 						<xsl:with-param name="content" select="$content.new"/>
 						<xsl:with-param name="acronym.position" select="$acronym.position + 1"/>
@@ -442,7 +436,7 @@
 		<xsl:otherwise>
 			<xsl:variable name="content.new" select="$content"/>
 			<xsl:choose>
-				<xsl:when test="following-sibling::acronym[not(@xml:lang)][$acronym.position + 1]">
+				<xsl:when test="following-sibling::fdo:acronym[not(@xml:lang)][$acronym.position + 1]">
 					<xsl:call-template name="comment.acronym.check">
 						<xsl:with-param name="content" select="$content.new"/>
 						<xsl:with-param name="acronym.position" select="$acronym.position + 1"/>
