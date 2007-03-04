@@ -1,6 +1,17 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-03-04 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_gnome-keys.xsl (mime-type, icon): Only process icon
+	elements, that have a @gnome attribute. For all other use the generic
+	icon name.
+	(comment): Easier XPath expression.
+
+	* xsl/cmd_kde.xsl (mime-type, icon): Only process icon elements, that
+	have a @kde attribute. For all other use the generic icon name.
+	(comment): Easier XPath expression.
+
 2007-02-27 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in (alias): Minor cosmetic fix.
