@@ -12,6 +12,8 @@
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:cm="http://chemical-mime.sourceforge.net/chemical-mime"
+                xmlns:fdo="http://www.freedesktop.org/standards/shared-mime-info"
                 version="1.0">
 
 <!-- ********************************************************************* -->
@@ -41,31 +43,31 @@
 		<xsl:with-param name="media-type" select="'text/plain'"/>
 		<xsl:with-param name="content">
 			<xsl:call-template name="common.header.text"/>
-			<xsl:apply-templates select=".//mime-type[@support = 'yes'
-			                             and child::glob[not(conflicts[attribute::gnome = 'yes'])]]">
+			<xsl:apply-templates select=".//fdo:mime-type[@cm:support = 'yes'
+			                             and child::fdo:glob[not(cm:conflicts[attribute::gnome = 'yes'])]]">
 				<xsl:sort select="@type"/>
 			</xsl:apply-templates>
 		</xsl:with-param>
 	</xsl:call-template>
 </xsl:template>
 
-<xsl:template match="mime-type">
+<xsl:template match="fdo:mime-type">
 	<xsl:value-of select="@type"/>
 	<xsl:text>&#10;</xsl:text>
 	<xsl:apply-templates/>
-	<xsl:if test="not(child::icon[attribute::gnome])">
+	<xsl:if test="not(child::cm:icon[attribute::gnome])">
 		<xsl:call-template name="gnome.keys.generic.icon"/>
 	</xsl:if>
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
-<xsl:template match="icon[attribute::gnome]">
+<xsl:template match="cm:icon[attribute::gnome]">
 	<xsl:text>	icon_filename: </xsl:text>
 	<xsl:value-of select="@gnome"/>
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
-<xsl:template match="comment">
+<xsl:template match="fdo:comment">
 	<xsl:text>	</xsl:text>
 	<xsl:if test="@xml:lang">
 		<xsl:text>[</xsl:text>
@@ -77,8 +79,7 @@
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
-<xsl:template match="acronym|alias|application|expanded-acronym|glob|icon|
-                     magic|match|root-XML|specification|sub-class-of|supported-by"/>
+<xsl:template match="*"/>
 
 <!-- ********************************************************************* -->
 <!-- * Named templates for special processing and functions.               -->

@@ -12,6 +12,7 @@
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:fdo="http://www.freedesktop.org/standards/shared-mime-info"
                 xmlns:str="http://exslt.org/strings"
                 extension-element-prefixes="str"
                 exclude-result-prefixes="str"
@@ -48,17 +49,19 @@
 	<xsl:comment> * edit it by hand. It's just for temporary usage during the         </xsl:comment>
 	<xsl:comment> * `make (dist)check' target.                                        </xsl:comment>
 	<gnome-vfs-mime>
-		<xsl:for-each select="$token.content">
-			<xsl:if test="starts-with(normalize-space(.),'ext:')">
-				<xsl:call-template name="compare.token.content">
-					<xsl:with-param name="node.mime"
-					                select="preceding-sibling::token[not(starts-with(normalize-space(),'ext:')
-				                          or starts-with(normalize-space(),'regex:')
-				                          or starts-with(normalize-space(),'regex,'))][1]"/>
-					<xsl:with-param name="node.pattern" select="substring-after(.,'ext:')"/>
-				</xsl:call-template>
-			</xsl:if>
-		</xsl:for-each>
+		<fdo:mime-info>
+			<xsl:for-each select="$token.content">
+				<xsl:if test="starts-with(normalize-space(.),'ext:')">
+					<xsl:call-template name="compare.token.content">
+						<xsl:with-param name="node.mime"
+						                select="preceding-sibling::token[not(starts-with(normalize-space(),'ext:')
+					                          or starts-with(normalize-space(),'regex:')
+					                          or starts-with(normalize-space(),'regex,'))][1]"/>
+						<xsl:with-param name="node.pattern" select="substring-after(.,'ext:')"/>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:for-each>
+		</fdo:mime-info>
 	</gnome-vfs-mime>
 </xsl:template>
 
@@ -75,12 +78,12 @@
 	<xsl:param name="node.mime"/>
 	<xsl:param name="node.pattern"/>
 	
-	<mime-type type="{$node.mime}">
+	<fdo:mime-type type="{$node.mime}">
 		<xsl:for-each select="str:tokenize($node.pattern,' ')">
 			<xsl:sort select="$node.mime"/>
-			<glob pattern="{concat('*.', .)}"/>
+			<fdo:glob pattern="{concat('*.', .)}"/>
 		</xsl:for-each>
-	</mime-type>
+	</fdo:mime-type>
 </xsl:template>
 
 </xsl:stylesheet>

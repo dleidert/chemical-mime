@@ -11,12 +11,14 @@
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:saxon="http://icl.com/saxon"
+                xmlns:cm="http://chemical-mime.sourceforge.net/chemical-mime"
+                xmlns:exsl="http://exslt.org/common"
+                xmlns:fdo="http://www.freedesktop.org/standards/shared-mime-info"
                 xmlns:lxslt="http://xml.apache.org/xslt"
                 xmlns:redirect="http://xml.apache.org/xalan/redirect"
-                xmlns:exsl="http://exslt.org/common"
-                version="1.0"
-                extension-element-prefixes="saxon redirect lxslt exsl">
+                xmlns:saxon="http://icl.com/saxon"
+                extension-element-prefixes="cm exsl fdo lxslt redirect saxon"
+                version="1.0">
 
 <!-- ********************************************************************* -->
 <!-- * Named templates for common functions.                               -->
@@ -28,7 +30,7 @@
 	<xsl:text>#  This file is part of the chemical-mime-data package.
 #  It is distributed under the GNU Lesser General Public License version 2.1.
 #
-#  Database: </xsl:text><xsl:value-of select="chemical-mime/@id"/><xsl:text>&#10;&#10;&#10;</xsl:text>
+#  Database: </xsl:text><xsl:value-of select="/fdo:mime-info/@cm:vcsid"/><xsl:text>&#10;&#10;&#10;</xsl:text>
 </xsl:template>
 
 <!-- * A created xml file shall contain a header with information about    -->
@@ -40,7 +42,7 @@
   It is distributed under the GNU Lesser General Public License version 2.1.
 
   Database: </xsl:text>
-		<xsl:value-of select="chemical-mime/@id"/>
+		<xsl:value-of select="/fdo:mime-info/@cm:vcsid"/>
 		<xsl:text>&#10;</xsl:text>
 	</xsl:comment>
 	<xsl:text>&#10;&#10;</xsl:text>

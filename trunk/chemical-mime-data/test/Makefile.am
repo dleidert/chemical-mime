@@ -37,21 +37,24 @@ check-pattern-fdo-smi-db: $(FDO_SHARED_MIME_INFO_DB) compare_pattern.xsl chemica
 	$(XSLTPROC) $(XSLTPROC_FLAGS) \
 	 --stringparam database "$(FDO_SHARED_MIME_INFO_DB)" \
 	 --stringparam database.type "fdo" \
-	 --stringparam database.uri $^
+	 --stringparam database.uri \
+	 $^
 
 check-pattern-gnome-vfs-db: $(GNOME_VFS_MIME_XML) compare_pattern.xsl chemical-mime-database.xml 
 	@echo -e "\033[1mCheck the database against the gnome-mime-data db.\033[0m"
 	$(XSLTPROC) $(XSLTPROC_FLAGS) \
 	 --stringparam database "$(GNOME_VFS_MIME_DATA_DB)" \
 	 --stringparam database.type "gnome" \
-	 --stringparam database.uri $^
+	 --stringparam database.uri \
+	 $^
 
 check-pattern-kde-mimelnk-db: $(KDE_MIMELNK_XML) compare_pattern.xsl chemical-mime-database.xml 
 	@echo -e "\033[1mCheck the database against the gnome-mime-data db.\033[0m"
 	$(XSLTPROC) $(XSLTPROC_FLAGS) \
 	 --stringparam database "$(KDE_MIMELNK_DATA_DB)" \
 	 --stringparam database.type "kde" \
-	 --stringparam database.uri $^
+	 --stringparam database.uri \
+	 $^
 
 
 $(GNOME_VFS_MIME_XML): gnome-vfs-mime.xsl $(GNOME_VFS_MIME_DATA_DB)

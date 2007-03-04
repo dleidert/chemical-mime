@@ -12,6 +12,8 @@
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:cm="http://chemical-mime.sourceforge.net/chemical-mime"
+                xmlns:fdo="http://www.freedesktop.org/standards/shared-mime-info"
                 version="1.0">
 
 <!-- ********************************************************************* -->
@@ -33,11 +35,11 @@
 <!-- ********************************************************************* -->
 
 <xsl:template match="/">
-	<xsl:variable name="targets" select=".//mime-type[@support = 'yes'
-	                                     and (child::glob[not(conflicts[attribute::kde = 'yes'])]
-	                                          or child::magic)]"/>
+	<xsl:variable name="targets" select=".//fdo:mime-type[@cm:support = 'yes'
+	                                     and (child::fdo:glob[not(cm:conflicts[attribute::kde = 'yes'])]
+	                                          or child::fdo:magic)]"/>
 
-	<xsl:apply-templates select="$targets|$targets/alias">
+	<xsl:apply-templates select="$targets|$targets/fdo:alias">
 		<xsl:sort select="@type"/>
 	</xsl:apply-templates>
 </xsl:template>
@@ -45,7 +47,7 @@
 <!-- * Output the content for every chemical MIME type to a separate file, -->
 <!-- * named from mime-type[@type]. Then just process the content of the   -->
 <!-- * currently processed mime-type node.                                 -->
-<xsl:template match="mime-type">
+<xsl:template match="fdo:mime-type">
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="concat(substring-after(@type,'/'),'.desktop')"/>
 		<xsl:with-param name="method" select="'text'"/>
@@ -55,16 +57,18 @@
 			<xsl:text>MimeType=</xsl:text>
 			<xsl:value-of select="@type"/>
 			<xsl:text>&#10;</xsl:text>
-			<xsl:apply-templates select="comment|icon"/>
-			<xsl:if test="not(child::icon[attribute::kde])">
+			<xsl:apply-templates select="fdo:comment|cm:icon"/>
+			<xsl:if test="not(child::cm:icon[attribute::kde])">
 				<xsl:call-template name="kde.desktop.generic.icon"/>
 			</xsl:if>
       <!-- * Output the pattern in alphabetical order. Therefor choose all -->
       <!-- * pattern, if there is some magic (then we have a KMimeMagic    -->
       <!-- * database). Or if no magic is defined, only apply              -->
       <!-- * non-conflicting global pattern.                               -->
-			<xsl:apply-templates select="glob[not(conflicts[attribute::kde = 'yes'])][not(following-sibling::magic)]
-			                            |glob[following-sibling::magic]">
+			<xsl:apply-templates select="fdo:glob
+			                                 [not(cm:conflicts[attribute::kde = 'yes'])]
+			                                     [not(following-sibling::fdo:magic)]
+			                            |glob[following-sibling::fdo:magic]">
 				<xsl:sort select="@pattern"/>
 			</xsl:apply-templates>
 			<!-- <xsl:if test="child::sub-class-of">
@@ -79,7 +83,7 @@
 <!-- * separate .desktop files. These files should not contain any         -->
 <!-- * pattern. But they should be of sub-class (X-KDE-IsAlso) of the      -->
 <!-- * ancestor mime-type @type attribute.                                 -->
-<xsl:template match="alias">
+<xsl:template match="fdo:alias">
 	<xsl:call-template name="common.write.chunk">
 		<xsl:with-param name="filename" select="concat(substring-after(@type,'/'),'.desktop')"/>
 		<xsl:with-param name="method" select="'text'"/>
@@ -89,20 +93,20 @@
 			<xsl:text>MimeType=</xsl:text>
 			<xsl:value-of select="@type"/>
 			<xsl:text>&#10;</xsl:text>
-			<xsl:apply-templates select="preceding-sibling::comment|following-sibling::icon"/>
-			<xsl:if test="not(following-sibling::icon)">
+			<xsl:apply-templates select="preceding-sibling::fdo:comment|following-sibling::cm:icon"/>
+			<xsl:if test="not(following-sibling::cm:icon)">
 				<xsl:call-template name="kde.desktop.generic.icon"/>
 			</xsl:if>
       <!-- * Output no pattern, as we are doing alias-processing. But put  -->
       <!-- * the ancestor mime-type @type as alias into the file.                -->
 			<xsl:call-template name="sub-class-of">
-				<xsl:with-param name="content" select="ancestor::mime-type/@type"/>
+				<xsl:with-param name="content" select="ancestor::fdo:mime-type/@type"/>
 			</xsl:call-template>
 		</xsl:with-param>
 	</xsl:call-template>
 </xsl:template>
 
-<xsl:template match="comment">
+<xsl:template match="fdo:comment">
 	<xsl:text>Comment</xsl:text>
 	<xsl:if test="@xml:lang">
 		<xsl:text>[</xsl:text>
@@ -114,13 +118,7 @@
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
-<xsl:template match="icon[attribute::kde]">
-	<xsl:text>Icon=</xsl:text>
-	<xsl:value-of select="@kde"/>
-	<xsl:text>&#10;</xsl:text>
-</xsl:template>
-
-<xsl:template match="glob">
+<xsl:template match="fdo:glob">
   <!-- * The pattern must occur in the Pattern field.                      -->
 	<xsl:if test="position() = 1">
 		<xsl:text>Patterns=</xsl:text>
@@ -145,7 +143,7 @@
 	</xsl:if>
 </xsl:template>
 
-<xsl:template match="sub-class-of" name="sub-class-of">
+<xsl:template match="fdo:sub-class-of" name="sub-class-of">
 	<xsl:param name="content" select="@type"/>
 
 	<xsl:text>X-KDE-IsAlso=</xsl:text>
@@ -162,8 +160,13 @@
 	-->
 </xsl:template>
 
-<xsl:template match="acronym|application|expanded-acronym|icon|
-                     magic|match|root-XML|specification|supported-by"/>
+<xsl:template match="cm:icon[attribute::kde]">
+	<xsl:text>Icon=</xsl:text>
+	<xsl:value-of select="@kde"/>
+	<xsl:text>&#10;</xsl:text>
+</xsl:template>
+
+<xsl:template match="*"/>
 
 <!-- ********************************************************************* -->
 <!-- * Named templates for special processing and functions.               -->

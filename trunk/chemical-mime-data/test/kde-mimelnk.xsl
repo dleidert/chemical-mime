@@ -12,6 +12,7 @@
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:fdo="http://www.freedesktop.org/standards/shared-mime-info"
                 xmlns:str="http://exslt.org/strings"
                 extension-element-prefixes="str"
                 exclude-result-prefixes="str"
@@ -47,7 +48,9 @@
 	<xsl:comment> * edit it by hand. It's just for temporary usage during the         </xsl:comment>
 	<xsl:comment> * `make (dist)check' target.                                        </xsl:comment>
 	<kde-mimelnk>
-		<xsl:apply-templates/>
+		<fdo:mime-info>
+			<xsl:apply-templates/>
+		</fdo:mime-info>
 	</kde-mimelnk>
 </xsl:template>
 
@@ -116,15 +119,15 @@
 	<xsl:param name="node.mime"/>
 	<xsl:param name="node.pattern"/>
 	
-	<mime-type type="{$node.mime}">
+	<fdo:mime-type type="{$node.mime}">
 		<xsl:if test="$node.alias">
-			<alias type="{$node.alias}"/>
+			<fdo:alias type="{$node.alias}"/>
 		</xsl:if>
 		<xsl:for-each select="str:tokenize($node.pattern,';')">
 			<xsl:sort select="."/>
-			<glob pattern="{.}"/>
+			<fdo:glob pattern="{.}"/>
 		</xsl:for-each>
-	</mime-type>
+	</fdo:mime-type>
 </xsl:template>
 
 </xsl:stylesheet>
