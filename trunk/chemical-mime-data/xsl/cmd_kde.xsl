@@ -56,7 +56,7 @@
 			<xsl:value-of select="@type"/>
 			<xsl:text>&#10;</xsl:text>
 			<xsl:apply-templates select="comment|icon"/>
-			<xsl:if test="not(child::icon)">
+			<xsl:if test="not(child::icon[attribute::kde])">
 				<xsl:call-template name="kde.desktop.generic.icon"/>
 			</xsl:if>
       <!-- * Output the pattern in alphabetical order. Therefor choose all -->
@@ -104,7 +104,7 @@
 
 <xsl:template match="comment">
 	<xsl:text>Comment</xsl:text>
-	<xsl:if test="@xml:lang != ''">
+	<xsl:if test="@xml:lang">
 		<xsl:text>[</xsl:text>
 		<xsl:value-of select="@xml:lang"/>
 		<xsl:text>]</xsl:text>
@@ -114,16 +114,9 @@
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
-<xsl:template match="icon">
+<xsl:template match="icon[attribute::kde]">
 	<xsl:text>Icon=</xsl:text>
-	<xsl:choose>
-		<xsl:when test="@kde != ''">
-			<xsl:value-of select="@kde"/>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:text>chemistry</xsl:text>
-		</xsl:otherwise>
-	</xsl:choose>
+	<xsl:value-of select="@kde"/>
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
@@ -169,7 +162,7 @@
 	-->
 </xsl:template>
 
-<xsl:template match="acronym|application|expanded-acronym|
+<xsl:template match="acronym|application|expanded-acronym|icon|
                      magic|match|root-XML|specification|supported-by"/>
 
 <!-- ********************************************************************* -->

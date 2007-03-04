@@ -53,28 +53,21 @@
 	<xsl:value-of select="@type"/>
 	<xsl:text>&#10;</xsl:text>
 	<xsl:apply-templates/>
-	<xsl:if test="not(child::icon)">
+	<xsl:if test="not(child::icon[attribute::gnome])">
 		<xsl:call-template name="gnome.keys.generic.icon"/>
 	</xsl:if>
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
-<xsl:template match="icon">
+<xsl:template match="icon[attribute::gnome]">
 	<xsl:text>	icon_filename: </xsl:text>
-	<xsl:choose>
-		<xsl:when test="@gnome != ''">
-			<xsl:value-of select="@gnome"/>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:text>gnome-mime-chemical.png</xsl:text>
-		</xsl:otherwise>
-	</xsl:choose>
+	<xsl:value-of select="@gnome"/>
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
 <xsl:template match="comment">
 	<xsl:text>	</xsl:text>
-	<xsl:if test="@xml:lang != ''">
+	<xsl:if test="@xml:lang">
 		<xsl:text>[</xsl:text>
 		<xsl:value-of select="@xml:lang"/>
 		<xsl:text>]</xsl:text>
@@ -84,7 +77,7 @@
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
 
-<xsl:template match="acronym|alias|application|expanded-acronym|glob|
+<xsl:template match="acronym|alias|application|expanded-acronym|glob|icon|
                      magic|match|root-XML|specification|sub-class-of|supported-by"/>
 
 <!-- ********************************************************************* -->
