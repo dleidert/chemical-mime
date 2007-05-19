@@ -192,7 +192,7 @@ TEST: <xsl:value-of select="$database.type"/> database for unrecognized pattern 
 		</xsl:message>
 		<xsl:choose>
 			<xsl:when test="$ext.database.type != $my.mime.type.conflict
-			                and child::fdo:alias[attribute::type != $my.mime.type.conflict]">
+			                and not(child::fdo:alias[attribute::type = $my.mime.type.conflict])">
 				<xsl:message terminate="yes">       ** ERROR **: MUST add this conflict with "<xsl:value-of select="$ext.database.type"/>"!
 *
 * TEST: Pattern test bailed out with an error.

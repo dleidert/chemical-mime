@@ -147,6 +147,21 @@
 		</cm:supported-by>
 	</mime-type>
 
+	<mime-type type="application/x-jmol-voxel" cm:support="no">
+		<_comment>Jmol Voxel File Format</_comment>
+		<acronym>JVXL</acronym>
+		<expanded-acronym>Jmol Voxel</expanded-acronym>
+		<glob pattern="*.jvxl"/>
+		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="JVXL " offset="0"/>
+		</magic>
+		<cm:supported-by>
+			<cm:application name="ghemical"/>
+		</cm:supported-by>
+		<cm:specifictaion url="http://www.stolaf.edu/academics/chemapps/jmol/docs/misc/JVXL-format.pdf"/>
+	</mime-type>
+
 	<mime-type type="application/x-xdrawchem" cm:support="no">
 		<_comment>Native XDrawChem Format</_comment>
 		<glob pattern="*.xdc"/>
@@ -167,6 +182,7 @@
 		<!-- see also chemical/x-fasta -->
 		<sub-class-of type="chemical/x-fasta"/>
 		<cm:specification url="http://msdlocal.ebi.ac.uk/docs/mimetype.html"/>
+		<cm:specification url="http://www.ebi.ac.uk/help/formats.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/seq-na-fasta" cm:support="no">
@@ -193,7 +209,7 @@
 		<cm:supported-by>
 			<cm:application name="xdrawchem"/>
 		</cm:supported-by>
-		<cm:specification url="http://www.camsoft.com/plugins/"/>
+		<cm:specification url="http://local.wasp.uwa.edu.au/~pbourke/dataformats/alc/"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-cache" cm:support="yes" cm:added="0.1.91">
@@ -233,7 +249,7 @@
 			</match>
 		</magic>
 		<cm:supported-by>
-			<cm:application name="csbr (cactvs)"/>
+			<cm:application name="csbr" package="cactvs"/>
 		</cm:supported-by>
 	</mime-type>
 
@@ -250,7 +266,7 @@
 			</match>
 		</magic>
 		<cm:supported-by>
-			<cm:application name="csbr (cactvs)"/>
+			<cm:application name="csbr" package="cactvs"/>
 		</cm:supported-by>
 	</mime-type>
 
@@ -263,7 +279,7 @@
 			<match type="string" value="CACTVS QSAR Table" offset="0"/>
 		</magic>
 		<cm:supported-by>
-			<cm:application name="csbr (cactvs)"/>
+			<cm:application name="csbr" package="cactvs"/>
 		</cm:supported-by>
 	</mime-type>
 
@@ -341,6 +357,20 @@
 		<cm:specification url="http://www.camsoft.com/plugins/"/>
 	</mime-type>
 
+	<mime-type type="chemical/x-chem3d-xml" cm:support="no">
+		<_comment>Chem3D XML Format</_comment>
+		<acronym>XML</acronym>
+		<expanded-acronym>eXtensible Markup Language</expanded-acronym>
+		<glob pattern="*.c3xml"/>
+		<!-- <root-XML namespaceURI="http://www.camsoft.com" localName="C3XML"/> -->
+		<sub-class-of type="application/xml"/>
+		<magic priority="50">
+			<match type="string" value="&lt;!DOCTYPE C3XML" offset="0:256"/>
+			<match type="string" value="&lt;C3XML" offset="0:64"/>
+		</magic>
+		<cm:specification url="http://www.camsoft.com/plugins/"/>
+	</mime-type>
+
 	<mime-type type="chemical/x-cif" cm:support="yes" cm:added="0.1.91">
 		<_comment>Crystallographic Information File Format</_comment>
 		<acronym>CIF</acronym>
@@ -359,6 +389,8 @@
 			<cm:application name="jmol"/>
 		</cm:supported-by>
 		<cm:specification url="http://www.iucr.org/iucr-top/cif/spec/"/>
+		<cm:specification url="http://www.iucr.org/iucr-top/cif/standard/cifstd1.html"/>
+		<cm:specification url="http://www.iucr.org/iucr-top/cif/spec/version1.1/index.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-cmdf" cm:support="no">
@@ -469,7 +501,7 @@
 		<glob pattern="*.smiles"/>
 		<sub-class-of type="text/plain"/>
 		<cm:supported-by>
-			<cm:application name="csbr (cactvs)"/>
+			<cm:application name="csbr" package="cactvs"/>
 			<cm:application name="xdrawchem"/>
 		</cm:supported-by>
 		<cm:specification url="http://www.daylight.com/smiles/"/>
@@ -497,6 +529,7 @@
 			<match type="string" value="ID   " offset="0"/>
 		</magic>
 		<cm:specification url="http://mercury.ebi.ac.uk/"/>
+		<cm:specification url="http://www.ebi.ac.uk/help/formats.html"/>
 		<cm:specification url="http://www.ebi.ac.uk/embl/Documentation/User_manual/usrman.html#FORMAT"/>
 		<cm:specification url="http://www.biobind.com/faq/emboss/formats.html"/>
 		<cm:specification url="http://www.psc.edu/general/software/packages/seq-intro/emblfile.html"/>
@@ -536,6 +569,7 @@
 			</match>
 		</magic>
 		<cm:specification url="http://www.ncbi.nlm.nih.gov/blast/fasta.shtml"/>
+		<cm:specification url="http://www.ebi.ac.uk/help/formats.html"/>
 		<cm:specification url="http://en.wikipedia.org/wiki/Fasta_format"/>
 	</mime-type>
 
@@ -638,6 +672,8 @@
 		<_comment>Gaussian Cube (Wavefunction) Format</_comment>
 		<glob pattern="*.cub"/>
 		<cm:specification url="http://gaussian.com/tech_top_level.htm"/>
+		<cm:specification url="http://www.nersc.gov/nusers/resources/software/apps/chemistry/gaussian/g98/00000430.htm"/>
+		<cm:specification url="http://local.wasp.uwa.edu.au/~pbourke/dataformats/cube/"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-gaussian-input" cm:support="yes" cm:added="0.1.91">
@@ -648,7 +684,7 @@
 		<glob pattern="*.gjf"/>
 		<sub-class-of type="text/plain"/>
 		<cm:supported-by>
-			<cm:application name="cs3d (cactvs)"/>
+			<cm:application name="cs3d" package="cactvs"/>
 			<cm:application name="jmol"/>
 			<cm:application name="xdrawchem"/>
 		</cm:supported-by>
@@ -725,6 +761,7 @@
 		<cm:specification url="http://www.psc.edu/general/software/packages/seq-intro/genbankfile.html"/>
 		<cm:specification url="http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html"/>
 		<cm:specification url="http://msdlocal.ebi.ac.uk/docs/mimetype.html"/>
+		<cm:specification url="http://www.ebi.ac.uk/help/formats.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-gulp-input" cm:support="no">
@@ -836,7 +873,7 @@
 		<glob pattern="*.jdx"/>
 		<sub-class-of type="text/plain"/>
 		<cm:supported-by>
-			<cm:application name="csir (cactvs)"/>
+			<cm:application name="csir" package="cactvs"/>
 			<cm:application name="jcamp-dx"/>
 			<cm:application name="kfile_plugin"/>
 		</cm:supported-by>
@@ -898,8 +935,8 @@
 		<glob pattern="*.mol"/>
 		<sub-class-of type="text/plain"/>
 		<cm:supported-by>
-			<cm:application name="csbr (cactvs)"/>
-			<cm:application name="csed (cactvs)"/>
+			<cm:application name="csbr" package="cactvs"/>
+			<cm:application name="csed" package="cactvs"/>
 			<cm:application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
 			<cm:application name="gchempaint"/>
 			<cm:application name="jmol"/>
@@ -922,7 +959,7 @@
 			</match>
 		</magic>
 		<cm:supported-by>
-			<cm:application name="csbr (cactvs)"/>
+			<cm:application name="csbr" package="cactvs"/>
 		</cm:supported-by>
 		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
 		                  title="MDL CTFile Formats - Chapter 8: RDfiles"/>
@@ -942,7 +979,7 @@
 			<match type="string" value="$RXN V3000\n" offset="0"/>
 		</magic>
 		<cm:supported-by>
-			<cm:application name="csbr (cactvs)"/>
+			<cm:application name="csbr" package="cactvs"/>
 			<cm:application name="xdrawchem"/>
 		</cm:supported-by>
 		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
@@ -959,7 +996,7 @@
 		</glob>
 		<sub-class-of type="text/plain"/>
 		<cm:supported-by>
-			<cm:application name="csbr (cactvs)"/>
+			<cm:application name="csbr" package="cactvs"/>
 			<cm:application name="gchempaint"/>
 			<cm:application name="xdrawchem"/>
 		</cm:supported-by>
@@ -1013,6 +1050,7 @@
 			<cm:application name="jmol"/>
 		</cm:supported-by>
 		<cm:specification url="http://mmcif.pdb.org/"/>
+		<cm:specification url="http://www.pdb.org/robohelp/ftp/files_formats/structures/chemical_component_format/chemical_component_mmcif_format.htm"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mol2" cm:support="yes" cm:added="0.1.91">
@@ -1050,7 +1088,7 @@
 			<cm:application name="molden"/>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
-		<cm:specification url="http://products.camsoft.com/"/>
+		<cm:specification url="http://cc-ipcp.icp.ac.ru/mopac93.pdf"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mopac-input" cm:support="yes" cm:added="0.1.91">
@@ -1072,6 +1110,7 @@
 			<cm:application name="xdrawchem"/>
 		</cm:supported-by>
 		<cm:specification url="http://www.mdli.com/"/>
+		<cm:specification url="http://cc-ipcp.icp.ac.ru/mopac93.pdf"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mopac-out" cm:support="yes" cm:added="0.1.93">
@@ -1098,6 +1137,7 @@
 		<cm:supported-by>
 			<cm:application name="molden"/>
 		</cm:supported-by>
+		<cm:specification url="http://cc-ipcp.icp.ac.ru/mopac93.pdf"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-mopac-vib" cm:support="no">
@@ -1106,6 +1146,7 @@
 		<expanded-acronym>Molecular Orbital PACkage</expanded-acronym>
 		<glob pattern="*.mvb"/>
 		<sub-class-of type="text/plain"/>
+		<cm:specification url="http://cc-ipcp.icp.ac.ru/mopac93.pdf"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-msi-car" cm:support="yes" cm:added="0.1.91">
@@ -1246,7 +1287,8 @@
 
 	<mime-type type="chemical/x-pdb" cm:support="yes" cm:added="0.1.90">
 		<_comment>Brookhaven Protein DataBase File Format</_comment>
-		<!-- <glob pattern="*.ent"/> -->
+		<glob pattern="*.brk"/> <!-- some older extension -->
+		<glob pattern="*.ent"/> <!-- some older extension -->
 		<glob pattern="*.pdb">
 			<cm:conflicts type="application/vnd.palm" fdo="yes" kde="yes"/>
 			<cm:conflicts type="application/x-palm-database" gnome="yes"/>
@@ -1258,38 +1300,30 @@
 		<!-- 3nd line offest ... -->
 		<!-- but we have malformed examples in Jmol samples dir -->
 		<magic priority="85">
-			<match type="string" value="ATOM   xxxx " offset="0" mask="0xffffffffffffff00000000ff"/>
-			<match type="string" value="HETATM xxxx " offset="0" mask="0xffffffffffffff00000000ff"/>
-			<match type="string" value="TER    xxxx " offset="0" mask="0xffffffffffffff00000000ff"/>
-			<match type="string" value="AUTHOR " offset="0"/>
-			<match type="string" value="CISPEP " offset="0"/>
-			<match type="string" value="COMPND " offset="0"/>
-			<match type="string" value="CRYST1 " offset="0"/>
-			<match type="string" value="DBREF  " offset="0"/>
-			<match type="string" value="EXPDTA " offset="0"/>
-			<match type="string" value="FORMUL " offset="0"/>
-			<match type="string" value="HEADER " offset="0"/>
-			<match type="string" value="HELIX  " offset="0"/>
-			<match type="string" value="HETNAM " offset="0"/>
-			<match type="string" value="HETSYN " offset="0"/>
-			<match type="string" value="JRNL   " offset="0"/>
-			<match type="string" value="KEYWDS " offset="0"/>
-			<match type="string" value="LINK   " offset="0"/>
-			<match type="string" value="MODEL  " offset="0"/>
-			<match type="string" value="MTRIX1 " offset="0"/>
-			<match type="string" value="ORIGX1 " offset="0"/>
+      <!-- Following PDB Format 2.3 specification -->
+      <!-- http://www.wwpdb.org/documentation/format23/sect1.html#ORDER -->
+      <!-- the HEADER entry is MANDATORY! -->
+			<match type="string" value="HEADER    " offset="0">
+				<match type="string" value="??-???-??   ????" offset="50"
+				       mask="0x0000ff000000ff0000ffffff00000000"/>
+			</match>
+      <!-- The following rules are just an accommodation to broken PDB -->
+      <!-- files. Please make sure, your program outputs correct PDB, -->
+      <!-- so we can remove these lines in the future. -->
+      <match type="string" value="HEADER    " offset="0"/>
+			<match type="string" value="TITLE     " offset="0"/>
+			<match type="string" value="COMPND    " offset="0"/>
 			<match type="string" value="REMARK " offset="0"/>
-			<match type="string" value="REVDAT " offset="0"/>
-			<match type="string" value="SCALE1 " offset="0"/>
-			<match type="string" value="SEQDAV " offset="0"/>
-			<match type="string" value="SEQRES " offset="0"/>
-			<match type="string" value="SHEET  " offset="0"/>
-			<match type="string" value="SOURCE " offset="0"/>
-			<match type="string" value="TITLE  " offset="0"/>
-			<match type="string" value="TURN   " offset="0"/>
+			<match type="string" value="AUTHOR    " offset="0"/>
+			<match type="string" value="COMPND    " offset="0"/>
+			<match type="string" value="MODEL        1" offset="0"/>
+			<match type="string" value="TER       1      " offset="0"/>
+			<match type="string" value="CRYST1    " offset="0"/>
+			<match type="string" value="ATOM      1 " offset="0"/>
+			<match type="string" value="HETATM    1 " offset="0"/>
 		</magic>
 		<cm:supported-by>
-			<cm:application name="cs3d (cactvs)"/>
+			<cm:application name="cs3d" package="cactvs"/>
 			<cm:application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
 			<cm:application name="gchempaint"/>
 			<cm:application name="gdis"/>
@@ -1302,6 +1336,21 @@
 		</cm:supported-by>
 		<cm:specification url="http://www.rcsb.org/pdb/static.do?p=file_formats/pdb/index.html"/>
 		<cm:specification url="http://www-bio.unizh.ch/docu/acc_docs/doc/formats980/File_Formats_1998.html#781879"/>
+	</mime-type>
+
+	<mime-type type="chemical/x-pdbml" cm:support="no">
+		<_comment>Protein Data Bank Markup Language</_comment>
+		<acronym>PDBML</acronym>
+		<expanded-acronym>Protein Data Bank Markup Language</expanded-acronym>
+		<glob pattern="*.pdbml"/>
+		<root-XML namespaceURI="http://deposit.pdb.org/pdbML/pdbx.xsd" localName="PDBx:datablock"/>
+		<root-XML namespaceURI="http://deposit.pdb.org/pdbML/pdbx.xsd" localName="datablock"/>
+		<sub-class-of type="application/xml"/>
+		<magic priority="50">
+			<match type="string" value="&lt;PDBx:datablock" offset="0:64"/>
+			<match type="string" value="&lt;datablock" offset="0:64"/>
+		</magic>
+		<cm:specification url="http://pdbml.rcsb.org/"/>
 	</mime-type>
 
 	<!-- probably not official -->	
@@ -1371,6 +1420,7 @@
 		</magic>
 		<cm:specification url="http://www.expasy.ch/cgi-bin/keywlist.pl"/>
 		<cm:specification url="http://ca.expasy.org/sprot/userman.html"/>
+		<cm:specification url="http://www.ebi.ac.uk/help/formats.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-turbomole-basis" cm:support="no">
@@ -1509,10 +1559,16 @@
 		<cm:specification url="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=24269" title="ISO 14976:1998"/>
 	</mime-type>
 
+	<!-- It seems, .vmd files are not chemistry-only-related, so they may be -->
+	<!-- better put into another media type than chemical -->
 	<mime-type type="chemical/x-vmd" cm:support="yes" cm:added="0.1.93">
 		<_comment>Visual Molecular Dynamics</_comment>
 		<glob pattern="*.vmd"/>
 		<sub-class-of type="text/plain"/>
+		<magic priority="50">
+			<match type="string" value="VMODEL VERSION 0.??\n" offset="0"
+			       mask="0x0000000000000000000000000000000000ffff00"/>
+		</magic>
 		<cm:supported-by>
 			<cm:application name="kfile_plugin"/>
 			<cm:application name="vmd"/>
@@ -1522,8 +1578,6 @@
 
 	<mime-type type="chemical/x-xtel" cm:support="no">
 		<_comment>Xtelplot File Format</_comment>
-		<acronym></acronym>
-		<expanded-acronym></expanded-acronym>
 		<glob pattern="*.xtel"/>
 		<sub-class-of type="text/plain"/>
 	</mime-type>
@@ -1534,7 +1588,7 @@
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/xyz"/>
 		<cm:supported-by>
-			<cm:application name="cs3d (cactvs)"/>
+			<cm:application name="cs3d" package="cactvs"/>
 			<cm:application name="gchem3d-viewer" package="gnome-chemistry-utils"/>
 			<cm:application name="gdis"/>
 			<cm:application name="jmol"/>

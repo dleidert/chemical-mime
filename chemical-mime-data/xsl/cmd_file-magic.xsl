@@ -134,124 +134,145 @@
 	<xsl:param name="match.level.symbol" select="''"/>
 	<xsl:param name="match.mime.type" select="ancestor::fdo:mime-type/@type"/>
 
-  <!-- * Offset values of the kind 'Offset_start:Offset_end' cannot be     -->
-  <!-- * used. Here we extract the starting offset.                        -->
-	<xsl:variable name="adjusted.offset">
-		<xsl:choose>
-			<xsl:when test="contains(@offset,':')">
-				<xsl:value-of select="substring-before(@offset,':')"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="@offset"/>
-			</xsl:otherwise>
-		</xsl:choose>	
-	</xsl:variable>
-  <!-- * In general, the freedesktop.org and the file/KMimeMagic MIME      -->
-  <!-- * magic database use different type values. All types except byte   -->
-  <!-- * and string need to be transformed with the substitution values in -->
-  <!-- * the 'type.string.subst.map' map.                                  -->
-  <!-- * There is one special case: If we have an offset value of the type -->
-  <!-- * 'Offset_start:Offset_end' and a type 'string', then the type      -->
-  <!-- * needs to be transformed to the literal search type                -->
-  <!-- * 'search/{Offset_difference}', while the offset was already        -->
-  <!-- * transformed a step earlier.                                       -->
-	<xsl:variable name="adjusted.type">
-		<xsl:choose>
-			<xsl:when test="@type = 'string' and contains(@offset,':')">
-				<xsl:value-of select="concat('search','/',substring-after(@offset,':') - substring-before(@offset,':'))"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:call-template name="string.subst.apply.map">
-					<xsl:with-param name="self.content" select="@type"/>
-					<xsl:with-param name="map.contents" select="exsl:node-set($type.string.subst.map)/*"/>
-				</xsl:call-template>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-  <!-- * String can contain spaces or greater/less than characters. They   -->
-  <!-- * need to be escaped with a backslash '\'. It's enough to only      -->
-  <!-- * process the first 31 characters of a string, because all other    -->
-  <!-- * are processed later.                                              -->
-	<xsl:variable name="adjusted.value">
-		<xsl:choose>
-			<xsl:when test="@type = 'string'">
-				<xsl:call-template name="string.subst.apply.map">
-					<xsl:with-param name="self.content" select="substring(@value,0,31)"/>
-					<xsl:with-param name="map.contents" select="exsl:node-set($value.string.subst.map)/*"/>
-				</xsl:call-template>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="@value"/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-
-  <!-- * Output the syntax. A typical one could be:                        -->
-  <!-- *                                                                   -->
-  <!-- * 0       string  VjCD0100                                          -->
-  <!-- * >8      lelong  0x01020304                                        -->
-  <!-- * >>12    lelong  0x00000000                                        -->
-  <!-- * >>>16   lelong  0x00000000                                        -->
-  <!-- * >>>>20  lelong  0x80000000      chemical/x-cdx                    -->
-  <!-- * >>>>20  lelong  0x00000000      chemical/x-cdx                    -->
-  <!-- *                                                                   -->
-  <!-- * 0       string  CACTVS\ QSAR\ Table     chemical/x-cactvs-table   -->
-  <!-- *                                                                   -->
-  <!-- * Every line starts with the initial offset or the continuation     -->
-  <!-- * string followed by the offset. The second column contains the     -->
-  <!-- * type; the third contains the value and the fourth (if any), the   -->
-  <!-- * MIME type.                                                        -->
-	<xsl:value-of select="$match.level.symbol"/>
-	<xsl:value-of select="$adjusted.offset"/>
-	<xsl:text>	</xsl:text>
-	<xsl:value-of select="$adjusted.type"/>
-	<xsl:text>	</xsl:text>
-  <xsl:value-of select="$adjusted.value"/>
-  <!-- * Now if the string is longer than 31 characeters, we need to split -->
-  <!-- * it and process the rest separated in the template                 -->
-  <!-- * 'split.string.match'.                                             -->
-	<xsl:if test="@type = 'string'
-	              and string-length(@value) &gt; 31">
-		<xsl:call-template name="split.string.match">
-			<xsl:with-param name="string.content" select="substring(@value,31)"/>
-			<xsl:with-param name="match.level.symbol" select="concat($match.level.symbol,'&gt;')"/>
-		</xsl:call-template>
-	</xsl:if>
 	<xsl:choose>
-    <!-- * And if that's the last pattern test, output the MIME type       -->
-    <!-- * followed by a linebreak.                                        -->
-		<xsl:when test="not(child::fdo:match)">
-			<xsl:text>	</xsl:text>
-			<xsl:value-of select="$match.mime.type"/>
-			<xsl:text>&#10;</xsl:text>
-		</xsl:when>
-    <!-- * If that's not the last pattern test, we need to process the     -->
-    <!-- * child tests too and increase the continuation level.            -->
-		<xsl:otherwise>
-      <!-- * First of all, add the line-break.                             -->
-			<xsl:text>&#10;</xsl:text>
-      <!-- * If we had a string longer than 31 characeters, the test       -->
-      <!-- * continuation level is now much higher (at least + '>') then   -->
-      <!-- * what's in '$match.level.symbol'. So we need to get the real   -->
-      <!-- * current continuation level and call 'add.match.level.support' -->
-      <!-- * to get the string to add to the current level. Otherwise just -->
-      <!-- * add one level up ('>') only.                                  -->
-			<xsl:variable name="match.level.symbol.add">
+    <!-- * If the type is masked 'string', we do nothing, as file cannot   -->
+    <!-- * handle this (but freedesktop.org can). If you want to implement -->
+    <!-- * a better solution, send me a patch.                             -->
+		<xsl:when test="not(@type = 'string' and @mask)">
+      <!-- * Offset values of the kind 'Offset_start:Offset_end' cannot be -->
+      <!-- * used. Here we extract the starting offset.                    -->
+			<xsl:variable name="adjusted.offset">
 				<xsl:choose>
-					<xsl:when test="@type = 'string'">
-						<xsl:call-template name="add.match.level.support">
-							<xsl:with-param name="string.content" select="@value"/>
-						</xsl:call-template>
+					<xsl:when test="contains(@offset,':')">
+						<xsl:value-of select="substring-before(@offset,':')"/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:value-of select="'&gt;'"/>
+						<xsl:value-of select="@offset"/>
+					</xsl:otherwise>
+				</xsl:choose>	
+			</xsl:variable>
+      <!-- * In general, the freedesktop.org and the file/KMimeMagic MIME  -->
+      <!-- * magic database use different type values. All types except    -->
+      <!-- * byte and string need to be transformed with the substitution  -->
+      <!-- * values in the 'type.string.subst.map' map.                    -->
+      <!-- * There is one special case: If we have an offset value of the  -->
+      <!-- * type 'Offset_start:Offset_end' and a type 'string', then the  -->
+      <!-- * type needs to be transformed to the literal search type       -->
+      <!-- * 'search/{Offset_difference}', while the offset was already    -->
+      <!-- * transformed a step earlier.                                   -->
+			<xsl:variable name="adjusted.type">
+				<xsl:choose>
+					<xsl:when test="@type = 'string' and contains(@offset,':')">
+						<xsl:value-of select="concat('search','/',substring-after(@offset,':') - substring-before(@offset,':'))"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:call-template name="string.subst.apply.map">
+							<xsl:with-param name="self.content" select="@type"/>
+							<xsl:with-param name="map.contents" select="exsl:node-set($type.string.subst.map)/*"/>
+						</xsl:call-template>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:variable>
-      <!-- * Now process all match children and increase the continutaion  -->
-      <!-- * level with the earlier computed level value.                  -->
+      <!-- * String can contain spaces or greater/less than characters.    -->
+      <!-- * They need to be escaped with a backslash '\'. It's enough to  -->
+      <!-- * only process the first 31 characters of a string, because all -->
+      <!-- * other are processed later.                                    -->
+			<xsl:variable name="adjusted.value">
+				<xsl:choose>
+					<xsl:when test="@type = 'string'">
+						<xsl:call-template name="string.subst.apply.map">
+							<xsl:with-param name="self.content" select="substring(@value,0,31)"/>
+							<xsl:with-param name="map.contents" select="exsl:node-set($value.string.subst.map)/*"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="@value"/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
+
+      <!-- * Output the syntax. A typical one could be:                    -->
+      <!-- *                                                               -->
+      <!-- * 0       string  VjCD0100                                      -->
+      <!-- * >8      lelong  0x01020304                                    -->
+      <!-- * >>12    lelong  0x00000000                                    -->
+      <!-- * >>>16   lelong  0x00000000                                    -->
+      <!-- * >>>>20  lelong  0x80000000      chemical/x-cdx                -->
+      <!-- * >>>>20  lelong  0x00000000      chemical/x-cdx                -->
+      <!-- *                                                               -->
+      <!-- * 0       string  CACTVS\ QSAR\ Table   chemical/x-cactvs-table -->
+      <!-- *                                                               -->
+      <!-- * Every line starts with the initial offset or the continuation -->
+      <!-- * string followed by the offset. The second column contains the -->
+      <!-- * type; the third contains the value and the fourth (if any),   -->
+      <!-- * the MIME type.                                                -->
+			<xsl:value-of select="$match.level.symbol"/>
+			<xsl:value-of select="$adjusted.offset"/>
+			<xsl:text>	</xsl:text>
+			<xsl:value-of select="$adjusted.type"/>
+			<xsl:if test="@type != 'string'
+				            and @mask">
+				<xsl:value-of select="concat('&amp;',@mask)"/>
+			</xsl:if>
+			<xsl:text>	</xsl:text>
+		  <xsl:value-of select="$adjusted.value"/>
+      <!-- * Now if the string is longer than 31 characeters, we need to   -->
+      <!-- * split it and process the rest separated in the template       -->
+      <!-- * 'split.string.match'.                                         -->
+			<xsl:if test="@type = 'string'
+			              and string-length(@value) &gt; 31">
+				<xsl:call-template name="split.string.match">
+					<xsl:with-param name="string.content" select="substring(@value,31)"/>
+					<xsl:with-param name="match.level.symbol" select="concat($match.level.symbol,'&gt;')"/>
+				</xsl:call-template>
+			</xsl:if>
+
+			<xsl:choose>
+        <!-- * And if that's the last pattern test, output the MIME type   -->
+        <!-- * followed by a linebreak.                                    -->
+				<xsl:when test="not(child::fdo:match[not(@type = 'string' and @mask)])">
+					<xsl:text>	</xsl:text>
+					<xsl:value-of select="$match.mime.type"/>
+					<xsl:text>&#10;</xsl:text>
+				</xsl:when>
+        <!-- * If that's not the last pattern test, we need to process the -->
+        <!-- * child tests too and increase the continuation level.        -->
+				<xsl:otherwise>
+          <!-- * First of all, add the line-break.                         -->
+					<xsl:text>&#10;</xsl:text>
+          <!-- * If we had a string longer than 31 characeters, the test   -->
+          <!-- * continuation level is now much higher (at least + '>')    -->
+          <!-- * then what's in '$match.level.symbol'. So we need to get   -->
+          <!-- * the real current continuation level and call              -->
+          <!-- * 'add.match.level.support' to get the string to add to the -->
+          <!-- * current level. Otherwise add one level up ('>') only.     -->
+					<xsl:variable name="match.level.symbol.add">
+						<xsl:choose>
+							<xsl:when test="@type = 'string'">
+								<xsl:call-template name="add.match.level.support">
+									<xsl:with-param name="string.content" select="@value"/>
+								</xsl:call-template>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="'&gt;'"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
+          <!-- * Now process all match children and increase the           -->
+          <!-- * continutaion level with the earlier computed level value. -->
+					<xsl:apply-templates select="fdo:match" mode="file">
+						<xsl:with-param name="match.level.symbol"
+						                select="concat($match.level.symbol,$match.level.symbol.add)"/>
+						<xsl:with-param name="match.mime.type" select="$match.mime.type"/>
+					</xsl:apply-templates>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:when>
+    <!-- * If we have a match line to ignore, then look into the next      -->
+    <!-- * level. Maybe there we have a match element to process.          -->
+		<xsl:otherwise>
 			<xsl:apply-templates select="fdo:match" mode="file">
-				<xsl:with-param name="match.level.symbol" select="concat($match.level.symbol,$match.level.symbol.add)"/>
+				<xsl:with-param name="match.level.symbol" select="$match.level.symbol"/>
 				<xsl:with-param name="match.mime.type" select="$match.mime.type"/>
 			</xsl:apply-templates>
 		</xsl:otherwise>

@@ -104,7 +104,7 @@
 	<xsl:value-of select="$local.name"/>
 	<xsl:for-each select="@*">
 		<xsl:text> </xsl:text>
-		<xsl:value-of select="$local.name"/>
+		<xsl:value-of select="local-name()"/>
 		<xsl:text>="</xsl:text>
 		<xsl:value-of select="." />
 		<xsl:text>"</xsl:text>
@@ -134,7 +134,7 @@
 	                                           + count(child::fdo:root-XML[1])
 	                                           + count(child::cm:specification[1])
 	                                           + 1)"/>
-	<tr class="{local-name(.)}">
+	<tr id="{generate-id(.)}" class="{local-name(.)}">
 		<xsl:choose>
 			<xsl:when test="$count.rowspan &gt; 1">
 				<xsl:call-template name="mimetype.output">
@@ -243,7 +243,7 @@
 	<h1>chemical-mime-data</h1>
 	<p>The source of <a href="index.html">this project</a> can be downloaded at the <a href="http://sourceforge.net/project/showfiles.php?group_id=159685&amp;package_id=179318">Sourceforge.net project page</a>. <span class="sfnet"><a href="http://www.sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=159685&amp;type=1" width="88" height="31" style="border: 0;" alt="SourceForge.net Logo"/></a></span></p>
 	<p>The released version is: <span class="version">&entversion;</span>.</p>
-	<p>The released Database version is: <span class="version"><xsl:value-of select="/fdo_mime-info/@cm:vcsid"/></span>.</p>
+	<p>The released Database version is: <span class="version"><xsl:value-of select="/fdo:mime-info/@cm:vcsid"/></span>.</p>
 	<h2 id="toc">Table of Contents</h2>
 	<ol>
 		<li><a href="#supported">Supported MIME types</a></li>
