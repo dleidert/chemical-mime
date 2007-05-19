@@ -1,6 +1,41 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-05-19 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Initially added chemical/x-pdbml,
+	chemical/x-chem3d-xml and application/x-jmol-voxel file types, but
+	didn't activate them yet. 
+	(chemical/seq-aa-fasta, chemical/x-alchemy, chemical/x-cif)
+	(chemical/x-embl-dl-nucleotide, chemical/x-fasta)
+	(chemical/x-gaussian-cube, chemical/x-genbank, chemical/x-mmcif)
+	(chemical/x-mopac-graph, chemical/x-mopac-input, chemical/x-mopac-out)
+	(chemical/x-mopac-vib, chemical/x-swissprot): Added, fixed or improved
+	specification information/URLs.
+	(chemical/x-cactvs-ascii, chemical/x-cactvs-binary)
+	(chemical/x-cactvs-table, chemical/x-daylight-smiles)
+	(chemical/x-gaussian-input, chemical/x-jcamp-dx)
+	(chemical/x-mdl-molfile, chemical/x-mdl-rdfile)
+	(chemical/x-mdl-rxnfile, chemical/x-mdl-sdfile, chemical/x-pdb)
+	(chemical/x-xyz): Fixed cm:application element synopsis.
+	(chemical/x-pdb): Added .brk and uncommented .ent extension. Fixed the
+	magic pattern to comply with the spec. This can lead to mis-formatted
+	PDB files not detected, but that's not our problem.
+	(chemical/x-vmd): Added initial content pattern.
+	(chemical/x-xtel): Removed empty elements.
+
+	* test/compare_pattern.xsl (match.mime.type.glob): Fixed an xpath
+	expression, that may not work in a very few circumstances.
+
+	* xsl/cmd_file-magic.xsl (fdo:match[mode=]): Added initial
+	mask-support.
+
+	* xsl/cmd_website.xsl (fdo:magic|fdo:match|fdo:root-XML): Fixed a
+	semantic bug leading to wrong pattern matching rules output.
+	(fdo:mime-type): Added IDs to every table entry.
+	(html.content.head): Fixed a typo bug in a XPath expression leading to
+	a missing database ID.
+
 2007-03-04 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in:
