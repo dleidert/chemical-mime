@@ -166,7 +166,7 @@
 						<xsl:value-of select="concat('search','/',substring-after(@offset,':') - substring-before(@offset,':'))"/>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:call-template name="string.subst.apply.map">
+						<xsl:call-template name="common.string.subst.apply.map">
 							<xsl:with-param name="self.content" select="@type"/>
 							<xsl:with-param name="map.contents" select="exsl:node-set($type.string.subst.map)/*"/>
 						</xsl:call-template>
@@ -180,7 +180,7 @@
 			<xsl:variable name="adjusted.value">
 				<xsl:choose>
 					<xsl:when test="@type = 'string'">
-						<xsl:call-template name="string.subst.apply.map">
+						<xsl:call-template name="common.string.subst.apply.map">
 							<xsl:with-param name="self.content" select="substring(@value,0,31)"/>
 							<xsl:with-param name="map.contents" select="exsl:node-set($value.string.subst.map)/*"/>
 						</xsl:call-template>
@@ -351,7 +351,7 @@
 	<xsl:text>string</xsl:text>
 	<xsl:text>	</xsl:text>
   <!-- * Output the escaped first 31 characeters of the string ...         -->
-	<xsl:call-template name="string.subst.apply.map">
+	<xsl:call-template name="common.string.subst.apply.map">
 		<xsl:with-param name="self.content" select="substring($string.content,0,31)"/>
 		<xsl:with-param name="map.contents" select="exsl:node-set($value.string.subst.map)/*"/>
 	</xsl:call-template>

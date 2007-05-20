@@ -19,7 +19,7 @@ html_DATA = chemical-mime-data.html
 dist_html_DATA = index.html cmd.css
 
 
-chemical-mime-data.html : cmd_website.xsl chemical-mime-database.xml
+$(html_DATA): cmd_website.xsl chemical-mime-database.xml
 	$(XSLTPROC) $(XSLTPROC_FLAGS) $^
 
 install-sfnet: $(html_DATA) $(dist_html_DATA)

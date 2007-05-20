@@ -8,7 +8,9 @@
 
 EXTRA_DIST = $(database_in_files)
 
-CLEANFILES = $(database_files)
+BUILT_SOURCES = $(database_files)
+
+MOSTLYCLEANFILES = $(BUILT_SOURCES)
 
 MAINTAINERCLEANFILES = Makefile.in
 
@@ -19,8 +21,6 @@ XMLLINT_FLAGS  += --noout --valid
 database_in_files = chemical-mime-database.xml.in
 database_files    = $(database_in_files:.xml.in=.xml)
 
-
-all-local: $(database_files)
 
 check-local:
 	@echo -e "\033[1mCorrect any errors before making a distribution.\033[0m"

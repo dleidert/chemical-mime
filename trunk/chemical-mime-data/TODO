@@ -9,6 +9,9 @@ TODO
 
   + Fix INSTALL.
 
+  + Add a stylesheet to create .desktop files for applications (install this
+    stylesheet? - would need the database too).
+
 
 * Later branches
 
@@ -34,6 +37,9 @@ TODO
   + How to handle _category field in .keys? Do we need more fields?
 
   + Test for XFCE4.2 support.
+
+  + The "Chemical MIME Connection" lists MIME types per application. Our
+    database contains the necessary information to update this information.
 
 
 * General

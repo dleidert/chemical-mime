@@ -22,6 +22,6 @@ filemagicdir   = $(pkgdatadir)/file
 filemagic_DATA = magic.mime
 #endif #BOOL_KDE_MIME
 
-magic.mime: cmd_file-magic.xsl chemical-mime-database.xml
+$(filemagic_DATA): cmd_file-magic.xsl chemical-mime-database.xml
 	$(XSLTPROC) $(XSLTPROC_FLAGS) $^
 

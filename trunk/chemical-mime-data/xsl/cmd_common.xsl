@@ -143,17 +143,36 @@
 	</xsl:message>
 </xsl:template>
 
+<!-- * This template                                                       -->
+<xsl:template name="common.string.output.tabs">
+	<xsl:param name="my.written.string.length"/>
+	<xsl:param name="my.tabs.to.go"/>
+	<xsl:call-template name="common.string.output.tabs.empty">
+		<xsl:with-param name="my.tabs.to.go" select="$my.tabs.to.go - floor($my.written.string.length div 8)"/>	
+	</xsl:call-template>
+</xsl:template>
+
+<xsl:template name="common.string.output.tabs.empty">
+	<xsl:param name="my.tabs.to.go"/>
+	<xsl:if test="$my.tabs.to.go &gt; 0">
+		<xsl:text>	</xsl:text>
+		<xsl:call-template name="common.string.output.tabs.empty">
+			<xsl:with-param name="my.tabs.to.go" select="$my.tabs.to.go - 1"/>	
+		</xsl:call-template>
+	</xsl:if>
+</xsl:template>
+
 <!-- * This template was inspired by / adapted from the DocBook-XSL        -->
 <!-- * project (http://docbook.sf.net). It get's a string content and a    -->
 <!-- * nodeset of strings to substitute and their substitution strings. If -->
 <!-- * it finds a match, then it calls a second template, that replaces    -->
 <!-- * the match with the new string.                                      -->
-<xsl:template name="string.subst.apply.map">
+<xsl:template name="common.string.subst.apply.map">
 	<xsl:param name="self.content"/>
 	<xsl:param name="map.contents"/>
 	
 	<xsl:variable name="replaced_text">
-		<xsl:call-template name="string.subst">
+		<xsl:call-template name="common.string.subst">
 			<xsl:with-param name="string" select="$self.content"/>
 			<xsl:with-param name="target" select="$map.contents[1]/@oldstring"/>
 			<xsl:with-param name="replacement" select="$map.contents[1]/@newstring"/>
@@ -161,7 +180,7 @@
 	</xsl:variable>
 	<xsl:choose>
 		<xsl:when test="$map.contents[2]">
-			<xsl:call-template name="string.subst.apply.map">
+			<xsl:call-template name="common.string.subst.apply.map">
 				<xsl:with-param name="self.content" select="$replaced_text"/>
 				<xsl:with-param name="map.contents" select="$map.contents[position() &gt; 1]"/>
 			</xsl:call-template>
@@ -178,7 +197,7 @@
 <!-- * contains the target. If yes, it replaces the target with its        -->
 <!-- * replacement and checks the rest of the string by calling the        -->
 <!-- * template again with the rest of the stringas parameter.             -->
-<xsl:template name="string.subst">
+<xsl:template name="common.string.subst">
 	<xsl:param name="string"/>
 	<xsl:param name="target"/>
 	<xsl:param name="replacement"/>
@@ -189,7 +208,7 @@
 			<xsl:variable name="rest">
         <!-- * Call the template again, with the rest of the string found  -->
         <!-- * after the match. This recursively replaces all targets.     -->
-				<xsl:call-template name="string.subst">
+				<xsl:call-template name="common.string.subst">
 					<xsl:with-param name="string" select="substring-after($string, $target)"/>
 					<xsl:with-param name="target" select="$target"/>
 					<xsl:with-param name="replacement" select="$replacement"/>
