@@ -3,6 +3,11 @@
 
 2007-05-20 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* xsl/Makefile.am (EXTRA_DIST): Fixed the cmd_mime_types.xsl
+	inclusion.
+
+2007-05-20 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* TODO: Added two items.
 
 	* Makefile.am (SUBDIRS):
