@@ -3,6 +3,11 @@
 
 2007-05-20 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* html_docs/index.html: Added some information about the mailing
+	lists.
+
+2007-05-20 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* xsl/Makefile.am (EXTRA_DIST): Fixed the cmd_mime_types.xsl
 	inclusion.
 
