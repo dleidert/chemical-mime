@@ -18,7 +18,7 @@ freedesktopmimedir   = $(with_freedesktop_mime)/packages
 freedesktopmime_DATA = chemical-mime-data.xml
 endif #BOOL_FREEDESKTOP_MIME
 
-chemical-mime-data.xml : cmd_freedesktop_org.xsl chemical-mime-database.xml
+$(freedesktopmime_DATA): cmd_freedesktop_org.xsl chemical-mime-database.xml
 	$(XSLTPROC) $(XSLTPROC_FLAGS) $^
 
 

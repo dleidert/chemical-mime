@@ -297,6 +297,19 @@ if test -z $KDE_MIMELNK_DATA_DB; then
 		)		
 	fi
 fi
+AC_ARG_VAR(
+	[MIME_SUPPORT_MIME_TYPES_DATA_DB],
+	[
+	 The system wide mime.types database (on Debian systems part of mime-support).
+	 @<:@default=$sysconfdir/mime.types@:>@
+	]
+)
+if test -z $MIME_SUPPORT_MIME_TYPES_DATA_DB; then
+	AC_SUBST(
+		[MIME_SUPPORT_MIME_TYPES_DATA_DB],
+		[${sysconfdir}/mime.types]
+	)
+fi
 
 dnl --------------------------------------------------------------------------
 dnl necessary checks
@@ -489,6 +502,7 @@ AC_CONFIG_FILES([
 	icons/hicolor/Makefile
 	icons/pixmaps/Makefile
 	kde/Makefile
+	mime-support/Makefile
 	po/Makefile.in
 	src/Makefile
 	test/Makefile

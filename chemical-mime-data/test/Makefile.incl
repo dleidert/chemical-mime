@@ -32,3 +32,9 @@ $(KDE_MIMELNK_XML_CUSTOM): $(KDE_MIMELNK_DATA_DB)
 	done
 	@echo "</kde-mimelnk>" >> $@
 
+
+MIME_SUPPORT_MIME_TYPES_XML_CUSTOM = \
+	<mime-types-mime xmlns:xi="http://www.w3.org/2001/XInclude" > \
+		<xi:include href="$(MIME_SUPPORT_MIME_TYPES_DATA_DB)" parse="text" encoding="utf-8"/> \
+	</mime-types-mime>
+

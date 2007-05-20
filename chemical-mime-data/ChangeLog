@@ -1,6 +1,47 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-05-20 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Added two items.
+
+	* Makefile.am (SUBDIRS):
+	* configure.ac (AC_CONFIG_FILES):
+	* xsl/cmd_mime_types.xsl:
+	* xsl/Makefile.am (EXTRA_DIST):
+	* mime-support/Makefile.am: Added support for creating a mime.types
+	file.
+
+	* configure.ac: Added a new variable for mime.type related tests.
+
+	* file/Makefile.am:
+	* freedesktop.org/Makefile.am:
+	* html_docs/Makefile.am: Improved target syntax.
+
+	* src/Makefile.am (all-local): Replaced with BUILT_SOURCES to make
+	sure, it is built at the beginning.
+
+	* src/chemical-mime-database.xml.in (cm:conflicts): Added a mimetypes
+	attribute to declare a conflict with the mime.types file.
+	(application/x-jmol-voxel): Fixed specification element.
+	(chemical/x-daylight-smiles, chemical/x-mdl-sdfile, chemical/x-mif)
+	(chemical/x-msi-msi, chemical/x-shelx): Added conflicts with the
+	mime.types database.
+
+	* test/Makefile.incl:
+	* test/Makefile.am (EXTRADIST, MOSTLYCLEANFILES, check-pattern):
+	* test/compare_pattern.xsl (fdo:glob):
+	* test/mime-types.xsl: Added a test for checking the database against
+	the mime.types database.
+
+	* xsl/cmd_common.xsl: Added two templates common.string.output.tabs
+	and common.string.output.tabs.empty to create a column design based on
+	tabs in text output.
+
+	* xsl/cmd_file-magic.xsl (fdo:match[mode=file], split.string.match):
+	* xsl/cmd_common.xsl: (string.subst.apply.map, string.subst): Prefixed
+	the template names with 'common.'.
+
 2007-05-19 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Initially added chemical/x-pdbml,
