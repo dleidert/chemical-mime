@@ -10,7 +10,11 @@ TODO
   + Fix INSTALL.
 
   + Add a stylesheet to create .desktop files for applications (install this
-    stylesheet? - would need the database too).
+    stylesheet? - would need the database too - Idea: Associate the stylesheet
+    directly with the source and upload the necessary files to sf.net).
+
+  + Fix GNOME 2.4 support: extensions beeing *.ext should be put into the ext:
+    field - everything else probably needs to be put into regex: fields.
 
 
 * Later branches
@@ -81,6 +85,7 @@ TODO
     Questel DARC-F1
     NBRF/PIR http://www.psc.edu/general/software/packages/seq-intro/nbrffile.html
     chemixal/x-mpsa http://bioinformatics.oxfordjournals.org/cgi/screenpdf/16/3/286.pdf
+    cclib has built-in rules to determine computational chemistry packages file types
 
     viewmol also uses: x-turbomole*
     
@@ -100,5 +105,13 @@ TODO
   + Add tests:
     - gnomevfs-info (testing gnome-vfs)
 
+  + Check, if we should better use xsl:key to pre-select supported elements:
+
+    <xsl:key name="supported" match="fdo:mime-type" use="@cm:support"/>
+
+    <xsl:apply-templates
+         select="key('gnome_supported', 'yes')[child::fdo:glob[not(cm:conflicts[attribute::gnome = 'yes'])]]">
+      <xsl:sort select="@type"/>
+    </xsl:apply-templates>
 
 # UTF-8
