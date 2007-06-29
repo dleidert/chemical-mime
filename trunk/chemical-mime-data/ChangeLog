@@ -1,6 +1,14 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-06-29 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Added some items.
+
+	* src/chemical-mime-database.xml.in (chemical/x-gaussian-log): Added
+	.log and .out extensions. Thanks to Armando Navarro Vázquez and Brian
+	Salter-Duke.
+
 2007-05-20 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* html_docs/index.html: Added some information about the mailing
@@ -430,7 +438,7 @@
 	* chemical-mime-data.pc.in: Added some more stuff and a header.
 	(exec_prefix, libdir, includedir, Libs, Cflags): Removed (see
 	https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=225095). Thanks
-	to Ville Skytt� and Julian Sikorski (closes RH #225095 and sf.net
+	to Ville Skyttä and Julian Sikorski (closes RH #225095 and sf.net
 	#1616568).
 
 	* configure.ac: Check, if PKG_CHECK_EXISTS is defined and make a safe
@@ -896,7 +904,7 @@
 	* freedesktop.org/Makefile.am: Updated copyright notice.
 	(freedesktopmimedir): Changed to use the variable directly.
 	(install-data-hook, uninstall-hook): Fixed update-mime-database
-	command line. Thanks to Jean Bréfort for reporting this issue.
+	command line. Thanks to Jean BrÃ©fort for reporting this issue.
 
 	* kde/Makefile.am: Updated copyright notice.
 	(kdemimedir): Changed to use the variable directly.
@@ -1767,7 +1775,7 @@
 
 2005-09-19 Daniel Leidert <daniel.leidert@wgdd.de>
 
-	* configure.ac: Added French to ALL_LINGUAS (thanks to Jean Bréfort).
+	* configure.ac: Added French to ALL_LINGUAS (thanks to Jean BrÃ©fort).
 
 2005-09-19 Daniel Leidert <daniel.leidert@wgdd.de>
 
