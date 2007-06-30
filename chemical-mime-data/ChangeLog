@@ -1,6 +1,14 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* .cvsignore: Removed. Instead set the svn:ignore property
+	accordingly.
+
+	* HACKING: Turned off keyword substitution for Id to preserve file
+	content.
+
 2007-06-29 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Added some items.
