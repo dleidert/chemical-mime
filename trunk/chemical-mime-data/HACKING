@@ -1,4 +1,5 @@
-# Document  $Id$
+# Document  HACKING
+# Revision  $Revision$
 # Summary   Hacking on and contributing to the project.
 
 Terms like "MAY", "MUST", "MUST NOT", "RECOMMEND", "SHALL" and "SHOULD" are
@@ -33,6 +34,9 @@ and for XML files:
     Summary   ...summary...
   -->
 
+NOTE: REMOVE THE QUOTATION MARKS! They should just prevent substitution in
+      here.
+
 Files of the build system, like e.g. Makefile.am, configure.ac or XSLT
 stylesheets, SHALL be licensed with a non-restrictive all-permissive
 license:
@@ -43,8 +47,8 @@ license:
 ChangeLog entries MUST follow the GNU coding standards
 http://www.gnu.org/prep/standards/html_node/Change-Logs.html.
 
-CVS commit messages MUST be created from the related ChangeLog entry for a
-change.
+CVS/SVN commit messages MUST be created from the related ChangeLog entry for
+a change.
 
 Before a release, the NEWS file MUST be updated.
 
