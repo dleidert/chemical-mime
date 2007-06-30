@@ -2,6 +2,10 @@
 # Summary   File-changelog for the internationalization data files of the
 #           chemical-mime-data project.
 
+2007-06-30 Alexandr Goncearenco <neksa@neksa.net>
+
+	* ru.po: Added Russian translation.
+
 2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* de.po: Updated after massive changes to database. 10 untranslated
