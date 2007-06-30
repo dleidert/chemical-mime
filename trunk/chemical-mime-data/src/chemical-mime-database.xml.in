@@ -700,7 +700,9 @@
 		<glob pattern="*.g98"/>
 		<glob pattern="*.g03"/>
 		<glob pattern="*.gal"/>
-		<glob pattern="*.log"/>
+		<glob pattern="*.log">
+			<cm:conflicts type="text/x-log" fdo="yes" kde="yes"/>
+		</glob>
 		<glob pattern="*.out"/>
 		<sub-class-of type="text/plain"/>
 		<!-- Seems there are some weired MIME types. -->

@@ -3,6 +3,11 @@
 
 2007-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-gaussian-log): Added
+	missing conflicts for text/x-log.
+
+2007-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* .cvsignore: Removed. Instead set the svn:ignore property
 	accordingly.
 
