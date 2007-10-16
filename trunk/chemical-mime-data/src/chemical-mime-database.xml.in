@@ -59,7 +59,7 @@
                        localName CDATA #REQUIRED>
 
     <!-- * The main class the MIME type belongs to. Mainly text/plain or   -->
-    <!-- * text/xml.                                                       -->
+    <!-- * application/xml.                                                -->
     <!ELEMENT sub-class-of EMPTY>
     <!ATTLIST sub-class-of type CDATA #REQUIRED>
 

@@ -62,7 +62,7 @@
 </xsl:template>
 
 <xsl:template match="cm:icon[attribute::gnome]">
-	<xsl:text>	icon_filename: </xsl:text>
+	<xsl:text>	icon_filename=</xsl:text>
 	<xsl:value-of select="@gnome"/>
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
@@ -74,7 +74,7 @@
 		<xsl:value-of select="@xml:lang"/>
 		<xsl:text>]</xsl:text>
 	</xsl:if>
-	<xsl:text>description: </xsl:text>
+	<xsl:text>description=</xsl:text>
 	<xsl:apply-templates/>
 	<xsl:text>&#10;</xsl:text>
 </xsl:template>
