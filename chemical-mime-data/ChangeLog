@@ -1,6 +1,13 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2007-10-16 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* xsl/cmd_gnome-keys.xsl (cm:icon, fdo:comment): Fixed output format.
+
+	* src/chemical-mime-database.xml.in: Simple typo fix in the DTD
+	description.
+
 2007-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in (chemical/x-gaussian-log): Added
