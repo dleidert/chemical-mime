@@ -947,7 +947,7 @@
 			<cm:application name="jmol"/>
 			<cm:application name="xdrawchem"/>
 		</cm:supported-by>
-		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdf"
 		                  title="MDL CTFile Formats - Chapter 4: Molfiles"/>
 	</mime-type>
 
@@ -966,7 +966,7 @@
 		<cm:supported-by>
 			<cm:application name="csbr" package="cactvs"/>
 		</cm:supported-by>
-		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdf"
 		                  title="MDL CTFile Formats - Chapter 8: RDfiles"/>
 	</mime-type>
 
@@ -987,7 +987,7 @@
 			<cm:application name="csbr" package="cactvs"/>
 			<cm:application name="xdrawchem"/>
 		</cm:supported-by>
-		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdf"
 		                  title="MDL CTFile Formats - Chapter 7: RXNfiles"/>
 	</mime-type>
 
@@ -1005,7 +1005,7 @@
 			<cm:application name="gchempaint"/>
 			<cm:application name="xdrawchem"/>
 		</cm:supported-by>
-		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdf"
 		                  title="MDL CTFile Formats - Chapter 6: SDfiles"/>
 	</mime-type>
 
@@ -1030,7 +1030,7 @@
 		<magic priority="50">
 			<match type="string" value="&lt;XDfile" offset="0:64"/>
 		</magic>
-		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdfrg"
+		<cm:specification url="http://www.mdl.com/downloads/public/ctfile/ctfile.pdf"
 		                  title="MDL CTFile Formats - Chapter 9: XDfiles"/>
 	</mime-type>
 
@@ -1305,19 +1305,18 @@
 		<!-- 3nd line offest ... -->
 		<!-- but we have malformed examples in Jmol samples dir -->
 		<magic priority="85">
-      <!-- Following PDB Format 2.3 specification -->
-      <!-- http://www.wwpdb.org/documentation/format23/sect1.html#ORDER -->
-      <!-- the HEADER entry is MANDATORY! -->
+			<!-- Following PDB Format 2.3 specification -->
+			<!-- http://www.wwpdb.org/documentation/format23/sect1.html#ORDER -->
+			<!-- the HEADER entry is MANDATORY! -->
 			<match type="string" value="HEADER    " offset="0">
 				<match type="string" value="??-???-??   ????" offset="50"
 				       mask="0x0000ff000000ff0000ffffff00000000"/>
 			</match>
-      <!-- The following rules are just an accommodation to broken PDB -->
-      <!-- files. Please make sure, your program outputs correct PDB, -->
-      <!-- so we can remove these lines in the future. -->
-      <match type="string" value="HEADER    " offset="0"/>
+			<!-- The following rules are just an accommodation to broken PDB -->
+			<!-- files. Please make sure, your program outputs correct PDB, -->
+			<!-- so we can remove these lines in the future. -->
+			<match type="string" value="HEADER    " offset="0"/>
 			<match type="string" value="TITLE     " offset="0"/>
-			<match type="string" value="COMPND    " offset="0"/>
 			<match type="string" value="REMARK " offset="0"/>
 			<match type="string" value="AUTHOR    " offset="0"/>
 			<match type="string" value="COMPND    " offset="0"/>
