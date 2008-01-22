@@ -1,6 +1,20 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2008-01-22 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Comments cleanup to comply with
+	GNOME/fd.o naming scheme. Thanks to Krzysztof Kosi≈Ñski for the
+	patch. Removed the acronym tags for XML.
+	(chemical/x-galactic-spc): Added an online resource for the format
+	specification.
+	(chemical/x-gcg8-sequence): Found another magic for the .gcg8 suffix.
+
+	* HACKING: Added notes about the naming scheme conventions taken from
+	the mail by Krzysztof Kosi≈~Dski.
+
+	* THANKS: Added a related dedication.
+
 2008-01-16 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in: Fixed tabs formatting.
