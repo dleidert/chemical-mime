@@ -69,6 +69,27 @@ non-empty `added' attribute.
 
 The DTD MUST be documented for easy understanding.
 
+Comments should follow the GNOME/fd.o naming scheme conventions:
+
+  [cited from a mail by Krzysztof Kosiński ..]
+
+  (1) The name of the format should be kept short.
+  
+  (2) The name should not contain the word "format". This text appears in file
+      managers adjacent to each file. So the comment should say what the file
+      is, and not what is the name of its format. This is a slight but
+      important difference.
+
+  (3) Words not being part of proper names should not be capitalized.
+  
+  (4) In some cases the word "file" (i.e. "Gaussian input file") is
+      superfluous and should be removed (i.e. "Gaussian input") in keeping
+      with (1). Also, some XML-based mimetypes have a "document" appended.
+      Those changes were inspired by the way all Gnome programs name their
+      mimetypes, and will allow this package to integrate better with the
+      desktop.
+  [..]
+
 
 3. Icons, Graphics and Art
 ==========================
