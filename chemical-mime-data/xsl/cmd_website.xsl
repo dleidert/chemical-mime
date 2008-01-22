@@ -401,39 +401,14 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:when>			
-    <!-- * Check, if maybe a part of the comment fits the content of an    -->
-    <!-- * <expanded-acronym>. If yes, output the related <acronym>        -->
-    <!-- * directly behind the (expanded) substring inside braces, using   -->
-    <!-- * the <acronym> HTML tag.                                         -->
-		<xsl:when test="contains($content, $expanded.acronym.content)">
-			<xsl:variable name="content.new.before" select="concat(substring-before($content, $expanded.acronym.content), $expanded.acronym.content)"/>
-			<xsl:variable name="content.new.acronym">
-				<![CDATA[<acronym title="]]><xsl:value-of select="$expanded.acronym.content"/>
-				<![CDATA[">]]><xsl:value-of select="$acronym.content"/><![CDATA[</acronym>]]>
-			</xsl:variable>
-			<xsl:variable name="content.new.middle.before" select="' ('"/>
-			<xsl:variable name="content.new.middle.temp" select="normalize-space($content.new.acronym)"/>
-			<xsl:variable name="content.new.middle.after" select="') '"/>
-			<xsl:variable name="content.new.middle" select="concat($content.new.middle.before, $content.new.middle.temp, $content.new.middle.after)"/>
-			<xsl:variable name="content.new.after" select="substring-after($content, $expanded.acronym.content)"/>
-			<xsl:variable name="content.new" select="concat($content.new.before, $content.new.middle, $content.new.after)"/>
-			<xsl:choose>
-				<xsl:when test="following-sibling::fdo:acronym[not(@xml:lang)][$acronym.position + 1]">
-					<xsl:call-template name="comment.acronym.check">
-						<xsl:with-param name="content" select="$content.new"/>
-						<xsl:with-param name="acronym.position" select="$acronym.position + 1"/>
-					</xsl:call-template>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:call-template name="comment.acronym.output">
-						<xsl:with-param name="content" select="$content.new"/>
-					</xsl:call-template>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:when>
     <!-- * And if nothing fits, just step to the next <acronym> position   -->
     <!-- * in our database.                                                -->
 		<xsl:otherwise>
+			<xsl:message>
+				<xsl:text>WARNING: Acronym '</xsl:text>
+				<xsl:value-of select="$acronym.content"/>
+				<xsl:text>' not found in current comment.</xsl:text>
+			</xsl:message>
 			<xsl:variable name="content.new" select="$content"/>
 			<xsl:choose>
 				<xsl:when test="following-sibling::fdo:acronym[not(@xml:lang)][$acronym.position + 1]">
