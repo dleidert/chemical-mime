@@ -821,7 +821,7 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-inchi" cm:support="yes" cm:added="0.1.93">
-		<_comment>IUPAC International Chemical Identifier</_comment>
+		<_comment>IUPAC InChI string(s)</_comment>
 		<acronym>InChI</acronym>
 		<expanded-acronym>International Chemical Identifier</expanded-acronym>
 		<acronym>IUPAC</acronym>
@@ -840,7 +840,7 @@
 	</mime-type>
 
 	<mime-type type="chemical/x-inchi-xml" cm:support="yes" cm:added="0.1.93">
-		<_comment>IUPAC International Chemical Identifier</_comment>
+		<_comment>IUPAC InChI XML file</_comment>
 		<acronym>InChI</acronym>
 		<expanded-acronym>International Chemical Identifier</expanded-acronym>
 		<acronym>IUPAC</acronym>

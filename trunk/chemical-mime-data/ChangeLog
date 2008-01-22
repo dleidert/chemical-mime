@@ -3,6 +3,16 @@
 
 2008-01-22 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-inchi)
+	(chemical/x-inchi-xml): Tried to improve/fix wording of comment.
+
+	* xsl/cmd_website.xsl (comment.acronym.check): Removed the test on
+	expanded acronyms in the comment. This should not happen following the
+	current naming scheme conventions. Added a warning for acronyms not
+	found in the comment.
+
+2008-01-22 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in: Comments cleanup to comply with
 	GNOME/fd.o naming scheme. Thanks to Krzysztof Kosiński for the
 	patch. Removed the acronym tags for XML.
