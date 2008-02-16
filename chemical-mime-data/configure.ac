@@ -1,12 +1,14 @@
 dnl Document  $Id$
 dnl Summary   Configure script for the chemical-mime-data project.
 dnl
-dnl Copyright (C) 2004-2007 Daniel Leidert <daniel.leidert@wgdd.de>.
+dnl Copyright (C) 2004-2008 Daniel Leidert <daniel.leidert@wgdd.de>.
 dnl Copyright (C) 2004-2006 Egon Willighagen <e.willighagen@science.ru.nl>.
 dnl All rights reserved.
 dnl
 dnl This file is free software. The copyright owner gives unlimited
 dnl permission to copy, distribute and modify it.
+
+AC_PREREQ([2.59])
 
 dnl --------------------------------------------------------------------------
 dnl initialization
@@ -61,7 +63,7 @@ dnl --------------------------------------------------------------------------
 dnl Choose to run update-mime-database
 AC_ARG_ENABLE(
 	[update-database],
-	AC_HELP_STRING(
+	AS_HELP_STRING(
 		[--enable-update-database],
 		[
 		 enable (or disable) the running of the update-mime-database utility after installation
@@ -75,7 +77,7 @@ AC_ARG_ENABLE(
 dnl Choose to run rsvg or convert if both are installed
 AC_ARG_ENABLE(
 	[convert],
-	AC_HELP_STRING(
+	AS_HELP_STRING(
 		[--enable-convert],
 		[
 		 enable or disable the usage of convert (imagemagick) if both rsvg and convert are available
@@ -116,7 +118,7 @@ dnl --------------------------------------------------------------------------
 
 AC_ARG_WITH(
 	[freedesktop-mime],
-	AC_HELP_STRING(
+	AS_HELP_STRING(
 		[--with-freedesktop-mime@<:@=PATH@:>@],
 		[
 		 enable, disable or override the installation directory of the freedesktop.org shared MIME info support files
@@ -134,7 +136,7 @@ AC_SUBST([with_freedesktop_mime])
 
 AC_ARG_WITH(
 	[gnome-mime],
-	AC_HELP_STRING(
+	AS_HELP_STRING(
 		[--with-gnome-mime@<:@=PATH@:>@],
 		[
 		 enable, disable or override the installation directory of the old GNOME 2.4 MIME support files
@@ -152,7 +154,7 @@ AC_SUBST([with_gnome_mime])
 
 AC_ARG_WITH(
 	[pixmaps],
-	AC_HELP_STRING(
+	AS_HELP_STRING(
 		[--with-pixmaps@<:@=PATH@:>@],
 		[
 		 enable, disable or override the default installation directory of non-themed icons
@@ -170,7 +172,7 @@ AC_SUBST([with_pixmaps])
 
 AC_ARG_WITH(
 	[hicolor-theme],
-	AC_HELP_STRING(
+	AS_HELP_STRING(
 		[--with-hicolor-theme@<:@=PATH@:>@],
 		[
 		 enable, disable or override the theme-directory, where icons should be
@@ -191,7 +193,7 @@ AC_PATH_PROG([KDE_CONFIG], [kde-config], [no])
 
 AC_ARG_WITH(
 	[kde-magic],
-	AC_HELP_STRING(
+	AS_HELP_STRING(
 		[--with-kde-magic@<:@=PATH@:>@],
 		[
 		 enable, disable or override the installation directory of the KDE 3.x MIME magic snippet files
@@ -219,7 +221,7 @@ AC_SUBST([with_kde_magic])
 
 AC_ARG_WITH(
 	[kde-mime],
-	AC_HELP_STRING(
+	AS_HELP_STRING(
 		[--with-kde-mime@<:@=PATH@:>@],
 		[
 		 enable, disable or override the installation directory of the KDE 3.x MIME support files

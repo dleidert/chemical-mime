@@ -1,6 +1,11 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2008-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac: Require autoconf 2.59. Replaced all obsolete
+	AC_HELP_STRING macros with AS_HELP_STRING.
+
 2008-01-22 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* src/chemical-mime-database.xml.in (chemical/x-inchi)
