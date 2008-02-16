@@ -3,6 +3,13 @@
 
 2008-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* test/compare_pattern.xsl (fdo:glob): Removed redundant check.
+	However, this stylesheet is broken. If there are two different
+	conflicts for the same MIME type in the external database, this
+	stylesheet will error out.
+
+2008-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* configure.ac: Require autoconf 2.59. Replaced all obsolete
 	AC_HELP_STRING macros with AS_HELP_STRING.
 
