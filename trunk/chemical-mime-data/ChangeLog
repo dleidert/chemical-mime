@@ -3,6 +3,11 @@
 
 2008-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* src/chemical-mime-database.xml.in (chemical/x-daylight-smiles): New
+	conflict discovered with application/smai.
+
+2008-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* test/compare_pattern.xsl (fdo:glob): Removed redundant check.
 	However, this stylesheet is broken. If there are two different
 	conflicts for the same MIME type in the external database, this
