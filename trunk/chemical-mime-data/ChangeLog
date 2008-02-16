@@ -3,8 +3,12 @@
 
 2008-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* ChangeLog (2008-02-16): Fixed a typo in yesterdays commit message.
+
+2008-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/chemical-mime-database.xml.in (chemical/x-daylight-smiles): New
-	conflict discovered with application/smai.
+	conflict discovered with application/x-smai.
 
 2008-02-16 Daniel Leidert <daniel.leidert@wgdd.de>
 
