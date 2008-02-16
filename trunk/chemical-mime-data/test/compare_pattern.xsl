@@ -92,7 +92,7 @@ TEST: <xsl:value-of select="$database.type"/> database for unrecognized pattern 
 	<xsl:variable name="my.mime.type.pattern" select="@pattern"/>
 	
 	<xsl:choose>
-		<xsl:when test="$database.type = 'fdo' and child::cm:conflicts[@fdo = 'yes']">
+		<xsl:when test="$database.type = 'fdo'">
 			<xsl:apply-templates select="cm:conflicts[@fdo = 'yes']">
 				<xsl:with-param name="my.mime.type" select="$my.mime.type"/>
 				<xsl:with-param name="my.mime.type.magic" select="$my.mime.type.magic"/>
@@ -100,7 +100,7 @@ TEST: <xsl:value-of select="$database.type"/> database for unrecognized pattern 
 				<xsl:with-param name="my.mime.type.subclass" select="$my.mime.type.subclass"/>
 			</xsl:apply-templates>
 		</xsl:when>
-		<xsl:when test="$database.type = 'gnome' and child::cm:conflicts[@gnome = 'yes']">
+		<xsl:when test="$database.type = 'gnome'">
 			<xsl:apply-templates select="cm:conflicts[@gnome = 'yes']">
 				<xsl:with-param name="my.mime.type" select="$my.mime.type"/>
 				<xsl:with-param name="my.mime.type.magic" select="$my.mime.type.magic"/>
@@ -108,7 +108,7 @@ TEST: <xsl:value-of select="$database.type"/> database for unrecognized pattern 
 				<xsl:with-param name="my.mime.type.subclass" select="$my.mime.type.subclass"/>
 			</xsl:apply-templates>
 		</xsl:when>
-		<xsl:when test="$database.type = 'kde' and child::cm:conflicts[@kde = 'yes']">
+		<xsl:when test="$database.type = 'kde'">
 			<xsl:apply-templates select="cm:conflicts[@kde = 'yes']">
 				<xsl:with-param name="my.mime.type" select="$my.mime.type"/>
 				<xsl:with-param name="my.mime.type.magic" select="$my.mime.type.magic"/>
@@ -116,7 +116,7 @@ TEST: <xsl:value-of select="$database.type"/> database for unrecognized pattern 
 				<xsl:with-param name="my.mime.type.subclass" select="$my.mime.type.subclass"/>
 			</xsl:apply-templates>
 		</xsl:when>
-		<xsl:when test="$database.type = 'mime.types' and child::cm:conflicts[@mimetypes = 'yes']">
+		<xsl:when test="$database.type = 'mime.types'">
 			<xsl:apply-templates select="cm:conflicts[@mimetypes = 'yes']">
 				<xsl:with-param name="my.mime.type" select="$my.mime.type"/>
 				<xsl:with-param name="my.mime.type.magic" select="$my.mime.type.magic"/>

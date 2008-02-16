@@ -4,6 +4,8 @@
 TODO 
 ====
 
+* SERIOUS: the pattern check fails if a a MIME type conflicts with at least 2
+           other types in the external database!
 
 * Before 0.2.0 release
 
