@@ -495,6 +495,7 @@
 		<expanded-acronym>Simplified Molecular Input Line Entry Specification</expanded-acronym>
 		<glob pattern="*.smi">
 			<cm:conflicts type="application/smil" fdo="yes" kde="yes" mimetypes="yes"/>
+			<cm:conflicts type="application/x-sami" fdo="yes"/>
 			<cm:conflicts type="application/x-smil" gnome="yes"/>
 		</glob>
 		<glob pattern="*.smiles"/>
