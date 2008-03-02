@@ -19,6 +19,7 @@
                 xmlns:cm="http://chemical-mime.sourceforge.net/chemical-mime"
                 xmlns:date="http://exslt.org/dates-and-times"
                 xmlns:fdo="http://www.freedesktop.org/standards/shared-mime-info"
+                xmlns="http://www.w3.org/1999/xhtml"
                 version="1.0"
                 extension-element-prefixes="date"
                 exclude-result-prefixes="cm date fdo">
@@ -28,7 +29,7 @@
 <!-- ********************************************************************* -->
 
 <xsl:import href="cmd_common.xsl"/>
-<xsl:output method="html"
+<xsl:output method="xml"
             encoding="UTF-8"
             indent="yes"
             omit-xml-declaration="yes"
