@@ -1,6 +1,19 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2008-10-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* README: Updated copyright. s/CVS/SVN/g. Image tools are not
+	necessary atm.
+
+	* configure.ac: Removed all icon/theme relevant stuff, including
+	variables and options. This is not necessary as long as we don't have
+	nice icons.
+
+	* Makefile.am (SUBDIRS): Removed the deleted icons directory.
+
+	* icons/*: Removed. Concentrate on the content atm.
+
 2008-03-02 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* xsl/cmd_website.xsl (xsl:stylesheet): Added namespace for XHTML

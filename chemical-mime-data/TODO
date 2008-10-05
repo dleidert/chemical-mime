@@ -97,6 +97,7 @@ TODO
     ...
     
   + Add Icons (especially for contributors - I'm not an artist)
+    !!! basic support has been removed in 0.1.95 because of icons missing !!!
     - hicolor theme should cover all MIME types
     - current SVGs are only basic (not really "chemical")
     - a MIME type chemical/<type> can still get a special icon, which have to
@@ -106,6 +107,7 @@ TODO
 
   + Add tests:
     - gnomevfs-info (testing gnome-vfs)
+    - kmimetypefinder (testing KDE4)
 
   + Check, if we should better use xsl:key to pre-select supported elements:
 

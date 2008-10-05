@@ -30,7 +30,7 @@ is, to support these important, but unofficial MIME types.
 2. Copyright and License
 ========================
 
-Copyright (C) 2004-2007 Daniel Leidert <daniel.leidert@wgdd.de>.
+Copyright (C) 2004-2008 Daniel Leidert <daniel.leidert@wgdd.de>.
 Copyright (C) 2004-2006 Egon Willighagen <e.willighagen@science.ru.nl>.
 
   This library is free software; you can redistribute it and/or
@@ -116,10 +116,10 @@ shipped with the package.
 5. Download and Installation
 ============================
 
-To build and install chemical-mime-data from CVS:
+To build and install chemical-mime-data from SVN:
 
     (1) install autoconf, automake, intltool/gettext, xsltproc
-    (2) get the CVS sources
+    (2) get the SVN sources
     (3) run autogen.sh (./autogen.sh)
     (4) see next part ...
 
@@ -134,7 +134,6 @@ To build and install chemical-mime-data from release tarballs:
     (1) Get the required applications:
         - intltool/gettext (I18N)
         - pkg-config
-        - RSVG2 or imagemagick (convert SVG into PNG)
         - xsltproc (create .desktop, .mime, ... files from XML)
         - gnome-mime-data
         - shared-mime-info (contains update-mime-database)

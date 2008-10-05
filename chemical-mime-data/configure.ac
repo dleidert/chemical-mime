@@ -17,7 +17,7 @@ dnl --------------------------------------------------------------------------
 AC_INIT([chemical-mime-data],[0.1.95],[http://sourceforge.net/projects/chemical-mime/])
 AM_INIT_AUTOMAKE([-Wall])
 AC_REVISION($Revision$)
-AC_CONFIG_SRCDIR(src/chemical-mime-database.xml.in)
+AC_CONFIG_SRCDIR([src/chemical-mime-database.xml.in])
 
 dnl --------------------------------------------------------------------------
 dnl intltool/gettext
@@ -74,44 +74,6 @@ AC_ARG_ENABLE(
 	[enable_update_database=yes]
 )
 
-dnl Choose to run rsvg or convert if both are installed
-AC_ARG_ENABLE(
-	[convert],
-	AS_HELP_STRING(
-		[--enable-convert],
-		[
-		 enable or disable the usage of convert (imagemagick) if both rsvg and convert are available
-		 @<:@default=no@:>@
-		]
-	),
-	[enable_convert=$enableval],
-	[enable_convert=no]
-)
-
-dnl --------------------------------------------------------------------------
-dnl rsvg or convert (imagemagick)
-dnl --------------------------------------------------------------------------
-
-AC_ARG_VAR(
-	[CONVERT],
-	[The 'convert' binary with path. Use it to define or override the location of 'convert'.]
-)
-AC_PATH_PROG([CONVERT], [convert], [no])
-AC_SUBST([CONVERT])
-
-if test "x$enable_convert" != "xyes" -a "x$CONVERT" = "xno" ; then
-	AC_ARG_VAR(
-		[RSVG],
-		[The 'rsvg' binary with path. Use it to define or override the location of 'rsvg'.]
-	)
-	AC_PATH_PROG([RSVG], [rsvg], [no])
-	AC_SUBST([RSVG])
-fi
-
-if test "x$RSVG" = "xno" -a "x$CONVERT" = "xno" ; then
-	AC_MSG_ERROR([Cannot find rsvg (librsvg binary) or convert (imagemagick). Please install one of them.])
-fi
-
 dnl --------------------------------------------------------------------------
 dnl installation locations
 dnl --------------------------------------------------------------------------
@@ -151,43 +113,6 @@ AC_ARG_WITH(
 	[with_gnome_mime=${datadir}/mime-info]
 )
 AC_SUBST([with_gnome_mime])
-
-AC_ARG_WITH(
-	[pixmaps],
-	AS_HELP_STRING(
-		[--with-pixmaps@<:@=PATH@:>@],
-		[
-		 enable, disable or override the default installation directory of non-themed icons
-		 @<:@default=$datadir/pixmaps@:>@
-		]
-	),
-	[
-	 if test "x$withval" = "xyes" ; then
-		 with_pixmaps=${datadir}/pixmaps
-	 fi
-	],
-	[with_pixmaps=${datadir}/pixmaps]
-)
-AC_SUBST([with_pixmaps])
-
-AC_ARG_WITH(
-	[hicolor-theme],
-	AS_HELP_STRING(
-		[--with-hicolor-theme@<:@=PATH@:>@],
-		[
-		 enable, disable or override the theme-directory, where icons should be
-		 installed by default (following the standards, this is the hicolor theme)
-		 @<:@default=$datadir/icons/hicolor@:>@
-		]
-	),
-	[
-	 if test "x$withval" = "xyes" ; then
-		 with_hicolor_theme=${datadir}/icons/hicolor
-	 fi
-	],
-	[with_hicolor_theme=${datadir}/icons/hicolor]
-)
-AC_SUBST([with_hicolor_theme])
 
 AC_PATH_PROG([KDE_CONFIG], [kde-config], [no])
 
@@ -439,26 +364,6 @@ else
 	AC_MSG_RESULT([no])
 fi
 
-AM_CONDITIONAL([BOOL_HICOLOR_THEME], [test "x$with_hicolor_theme" != "xno"])
-AC_MSG_CHECKING([if theme icons will be installed])
-if test "x$with_hicolor_theme" != "xno" ; then
-	AC_MSG_RESULT([yes])
-	AC_MSG_CHECKING([for installation path of theme icons])
-	AC_MSG_RESULT([$with_hicolor_theme])
-else
-	AC_MSG_RESULT([no])
-fi
-
-AM_CONDITIONAL([BOOL_PIXMAPS], [test "x$with_pixmaps" != "xno"])
-AC_MSG_CHECKING([if non-themed icons will be installed])
-if test "x$with_pixmaps" != "xno" ; then
-	AC_MSG_RESULT([yes])
-	AC_MSG_CHECKING([for installation path of non-theme icons])
-	AC_MSG_RESULT([$with_pixmaps])
-else
-	AC_MSG_RESULT([no])
-fi
-
 dnl --------------------------------------------------------------------------
 dnl location determination
 dnl --------------------------------------------------------------------------
@@ -500,9 +405,6 @@ AC_CONFIG_FILES([
 	freedesktop.org/Makefile
 	gnome/Makefile
 	html_docs/Makefile
-	icons/Makefile
-	icons/hicolor/Makefile
-	icons/pixmaps/Makefile
 	kde/Makefile
 	mime-support/Makefile
 	po/Makefile.in
