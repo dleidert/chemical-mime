@@ -6,7 +6,7 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-SUBDIRS = po src xsl file freedesktop.org gnome html_docs kde mime-support icons test
+SUBDIRS = po src xsl file freedesktop.org gnome html_docs kde mime-support test
 
 AUTOMAKE_OPTIONS = check-news dist-bzip2 1.7
 
