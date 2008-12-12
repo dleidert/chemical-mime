@@ -1,6 +1,10 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2008-12-12 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.am (DISTCHECK_CONFIGURE_FLAGS): Set CONFIG_SITE.
+
 2008-10-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* README: Updated copyright. s/CVS/SVN/g. Image tools are not
