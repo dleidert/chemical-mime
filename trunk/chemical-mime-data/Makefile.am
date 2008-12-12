@@ -40,7 +40,7 @@ MAINTAINERCLEANFILES = \
 # GNOME_VFS_MIME_DATA_DB=/usr/share/mime-info/gnome-vfs.mime \
 # KDE_MIMELNK_DATA_DB=/usr/share/mimelnk \
 # MIME_SUPPORT_MIME_TYPES_DATA_DB=/etc/mime.types'
-DISTCHECK_CONFIGURE_FLAGS = --disable-update-database --disable-nls
+DISTCHECK_CONFIGURE_FLAGS = --disable-update-database --disable-nls CONFIG_SITE=../../config.site
 
 
 pkgconfigdir = $(datadir)/pkgconfig
