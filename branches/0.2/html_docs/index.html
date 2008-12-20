@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>The chemical-mime-data Project</title>
+	<meta name="generator" content="Bluefish 1.0.7"/>
+	<meta name="author" content="Daniel Leidert"/>
+	<meta name="date" content="2007-05-20T23:10:15+0200"/>
+	<meta name="keywords" content="chemical-mime-data, chemical MIME"/>
+	<meta name="description" content="Homepage of the chemical-mime-data project, that tries to bring support for chemical MIME types to Linux desktops."/>
+	<meta name="robots" content="index, follow"/>
+	<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"/>
+	<meta http-equiv="content-style-type" content="text/css"/>
+	<link rel="stylesheet" type="text/css" href="cmd.css" media="screen" title="default"/>
+</head>
+<body>
+	<div id="content_container">
+		<h1>The chemical-mime-data project</h1>
+		<p>The source of this project can always be found at the <a href="http://sourceforge.net/projects/chemical-mime">Sourceforge.net project page</a>. <span class="sfnet"><a href="http://www.sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=159685&amp;type=1" width="88" height="31" style="border: 0;" alt="SourceForge.net Logo" /></a></span></p>
+
+		<ol>
+			<li><a title="The backgrounds of the chemical-mime-data package ..." href="#about">About the project</a></li>
+			<li><a title="Copyright and license information for users and distributors ..." href="#copyright">Copyright and license</a></li>
+			<li><a title="Why this compilation/database has been written ..." href="#intro">Introduction to the background</a></li>
+			<li><a title="Which MIME types can be detected and which are known by the database ..." href="#database">Which <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> types are currently supported</a></li>
+			<li><a title="Download and installation instructions" href="#install">Download and Installation</a></li>
+			<li><a title="Participation, mailing lists, contact, ..." href="#mailing">Mailing lists and Contact</a></li>
+			<li><a title="How to assign a chemical application/resource with a MIME type ..." href="#assign">How to make use of the <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> type detection</a></li>
+			<li><a title="&#187;To-Do&#171; things, plans, requestment, ..." href="#todo">What to do next</a></li>
+		</ol>
+
+		<h2 id="about">About the project</h2>
+		<p>The <a href="http://sourceforge.net/projects/chemical-mime">chemical-mime-data</a> package is a collection of <a title="A tabled overview of supported and/or known chemical MIME types ..." href="chemical-mime-data.html">data</a> files to add support for various <dfn title="chemical/*">chemical <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> types</dfn> on Linux/UNIX desktops, such as <a href="http://www.kde.org"><abbr title="Kool Desktop Environment">KDE</abbr></a> and <a href="http://www.gnome.org"><abbr title="GNU Network Object Model Environment">GNOME</abbr></a>.</p>
+		<p><a href="http://www.ch.ic.ac.uk/chemime/">Chemical <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr>s</a> were <a href="https://datatracker.ietf.org/public/idindex.cgi?command=id_detail&amp;id=928">proposed in 1995</a>, though it seems they have never been registered with <a href="http://www.iana.org/assignments/media-types/"><abbr title="Internet Assigned Numbers Authority">IANA</abbr></a>. But they are widely used and the project's aim is, to support these important, but unofficial <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> types.</p>
+		<p>Initial data was taken from <a href="http://www.ch.ic.ac.uk/chemime/"><cite>&#187;The Chemical <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> Home Page&#171;</cite> of Henry Rzepa</a>, but this compilation is written and continuously extended by Egon Willighagen, Daniel Leidert and others (see the distributed <a href="http://chemical-mime.cvs.sourceforge.net/*checkout*/chemical-mime/chemical-mime-data/AUTHORS"><tt>AUTHORS</tt></a> and <a href="http://chemical-mime.cvs.sourceforge.net/*checkout*/chemical-mime/chemical-mime-data/THANKS"><tt>THANKS</tt></a> files for a list of who has contributed to this project).</p>
+
+		<h2 id="copyright">Copyright and license</h2>
+		<p>Copyright &copy; 2004-2006 Egon Willighagen.
+			<br/>Copyright &copy; 2004-2007 Daniel Leidert.</p>
+		<blockquote cite="http://chemical-mime.cvs.sourceforge.net/*checkout*/chemical-mime/chemical-mime-data/README">
+			<p>This library is free software; you can redistribute it and/or
+				<br/>modify it under the terms of the GNU Lesser General Public
+				<br/>License as published by the Free Software Foundation; either
+				<br/>version 2.1 of the License, or (at your option) any later version.</p>
+			<p>This library is distributed in the hope that it will be useful,
+				<br/>but WITHOUT ANY WARRANTY; without even the implied warranty of
+				<br/>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+				<br/>Lesser General Public License for more details.</p>
+			<p>You should have received a copy of the GNU Lesser General Public
+				<br/>License along with this library; if not, write to:</p>
+				<address>Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</address>
+		</blockquote>
+		<p>A full copy of the GNU Lesser General Public License can be found at <a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a>.</p>
+
+		<h2 id="intro">Introduction to the background</h2>
+		<p>Newer desktop systems need to know the <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> type to associate applications with it. Writers of chemical applications can, will and make use of this feature too. But there are <a href="http://www.freedesktop.org/wiki/Standards_2fOtherSystems">several systems</a>, which first need to be prepared. During the development of <a href="http://www.jmol.org">Jmol</a> and <a href="http://cdk.sf.net"><abbr title="Chemistry Development Kit">CDK</abbr></a> we came to the problem, to integrate these applications into the Linux desktop. This issue raised up the <a href="http://cdk.cvs.sourceforge.net/cdk/chemicalMIME/">chemicalMIME</a> project, which is the forerunner of the <a href="http://sourceforge.net/projects/chemical-mime">chemical-mime-data project</a>.</p>
+		<dl>
+			<dt><a href="http://www.freedesktop.org" title="open source / discussion software projects working on interoperability and shared technology for X Window System desktops">freedesktop.org project</a> system</dt>
+			<dd>
+				<p>Newer <a href="http://www.gnome.org"><abbr title="GNU Network Object Model Environment">GNOME</abbr></a> and <a href="http://rox.sourceforge.net"><dfn title="desktop environment attempting to bring some of the good features from RISC OS to Unix and Linux">ROX</dfn></a> desktops use the <a href="http://www.freedesktop.org/wiki/Standards_2fshared_2dmime_2dinfo_2dspec">Shared MIME-info Database</a> to determine <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr>s. We provide a file <tt>chemical-mime-data.xml</tt>, which has to be installed into the database at <tt><var>$XDG_DATA_DIRS</var>/mime/packages</tt> and follows the <a href="http://standards.freedesktop.org/shared-mime-info-spec/latest/" title="Shared MIME-info Database Specification">freedesktop.org specification</a>. After running <code>update-mime-database</code> the <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> types are registered. This should work for all systems and applications mentioned <a href="http://www.freedesktop.org/wiki/Standards_2fshared_2dmime_2dinfo_2dspec#head-3aa1d93d613d40c76fc8990ce8985119496b917e">here</a>. You will need the <a href="http://www.freedesktop.org/software/shared-mime-info/">shared-mime-info package</a> for your distribution.</p>
+				<p> To associate an icon for a <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> type,
+the icon has to be installed into the <a href="http://standards.freedesktop.org/icon-theme-spec/latest/" title="Icon Theme Specification">hicolor-theme</a> and named e.g.:</p>
+				<pre>gnome-mime-chemical-x-xyz.png<br/>gnome-mime-chemical-x-cml.png</pre>
+				<p>The syntax is:</p>
+				<pre>gnome-&lt;icon-type&gt;-&lt;mime-media-type&gt;-&lt;/mime-sub-type&gt;.png</pre>
+				<p>If the icon naming scheme follows this direction, the <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> type is automatically associated with the icon.</p>
+			</dd>
+			<dt><a href="http://www.gnome.org"><abbr title="GNU Network Object Model Environment">GNOME</abbr></a> &lt;= 2.4</dt>
+			<dd>
+				<p>Older <a href="http://www.gnome.org"><abbr title="GNU Network Object Model Environment">GNOME</abbr></a> desktops use the <a href="http://www.freedesktop.org/wiki/Standards_2fOtherSystems#head-84abb4e7909f64bc187f2734fe98576848f7dffd"><tt><var>${datadir}</var>/mime-info</tt> path with <tt>.keys</tt> and <tt>.mime</tt> files</a> to <a href="http://web.archive.org/web/20041024185231/http://www.gnome.org/learn/admin-guide/latest/ch05s02.html" title="Detecting the MIME Type for a File">determine <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> stuff</a>. Icons are determined the same way.</p>
+			</dd>
+			<dt><a href="http://www.kde.org"><abbr title="Kool Desktop Environment">KDE</abbr></a> &lt; 4</dt>
+			<dd>
+				<p><a href="http://www.kde.org"><abbr title="Kool Desktop Environment">KDE</abbr></a> desktops use the <a href="http://www.freedesktop.org/wiki/Standards_2fOtherSystems#head-b4621d6841f56c8aecb7eab95c28aa5a33dc41e0"><tt><var>${datadir}</var>/mimelnk</tt></a> path with <tt>.desktop</tt> files to determine <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> stuff. Icons are determined the same way.</p>
+			</dd>
+		</dl>
+		<p>If you need more information, checkout the <a href="http://sourceforge.net/docman/?group_id=159685">documentation section</a> of the projects website.</p>
+
+		<h2 id="database">Which <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> types are currently supported</h2>
+		<p>Please check the large table form you can find <a href="chemical-mime-data.html">here</a>. This table is also shipped with the package.</p>
+
+		<h2 id="install">Download and Installation</h2>
+		<p>The latest release can always be found in the <a href="http://sourceforge.net/project/showfiles.php?group_id=159685">download section</a> of the project's website. Make sure to also download the MD5 sum file (<tt>.md5</tt>) to check the files integrity. For e.g. the <tt>.tar.gz</tt> tarball check it with:</p>
+		<pre>md5sum -c chemical-mime-data-&lt;version&gt;.tar.gz.md5</pre>
+		<p>To "compile" and install the package, first install:</p>
+		<ul>
+			<li><tt>intltool</tt> (to internationalize several files)</li>
+			<li><tt>gettext</tt> (backend for <tt>intltool</tt>)</li>
+			<li><tt>pkgconfig</tt></li>
+			<li><tt>RSVG2</tt> or <tt>imagemagick</tt> (to convert <acronym title="Scalable Vector Graphics">SVG</acronym> into <acronym title="Portable Network Graphics (Raster Image)">PNG</acronym> for theme icons)</li>
+			<li><tt>xsltproc</tt> (to create the files from the <acronym title="eXtensible Markup Language">XML</acronym> database)</li>
+			<li><tt>gnome-mime-data</tt></li>
+			<li><tt>shared-mime-info</tt> (contains the <tt>update-mime-database</tt> utility to update the <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> database)</li>
+		</ul>
+		<p>Then run:</p>
+		<pre>./configure [options you like most here] &amp;&amp; make &amp;&amp; make install</pre>
+		<p>The last step probably needs root permissions. For a list of configure options, you should run:</p>
+		<pre>./configure --help</pre>
+
+		<h2 id="mailing">Mailing lists and contact</h2>
+		<p>There are currently two mailing lists:</p>
+		<dl>
+			<dt><a href="http://lists.sourceforge.net/mailman/listinfo/chemical-mime-commits">chemical-mime-commits</a></dt>
+				<dd>The <acronym title="Version Control System, currently CVS">VCS</acronym> commits mailing lists. The list is probably only useful for developers. <a href="http://sourceforge.net/mailarchive/forum.php?forum_name=chemical-mime-commits">[Archive]</a></dd>
+			<dt><a href="http://lists.sourceforge.net/mailman/listinfo/chemical-mime-devel">chemical-mime-devel</a></dt>
+				<dd>The list for developers and interested users wanting to discuss the development of the data package, but also the chemical <acronym title="Multipurpose Internet Mail Extensions">MIME</acronym> media type. <a href="http://sourceforge.net/mailarchive/forum.php?forum_name=chemical-mime-devel">[Archive]</a></dd>
+		</dl>
+		<p>This is the preferred way to contact us. If you need to contact one of the people involved in the project, check the <a href="http://chemical-mime.cvs.sourceforge.net/*checkout*/chemical-mime/chemical-mime-data/AUTHORS"><tt>AUTHORS</tt></a> file for addresses.</p>
+
+		<h2 id="assign">How to make use of the <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> type detection</h2>
+		<p>To associate the chemical <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> types with a special application, you need to follow one of the guides:</p>
+		<dl>
+			<dt><a href="http://www.kde.org"><abbr title="Kool Desktop Environment">KDE</abbr></a></dt>
+				<dd><a href="http://standards.freedesktop.org/desktop-entry-spec/latest/" title="Desktop Entry Specification">http://standards.freedesktop.org/desktop-entry-spec/latest/</a> (since version 3.3)</dd>
+				<dd><a href="http://www.kde.org/areas/sysadmin/fsh.php">http://www.kde.org/areas/sysadmin/fsh.php</a></dd>
+				<dd><a href="http://developer.kde.org/documentation/tutorials/dot/servicemenus.html">http://developer.kde.org/documentation/tutorials/dot/servicemenus.html</a> (Desktop Actions)</dd>
+			<dt><a href="http://www.gnome.org"><abbr title="GNU Network Object Model Environment">GNOME</abbr></a></dt>
+				<dd><a href="http://standards.freedesktop.org/desktop-entry-spec/latest/" title="Desktop Entry Specification">http://standards.freedesktop.org/desktop-entry-spec/latest/</a> (since version 2.4)</dd>
+				<dd><a href="http://web.archive.org/web/20041024190358/http://www.gnome.org/learn/admin-guide/latest/ch05s03.html" title="Registering Applications for MIME Types">http://web.archive.org/web/20041024190358/http://www.gnome.org/learn/admin-guide/latest/ch05s03.html</a> (up to version 2.4)</dd>
+				<dd><a href="http://www.gnome.org/learn/admin-guide/latest/mimetypes-registering.html" title="Registering Applications for MIME Types">http://www.gnome.org/learn/admin-guide/latest/mimetypes-registering.html</a></dd>
+				<dd><a href="http://www.gnome.org/learn/admin-guide/latest/menustructure-desktopentry.html" title="Desktop Entry Files">http://www.gnome.org/learn/admin-guide/latest/menustructure-desktopentry.html</a></dd>
+				<dd><a href="http://www.gnome.org/learn/admin-guide/latest/mimetypes-9.html" title="Adding an Application to the GNOME Desktop">http://www.gnome.org/learn/admin-guide/latest/mimetypes-9.html</a></dd>
+		</dl>
+		<p>The <a href="http://www.freedesktop.org/software/desktop-file-utils/">desktop-file-utils package</a> contains the command-line tool <tt>desktop-file-validate</tt> to validate, manipulate and install <tt>.desktop</tt> files and to update the database, which holds information about applications and associated <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> types.</p>
+		<p>If you need more information, checkout the <a href="http://sourceforge.net/docman/?group_id=159685.">documentation section</a> of the projects website.</p>
+		
+		<h2 id="todo">What to do next</h2>
+		<p>For a list of things, that need to be done in the near future or for later releases, refer to <a href="http://chemical-mime.cvs.sourceforge.net/*checkout*/chemical-mime/chemical-mime-data/TODO"><tt>TODO</tt></a>.</p>
+		<p>If you want to have an overview, which features need to be implemented or which bugs need to be fixed, check the <a href="http://sourceforge.net/tracker/?group_id=159685" title="SF.net bug, feature, patch, ... tracker ">projects tracker page</a>.</p>
+	</div>
+
+</body>
+</html>

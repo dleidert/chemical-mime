@@ -1,0 +1,121 @@
+# Document  $Id$
+# Summary   Things to do before we can do the next release.
+
+TODO 
+====
+
+* SERIOUS: the pattern check fails if a a MIME type conflicts with at least 2
+           other types in the external database!
+
+* Before 0.2.0 release
+
+  + Fix INSTALL.
+
+  + Add a stylesheet to create .desktop files for applications (install this
+    stylesheet? - would need the database too - Idea: Associate the stylesheet
+    directly with the source and upload the necessary files to sf.net).
+
+  + Fix GNOME 2.4 support: extensions beeing *.ext should be put into the ext:
+    field - everything else probably needs to be put into regex: fields.
+
+
+* Later branches
+
+  + Add stylesheet templates to build the related extension for GNOME
+    magic file.
+    
+    byte     = byte
+    string   = string
+    host16   = short
+    host32   = long
+    big16    = beshort
+    big32    = belong
+    little16 = leshort
+    little32 = lelong
+    
+    support for date, bedate and ledate necessary?
+    see /etc/gnome-vfs-mime-magic (GNOME)
+    
+  + Fix gnome-mime-data support: see
+    http://www.gnome.org/learn/admin-guide/latest/ch05s02.html
+    http://web.archive.org/web/20041024185231/http://www.gnome.org/learn/admin-guide/latest/ch05s02.html
+
+  + How to handle _category field in .keys? Do we need more fields?
+
+  + Test for XFCE4.2 support.
+
+  + The "Chemical MIME Connection" lists MIME types per application. Our
+    database contains the necessary information to update this information.
+
+
+* General
+
+  + Add language support for different languages
+
+  + Add more MIME-types to our database.
+  
+  + Add more "magic" to our database and solve conflicts for:
+    - chemical/x-cerius
+    - chemical/x-chemdraw
+    - chemical/x-daylight-smiles
+    - chemical/x-genbank (maybe solved)
+    - chemical/x-mif
+    
+  + Look further for these mime types (not yet included, in alphabetical
+    order):
+    
+    x-ct               *.ct
+    x-eye2eye          
+    x-msi-molfile      *.msm
+    x-mdl-isis         *.skc
+    x-mopac-den        
+    x-mopac-esp        *.esp, *.ESP
+    x-pdb-ribbon       
+    x-ppd              
+    x-questel-f1       *.f1d
+    x-questel-f1-query *.f1q
+    x-smd              *.smd
+    x-synopsys-accord  *.acc
+    
+    from /usr/share/doc/gdis/gdis_manual.txt.gz
+    fdf the free data format, suitable for the SIESTA package (.fdf)
+    marvin output (.mvnout, .mvout)
+    gdis morphology file (.gmf)
+    gulp input (.gin), restart (.res), and ouput (.got) (gulp also used by viewmol!)
+    xtl (.xtl) (gulp added but not activated)
+    'ACC', "chemical/x-synopsys-accord" Accord ActiveX Chemistry Control
+    Questel DARC-F1
+    NBRF/PIR http://www.psc.edu/general/software/packages/seq-intro/nbrffile.html
+    chemixal/x-mpsa http://bioinformatics.oxfordjournals.org/cgi/screenpdf/16/3/286.pdf
+    cclib has built-in rules to determine computational chemistry packages file types
+
+    viewmol also uses: x-turbomole*
+    
+    See also
+    http://www.cambridgesoft.com/services/documentation/sdk/chemdraw/ActiveX7.0/Objects/DataType.htm
+    http://www.ch.ic.ac.uk/chemime/
+    ...
+    
+  + Add Icons (especially for contributors - I'm not an artist)
+    !!! basic support has been removed in 0.1.95 because of icons missing !!!
+    - hicolor theme should cover all MIME types
+    - current SVGs are only basic (not really "chemical")
+    - a MIME type chemical/<type> can still get a special icon, which have to
+      be named: gnome-mime-chemical-<type>.png.
+    - ROX-filer can't handle generic MIME media type icons (like nautilus does)
+    - possible move the KDE qc icon from viewmol to this package?
+
+  + Add tests:
+    - gnomevfs-info (testing gnome-vfs)
+    - kmimetypefinder (testing KDE4)
+
+  + Check, if we should better use xsl:key to pre-select supported elements:
+
+    <xsl:key name="supported" match="fdo:mime-type" use="@cm:support"/>
+
+    <xsl:apply-templates
+         select="key('gnome_supported', 'yes')[child::fdo:glob[not(cm:conflicts[attribute::gnome = 'yes'])]]">
+      <xsl:sort select="@type"/>
+    </xsl:apply-templates>
+
+# UTF-8

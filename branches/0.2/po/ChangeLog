@@ -1,0 +1,146 @@
+# Document  $Id$
+# Summary   File-changelog for the internationalization data files of the
+#           chemical-mime-data project.
+
+2007-06-30 Alexandr Goncearenco <neksa@neksa.net>
+
+	* ru.po: Added Russian translation.
+
+2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* de.po: Updated after massive changes to database. 10 untranslated
+	messages left.
+
+	* fr.po: Just updated. 29 fuzzy and 31 untranslated messages left.
+
+2007-01-07 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* de.po: Updated after changes to database. Fixed fuzzy entries. 3
+	untranslated messages left.
+
+2007-01-03 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* de.po: Updated after changes to database. Fixed untranslated and
+	fuzzy entries. 3 untranslated messages left.
+
+	* fr.po: Only updated after changes to database.
+
+2006-12-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* de.po: Updated after changes to database. Fixing untranslated and
+	fuzzy entries. 37 translated messages, 2 untranslated messages.
+
+	* fr.po: Only updated after changes to database.
+
+2006-07-17 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* chemical-mime-data.pot: Removed.
+
+2006-06-15 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* chemical-mime-data.pot:  Added Report-Msgid-Bugs-To: field entry.
+	
+	* de.po: Ditto.
+
+	* fr.po: Ditto.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* chemical-mime-data.pot: Updated.
+
+	* de.po: Ditto.
+
+	* fr.po: Ditto.
+
+2006-05-05 Jerome Pansanel <j.pansanel@pansanel.net>
+
+	* add fr.po
+
+	* chemical-mime-data.pot: Updated.
+
+	* de.po: Updated
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* chemical-mime-data.pot: Updated.
+
+	* de.po: Updated.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* chemical-mime-data.pot: The first update after our change to the new
+	database format. Translator, please update your translations.
+
+	* de.po: Updated.
+
+2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* de.po: Updated. Added a more information to the header.
+
+2006-04-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* POTFILES.in: Changed to src/chemical-mime-data.xml.in. Removed all
+	other files. We will just need the new database.
+
+	* de.po: Updated to fit latest changes.
+
+	* fr.po: Removed, because outdated.
+
+	* nl.po: Ditto.
+
+2006-01-27 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* chemical-mime-data.pot: Update after fixing bugs in kde/*.desktop
+	files.
+
+	* de.po: Ditto.
+
+	* fr.po: Ditto.
+
+	* nl.po: Ditto.
+
+2006-01-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* ChangeLog: Changed used CVS keyword to a local one. More useful
+	summary.
+	
+	* de.po: Fixed headers of the file. Fixed copyright info.
+
+	* fr.po: Ditto.
+
+	* nl.po: Ditto.
+
+2005-09-19 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* fr.po: Added French translation. Thanks to Jean Bréfort.
+
+2005-06-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* ChangeLog: Fixed syntax. Added a bit more info.
+
+2005-05-06 Daniel Leidert <daniel.leidert@wgdd.de>
+	
+	* POTFILES.in: Added missing files.
+	
+2005-05-03 Daniel Leidert <daniel.leidert@wgdd.de>
+	
+	* chemicalMIME.pot: Removed (obsolete).
+
+2005-03-15 Daniel Leidert <daniel.leidert@wgdd.de>
+	
+	* POTFILES.in: Fixed (file remove in ../kde).
+	
+2005-03-11 Daniel Leidert <daniel.leidert@wgdd.de>
+	
+	* ChangeLog: Added for 'dist'-target.
+
+2005-03-10 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Makefile.in.in: Removed (added by intltoolize during autogen.sh
+	run).
+
+2005-03-04 Egon Willighagen
+
+	* nl.po: Added Dutch translation.
+
+# UTF-8

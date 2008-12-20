@@ -1,0 +1,95 @@
+# Document  $Id$
+# Summary   News for every release.
+
+Version 0.1.95 UNRELEASED Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* ...
+
+Version 0.1.94 2007-02-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Fixed several build issues.
+	  - Increased build dependency to intltool >= 0.35.0.
+	  - Removed crystalsvg theme stuff.
+
+	* Added MIME type pattern:
+	  - chemical/x-cactvs-ascii
+	  - chemical/x-cactvs-binary
+	  - chemical/x-cactvs-table
+	  - chemical/x-cdxml
+	  - chemical/x-gamess-output
+	  - chemical/x-gulp
+	  - chemical/x-ncbi-asn1
+	  - chemical/x-ncbi-asn1-binary
+	  - chemical/x-ncbi-asn1-xml
+
+	* Fixed or improved MIME type pattern:
+	  - chemical/x-cdx
+	  - chemical/x-cml
+	  - chemical/x-cif
+	  - chemical/x-dmol
+	  - chemical/x-gamess-input
+	  - chemical/x-gaussian-input
+	  - chemical/x-gaussian-log
+	  - chemical/x-genbank
+	  - chemical/x-hin
+	  - chemical/x-inchi
+	  - chemical/x-inchi-xml
+	  - chemical/x-mdl-rxnfile
+	  - chemical/x-mmcif
+	  - chemical/x-mol2
+	  - chemical/x-msi-car
+	  - chemical/x-msi-hessian
+	  - chemical/x-msi-mdf
+	  - chemical/x-msi-msi
+	  - chemical/x-pdb
+	  - chemical/x-shelx
+	
+	* Added a poject website and an initial website overview of the
+	database.
+
+	* Updated and added documentation provided with the source.
+
+	* Bugs closed:
+	  - RH bug #225095
+	    (https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=225095)
+	  - SF.net bug #1616568
+	    (http://sourceforge.net/tracker/index.php?func=detail&aid=1616568&group_id=159685&atid=812819)
+
+Version 0.1.93 2006-05-12 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Fixed an important build issue leading to a mispelled 'Pattern(s)'
+	field in KDE's .desktop files.
+
+	* Fixed several minor build issues.
+
+	* Completed/Added assignment and support for xdrawchem, molden,
+	gchem3d-viewer (gnome-chemistry-utils) and kfile_chemical was added:
+	chemical/x-gamess-input, chemical/x-mopac-out, chemical/x-genbank,
+	chemical/x-inchi, chemical/x-inchi-xml, chemical/x-jcamp-dx,
+	chemical/x-shelx, chemical/x-vmd.
+
+	* Fixed content and improved support for chemical/x-mdl-molfile,
+	chemical/x-mdl-rdfile, chemical/x-mdl-rxnfile, chemical/x-mdl-sdfile,
+	chemical/x-mdl-tgf, chemical/x-daylight-smiles, chemical/x-dmol,
+	chemical/x-mol2.
+
+	* Re-Added French translations (thanks to Jerome Pansanel).
+
+Version 0.1.92 2006-05-02 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* Now the whole package is based on a flat XML datbase and XSL
+	stylesheets create all necessary files, which are then installed.
+
+	* This release ships support for several MIME types used by gchempaint,
+	jmol, pymol, rasmol and xdrawchem. A complete list may follow before we
+	make the official 0.2.0 release.
+
+Version 0.1.0
+	Moved from chemicalMIME to chemical-mime-data.
+	Moved whole package to GNU Lesser General Public License v2.1.
+	Added support for theme and non-theme icons.
+	Fixed a lot of build issues (completely rewritten configure- and
+	build-process).
+	Fixed chemical/x-pdb detection.
+
+# UTF-8
