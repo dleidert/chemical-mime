@@ -1,6 +1,10 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2008-12-20 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* configure.ac (AC_INIT): Increase version to 0.3.0.
+
 2008-12-12 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* Makefile.am (DISTCHECK_CONFIGURE_FLAGS): Set CONFIG_SITE.

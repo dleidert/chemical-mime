@@ -14,7 +14,7 @@ dnl --------------------------------------------------------------------------
 dnl initialization
 dnl --------------------------------------------------------------------------
 
-AC_INIT([chemical-mime-data],[0.1.95],[http://sourceforge.net/projects/chemical-mime/])
+AC_INIT([chemical-mime-data],[0.3.0],[http://sourceforge.net/projects/chemical-mime/])
 AM_INIT_AUTOMAKE([-Wall])
 AC_REVISION($Revision$)
 AC_CONFIG_SRCDIR([src/chemical-mime-database.xml.in])
