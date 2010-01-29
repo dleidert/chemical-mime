@@ -205,7 +205,7 @@
   <!-- * Outputs the HTML site. Here we create the <head> section with all -->
   <!-- * meta tags and call the other templates to create the HTML body,   -->
   <!-- * without process anything body-related here.                       --> 
-	<html>
+	<html lang="en" xml:lang="en">
 		<head>
 			<title>The chemical-mime-data Project</title>
 			<meta name="generator">
@@ -265,49 +265,57 @@
 <xsl:template name="html.content.table.mime.supported">
   <!-- * Output an overview of currently (by the package) supported MIME     -->
   <!-- * types.                                                              -->
-	<h2 id="supported">Supported MIME types</h2>
-	<p>The following MIME types are supported by the &entpackage; package version &entversion;.</p>
-	<table>
-		<xsl:call-template name="html.content.table.mime.head"/>
-		<xsl:apply-templates select=".//fdo:mime-type[@cm:support = 'yes']">
-			<xsl:sort select="@type"/>
-		</xsl:apply-templates>
+	<table id="supported" summary="The following MIME types are supported by the &entpackage; package version &entversion;.">
+		<caption>Supported MIME types as of version &entversion;.</caption>
+		<thead>
+			<xsl:call-template name="html.content.table.mime.head">
+				<xsl:with-param name="head-type" select="'supported'"/>
+			</xsl:call-template>
+		</thead>
+		<tbody>
+			<xsl:apply-templates select=".//fdo:mime-type[@cm:support = 'yes']">
+				<xsl:sort select="@type"/>
+			</xsl:apply-templates>
+		</tbody>
 	</table>
 </xsl:template>
 
 <xsl:template name="html.content.table.mime.unsupported">
   <!-- * Output an overview of currently (by the package) unsupported, but   -->
   <!-- * known and already added MIME types.                                 -->
-	<h2 id="unsupported">Unsupported but known MIME types</h2>
-	<p>The following MIME types are not supported by the &entpackage; package version &entversion;.</p>
-	<table>
-		<xsl:call-template name="html.content.table.mime.head"/>
-		<xsl:apply-templates select=".//fdo:mime-type[not(@cm:support = 'yes')]">
-			<xsl:sort select="@type"/>
-		</xsl:apply-templates>
+	<table id="unsupported" summary="The following MIME types are not supported by the &entpackage; package version &entversion;.">
+		<caption>Known but not yet supported MIME types as of version &entversion;.</caption>
+		<thead>
+			<xsl:call-template name="html.content.table.mime.head">
+				<xsl:with-param name="head-type" select="'unsupported'"/>
+			</xsl:call-template>
+		</thead>
+		<tbody>
+			<xsl:apply-templates select=".//fdo:mime-type[not(@cm:support = 'yes')]">
+				<xsl:sort select="@type"/>
+			</xsl:apply-templates>
+		</tbody>
 	</table>
 	<p>There might be more MIME types, that simply were not yet added to the database. If you know one missing, just <a href="https://sourceforge.net/tracker/?func=add&amp;group_id=159685&amp;atid=812822">let us know</a>.</p>
 </xsl:template>
 
 <xsl:template name="html.content.table.mime.head">
+	<xsl:param name="head-type" select="'supported'"/>
   <!-- * Both overviews have the same table head. This template creates    -->
   <!-- * it.                                                               -->
 	<tr>
-		<th class="mime-type" rowspan="4">MIME type
-			<br/><br/>Sub-class of <sup>[<a href="#comment_subclassof">1</a>]</sup>
-			<br/><br/>Alias
-		</th>
-		<th class="comment">Description</th>
-		<th class="glob">Filename extension</th>
+		<th id="table.{$head-type}.type" class="mime-type" rowspan="4">MIME type <sup>[<a href="#comment_subclassof">1</a>]</sup></th>
+		<th id="table.{$head-type}.desc" class="comment">Description</th>
+		<th id="table.{$head-type}.ext" class="glob">Filename extension</th>
 	</tr>
 	<tr>
-		<th class="magic" colspan="2">Magic Pattern</th>
+		<th id="table.{$head-type}.magic" class="magic" colspan="2">Magic Pattern</th>
 	</tr>
 	<tr>
-		<th class="root-XML" colspan="2">Root XML/Namespace</th>
+		<th id="table.{$head-type}.xml" class="root-XML" colspan="2">Root XML/Namespace</th>
 	</tr>
 	<tr>
-		<th class="specification" colspan="2">Specification</th>
+		<th id="table.{$head-type}.spec" class="specification" colspan="2">Specification</th>
 	</tr>
 </xsl:template>
 
@@ -330,6 +338,7 @@
   <!-- *     MIME type 2                                                   -->
   <!-- *     ...                                                           -->
   <!-- *                                                                   -->
+	<xsl:param name="head-type" select="'supported'"/>
 	<xsl:param name="rowspan" select="false()"/>
 	
 	<td class="{local-name(.)}">
