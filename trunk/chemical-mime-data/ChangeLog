@@ -3,6 +3,13 @@
 
 2010-01-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* xsl/cmd_website.xsl (html.content): Added lang and xml:lang
+	attributes to <html>.
+	(html.content.table.mime.head, html.content.table.mime.supported)
+	(html.content.table.mime.unsupported): Some usability improvements.
+
+2010-01-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
 	* src/Makefile.am (XMLLINT_FLAGS): Added --noent switch to resolve
 	entities.
 	* src/chemical-mime-database.xml.in (chemical/x-jcamp-dx): Added
