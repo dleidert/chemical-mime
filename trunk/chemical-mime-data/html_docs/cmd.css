@@ -44,6 +44,7 @@ html {
 p span.sfnet img {
 	padding-left: 2em;
 	vertical-align: bottom;
+	border: none;
 }
 
 span.mime-type {

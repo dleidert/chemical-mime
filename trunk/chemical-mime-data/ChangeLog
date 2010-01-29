@@ -1,6 +1,12 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2010-01-30 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* html_docs/index.html: Added lang and xml:lang attributes. Moved image
+	styling to CSS.
+	* html_docs/cmd.css (p span.sfnet img): Image shouldn't have border.
+
 2008-12-20 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* configure.ac (AC_INIT): Increase version to 0.3.0.
