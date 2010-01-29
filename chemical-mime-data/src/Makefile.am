@@ -15,7 +15,7 @@ MOSTLYCLEANFILES = $(BUILT_SOURCES)
 MAINTAINERCLEANFILES = Makefile.in
 
 
-XMLLINT_FLAGS  += --noout --valid
+XMLLINT_FLAGS  += --noout --valid --noent
 
 
 database_in_files = chemical-mime-database.xml.in

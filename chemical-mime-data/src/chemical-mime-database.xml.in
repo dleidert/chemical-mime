@@ -883,6 +883,7 @@
 			<cm:application name="jcamp-dx"/>
 			<cm:application name="kfile_plugin"/>
 		</cm:supported-by>
+		<cm:specification url="http://old.iupac.org/standing/cpep/wp_jcamp_dx.html"/>
 	</mime-type>
 
 	<mime-type type="chemical/x-kinemage" cm:support="no">
