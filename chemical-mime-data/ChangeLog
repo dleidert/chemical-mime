@@ -1,6 +1,10 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2011-02-11 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* TODO: Minor update.
+
 2010-01-30 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* xsl/cmd_website.xsl (html.content): Added lang and xml:lang

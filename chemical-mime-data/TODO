@@ -4,6 +4,11 @@
 TODO 
 ====
 
+- replace cm:icon by generic-icon
+- conflicting glob pattern must get a weight
+- new elements for kde3 and file magic database
+
+
 * SERIOUS: the pattern check fails if a a MIME type conflicts with at least 2
            other types in the external database!
 
@@ -17,7 +22,6 @@ TODO
 
   + Fix GNOME 2.4 support: extensions beeing *.ext should be put into the ext:
     field - everything else probably needs to be put into regex: fields.
-
 
 * Later branches
 
