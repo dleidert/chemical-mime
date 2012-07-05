@@ -280,34 +280,6 @@ if test "x$with_freedesktop_mime" != "xno" ; then
 	AC_SUBST([UPDATE_MIME_DATABASE])
 fi
 
-dnl necessary checks and additions for old gnome 2.4 mime support
-if test "x$with_gnome_mime" != "xno" ; then
-	AC_MSG_CHECKING([for gnome-mime-data])
-	m4_ifdef(
-		[PKG_CHECK_EXISTS],
-		[PKG_CHECK_EXISTS(
-			[gnome-mime-data-2.0],
-			[
-			 AC_MSG_RESULT([yes])
-			 CHEMICAL_MIME_DEPS="$CHEMICAL_MIME_DEPS gnome-mime-data-2.0"
-			],
-			[
-			 AC_MSG_RESULT([no])
-			 AC_MSG_ERROR([gnome-mime-data package missing.])
-			]
-		 )
-		],
-		[
-		 if ( $PKG_CONFIG gnome-mime-data-2.0 --exists ); then
-			AC_MSG_RESULT([yes])
-			CHEMICAL_MIME_DEPS="$CHEMICAL_MIME_DEPS gnome-mime-data-2.0"
-		 else
-			AC_MSG_RESULT([no])
-			AC_MSG_ERROR([gnome-mime-data package missing.])
-		 fi
-		]
-	)
-fi
 AC_SUBST([CHEMICAL_MIME_DEPS])
 
 dnl --------------------------------------------------------------------------

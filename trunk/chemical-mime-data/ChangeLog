@@ -3,6 +3,11 @@
 
 2012-07-05 Daniel Leidert <daniel.leidert@wgdd.de>
 
+	* configure.ac (CHEMICAL_MIME_DEPS): Don't add gnome-mime-data-2.0.
+	See http://bugs.debian.org/652153.
+
+	* chemical-mime-data.pc.in (Description): Minor update.
+
 	* src/chemical-mime-database.xml.in: Updated document type definition.
 	(application/x-chemtool): Removed. Has been added upstream.
 
