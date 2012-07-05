@@ -16,7 +16,7 @@ docdir=@docdir@
 htmldir=@htmldir@
 
 Name: @PACKAGE@
-Description: Chemical MIME and file type support for KDE, GNOME and ROX desktops.
+Description: Chemical MIME and file type support for modern Linux desktops.
 Version: @VERSION@
 URL: http://chemical-mime.sf.net
 Requires:@CHEMICAL_MIME_DEPS@
