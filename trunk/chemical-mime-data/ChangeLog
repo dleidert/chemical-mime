@@ -1,6 +1,11 @@
 # Document  $Id$
 # Summary   File changelog for the chemical-mime-data project.
 
+2012-07-05 Daniel Leidert <daniel.leidert@wgdd.de>
+
+	* src/chemical-mime-database.xml.in: Updated document type definition.
+	(application/x-chemtool): Removed. Has been added upstream.
+
 2011-02-11 Daniel Leidert <daniel.leidert@wgdd.de>
 
 	* TODO: Minor update.
