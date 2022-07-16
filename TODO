@@ -20,31 +20,7 @@ TODO
     stylesheet? - would need the database too - Idea: Associate the stylesheet
     directly with the source and upload the necessary files to sf.net).
 
-  + Fix GNOME 2.4 support: extensions beeing *.ext should be put into the ext:
-    field - everything else probably needs to be put into regex: fields.
-
 * Later branches
-
-  + Add stylesheet templates to build the related extension for GNOME
-    magic file.
-    
-    byte     = byte
-    string   = string
-    host16   = short
-    host32   = long
-    big16    = beshort
-    big32    = belong
-    little16 = leshort
-    little32 = lelong
-    
-    support for date, bedate and ledate necessary?
-    see /etc/gnome-vfs-mime-magic (GNOME)
-    
-  + Fix gnome-mime-data support: see
-    http://www.gnome.org/learn/admin-guide/latest/ch05s02.html
-    http://web.archive.org/web/20041024185231/http://www.gnome.org/learn/admin-guide/latest/ch05s02.html
-
-  + How to handle _category field in .keys? Do we need more fields?
 
   + Test for XFCE4.2 support.
 
@@ -110,7 +86,6 @@ TODO
     - possible move the KDE qc icon from viewmol to this package?
 
   + Add tests:
-    - gnomevfs-info (testing gnome-vfs)
     - kmimetypefinder (testing KDE4)
 
   + Check, if we should better use xsl:key to pre-select supported elements:

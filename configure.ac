@@ -96,24 +96,6 @@ AC_ARG_WITH(
 )
 AC_SUBST([with_freedesktop_mime])
 
-AC_ARG_WITH(
-	[gnome-mime],
-	AS_HELP_STRING(
-		[--with-gnome-mime@<:@=PATH@:>@],
-		[
-		 enable, disable or override the installation directory of the old GNOME 2.4 MIME support files
-		 @<:@default=$datadir/mime-info@:>@
-		]
-	),
-	[
-	 if test "x$withval" = "xyes" ; then
-		 with_gnome_mime=${datadir}/mime-info
-	 fi
-	],
-	[with_gnome_mime=${datadir}/mime-info]
-)
-AC_SUBST([with_gnome_mime])
-
 dnl --------------------------------------------------------------------------
 dnl Check target file locations
 dnl --------------------------------------------------------------------------
@@ -129,20 +111,6 @@ if test -z $FDO_SHARED_MIME_INFO_DB; then
 	AC_SUBST(
 		[FDO_SHARED_MIME_INFO_DB],
 		[${datadir}/mime/packages/freedesktop.org.xml]
-	)
-fi
-
-AC_ARG_VAR(
-	[GNOME_VFS_MIME_DATA_DB],
-	[
-	 The GNOME-VFS mime data database.
-	 @<:@default=$datadir/mime-info/gnome-vfs.mime@:>@
-	]
-)
-if test -z $GNOME_VFS_MIME_DATA_DB; then
-	AC_SUBST(
-		[GNOME_VFS_MIME_DATA_DB],
-		[${datadir}/mime-info/gnome-vfs.mime]
 	)
 fi
 
@@ -228,16 +196,6 @@ else
 	AC_MSG_RESULT([no])
 fi
 
-AM_CONDITIONAL([BOOL_GNOME_MIME], [test "x$with_gnome_mime" != "xno"])
-AC_MSG_CHECKING([if old GNOME 2.4 MIME support files will be installed])
-if test "x$with_gnome_mime" != "xno" ; then
-	AC_MSG_RESULT([yes])
-	AC_MSG_CHECKING([for installation path of the GNOME 2.4 support files])
-	AC_MSG_RESULT([$with_gnome_mime])
-else
-	AC_MSG_RESULT([no])
-fi
-
 dnl --------------------------------------------------------------------------
 dnl location determination
 dnl --------------------------------------------------------------------------
@@ -277,7 +235,6 @@ AC_CONFIG_FILES([
 	Makefile
 	file/Makefile
 	freedesktop.org/Makefile
-	gnome/Makefile
 	html_docs/Makefile
 	mime-support/Makefile
 	po/Makefile.in

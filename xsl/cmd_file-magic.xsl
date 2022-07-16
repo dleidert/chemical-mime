@@ -39,9 +39,6 @@
 <xsl:param name="file.magic.mode" select="'file'"/>
 <xsl:param name="file.magic.name">
 	<xsl:choose>
-		<xsl:when test="$file.magic.mode = 'gnome'">
-			<xsl:value-of select="'gnome-vfs-mime-magic'"/>
-		</xsl:when>
 		<xsl:otherwise>
 			<xsl:value-of select="'magic.mime'"/>
 		</xsl:otherwise>
@@ -66,7 +63,7 @@
 <!-- * xsl:template match (modes) section                                  -->
 <!-- ********************************************************************* -->
 
-<!-- * Output the MIME magic into a GNOME/file MIME magic database, by     -->
+<!-- * Output the MIME magic into a file MIME magic database, by           -->
 <!-- * processing every mime-type element with magic pattern, sorted after -->
 <!-- * (first) descending priority (then) ascending alphabetical type      -->
 <!-- * order.                                                              -->
@@ -93,11 +90,6 @@
 	<xsl:variable name="magic.mime.type" select="ancestor::fdo:mime-type/@type"/>
 	
 	<xsl:choose>
-		<xsl:when test="$file.magic.mode = 'gnome'">
-			<xsl:apply-templates select="fdo:match" mode="gnome">
-				<xsl:with-param name="match.mime.type" select="$magic.mime.type"/>
-			</xsl:apply-templates>
-		</xsl:when>
 		<xsl:otherwise>
 			<xsl:apply-templates select="fdo:match" mode="file">
 				<xsl:with-param name="match.mime.type" select="$magic.mime.type"/>
@@ -271,14 +263,6 @@
 	</xsl:choose>
 </xsl:template>
 
-<!-- * The GNOME-VFS MIME magic database uses a file format, that is       -->
-<!-- * different to file(1)'s one (magic(5). So we need to process the     -->
-<!-- * match elements in an own template, that does currently nothing.     --> 
-<xsl:template match="fdo:match" mode="gnome">
-	<xsl:message>INFO (match[mode="gnome"]): Do nothing.</xsl:message>
-	<xsl:message>TODO (match[mode="gnome"]): Stylesheet-template needs to be written.</xsl:message>
-</xsl:template>
-
 <!-- * If found a mime-type element, output the MIME type name as a        -->
 <!-- * comment before any pattern rule. Then process the rules.            --> 
 <xsl:template match="fdo:mime-type">
@@ -365,11 +349,6 @@
 <xsl:template name="file.specific.header.text">
 	<xsl:text># This file was created automatically by cmd_file-magic.xsl.        &#10;</xsl:text>
 	<xsl:choose>
-		<xsl:when test="$file.magic.mode = 'gnome'">
-			<xsl:text># Copy or append its content to GNOME's MIME magic database (on Debian &#10;</xsl:text>
-			<xsl:text># systems, it's the file /etc/gnome-vfs-mime-magic). Please note, that &#10;</xsl:text>
-			<xsl:text># order is important here.                                             &#10;</xsl:text>
-		</xsl:when>
 		<xsl:otherwise>
 			<xsl:text># Copy or append its content to file(1)'s MIME magic database (on      &#10;</xsl:text>
 			<xsl:text># Debian systems, it's the file /etc/magic.mime.                       &#10;</xsl:text>

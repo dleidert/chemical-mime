@@ -91,12 +91,6 @@ freedesktop.org [13] project system
     If the icon naming scheme follows this direction, the MIME type is
     automatically associated with the icon.
 
-GNOME [4] <= 2.4
-
-    Older GNOME [4] desktops use the ${datadir}/mime-info path with .keys and
-    .mime files [20] to determine [21] MIME stuff. Icons are determined the
-    same way.
-
 If you need more information, checkout the documentation section [23] of the
 projects website.
 
@@ -130,7 +124,6 @@ To build and install chemical-mime-data from release tarballs:
         - intltool/gettext (I18N)
         - pkg-config
         - xsltproc (create .desktop, .mime, ... files from XML)
-        - gnome-mime-data
         - shared-mime-info (contains update-mime-database)
     
     (2) Configure and compile:

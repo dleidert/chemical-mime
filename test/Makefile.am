@@ -9,11 +9,9 @@
 EXTRA_DIST = \
 	Makefile.incl \
 	compare_pattern.xsl \
-	gnome-vfs-mime.xsl \
 	mime-types.xsl
 
 MOSTLYCLEANFILES = \
-	$(GNOME_VFS_MIME_XML) \
 	$(MIME_SUPPORT_MIME_TYPES_XML)
 
 MAINTAINERCLEANFILES = Makefile.in
@@ -22,7 +20,6 @@ MAINTAINERCLEANFILES = Makefile.in
 VPATH += $(top_builddir)/src .
 
 
-GNOME_VFS_MIME_XML          = gnome-vfs-mime.xml
 MIME_SUPPORT_MIME_TYPES_XML = mime-types.xml
 
 XSLTPROC_FLAGS += --path "$(VPATH)"
@@ -32,7 +29,6 @@ check-local: check-pattern
 
 check-pattern: \
 	check-pattern-fdo-smi-db \
-	check-pattern-gnome-vfs-db \
 	check-pattern-mime-types-db
 
 check-pattern-fdo-smi-db: $(FDO_SHARED_MIME_INFO_DB) compare_pattern.xsl chemical-mime-database.xml
@@ -40,14 +36,6 @@ check-pattern-fdo-smi-db: $(FDO_SHARED_MIME_INFO_DB) compare_pattern.xsl chemica
 	$(XSLTPROC) $(XSLTPROC_FLAGS) \
 	 --stringparam database "$(FDO_SHARED_MIME_INFO_DB)" \
 	 --stringparam database.type "fdo" \
-	 --stringparam database.uri \
-	 $^
-
-check-pattern-gnome-vfs-db: $(GNOME_VFS_MIME_XML) compare_pattern.xsl chemical-mime-database.xml 
-	@echo -e "\033[1mCheck the database against the gnome-mime-data db.\033[0m"
-	$(XSLTPROC) $(XSLTPROC_FLAGS) \
-	 --stringparam database "$(GNOME_VFS_MIME_DATA_DB)" \
-	 --stringparam database.type "gnome" \
 	 --stringparam database.uri \
 	 $^
 
@@ -59,10 +47,6 @@ check-pattern-mime-types-db: $(MIME_SUPPORT_MIME_TYPES_XML) compare_pattern.xsl 
 	 --stringparam database.uri \
 	 $^
 
-
-$(GNOME_VFS_MIME_XML): gnome-vfs-mime.xsl $(GNOME_VFS_MIME_DATA_DB)
-	@echo -e "\033[1mBuild temporary gnome-vfs mime-info database in XML format.\033[0m"
-	echo '$(GNOME_VFS_MIME_XML_CUSTOM)' | $(XSLTPROC) -o $@ $(XSLTPROC_FLAGS) --xinclude $< -
 
 $(MIME_SUPPORT_MIME_TYPES_XML): mime-types.xsl $(MIME_SUPPORT_MIME_TYPES_DATA_DB)
 	@echo -e "\033[1mBuild temporary mime.types database in XML format.\033[0m"
