@@ -38,11 +38,7 @@
 
 <xsl:param name="file.magic.mode" select="'file'"/>
 <xsl:param name="file.magic.name">
-	<xsl:choose>
-		<xsl:otherwise>
-			<xsl:value-of select="'magic.mime'"/>
-		</xsl:otherwise>
-	</xsl:choose>
+	<xsl:value-of select="'magic.mime'"/>
 </xsl:param>
 <xsl:param name="value.string.subst.map">
 	<substitution oldstring=" " newstring="\ "/>
@@ -89,13 +85,9 @@
 <xsl:template match="fdo:magic">
 	<xsl:variable name="magic.mime.type" select="ancestor::fdo:mime-type/@type"/>
 	
-	<xsl:choose>
-		<xsl:otherwise>
-			<xsl:apply-templates select="fdo:match" mode="file">
-				<xsl:with-param name="match.mime.type" select="$magic.mime.type"/>
-			</xsl:apply-templates>
-		</xsl:otherwise>
-	</xsl:choose>
+	<xsl:apply-templates select="fdo:match" mode="file">
+		<xsl:with-param name="match.mime.type" select="$magic.mime.type"/>
+	</xsl:apply-templates>
 </xsl:template>
 
 <!-- * file(1)'s mime.magic database uses a format, described in magic(5). -->
@@ -348,12 +340,8 @@
 <!-- * pattern database with instructions, how to use it.                  -->
 <xsl:template name="file.specific.header.text">
 	<xsl:text># This file was created automatically by cmd_file-magic.xsl.        &#10;</xsl:text>
-	<xsl:choose>
-		<xsl:otherwise>
-			<xsl:text># Copy or append its content to file(1)'s MIME magic database (on      &#10;</xsl:text>
-			<xsl:text># Debian systems, it's the file /etc/magic.mime.                       &#10;</xsl:text>
-		</xsl:otherwise>
-	</xsl:choose>
+	<xsl:text># Copy or append its content to file(1)'s MIME magic database (on      &#10;</xsl:text>
+	<xsl:text># Debian systems, it's the file /etc/magic.mime.                       &#10;</xsl:text>
 	<xsl:text>&#10;&#10;</xsl:text>
 </xsl:template>
 
