@@ -97,11 +97,6 @@ GNOME [4] <= 2.4
     .mime files [20] to determine [21] MIME stuff. Icons are determined the
     same way.
 
-KDE [3] < 4
-
-    KDE [3] desktops use the ${datadir}/mimelnk [22] path with .desktop files
-    to determine MIME stuff. Icons are determined the same way.
-
 If you need more information, checkout the documentation section [23] of the
 projects website.
 

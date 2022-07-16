@@ -6,7 +6,7 @@ TODO
 
 - replace cm:icon by generic-icon
 - conflicting glob pattern must get a weight
-- new elements for kde3 and file magic database
+- new elements for file magic database
 
 
 * SERIOUS: the pattern check fails if a a MIME type conflicts with at least 2

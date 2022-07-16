@@ -12,7 +12,6 @@ EXTRA_DIST = \
 	cmd_freedesktop_org.xsl \
 	cmd_gnome-keys.xsl \
 	cmd_gnome-mime.xsl \
-	cmd_kde.xsl \
 	cmd_mime_types.xsl \
 	cmd_website.xsl \
 	cmd_entities.dtd.in
