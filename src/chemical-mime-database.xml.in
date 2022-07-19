@@ -76,15 +76,11 @@
   <!ELEMENT sub-class-of EMPTY>
   <!ATTLIST sub-class-of type CDATA #REQUIRED>
 
-  <!-- * Conflicting MIME-type(s). Use the @gnome and/or @kde
-       * attributes to determine if we will have problems with
-       * KDE 3.x, GNOME <= 2.4 or both. -->
+  <!-- * Conflicting MIME-type(s). -->
   <!ELEMENT cm:conflicts EMPTY>
   <!ATTLIST cm:conflicts type CDATA #REQUIRED>
   <!ATTLIST cm:conflicts cmd (yes|no) "no">
   <!ATTLIST cm:conflicts fdo (yes|no) "no">
-  <!ATTLIST cm:conflicts gnome (yes|no) "no">
-  <!ATTLIST cm:conflicts kde (yes|no) "no">
   <!ATTLIST cm:conflicts mimetypes (yes|no) "no">
 
   <!-- * Wrapper element for a list of applications supporting the
@@ -319,7 +315,7 @@
 		<acronym>MSI</acronym>
 		<expanded-acronym>Molecular Simulations Inc.</expanded-acronym>
 		<glob pattern="*.cer">
-			<cm:conflicts type="application/x-x509-ca-cert" fdo="yes" kde="yes"/>
+			<cm:conflicts type="application/x-x509-ca-cert" fdo="yes"/>
 		</glob>
 		<sub-class-of type="text/plain"/>
 	</mime-type>
@@ -327,8 +323,7 @@
 	<mime-type type="chemical/x-chemdraw" cm:support="no">
 		<_comment>ChemDraw file</_comment>
 		<glob pattern="*.chm">
-			<cm:conflicts type="application/chm" kde="yes"/>
-			<cm:conflicts type="application/x-chm" fdo="yes" gnome="yes"/>
+			<cm:conflicts type="application/x-chm" fdo="yes"/>
 		</glob>
 		<alias type="application/x-chemdraw"/>
 	</mime-type>
@@ -479,9 +474,8 @@
 		<acronym>SMILES</acronym>
 		<expanded-acronym>Simplified Molecular Input Line Entry Specification</expanded-acronym>
 		<glob pattern="*.smi">
-			<cm:conflicts type="application/smil" fdo="yes" kde="yes" mimetypes="yes"/>
+			<cm:conflicts type="application/smil" fdo="yes" mimetypes="yes"/>
 			<cm:conflicts type="application/x-sami" fdo="yes"/>
-			<cm:conflicts type="application/x-smil" gnome="yes"/>
 		</glob>
 		<glob pattern="*.smiles"/>
 		<sub-class-of type="text/plain"/>
@@ -687,7 +681,7 @@
 		<glob pattern="*.g03"/>
 		<glob pattern="*.gal"/>
 		<glob pattern="*.log">
-			<cm:conflicts type="text/x-log" fdo="yes" kde="yes"/>
+			<cm:conflicts type="text/x-log" fdo="yes"/>
 		</glob>
 		<glob pattern="*.out"/>
 		<sub-class-of type="text/plain"/>
@@ -730,10 +724,10 @@
 		<acronym>GenBank</acronym>
 		<expanded-acronym>National Genetic Sequence Data Base</expanded-acronym>
 		<glob pattern="*.gb">
-			<cm:conflicts type="application/x-gameboy-rom" fdo="yes" gnome="yes"/>
+			<cm:conflicts type="application/x-gameboy-rom" fdo="yes"/>
 		</glob>
 		<glob pattern="*.gen">
-			<cm:conflicts type="application/x-genesis-rom" fdo="yes" gnome="yes"/>
+			<cm:conflicts type="application/x-genesis-rom" fdo="yes"/>
 		</glob>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/seq-na-genbank"/>
@@ -911,7 +905,6 @@
 		<_comment>MacroModel output</_comment>
 		<glob pattern="*.dat">
 			<cm:conflicts type="chemical/x-mopac-input" cmd="yes"/>
-			<cm:conflicts type="video/mpeg" gnome="yes"/>
 		</glob>
 		<glob pattern="*.out"/>
 		<sub-class-of type="text/plain"/>
@@ -981,7 +974,7 @@
 		<expanded-acronym>Molecular Design Ltd.</expanded-acronym>
 		<glob pattern="*.sd"/>
 		<glob pattern="*.sdf">
-			<cm:conflicts type="application/vnd.stardivision.math" kde="yes" mimetypes="yes"/>
+			<cm:conflicts type="application/vnd.stardivision.math" mimetypes="yes"/>
 		</glob>
 		<sub-class-of type="text/plain"/>
 		<cm:supported-by>
@@ -1021,7 +1014,7 @@
 		<acronym>MIF</acronym>
 		<expanded-acronym>Molecular Information File</expanded-acronym>
 		<glob pattern="*.mif">
-			<cm:conflicts type="application/x-mif" fdo="yes" gnome="yes" mimetypes="yes"/>
+			<cm:conflicts type="application/x-mif" fdo="yes" mimetypes="yes"/>
 		</glob>
 		<sub-class-of type="text/plain"/>
 		<cm:specification url="http://pubs.acs.org/cgi-bin/abstract.cgi/jcisd8/1995/35/i03/f-pdf/f_ci00025a009.pdf?sessid=6006l3"/>
@@ -1084,12 +1077,11 @@
 		<expanded-acronym>Molecular Orbital PACkage</expanded-acronym>
 		<glob pattern="*.dat">
 			<cm:conflicts type="chemical/x-macromodel-output" cmd="yes"/>
-			<cm:conflicts type="video/mpeg" gnome="yes"/>
 		</glob>
 		<glob pattern="*.mop"/>
 		<glob pattern="*.mopcrt"/>
 		<glob pattern="*.mpc">
-			<cm:conflicts type="audio/x-musepack" fdo="yes" kde="yes"/>
+			<cm:conflicts type="audio/x-musepack" fdo="yes"/>
 		</glob>
 		<glob pattern="*.zmt"/>
 		<sub-class-of type="text/plain"/>
@@ -1138,9 +1130,7 @@
 
 	<mime-type type="chemical/x-msi-car" cm:support="yes" cm:added="0.1.91">
 		<_comment>Accelrys Cartesian Coordinate Archive File</_comment>
-		<glob pattern="*.arc">
-			<cm:conflicts type="application/x-arc" kde="yes"/>
-		</glob>
+		<glob pattern="*.arc"/>
 		<glob pattern="*.car"/>
 		<!-- <glob pattern="*.cor"/> -->
 		<!-- The *.cor is the output file format. -->
@@ -1273,8 +1263,7 @@
 		<glob pattern="*.brk"/> <!-- some older extension -->
 		<glob pattern="*.ent"/> <!-- some older extension -->
 		<glob pattern="*.pdb">
-			<cm:conflicts type="application/vnd.palm" fdo="yes" kde="yes"/>
-			<cm:conflicts type="application/x-palm-database" gnome="yes"/>
+			<cm:conflicts type="application/vnd.palm" fdo="yes"/>
 		</glob>
 		<sub-class-of type="text/plain"/>
 		<alias type="chemical/pdb"/>
