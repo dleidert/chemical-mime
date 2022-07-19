@@ -19,7 +19,7 @@
   <!ATTLIST mime-info xmlns:cm CDATA #FIXED "http://chemical-mime.sourceforge.net/chemical-mime">
   <!ATTLIST mime-info cm:vcsid CDATA #IMPLIED>
 
-  <!ELEMENT mime-type (comment+, (acronym,expanded-acronym)* , (generic-icon? | glob | magic | treemagic | root-XML | alias | sub-class-of)* , cm:icon?, cm:supported-by?, cm:specification*)>
+  <!ELEMENT mime-type (comment+, (acronym,expanded-acronym)* , (generic-icon? | glob | magic | treemagic | root-XML | alias | sub-class-of)* , cm:supported-by?, cm:specification*)>
   <!ATTLIST mime-type type CDATA #REQUIRED>
   <!ATTLIST mime-type cm:support (yes|no) "no">
   <!ATTLIST mime-type cm:added CDATA #IMPLIED>
@@ -86,13 +86,6 @@
   <!ATTLIST cm:conflicts gnome (yes|no) "no">
   <!ATTLIST cm:conflicts kde (yes|no) "no">
   <!ATTLIST cm:conflicts mimetypes (yes|no) "no">
-
-  <!-- * Icon for GNOME 2.4 and/or KDE 3.x system. Use the @gnome and/or
-       * kde attributes to determine the icon especially for KDE and/or
-       * GNOME. -->
-  <!ELEMENT cm:icon EMPTY>
-  <!ATTLIST cm:icon gnome CDATA #IMPLIED>
-  <!ATTLIST cm:icon kde CDATA #IMPLIED>
 
   <!-- * Wrapper element for a list of applications supporting the
        * respective MIME type. -->
@@ -504,7 +497,6 @@
 		<glob pattern="*.dmol"/>
 		<glob pattern="*.outmol"/>
 		<sub-class-of type="text/plain"/>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1156,7 +1148,6 @@
 		<magic priority="50">
 			<match type="string" value="!BIOSYM archive " offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="gdis"/>
 			<cm:application name="viewmol"/>
@@ -1174,7 +1165,6 @@
 		<magic priority="50">
 			<match type="string" value="$hessian" offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1190,7 +1180,6 @@
 		<magic priority="50">
 			<match type="string" value="!BIOSYM molecular_data " offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1206,7 +1195,6 @@
 		<magic priority="50">
 			<match type="string" value="# MSI CERIUS2 DataModel File Version " offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1425,7 +1413,6 @@
 		<magic priority="50">
 			<match type="string" value="$basis\n" offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1440,7 +1427,6 @@
 			<match type="string" value="$title\n" offset="0"/>
 			<match type="string" value="$operating system unix\n" offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1456,7 +1442,6 @@
 		<magic priority="50">
 			<match type="string" value="$coord\n" offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1470,7 +1455,6 @@
 		<magic priority="50">
 			<match type="string" value="$grad " offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1489,7 +1473,6 @@
 				<match type="string" value="GRADI :: " offset="8"/>
 			</match>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1504,7 +1487,6 @@
 		<magic priority="50">
 			<match type="string" value="$jbas " offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1522,7 +1504,6 @@
 		<magic priority="50">
 			<match type="string" value="$scfmo " offset="0"/>
 		</magic>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
@@ -1533,7 +1514,6 @@
 		<_comment>Turbomole vibrational data</_comment>
 		<glob pattern="???"/>
 		<sub-class-of type="text/plain"/>
-		<cm:icon kde="qc"/>
 		<cm:supported-by>
 			<cm:application name="viewmol"/>
 		</cm:supported-by>
