@@ -17,10 +17,8 @@ VPATH += $(top_builddir)/src $(top_srcdir)/xsl
 XSLTPROC_FLAGS +=  --stringparam file.magic.mode "file"
 
 
-#if BOOL_KDE_MIME
 filemagicdir   = $(pkgdatadir)/file
 filemagic_DATA = magic.mime
-#endif #BOOL_KDE_MIME
 
 $(filemagic_DATA): cmd_file-magic.xsl chemical-mime-database.xml
 	$(XSLTPROC) $(XSLTPROC_FLAGS) $^

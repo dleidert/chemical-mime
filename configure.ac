@@ -96,82 +96,6 @@ AC_ARG_WITH(
 )
 AC_SUBST([with_freedesktop_mime])
 
-AC_ARG_WITH(
-	[gnome-mime],
-	AS_HELP_STRING(
-		[--with-gnome-mime@<:@=PATH@:>@],
-		[
-		 enable, disable or override the installation directory of the old GNOME 2.4 MIME support files
-		 @<:@default=$datadir/mime-info@:>@
-		]
-	),
-	[
-	 if test "x$withval" = "xyes" ; then
-		 with_gnome_mime=${datadir}/mime-info
-	 fi
-	],
-	[with_gnome_mime=${datadir}/mime-info]
-)
-AC_SUBST([with_gnome_mime])
-
-AC_PATH_PROG([KDE_CONFIG], [kde-config], [no])
-
-AC_ARG_WITH(
-	[kde-magic],
-	AS_HELP_STRING(
-		[--with-kde-magic@<:@=PATH@:>@],
-		[
-		 enable, disable or override the installation directory of the KDE 3.x MIME magic snippet files
-		 @<:@default=auto(=$sysconfdir/kde3/magic)@:>@
-		]
-	),
-	[
-	 if test "x$withval" = "xyes" ; then
-		 if test "x$KDE_CONFIG" != "xno" ; then
-			 with_kde_magic=`$KDE_CONFIG --install config`/magic
-		 else
-			 with_kde_magic=${sysconfdir}/kde3/magic
-		 fi
-	 fi
-	],
-	[
-	 if test "x$KDE_CONFIG" != "xno" ; then
-		 with_kde_magic=`$KDE_CONFIG --install config`/magic
-	 else
-		 with_kde_magic=${sysconfdir}/kde3/magic
-	 fi
-	]
-)
-AC_SUBST([with_kde_magic])
-
-AC_ARG_WITH(
-	[kde-mime],
-	AS_HELP_STRING(
-		[--with-kde-mime@<:@=PATH@:>@],
-		[
-		 enable, disable or override the installation directory of the KDE 3.x MIME support files
-		 @<:@default=auto(=$datadir/mimelnk)@:>@
-		]
-	),
-	[
-	 if test "x$withval" = "xyes" ; then
-		 if test "x$KDE_CONFIG" != "xno" ; then
-			 with_kde_mime=`$KDE_CONFIG --install mime`
-		 else
-			 with_kde_mime=${datadir}/mimelnk
-		 fi
-	 fi
-	],
-	[
-	 if test "x$KDE_CONFIG" != "xno" ; then
-		 with_kde_mime=`$KDE_CONFIG --install mime`
-	 else
-		 with_kde_mime=${datadir}/mimelnk
-	 fi
-	]
-)
-AC_SUBST([with_kde_mime])
-
 dnl --------------------------------------------------------------------------
 dnl Check target file locations
 dnl --------------------------------------------------------------------------
@@ -190,40 +114,6 @@ if test -z $FDO_SHARED_MIME_INFO_DB; then
 	)
 fi
 
-AC_ARG_VAR(
-	[GNOME_VFS_MIME_DATA_DB],
-	[
-	 The GNOME-VFS mime data database.
-	 @<:@default=$datadir/mime-info/gnome-vfs.mime@:>@
-	]
-)
-if test -z $GNOME_VFS_MIME_DATA_DB; then
-	AC_SUBST(
-		[GNOME_VFS_MIME_DATA_DB],
-		[${datadir}/mime-info/gnome-vfs.mime]
-	)
-fi
-
-AC_ARG_VAR(
-	[KDE_MIMELNK_DATA_DB],
-	[
-	 The KDE mimelnk mime data database path.
-	 @<:@default=auto or $datadir/mimelnk@:>@
-	]
-)
-if test -z $KDE_MIMELNK_DATA_DB; then
-	if test "x$KDE_CONFIG" != "xno" ; then
-		AC_SUBST(
-			[KDE_MIMELNK_DATA_DB],
-			[`$KDE_CONFIG --install mime`]
-		)		
-	else
-		AC_SUBST(
-			[KDE_MIMELNK_DATA_DB],
-			[${datadir}/mimelnk]
-		)		
-	fi
-fi
 AC_ARG_VAR(
 	[MIME_SUPPORT_MIME_TYPES_DATA_DB],
 	[
@@ -306,36 +196,6 @@ else
 	AC_MSG_RESULT([no])
 fi
 
-AM_CONDITIONAL([BOOL_GNOME_MIME], [test "x$with_gnome_mime" != "xno"])
-AC_MSG_CHECKING([if old GNOME 2.4 MIME support files will be installed])
-if test "x$with_gnome_mime" != "xno" ; then
-	AC_MSG_RESULT([yes])
-	AC_MSG_CHECKING([for installation path of the GNOME 2.4 support files])
-	AC_MSG_RESULT([$with_gnome_mime])
-else
-	AC_MSG_RESULT([no])
-fi
-
-AM_CONDITIONAL([BOOL_KDE_MAGIC], [test "x$with_kde_magic" != "xno"])
-AC_MSG_CHECKING([if KDE 3.x MIME magic files will be installed])
-if test "x$with_kde_magic" != "xno" ; then
-	AC_MSG_RESULT([yes])
-	AC_MSG_CHECKING([for installation path of the KDE 3.x MIME magic files])
-	AC_MSG_RESULT([$with_kde_magic])
-else
-	AC_MSG_RESULT([no])
-fi
-
-AM_CONDITIONAL([BOOL_KDE_MIME], [test "x$with_kde_mime" != "xno"])
-AC_MSG_CHECKING([if KDE 3.x MIME definition files will be installed])
-if test "x$with_kde_mime" != "xno" ; then
-	AC_MSG_RESULT([yes])
-	AC_MSG_CHECKING([for installation path of the KDE 3.x MIME definition files])
-	AC_MSG_RESULT([$with_kde_mime])
-else
-	AC_MSG_RESULT([no])
-fi
-
 dnl --------------------------------------------------------------------------
 dnl location determination
 dnl --------------------------------------------------------------------------
@@ -375,9 +235,7 @@ AC_CONFIG_FILES([
 	Makefile
 	file/Makefile
 	freedesktop.org/Makefile
-	gnome/Makefile
 	html_docs/Makefile
-	kde/Makefile
 	mime-support/Makefile
 	po/Makefile.in
 	src/Makefile

@@ -6,7 +6,7 @@
 # This file is free software. The copyright owner gives unlimited
 # permission to copy, distribute and modify it.
 
-SUBDIRS = po src xsl file freedesktop.org gnome html_docs kde mime-support test
+SUBDIRS = po src xsl file freedesktop.org html_docs mime-support test
 
 AUTOMAKE_OPTIONS = check-news dist-bzip2 1.7
 
@@ -37,8 +37,6 @@ MAINTAINERCLEANFILES = \
 
 # `fakeroot make distcheck \
 # FDO_SHARED_MIME_INFO_DB=/usr/share/mime/packages/freedesktop.org.xml \
-# GNOME_VFS_MIME_DATA_DB=/usr/share/mime-info/gnome-vfs.mime \
-# KDE_MIMELNK_DATA_DB=/usr/share/mimelnk \
 # MIME_SUPPORT_MIME_TYPES_DATA_DB=/etc/mime.types'
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-database --disable-nls CONFIG_SITE=../../config.site
 
