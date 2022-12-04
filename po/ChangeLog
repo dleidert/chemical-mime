@@ -1,7 +1,10 @@
 # Document  $Id$
 # Summary   File-changelog for the internationalization data files of the
 #           chemical-mime-data project.
+2022-12-04 Temuri Doghonadze <temuri.doghonadze@gmail.com>
 
+        * ka.po: Added Georgian translation
+	
 2007-06-30 Alexandr Goncearenco <neksa@neksa.net>
 
 	* ru.po: Added Russian translation.
